@@ -44,9 +44,7 @@ class Figure(Command):
         inner = '    \n'.join([x.render() for x in self.content])
         inner = inner.strip('<p>').strip('</p>')
         o = '<div class="figure"><img src="{src}"><div class="caption"><strong>Figure:</strong> {html}</div></div>'.format(src=src, html=inner)
-        print o
         return o
-
 
 
 def chooseCommand(s, loc, raw):
@@ -56,8 +54,8 @@ def chooseCommand(s, loc, raw):
         return Figure(s, loc, raw)
     return Command(s, loc, raw)
 
+
 class Markdown(XmdNode):
 
     def render(self):
         return markdown.markdown(self.raw[0][0], extensions=extensions)
-

@@ -5,46 +5,96 @@ extensions = [mdx_math.makeExtension(enable_dollar_delimiter=True)]
 
 some_text = """
 
-[&asdf(a=a, b=g)]{ a side g note}
+[&aCommand(__a__=a, b=g)]{ a side g note [>]{recursive} }
 
-[&asdf(a=a, b=g)]{ This is a thinger}
+[&asdf(a=a)]{ This is a thinger }
 
-asdf asdf
+asdf asdf {}
+
+ * Hello 1
+ * Hello 1 [>]{asdf}
+ * Hello 2
 
 [>]{a side g note}
 
 
+{{ hello }}
+
+[>]{
+
+    By functions we mean anything that we can represent on the mesh:
+    return electrode at ($r_{s^-}$).
+
+    For example:
+
+        *
+
+    [>]{A third}
+
+
+    For example:
+
+        *
+}
 """
+
 
 from pyparsing import *
 
-SidenoteCommand =  Forward()
+SidenoteCommand = Forward()
 
 def createArg(z):
     print z[0][0]
-    return 'argument'
+    return 'arg[{}, {}]'.format(z[0][0], z[0][1])
 
-argument = Group(Word(alphas) + Suppress('=') + Word(alphas)).setParseAction(createArg)
+
+varName = Combine(
+    Word(alphas + '_', exact=1) +
+    ZeroOrMore(Word(alphanums + '_', exact=1))
+)
+
+kwarg = Group(varName + Suppress('=') + Word(alphas)).setParseAction(createArg)
 customCommand = (
-    Suppress("&") + Word(alphas) +
+    Suppress("&") + varName +
     Group(Optional(
         Suppress('(') +
-        Optional(delimitedList( argument )) +
+        Optional(delimitedList( kwarg )) +
         Suppress(')')
     ))
 )
 
-command = customCommand | Keyword(">").setParseAction(replaceWith("comment"))
-
-SidenoteCommand << Group(
-    Suppress('[') + command + Suppress(']') +
-    Suppress('{') + CharsNotIn("}") + Suppress('}')
-)
+command =  customCommand | (Keyword(">").setParseAction(replaceWith("comment")) + Group(Optional(' ')))
 
 mdObject = Forward()
-mdObject << ZeroOrMore(SidenoteCommand | Word(printables))
 
 
-print mdObject.parseString(some_text)
+def isNewLine(s):
+    return s
 
-print markdown.markdown(some_text, extensions=extensions)
+
+def recurse(s, b, c):
+    out = mdObject.parseString(c[0][1:-1])
+    # print out
+    return [out]
+
+
+SidenoteCommand << Group(
+    Group(Optional(Keyword('\n').leaveWhitespace())).setParseAction(isNewLine) +
+    Suppress('[') + command + Suppress(']') + FollowedBy('{') +
+    # Suppress('{') + Group(CharsNotIn("{}")) + Suppress('}')
+    nestedExpr(opener='{', closer='}').setParseAction(keepOriginalText, recurse)
+)
+
+injector = Group(Suppress('{{') + Word(alphas) + Suppress('}}'))
+
+text_block = Group(
+    OneOrMore(Word("""0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'(){}*+,-./:;<=>?@\^_`|~ \n"""))
+)#.setParseAction(replaceWith('markdown'))
+
+mdObject << ZeroOrMore(MatchFirst([SidenoteCommand, injector, text_block]))
+
+import pprint
+out = mdObject.parseString(some_text)
+pprint.pprint(out.asList())
+
+# print markdown.markdown(some_text, extensions=extensions)

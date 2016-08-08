@@ -14,8 +14,8 @@ provided an accompanying notebook to explore the numerical results using SimPEG
 ## DC resistivity
 
 
-[>]{
-    [&figure("/s/images/finite_volume/1-DCsurvey.png")]{
+[>sidenote]{
+    [>figure("/s/images/finite_volume/1-DCsurvey.png")]{
         Setup of a DC resistivity survey.
     }
 }
@@ -41,7 +41,7 @@ steady state fields, we can describe the electric field in terms of a scalar
 potential, $\phi$, which we sample at potential electrodes to obtain data in the
 form of potential differences.
 
-[&figure("/s/images/finite_volume/2-DC-Equations.png")]{
+[>figure("/s/images/finite_volume/2-DC-Equations.png")]{
     Derivation of the DC resistivity equations.
 }
 
@@ -80,7 +80,7 @@ on the faces of each cell. Remember that $\vec{j}$ is a vector; the direction of
 it is implied by the mesh definition (i.e. in $x$, $y$ or $z$), so we can store
 the array $\bf{j}$ as *scalars* that live on the face and inherit the
 face's normal. When $\vec{j}$ is defined on the faces of a cell the potential,
-$\vec{\phi}$, will be put on the cell centers. [>]{since $\vec{j}$ is related to
+$\vec{\phi}$, will be put on the cell centers. [>sidenote]{since $\vec{j}$ is related to
 $\phi$ through spatial derivatives, it allows us to approximate centered
 derivatives leading to a staggered, second-order discretization} Once we have
 the functions placed on our mesh, we look at a single cell to discretize each
@@ -90,7 +90,7 @@ the extension to curvilinear meshes will be presented in the supporting
 notebooks.
 
 
-[&figure("/s/images/finite_volume/3-FiniteVolume.png")]{
+[>figure("/s/images/finite_volume/3-FiniteVolume.png")]{
     Anatomy of a finite volume cell.
 }
 
@@ -117,14 +117,14 @@ face normal (multiplying by $\pm 1$), we only need to calculate the face areas
 and cell volume to create the discrete divergence matrix.
 
 
-[&figure("/s/images/finite_volume/4-Divergence.png")]{
+[>figure("/s/images/finite_volume/4-Divergence.png")]{
     Geometrical definition of the divergence and the discretization.
 }
 
 So we have half of the equation discretized - the left hand side. Now we need
 to take care of the source: it contains two dirac delta functions - these are
 infinite at their origins, $r_{s^+}$ and $r_{s^-}$.
-[>]{infinity is not exactly something a computer does well with!}
+[>sidenote]{infinity is not exactly something a computer does well with!}
 However, the volume integral of a delta
 function *is* well defined: it is *unity* if the volume contains the
 origin of the delta function otherwise it is *zero*. As such, we can
@@ -164,14 +164,14 @@ appropriate face in the figure). On the right hand side, we use a vector
 identity to integrate by parts. The second term will cancel over the entire
 mesh (as the normals of adjacent cell faces point in opposite directions) and
 $\phi$ on mesh boundary faces are zero by the Dirichlet boundary condition.
-[>]{We are using Dirichlet for simplicity in this example, in practice,
+[>sidenote]{We are using Dirichlet for simplicity in this example, in practice,
 Neumann conditions are often used. This is because "infinity" needs to be
 further away if applying Dirichlet boundary conditions since potential falls
 off as $1/r^2$ and current density as $1/r^3$.} This leaves us with the
 divergence, which we already know how to do!
 
 
-[&figure("/s/images/finite_volume/5-weak-formulation.png")]{
+[>figure("/s/images/finite_volume/5-weak-formulation.png")]{
     Discretization using the weak formulation and inner products.
 }
 
@@ -238,7 +238,7 @@ interpolation to the electrode locations and subtraction to obtain potential
 differences!
 
 
-[&figure("/s/images/finite_volume/6-numerical-solve.png")]{
+[>figure("/s/images/finite_volume/6-numerical-solve.png")]{
     Electric potential on (a) Tensor and (b) Curvilinear meshes.
 }
 

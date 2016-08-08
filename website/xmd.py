@@ -18,8 +18,7 @@ def isNewLine(s):
 
 
 def recurse(s, b, c):
-    out = mdObject.parseString(c[0][1:-1])
-    # print out
+    out = mdObject.parseString(s[c[0]+1: c[2]-1])
     return [out]
 
 
@@ -34,8 +33,9 @@ varName = pp.Combine(
 
 kwarg = pp.Group(varName + pp.Suppress('=') + pp.Word(pp.alphas)).setParseAction(createKwarg)
 arg = pp.Group(pp.Word(pp.alphanums + '"/._-')).setParseAction(createArg)
-customCommand = (
-    pp.Suppress("&") + varName +
+
+command = (
+    pp.Suppress(">") + varName +
     pp.Group(pp.Optional(
         pp.Suppress('(') +
         pp.Optional(pp.delimitedList( arg )) +
@@ -43,13 +43,9 @@ customCommand = (
     ))
 )
 
-command =  customCommand | (pp.Keyword(">").setParseAction(pp.replaceWith("sidenote")) + pp.Group(pp.Optional(' ')))
-
-Command = pp.Forward()
-Command << pp.Group(
-    # pp.Group(pp.Optional(pp.Keyword('\n').leaveWhitespace())).setParseAction(isNewLine) +
+Command = pp.Group(
     pp.Suppress('[') + command + pp.Suppress(']') + pp.FollowedBy('{') +
-    pp.nestedExpr(opener='{', closer='}').setParseAction(pp.keepOriginalText, recurse)
+    pp.originalTextFor(pp.nestedExpr(opener='{', closer='}')).setParseAction(recurse)
 ).setParseAction(nodes.chooseCommand)
 
 injector = pp.Group(pp.Suppress('{{') + pp.Word(pp.alphas) + pp.Suppress('}}'))

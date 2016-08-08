@@ -2,8 +2,14 @@ import os
 import subprocess
 import time
 
+
 subprocess.call(
-    "rm markdown pyparsing requests requests_toolbelt 2>/dev/null || :",
+    "rm pyparsing.py pyparsing.pyc || :",
+    shell=True
+)
+
+subprocess.call(
+    "rm markdown requests requests_toolbelt 2>/dev/null || :",
     shell=True
 )
 

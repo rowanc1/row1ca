@@ -100,7 +100,7 @@ blockquote{
 .sidenote{
   position:absolute;
   left: calc(100% + 15px);
-  width: 270px;
+  width: 230px;
   margin-top: -30px;
   font-size: 13px;
   color: #aaa;

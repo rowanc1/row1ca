@@ -26,7 +26,7 @@ class Greeting(ndb.Model):
 class MainPage(webapp2.RequestHandler):
     def get(self):
 
-        out = xmd.parse_file('blogs/finite_volume/finite_volume.xmd')
+        out = xmd.parse_file('blogs/2016-07-01-finite_volume.xmd')
 
         row1.utils.template.set(self, {
             "xmd": out

@@ -1,4 +1,5 @@
 
+July 01, 2016
 
 We take you on the journey from continuous equations to their discrete matrix
 representations using the finite volume method for the Direct Current (DC)
@@ -18,6 +19,7 @@ provided an accompanying notebook to explore the numerical results using SimPEG
         Setup of a DC resistivity survey.
     }
 }
+
 DC resistivity surveys obtain information about subsurface electrical
 conductivity, $\sigma$. This physical property is often diagnostic in mineral
 exploration, geotechnical, environmental and hydrogeologic problems, where the
@@ -211,7 +213,7 @@ are left with two discrete equations
 \begin{equation}
     \text{diag}(\mathbf{v}) \mathbf{D}\mathbf{j} =
     \mathbf{q}
-    \quad
+    \\
     \mathbf{M}_f(\sigma^{-1}) \mathbf{j} =
     \mathbf{D}^\top \text{diag}(\mathbf{v}) \boldsymbol{\phi}.
 \end{equation}

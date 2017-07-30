@@ -1,0 +1,20 @@
+
+July 01, 2016
+
+We take you on the journey from continuous equations to their discrete matrix
+representations using the finite volume method for the Direct Current (DC)
+resistivity problem. These techniques are widely applicable across geophysical
+simulation types and have their parallels in finite element and finite
+difference. We show derivations visually, as you would on a whiteboard, and have
+provided an accompanying notebook to explore the numerical results using SimPEG
+(Cockett et al. 2015).
+
+---
+
+## DC resistivity
+
+
+[>]{}
+
+
+hello world

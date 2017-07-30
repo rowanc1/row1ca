@@ -18,9 +18,22 @@ import markdown
 import pyparsing
 import requests
 import requests_toolbelt
+import future
+import jinja2_registry
+import properties
+import six
 
 
-LIBS = [markdown, pyparsing, requests, requests_toolbelt]
+LIBS = [
+    markdown,
+    pyparsing,
+    requests,
+    requests_toolbelt,
+    future,
+    jinja2_registry,
+    properties,
+    six
+]
 
 for mod in LIBS:
     path = os.path.realpath(mod.__file__)

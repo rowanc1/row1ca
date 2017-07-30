@@ -9,11 +9,17 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: /s
-  static_dir: s
+- url: /images
+  static_dir: static/images
+- url: /html
+  static_dir: static/html
+- url: /css
+  static_dir: static/css
+- url: /js
+  static_dir: static/js
 
 - url: .*
-  script: row1ca.app
+  script: server.app
 
 libraries:
 - name: webapp2

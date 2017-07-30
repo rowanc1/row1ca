@@ -1,0 +1,32 @@
+{
+    "kind": "article",
+    "contributors": [
+        {
+            "user": "rowan",
+            "kind": "author"
+        },
+        {
+            "user": "lindsey",
+            "kind": "author"
+        },
+        {
+            "user": "doug",
+            "kind": "author"
+        },
+        {
+            "user": "matthall",
+            "kind": "editor"
+        }
+    ],
+    "date_published": "2016-05-15T00:00:00Z",
+    "description": "Leading Edge tutorial on finite volume techniques.",
+    "license": "CC-BY-4.0",
+    "tag": [
+        "paper",
+        "tutorial",
+        "python",
+        "simpeg"
+    ],
+    "title": "Pixels and their neighbors: Finite volume",
+    "uid": "pixels-and-their-neighbors"
+}

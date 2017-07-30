@@ -1,0 +1,39 @@
+{% extends "layouts/base.html" %}
+{% block title %}Not Found{% endblock %}
+{% block head %}
+    <style type="text/css">
+        html{
+            font:15px arial, sans-serif;
+            background:#fff;
+            color:#222;
+            padding:15px;
+        }
+        body{
+            margin:7% auto 0;
+            max-width:390px;
+            min-height:180px;
+            padding:30px 0 15px
+        }
+        p{
+            margin:20px;
+            overflow:hidden
+        }
+        ins{
+            color:#777;
+            text-decoration:none;
+        }
+        #logo{
+            background: url(/images/logo.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            height:70px;
+            width:170px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <a href="/"><div id="logo"></div></a>
+    <p><b>404.</b> <ins>That’s an error.</ins></p>
+    <p>The requested page was not found.</p>
+{% endblock %}
+

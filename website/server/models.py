@@ -18,7 +18,10 @@ class Thought(properties.HasProperties):
 
     kind = properties.StringChoice(
         'Kind of the content',
-        choices={'article'}
+        choices={
+            'simple',
+            'article',
+        }
     )
 
     title = properties.String('title')

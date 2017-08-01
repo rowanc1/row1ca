@@ -1,0 +1,24 @@
+{% extends "layouts/base.html" %}
+{% block title %}{{ brick.title }}{% endblock %}
+{% block head %}
+    {% include "partials/fonts.html" %}
+    {% include "partials/math.html" %}
+    {% include "partials/highlight.html" %}
+
+    <script src="/js/webcomponents-lite.js"></script>
+    <link rel="import" href="/html/ink.html">
+    <script src="/js/bibtexParse.js"></script>
+
+    <script type="text/bibliography">
+      {{ bibliography }}
+    </script>
+{% endblock %}
+{% block body %}
+    <ink-article>
+    {% block article %}
+        {% block byline %}{% endblock %}
+        {% include brick.content_url %}
+    {% endblock %}
+    </ink-article>
+    {% include "partials/math_load.html" %}
+{% endblock %}

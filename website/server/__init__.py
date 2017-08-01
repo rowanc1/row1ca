@@ -9,13 +9,14 @@ from . import models
 DEBUG = os.environ.get('SERVER_SOFTWARE', '').startswith('Dev')
 
 RESERVED = {
-    'about'
+    'profile',
+    'about',
+    'settings'
 }
 
 SLUGS = {
     _ for _ in os.listdir('./thoughts')
-    if os.path.isdir('./thoughts/' + _) and
-    _ not in RESERVED
+    if os.path.isdir('./thoughts/' + _)
 }
 
 
@@ -23,18 +24,18 @@ def get_info(slug):
     with open('./thoughts/' + slug + '/info.json', 'r') as f:
         return models.Thought(**json.loads(f.read()))
 
-INFO = {
+BRICKS = {
     slug: get_info(slug) for slug in SLUGS
 }
 
-pointers = []
+POINTERS = []
 
 
 def route(uri):
     """flask style routes for webapp2"""
     def wrapper(cls):
-        global pointers
-        pointers += [
+        global POINTERS
+        POINTERS += [
             webapp2.Route(uri, cls)
         ]
         return cls
@@ -49,7 +50,7 @@ class Handler(webapp2.RequestHandler):
         self.response.write(renderer.render())
 
 
-@route('/thoughts/<slug:' + models.RE_SLUG + '>')
+@route('/<slug:' + models.RE_SLUG + '>')
 class Ink(Handler):
     def get(self, slug):
 
@@ -57,7 +58,20 @@ class Ink(Handler):
             self.error404()
             return
 
-        brick = INFO[slug]
+        brick = BRICKS[slug]
+
+        renderer = template.Renderer('pages/' + brick.kind + '.html')
+        renderer.update({
+            'brick': brick
+        })
+        self.response.write(renderer.render())
+
+
+@route('/')
+class Profile(Handler):
+    def get(self):
+
+        brick = BRICKS['profile']
 
         renderer = template.Renderer('pages/' + brick.kind + '.html')
         renderer.update({
@@ -71,4 +85,4 @@ class Error404(Handler):
     def get(self, url):
         self.error404()
 
-app = webapp2.WSGIApplication(pointers, debug=DEBUG)
+app = webapp2.WSGIApplication(POINTERS, debug=DEBUG)

@@ -1,12 +1,12 @@
 {
-    "kind": "article",
+    "__class__": "Article",
     "contributors": [
         {
             "kind": "author",
             "user": "rowan"
         }
     ],
-    "date_published": "2015-01-27T00:00:00Z",
+    "date": "2015-01-27T00:00:00Z",
     "description": "A first attempt at translating some of the SimPEG library into Julia.",
     "license": "CC-BY-4.0",
     "tag": [

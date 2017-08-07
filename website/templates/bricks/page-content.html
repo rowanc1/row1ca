@@ -1,0 +1,7 @@
+{% extends "pages/simple.html" %}
+{% block article %}
+    <h1>{{ brick.title }}</h1>
+    <p>{{ brick.description }}</p>
+    <hr>
+    {{ brick.html_content }}
+{% endblock %}

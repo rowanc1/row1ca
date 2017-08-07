@@ -1,5 +1,5 @@
 {
-    "kind": "article",
+    "__class__": "Article",
     "contributors": [
         {
             "user": "rowan",
@@ -18,8 +18,8 @@
             "kind": "editor"
         }
     ],
-    "date_published": "2016-05-15T00:00:00Z",
-    "description": "Leading Edge tutorial on finite volume techniques.",
+    "date": "2016-05-15T00:00:00Z",
+    "description": "Tutorial on finite volume techniques",
     "license": "CC-BY-4.0",
     "tag": [
         "paper",

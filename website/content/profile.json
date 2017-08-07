@@ -1,0 +1,25 @@
+[
+    {
+        "__class__": "CollectionList",
+        "uid": "profile",
+        "title": "Profile",
+        "description": "Rowan Cockett's website.",
+        "license": "CC-BY-4.0",
+        "children_uids": [
+            "logo",
+            "featured-projects"
+        ]
+    },
+    {
+        "__class__": "CollectionFeatured",
+        "uid": "featured-projects",
+        "title": "projects",
+        "description": "featured-projects",
+        "url_more": "/projects",
+        "license": "CC-BY-4.0",
+        "children_uids": [
+            "exploring-julia-with-simpeg",
+            "pixels-and-their-neighbors"
+        ]
+    }
+]

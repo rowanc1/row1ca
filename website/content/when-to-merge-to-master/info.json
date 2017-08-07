@@ -1,17 +1,17 @@
 {
-    "kind": "simple",
+    "__class__": "Article",
     "contributors": [
         {
             "user": "rowan",
             "kind": "author"
         }
     ],
-    "date_published": "2016-05-15T00:00:00Z",
+    "date": "2016-05-15T00:00:00Z",
     "description": "Leading Edge tutorial on finite volume techniques.",
     "license": "CC-BY-4.0",
     "tag": [
         "profile"
     ],
-    "title": "Pixels and their neighbors: Finite volume",
+    "title": "When to merge to master",
     "uid": "profile"
 }

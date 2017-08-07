@@ -1,0 +1,10 @@
+{
+    "__class__": "Collection",
+    "description": "Collection of awards",
+    "license": "CC-BY-4.0",
+    "tag": [
+        "awards"
+    ],
+    "title": "Awards",
+    "uid": "awards"
+}

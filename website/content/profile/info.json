@@ -1,0 +1,12 @@
+{
+    "__class__": "CollectionList",
+    "date": "2016-05-15T00:00:00Z",
+    "description": "Rowan Cockett's website.",
+    "license": "CC-BY-4.0",
+    "children_uids": ["logo", "featured-projects"],
+    "tag": [
+        "profile"
+    ],
+    "title": "Profile",
+    "uid": "profile"
+}

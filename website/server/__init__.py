@@ -2,8 +2,8 @@ from __future__ import print_function
 
 import webapp2
 import os
-import json
 from . import template
+from . import persist
 from . import models
 
 DEBUG = os.environ.get('SERVER_SOFTWARE', '').startswith('Dev')
@@ -14,19 +14,6 @@ RESERVED = {
     'settings'
 }
 
-SLUGS = {
-    _ for _ in os.listdir('./bricks')
-    if os.path.isdir('./bricks/' + _)
-}
-
-
-def get_info(slug):
-    with open('./bricks/' + slug + '/info.json', 'r') as f:
-        return models.Thought(**json.loads(f.read()))
-
-BRICKS = {
-    slug: get_info(slug) for slug in SLUGS
-}
 
 POINTERS = []
 
@@ -53,31 +40,17 @@ class Handler(webapp2.RequestHandler):
 @route('/<slug:' + models.RE_SLUG + '>')
 class Ink(Handler):
     def get(self, slug):
-
-        if slug not in SLUGS:
-            self.error404()
-            return
-
-        brick = BRICKS[slug]
-
-        renderer = template.Renderer('pages/' + brick.kind + '.html')
-        renderer.update({
-            'brick': brick
-        })
-        self.response.write(renderer.render())
+        if slug not in persist.SLUGS:
+            return self.error404()
+        brick = persist.BRICKS[slug]
+        self.response.write(brick.render_html_page())
 
 
 @route('/')
 class Profile(Handler):
     def get(self):
-
-        brick = BRICKS['profile']
-
-        renderer = template.Renderer('pages/' + brick.kind + '.html')
-        renderer.update({
-            'brick': brick
-        })
-        self.response.write(renderer.render())
+        brick = persist.BRICKS['profile']
+        self.response.write(brick.render_html_page())
 
 
 @route('/<:.*>')

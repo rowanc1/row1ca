@@ -48,4 +48,4 @@ class Thought(properties.HasProperties):
     @property
     def content_url(self):
         """Location of the html file."""
-        return 'thoughts/' + self.uid + '/content.html'
+        return 'bricks/' + self.uid + '/content.html'

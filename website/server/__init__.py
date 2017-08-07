@@ -15,13 +15,13 @@ RESERVED = {
 }
 
 SLUGS = {
-    _ for _ in os.listdir('./thoughts')
-    if os.path.isdir('./thoughts/' + _)
+    _ for _ in os.listdir('./bricks')
+    if os.path.isdir('./bricks/' + _)
 }
 
 
 def get_info(slug):
-    with open('./thoughts/' + slug + '/info.json', 'r') as f:
+    with open('./bricks/' + slug + '/info.json', 'r') as f:
         return models.Thought(**json.loads(f.read()))
 
 BRICKS = {

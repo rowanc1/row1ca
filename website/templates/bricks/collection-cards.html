@@ -1,0 +1,6 @@
+<ink-h2-more url="{{ brick.url_more }}">{{ brick.title }}</ink-h2-more>
+<div>
+    {% for item in brick.children %}
+    {{ item.render_html_card() }}
+    {% endfor %}
+</div>

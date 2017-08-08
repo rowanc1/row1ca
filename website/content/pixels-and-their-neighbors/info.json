@@ -20,6 +20,7 @@
     ],
     "date": "2016-05-15T00:00:00Z",
     "description": "Tutorial on finite volume techniques",
+    "thumbnail": "https://raw.githubusercontent.com/simpeg/tle-finitevolume/master/images/FiniteVolume.png",
     "license": "CC-BY-4.0",
     "tag": [
         "paper",

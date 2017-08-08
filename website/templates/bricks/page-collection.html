@@ -1,6 +1,6 @@
 {% extends "pages/simple.html" %}
 {% block article %}
     {% for item in brick.children %}
-    {{ item.render_html_item() }}
+    {{ item.render_html() }}
     {% endfor %}
 {% endblock %}

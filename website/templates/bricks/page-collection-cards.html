@@ -1,7 +1,10 @@
 {% extends "pages/simple.html" %}
 {% block article %}
     <h1>{{ brick.title }}</h1>
-    <p>{{ brick.description }}</p>
-    <hr>
     {{ brick.render_html() }}
+    <div>
+        {% for item in brick.children %}
+        {{ item.render_html_cards() }}
+        {% endfor %}
+    </div>
 {% endblock %}

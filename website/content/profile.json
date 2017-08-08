@@ -1,6 +1,6 @@
 [
     {
-        "__class__": "CollectionList",
+        "__class__": "Collection",
         "uid": "profile",
         "title": "Profile",
         "description": "Rowan Cockett's website.",
@@ -11,7 +11,7 @@
         ]
     },
     {
-        "__class__": "CollectionFeatured",
+        "__class__": "CollectionCards",
         "uid": "featured-projects",
         "title": "projects",
         "description": "featured-projects",

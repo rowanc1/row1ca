@@ -1,0 +1,20 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "lindsey"
+        },
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2017/08/24",
+    "uid": "jupytercon2017",
+    "title": "JupyterCon",
+    "description": "Deploying a reproducible course",
+    "thumbnail": "/images/presentations/jupytercon2017.png",
+    "license": "CC-BY-4.0",
+    "tags": ["presentations", "geosci"]
+}

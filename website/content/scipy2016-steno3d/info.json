@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2016/07/15",
+    "uid": "scipy2016-steno3d",
+    "title": "Steno3D Introduction",
+    "description": "Introducing Steno3D at SciPy 2016.",
+    "thumbnail": "/images/presentations/scipy2016-steno3d.jpg",
+    "license": "CC-BY-4.0",
+    "tags": ["presentations", "steno3d"]
+}

@@ -1,0 +1,20 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "lindsey"
+        },
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2016/08/21",
+    "uid": "birs2016-intro",
+    "title": "SimPEG Conference",
+    "description": "BIRS Workshop",
+    "thumbnail": "/images/presentations/birs2016-people-small.png",
+    "license": "CC-BY-4.0",
+    "tags": ["presentations", "simpeg"]
+}

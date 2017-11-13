@@ -69,6 +69,7 @@
         "license": "CC-BY-4.0",
         "query_type": "uid",
         "query_uids": [
+            "jupytercon2017",
             "scipy2016",
             "phd-overview"
         ]

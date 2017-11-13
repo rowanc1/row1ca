@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "user": "rowan",
+            "kind": "author"
+        }
+    ],
+    "uid": "stereonet-intro",
+    "title": "Stereonet Tutorials",
+    "description": "Interactive lesson on how to plot planes and lines on a stereonet.",
+    "date": "2013/04/25",
+    "thumbnail": "/images/stereonet/tutorial-plane.png",
+    "license": "CC-BY-4.0",
+    "tags": []
+}

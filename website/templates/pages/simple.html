@@ -8,12 +8,20 @@
     <script src="/js/webcomponents-lite.js"></script>
     <link rel="import" href="/html/ink.html">
     <script src="/js/bibtexParse.js"></script>
-
-    <script type="text/bibliography">
-      {{ bibliography }}
-    </script>
 {% endblock %}
 {% block body %}
+    {% if brick.uid != 'profile' %}
+    <a href="/"><div style="
+        background-image: url('/images/logo/row1.png');
+        background-size: cover;
+        height: 40px;
+        width: 45px;
+        margin: 30px calc(50vw - 22px);;
+        position: absolute;
+        top:0;
+        left:0;
+    "></div></a>
+    {% endif %}
     <ink-article>
     {% block article %}
     {% endblock %}

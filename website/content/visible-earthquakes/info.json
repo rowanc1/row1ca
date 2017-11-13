@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2013/04/20",
+    "uid": "visible-earthquakes",
+    "title": "Visible Earthquakes",
+    "description": "Software to visualize earthquakes using InSAR data.",
+    "thumbnail": "/images/earthquakes/screenshot.png",
+    "license": "CC-BY-4.0",
+    "tags": ["visible-geology", "thoughts"]
+}

@@ -3,7 +3,8 @@ import datetime
 from . import template
 
 # starts with a letter, ends with a letter or number, can include hyphens
-RE_SLUG = '[a-z]+[a-z0-9]+(?:-[a-z0-9]+)*'
+# RE_SLUG = '[a-z]+[a-z0-9]+(?:-[a-z0-9]+)*'
+RE_SLUG = '[a-z0-9]+(?:-[a-z0-9]+)*'
 
 
 class Contribution(properties.HasProperties):
@@ -12,6 +13,11 @@ class Contribution(properties.HasProperties):
         'Kind of contribution',
         choices={'author', 'editor', 'reviewer'}
     )
+
+    @property
+    def profile(self):
+        from . import persist
+        return persist.query_user(self.user)
 
 
 class Brick(properties.HasProperties):
@@ -33,7 +39,7 @@ class Brick(properties.HasProperties):
         default=lambda: datetime.datetime.now()
     )
 
-    tag = properties.List(
+    tags = properties.List(
         'list of tags',
         prop=properties.String('', change_case='lower')
     )
@@ -41,6 +47,12 @@ class Brick(properties.HasProperties):
     license = properties.StringChoice(
         'license of content',
         choices={'CC-BY-4.0'}
+    )
+
+    url_more = properties.String(
+        'url to see more information',
+        required=False,
+        default=''
     )
 
     def render_html(self):
@@ -89,6 +101,13 @@ class Article(Brick):
         min_length=1
     )
 
+    @property
+    def authors(self):
+        import json
+        return json.dumps(
+            [c.profile for c in self.contributors if c.kind == 'author']
+        )
+
     def render_html(self):
         """Location of the html file."""
         with open('content/' + self.uid + '/content.html', 'r') as f:
@@ -99,35 +118,41 @@ class Collection(Brick):
 
     style_page = 'page-collection'
 
-    children_uids = properties.List(
+    query_type = properties.StringChoice(
+        'Kind of query',
+        choices={'uid', 'kind', 'tags'}
+    )
+
+    query_kind = properties.StringChoice(
+        'Kind of bricks to find',
+        choices={'Award', 'Article'},
+        required=False
+    )
+
+    query_uids = properties.List(
         'list of children uids',
-        prop=properties.String('', regex='^' + RE_SLUG + '$')
+        prop=properties.String('', regex='^' + RE_SLUG + '$'),
+        required=False
+    )
+
+    query_tags = properties.List(
+        'list of children uids',
+        prop=properties.String('', change_case='lower'),
+        required=False
     )
 
     @property
     def children(self):
         from . import persist
-        q = persist.query_uids(self.children_uids)
+        if self.query_type == 'uid':
+            q = persist.query_uids(self.query_uids)
+        elif self.query_type == 'kind':
+            q = persist.query_kind(self.query_kind)
+        elif self.query_type == 'tags':
+            q = persist.query_tags(self.query_tags)
+        else:
+            q = []
         return q
-
-    # @property
-    # def children(self):
-    #     from . import persist
-    #     q = persist.query_kind('Award')
-    #     return q
-
-
-class CollectionItems(Collection):
-
-    style_page = 'page-collection-items'
-
-
-class CollectionCards(Collection):
-
-    style = 'collection-cards'
-    style_page = 'page-collection-cards'
-
-    url_more = properties.String('pointer to more content')
 
     def render_html(self):
         """Location of the html file."""
@@ -136,6 +161,18 @@ class CollectionCards(Collection):
             'brick': self
         })
         return renderer.render()
+
+
+class CollectionItems(Collection):
+
+    style = 'collection-items'
+    style_page = 'page-collection-items'
+
+
+class CollectionCards(Collection):
+
+    style = 'collection-cards'
+    style_page = 'page-collection-cards'
 
 
 class Award(Brick):

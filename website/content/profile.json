@@ -5,9 +5,28 @@
         "title": "Profile",
         "description": "Rowan Cockett's website.",
         "license": "CC-BY-4.0",
-        "children_uids": [
+        "query_type": "uid",
+        "query_uids": [
             "logo",
-            "featured-projects"
+            "featured-thoughts",
+            "featured-projects",
+            "featured-about",
+            "featured-presentations",
+            "featured-papers"
+        ]
+    },
+    {
+        "__class__": "CollectionCards",
+        "uid": "featured-thoughts",
+        "title": "thoughts",
+        "description": "featured-thoughts",
+        "url_more": "/thoughts",
+        "license": "CC-BY-4.0",
+        "query_type": "uid",
+        "query_uids": [
+            "exploring-julia-with-simpeg",
+            "pixels-and-their-neighbors",
+            "probability-of-a-spill"
         ]
     },
     {
@@ -17,9 +36,93 @@
         "description": "featured-projects",
         "url_more": "/projects",
         "license": "CC-BY-4.0",
-        "children_uids": [
-            "exploring-julia-with-simpeg",
-            "pixels-and-their-neighbors"
+        "query_type": "uid",
+        "query_uids": [
+            "visible-geology",
+            "simpeg",
+            "3point",
+            "stereonet",
+            "steno3d",
+            "geosci",
+            "bricks"
         ]
+    },
+    {
+        "__class__": "CollectionCards",
+        "uid": "featured-about",
+        "title": "about",
+        "description": "featured-about",
+        "url_more": "/story",
+        "license": "CC-BY-4.0",
+        "query_type": "uid",
+        "query_uids": [
+            "story",
+            "awards"
+        ]
+    },
+    {
+        "__class__": "CollectionCards",
+        "uid": "featured-presentations",
+        "title": "presentations",
+        "description": "featured-presentations",
+        "url_more": "/presentations",
+        "license": "CC-BY-4.0",
+        "query_type": "uid",
+        "query_uids": [
+            "scipy2016",
+            "phd-overview"
+        ]
+    },
+    {
+        "__class__": "CollectionCards",
+        "uid": "presentations",
+        "title": "presentations",
+        "description": "A list of my presentations",
+        "license": "CC-BY-4.0",
+        "query_type": "tags",
+        "query_tags": ["presentations"]
+    },
+    {
+        "__class__": "CollectionCards",
+        "uid": "featured-papers",
+        "title": "papers",
+        "description": "featured-papers",
+        "url_more": "/papers",
+        "license": "CC-BY-4.0",
+        "query_type": "uid",
+        "query_uids": [
+            "simpeg-paper",
+            "simpeg-em-paper",
+            "richards-paper"
+        ]
+    },
+    {
+        "__class__": "Collection",
+        "uid": "awards",
+        "title": "Awards",
+        "description": "Rowan Cockett's website.",
+        "license": "CC-BY-4.0",
+        "query_type": "uid",
+        "query_uids": [
+            "collection-awards"
+        ]
+    },
+    {
+        "__class__": "CollectionCards",
+        "uid": "projects",
+        "title": "projects",
+        "description": "Projects",
+        "license": "CC-BY-4.0",
+        "query_type": "tags",
+        "query_tags": ["projects"]
+    },
+    {
+        "__class__": "CollectionCards",
+        "uid": "thoughts",
+        "title": "thoughts",
+        "description": "A blog of sorts",
+        "license": "CC-BY-4.0",
+        "query_type": "tags",
+        "query_tags": ["thoughts"]
     }
 ]

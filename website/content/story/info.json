@@ -1,0 +1,7 @@
+{
+    "__class__": "Article",
+    "uid": "story",
+    "title": "Story",
+    "description": "Once upon a time...",
+    "license": "CC-BY-4.0"
+}

@@ -233,7 +233,9 @@ end
 <p>This code reproduces the SimPEG mesh in the python environment, and then uses it's <code>plotImage</code> method for the vector. So now we can have Julia call Python to plot the image of the dipole that we solved above:</p>
 <ink-code language="julia">plotImage(M, phi)</ink-code>
 
-<p><img alt="Plotting in Julia" src="/img/exploring-julia/plotting-in-julia.png" title="Plotting in Julia" /></p>
+<ink-figure src="/images/weakform-dc/dc-2d.png">
+  Plotting in Julia
+</ink-figure>
 
 <p>It is certainly nice to bring the libraries functionality with you as we explore this new language! Interestingly, we can also go the other way (Python calling Julia):</p>
 <ink-code language="julia">

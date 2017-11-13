@@ -1,0 +1,15 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2015-01-27T00:00:00Z",
+    "title": "Visible Geology",
+    "description": "Create your own geologic models online.",
+    "license": "CC-BY-4.0",
+    "thumbnail": "/images/logo/visible-geology.png",
+    "uid": "visible-geology-intro"
+}

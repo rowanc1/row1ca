@@ -1,0 +1,491 @@
+<style type="text/css">
+#doicare{
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  height: 40px;
+  width: 705px;
+  left: 0;
+  background: rgba(255,255,255,0.9);
+  margin-left: calc(50vw - 345px);
+  border: 1px solid #333;
+  border-top: 1px solid transparent;
+  border-radius: 0 0 5px 5px;
+}
+#doicare input{
+  cursor: ew-resize;
+}
+#doicare p{
+  text-align: center;
+  font-size: 15px;
+  font-family: "Roboto";
+  margin-top: 7px;
+}
+@media screen and (max-width: 710px) {
+  #doicare{
+    margin-left: 10px;
+  }
+}
+#table1{
+  font-family: "Helvetica-Light","PT Serif", serif;
+  border-collapse: collapse;
+  width: 100%;
+  border : 5px solid transparent;
+  position: relative;
+}
+#table1 tbody tr:hover{
+  background: #eee;
+}
+
+@keyframes shake{
+  0%   {left:-10px;}
+  10%   {left:10px;}
+  20%   {left:-10px;}
+  30%   {left:10px;}
+  40%   {left:-10px;}
+  50%   {left:10px;}
+  60%   {left:-10px;}
+  70%   {left:10px;}
+  80%   {left:-10px;}
+  90%   {left:10px;}
+  100%   {left:0px;}
+}
+
+@-webkit-keyframes shake{
+  0%   {left:-10px;}
+  10%   {left:10px;}
+  20%   {left:-10px;}
+  30%   {left:10px;}
+  40%   {left:-10px;}
+  50%   {left:10px;}
+  60%   {left:-10px;}
+  70%   {left:10px;}
+  80%   {left:-10px;}
+  90%   {left:10px;}
+  100%   {left:0px;}
+}
+#table1:target{
+  animation: shake 1s;
+  -webkit-animation: shake 1s; /* Safari and Chrome */
+}
+
+svg {
+  font: 11px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  /*display: none;*/
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+.line.black{stroke: #333;}
+.line.red{stroke: red;}
+
+.figure svg, .figure div{
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<script type="text/javascript" src="/js/probability-of-a-spill/jquery-1.10.2.min.js"></script>
+
+<div icare=">1">
+  <p>We will start with the formulation of the Direct Current (DC) resistivity problem in geophysics.</p>
+
+  <ink-equation>
+    \begin{aligned}
+    \frac{1}{\sigma}\vec{j} = \nabla \phi \qquad & (1) \\
+    \nabla\cdot \vec{j} = q \qquad & (2)
+    \end{aligned}
+  </ink-equation>
+
+  <p>In the following discretization, $\sigma$ and $\phi$ will be discretized on the cell-centers and the flux, $j$, will be on the faces. We will use the weak formulation to discretize the DC resistivity equation.</p>
+
+  <ink-code language="python" icare="=5">
+from SimPEG import Mesh
+mesh = Mesh.TensorMesh([10, 10])
+  </ink-code>
+
+  <h2>Discretizing Equation (1)</h2>
+  <div icare=">2">
+    <p>For equation (1) the integration with a general face function $\vec{f}$ results in:</p>
+    <ink-aside>
+      <p>Where the <strong>inner product</strong> is defined as:</p>
+      <ink-equation>\left(a,b\right) = \int_\Omega{a \cdot b}{\partial v}</ink-equation>
+      <p>where $a$ and $b$ are either scalars or vectors.</p>
+    </ink-aside>
+
+    <ink-equation>
+      \left(\frac{1}{\sigma}\vec{j},\vec{f}\right) = \left(\nabla\phi,\vec{f}\right)
+    </ink-equation>
+
+
+    <h3>Discretizing Equation (1): Left-Side</h3>
+
+    <p>We will first look at the <b>left-side</b> of this equation. The material property $\sigma$ and the flux $\mathbf{j}$ live in different locations on the mesh. Therefore, we have to do some linear interpolation for $\sigma$.</p>
+
+    <ink-equation>
+      \mathbf{j}^\top \text{diag}\left(
+      {\mathbf{A}_v^{f2cc}}^\top
+      \left(
+      \mathbf{v} \circ \frac{1}{\sigma}
+      \right)
+      \right) \mathbf{f} = \mathbf{f}^\top \mathbf{M}_\frac{1}{\sigma} \mathbf{j}
+    </ink-equation>
+
+    <p>Here $\mathbf{M}_\frac{1}{\sigma}$ is the mass matrix that incorporates the conductivity structure and allows multiplication with $\mathbf{j}$ which lives on the faces.</p>
+
+    <ink-equation>
+      \mathbf{M}_\frac{1}{\sigma}
+      =
+      \text{diag}\left(
+      {\mathbf{A}_v^{f2cc}}^\top
+      \left(
+      \mathbf{v} \circ \frac{1}{\sigma}
+      \right)
+      \right)
+    </ink-equation>
+
+    <ink-code language="python" icare="=5">Msig = sdiag(mesh.aveF2CC.T*(mesh.vol*(1/sigma))</ink-code>
+
+    <p>$\mathbf{A}_v^{f2cc}$ is an averaging matrix that takes you from faces to cell-centers, $\circ$ is a Hadamard product.</p>
+
+    <ink-aside>
+      <p>A Hadamard product indicates point wise multiplication or equivalently:</p>
+      <ink-equation>\mathbf{a}\circ\mathbf{b} = \text{diag}(\mathbf{a})\mathbf{b} = \text{diag}(\mathbf{b})\mathbf{a}</ink-equation>
+    </ink-aside>
+
+    <h3>Discretizing Equation (1): Right-Side</h3>
+
+    <p>Here we will use integration by parts to simplify the <b>right-side</b> of the weakform equation:</p>
+
+    <ink-equation>\nabla\cdot(\phi\vec{f})=\nabla\phi\cdot\vec{f} + \phi\nabla\cdot\vec{f}</ink-equation>
+
+    <p>Integrating and rearranging gives:</p>
+
+    <ink-equation>
+      \int \nabla \phi \cdot \vec{f}  dv =
+      - \int \phi \nabla \cdot \vec{f}  dv
+      + \int \nabla \cdot(\phi \vec{f}) dv
+    </ink-equation>
+
+    <ink-aside icare=">3">
+      <strong>Divergence theorem:</strong>
+      <ink-equation>\int_\Omega \nabla \cdot \mathbf{F} \, dv = \oint_{\partial \Omega} \mathbf{F} \cdot \mathbf{n} \, ds </ink-equation>
+    </ink-aside>
+    <p>We will use the <a href="http://en.wikipedia.org/wiki/Divergence_theorem#Multiple_dimensions" target="_blank">Divergence theorem</a> in the last integral:</p>
+
+    <ink-equation>
+      \left(\nabla\phi,\vec{f}\right) =
+      \int \nabla \phi \cdot \vec{f}  dv =
+      - \int \phi \nabla \cdot \vec{f}  dv
+      + \oint_{\partial \Omega} \phi \vec{f}\cdot\vec{n} ds
+    </ink-equation>
+
+    <p>Where the discretization is:</p>
+
+    <ink-equation>
+      -\phi^\top\text{diag}(\mathbf{v})\mathbf{D}\mathbf{f}
+      +
+      \phi_{bc}^\top\text{diag}(\mathbf{a}_{bc}) \mathbf{B}\mathbf{f}
+    </ink-equation>
+
+    <p>
+      Here $\mathbf{B}$ must take into account the direction of the normal (which points <i>out</i> of the face), so we need some $\pm1$ in the right places.
+      <span icare=">3">For a 1D mesh $\mathbf{B}$ would have the form:</span>
+
+      <ink-aside icare=">3">
+        <strong>Note:</strong> In 1D 'area' doesn't really make sense and can be substituted for a vector of ones.
+      </ink-aside>
+
+      <ink-equation icare=">3">
+        \mathbf{B} =
+        \left[
+        \begin{array}{cc}
+        -1 & 0\\
+        0 & 0\\
+        \vdots & \vdots\\
+        0 & 0\\
+        0 & 1
+        \end{array}
+        \right]
+      </ink-equation>
+      here we will define $\mathbf{P}_{bc} = \mathbf{B}^\top \text{diag}(\mathbf{a}_{bc})$ and take the transpose (which is the same because it is a scalar!):
+    </p>
+
+    <ink-equation>
+      -\mathbf{f}^\top \mathbf{D}^\top\text{diag}(\mathbf{v})\phi
+        +
+      \mathbf{f}^\top \mathbf{P}_{bc}\phi_{bc}
+    </ink-equation>
+
+    <h3>Discretizing Equation (1): Putting it Together</h3>
+
+    <p>The two sides of the equations can be combined and generalized by removing the face-function, $\mathbf{f}^\top$, from all terms.</p>
+  </div>
+
+
+  <ink-callout>
+    <ink-equation>
+      \mathbf{M}_\frac{1}{\sigma} \mathbf{j}
+      =
+      - \mathbf{D}^\top\text{diag}(\mathbf{v})\phi
+      + \mathbf{P}_{bc}\phi_{bc}
+    </ink-equation>
+  </ink-callout>
+
+  <h2>Discretizing Equation (2)</h2>
+  <p icare=">2">
+    For equation (2) the integration with a general cell function $w$ results in:
+
+    <ink-equation>\left(\nabla\cdot \vec{j}, w\right) = \left(q, w\right)</ink-equation>
+
+    Or equivalently:
+
+    <ink-equation>\int \nabla\cdot \vec{j} w dv = \int q w dv</ink-equation>
+
+    Discretizing the divergence operator as the matrix $\mathbf{D}$ this results in the following:
+
+    <ink-equation>\mathbf{j}^\top\mathbf{D}^\top\text{diag}(\mathbf{v})\mathbf{w} = \mathbf{q}^\top\text{diag}(\mathbf{v})\mathbf{w}</ink-equation>
+
+    or the transpose (which is the same because it is a scalar!):
+
+    <ink-equation>\mathbf{w}^\top\text{diag}(\mathbf{v})\mathbf{D}\mathbf{j} = \mathbf{w}^\top\text{diag}(\mathbf{v})\mathbf{q}</ink-equation>
+
+    This can be further simplified by eliminating the $\mathbf{w}^\top\text{diag}(\mathbf{v})$ from both sides of the equations.
+
+    The discretized matrix equation is very similar to the original equation (2):
+
+    <ink-equation>\mathbf{D}\mathbf{j} = \mathbf{q}</ink-equation>
+
+    However, we may want to enforce Neumann boundary conditions on $\mathbf{j}$, which requires a few tweaks in our matrix equations. We can do this using projection matrices!
+  </p>
+
+  <ink-code language="python" icare="=5">D = mesh.faceDiv</ink-code>
+
+  <div icare=">3">
+    <h3>Boundary conditions on $j$</h3>
+    <p>
+      Boundary conditions are often important to consider, in a DC resistivity survey we may create a domain that is sufficiently padded to assume that at the boundaries the flux into or out of the domain is zero. If this is the case, we can reduce the number of unknowns in equation. To illustrate the separation of the fluxes on the boundary $\mathbf{j}_{bc}$ and the fluxes inside the domain $\mathbf{j}_{in}$, we will use a simple 1D example.
+
+      <ink-figure src="/images/weakform-dc/1d-mesh.png">
+        Small one dimensional mesh, showing location of $\mathbf{j}$, $\sigma$, and $\phi$
+      </ink-figure>
+
+      The discretization for the divergence for this example is:
+
+      <ink-equation>
+        \mathbf{D}\mathbf{j} =
+        \frac{1}{h}\left[
+        \begin{array}{c|cc|c}
+        -1 &  1 &    &  \\
+        & -1 &  1 &  \\
+        &    & -1 & 1
+        \end{array}
+        \right]
+        \left[
+        \begin{array}{c} j_0\\j_1\\j_2\\j_3
+        \end{array}
+        \right]
+      </ink-equation>
+
+      Where $h$ is the cell width, which in this case is constant and can be separated from the stencil matrix of $\pm 1$.
+      Notice here that we can separate out the fluxes on the boundaries.
+
+      <ink-equation>
+        \mathbf{D}\mathbf{j} =
+        \frac{1}{h}\left[
+        \begin{array}{cc}
+        1 &   \\
+        -1 &  1\\
+        & -1
+        \end{array}
+        \right]
+        \left[
+        \begin{array}{c} j_1\\j_2
+        \end{array}
+        \right]
+        +
+        \frac{1}{h}\left[
+        \begin{array}{cc}
+        -1 &  \\
+        &  \\
+        & 1
+        \end{array}
+        \right]
+        \left[
+        \begin{array}{c} j_0\\j_3
+        \end{array}
+        \right]
+      </ink-equation>
+
+      This can be written similarly using projection matrices (reduced identities):
+
+      <ink-equation>
+        \mathbf{Dj} = \mathbf{D}\mathbf{P}_{in}^\top\mathbf{P}_{in}\mathbf{j} +
+        \mathbf{D}\mathbf{P}_{out}^\top\mathbf{j}_{bc}
+      </ink-equation>
+
+      Where $\mathbf{j}_{bc} = \mathbf{P}_{out}\mathbf{j}$ and the projection matrices for the 1D example are:
+
+      <ink-equation>
+        \mathbf{P}_{in} =
+        \left[
+        \begin{array}{cccc}
+        0 & 1 & 0 & 0\\
+        0 & 0 & 1 & 0
+        \end{array}
+        \right],
+        \qquad
+        \mathbf{P}_{out} =
+        \left[
+        \begin{array}{cccc}
+        1 & 0 & 0 & 0\\
+        0 & 0 & 0 & 1
+        \end{array}
+        \right]
+      </ink-equation>
+    </p>
+  </div>
+
+  <ink-callout>
+    <ink-equation>
+      \mathbf{D}\mathbf{P}_{in}^\top\mathbf{P}_{in}\mathbf{j} +
+      \mathbf{D}\mathbf{P}_{out}^\top\mathbf{j}_{bc} = \mathbf{q}
+    </ink-equation>
+  </ink-callout>
+
+  <h2>Putting the Equations Together</h2>
+
+  <p>Care needs to be taken when putting these equations together to ensure that the boundary conditions match. The natural boundary conditions that occur in this system using a cell-centered discretization are homogeneous Dirichlet<span icare=">2"> $(\phi = 0 \in \partial \Omega)$</span>. In the DC resistivity problem, however, we are often interested in homogeneous Neumann boundary conditions<span icare=">2"> $(j = 0 \in \partial \Omega)$</span>.</p>
+
+  <p icare=">3">
+
+    In descrete equation we need to make sure that the divergence that we apply on the general face function $\mathbf{f}^\top$ match those of the DC resistivity equations. Here we will rewrite the integration and make a few notes:
+
+    <ink-equation>
+      \int \nabla \phi \cdot \vec{f}  dv =
+        - \int \phi \nabla \cdot \vec{f}  dv
+      + \oint_{\partial \Omega} \phi \vec{f}\cdot\vec{n} ds
+    </ink-equation>
+  </p>
+  <p icare=">2">
+
+    In this case we note that $\vec{f}\cdot\vec{n} = 0 \in \partial\Omega$ and the $\nabla\cdot\vec{f}$ must enforce the correct boundary conditions. In the discretized form this translates to using the projected divergence matrix and dropping the boundary condition term for $\phi_{bc}$. We can plug the projected divergence matrix into descrete equation and rearrange to solve for $\mathbf{j}$:
+
+    <ink-equation>\mathbf{j} =
+    - \mathbf{M}_{\frac{1}{\sigma}}^{-1}\mathbf{P}_{in}^\top\mathbf{P}_{in}\mathbf{D}^\top\text{diag}(\mathbf{v})\phi</ink-equation>
+
+    We can substitute this into descrete equation by defining $\mathbf{D}_{in} = \mathbf{D}\mathbf{P}_{in}^\top\mathbf{P}_{in}$:
+
+    <ink-equation>-\mathbf{D}_{in}\mathbf{M}_{\frac{1}{\sigma}}^{-1}\mathbf{D}_{in}^\top\text{diag}(\mathbf{v})\phi +
+    \mathbf{D}\mathbf{P}_{out}^\top\mathbf{j}_{bc} = \mathbf{q}</ink-equation>
+
+    Here we know $\mathbf{j}_{bc}$ is zero on all of the boundaries, so we will drop that term, and multiply on the left by a $\text{diag}(\mathbf{v})$ to make the matrix symmetric.
+
+  </p>
+  <ink-callout>
+    <ink-equation>\text{diag}(\mathbf{v})\mathbf{D}_{in}\mathbf{M}_{\frac{1}{\sigma}}^{-1}\mathbf{D}_{in}^\top\text{diag}(\mathbf{v})\phi = -\text{diag}(\mathbf{v})\mathbf{q}</ink-equation>
+  </ink-callout>
+
+  <ink-callout icare=">3" class="warning">
+    <strong>Note:</strong> The matrix has a null space of a constant vector! This is expected with homogeneous Neumann boundary conditions, but we need to not forget about this when we are solving the matrix system.
+  </ink-callout>
+
+  <ink-code language="python" icare="=5">
+from SimPEG import Mesh, Utils, Solver
+import numpy as np
+
+M = Mesh.TensorMesh([60, 60, 10])
+Pbc, Pin, Pout = mesh.getBCProjWF("neumann")
+V = Utils.sdiag(mesh.vol)
+Msig = mesh.getFaceInnerProduct()
+MsigI = Utils.sdInv(Msig)
+Din = mesh.faceDiv * Pin.T * Pin
+A = V * Din * MsigI * Din.T * V
+
+# Create the sources
+q = np.zeros(mesh.vnC)
+q[[30, 30], [20, 40], 5] = [-1, 1]
+q = -V * Utils.mkvc(q)
+
+# Solve the system
+phi = Solver(A) * q
+
+# Plot it!
+mesh.plotSlice(-Din.T * phi, 'F', normal='Z', view='vec')
+  </ink-code>
+
+</div>
+
+<ink-figure src="/images/weakform-dc/dc.png">
+  Slice through a DC resistivity survey showing a dipole response.
+</ink-figure>
+
+<script type="text/javascript">
+  DoICare = function ( id, start, hintTime ) {
+    var self = this;
+    this.hintTime = hintTime==undefined? 25000 : hintTime;
+    var div = $('<div id="'+id+'">\n<p>How much do you want to read? <input type="range" min="1" max="5" step="1" value="5"> (<span></span>)</p>\n<img src="/images/probability-of-a-spill/hand-arrow.png" width="200px" style="position: absolute;top: 26px;left: calc(50vw - 540px);display:none;">\n</div>');
+    $('body').append(div);
+    this.id = '#'+id
+    this.img = $(self.id + ' img');
+    this.doOnUpdate = [];
+    this.initialize(start);
+    this.hasChanged = false;
+    this.img.on('mouseenter',function(){self.img.fadeOut();self.hasChanged=true;});
+  };
+
+
+  DoICare.prototype = {
+
+    constructor: DoICare,
+
+    initialize: function(start){
+      var CL = $(this.id + ' input').val(start);
+      var self = this;
+      $('[icare]').hide();
+      this.update();
+      $(this.id + ' input').on('change',function(){self.update();})
+      setTimeout(function(){if(!self.hasChanged){self.img.fadeIn();}},this.hintTime);
+    },
+
+    update: function(){
+      var CL = $(this.id + ' input').val();
+      $(this.id + ' img').fadeOut();
+      this.hasChanged = true;
+      $(this.id + ' span').html(['a picture', 'a wee bit', 'goldilocks', 'the important stuff', 'annoying details'][CL-1])
+      $('[icare]').each(function(i,c){
+        c = $(c);
+        var sign = c.attr('icare')[0];
+        var lev = parseFloat(c.attr('icare')[1]);
+        var show = false;
+        if(sign === '='){show = lev == CL;}
+        else if(sign === '<'){show = CL < lev;}
+        else if(sign === '>'){show = CL > lev;}
+        if(show){c.fadeIn();}else{c.fadeOut();}
+      });
+      for (var i = 0; i < this.doOnUpdate.length; i++) {
+        this.doOnUpdate[i](CL);
+      };
+    },
+
+    onUpdate: function(f){
+      this.doOnUpdate.push(f);
+    },
+  };
+
+  new DoICare('doicare', 5);
+</script>

@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2016/07/15",
+    "uid": "scipy2016",
+    "title": "SciPy2016",
+    "description": "All the geophysics but backwards.",
+    "thumbnail": "/images/presentations/scipy2016.png",
+    "license": "CC-BY-4.0",
+    "tags": ["presentations", "simpeg"]
+}

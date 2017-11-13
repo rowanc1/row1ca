@@ -5603,9 +5603,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
     <img src="[[ src ]]">
     <div class="caption">
-      <template is="dom-if" if="[[ labeled ]]">
-        <span class="label">Figure [[ number ]]:</span>
-      </template>
+      <span hidden$="[[ !labeled ]]" class="label">Figure [[ number ]]:</span>
       <slot></slot>
     </div>
   </template>
@@ -5640,142 +5638,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     window.customElements.define(InkFigure.is, InkFigure);
-  </script>
-</dom-module>
-<style type="text/css">
-  a {
-    color: #1E88E5;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  a:hover{
-    text-decoration: underline;
-  }
-
-  h1, h2, h3, h4, h5{
-    font-family: 'Oswald', sans-serif;
-  }
-
-  code{
-    border-radius: 15px;
-    border: 1px solid #E4E4E4;
-    background-color: #FAFAFA;
-    padding: 0 5px;
-  }
-  h1:first-of-type{
-    border-bottom: 1px solid #333;
-  }
-  /*h1:first-of-type::after{
-    content: " ";
-    display: block;
-    position: relative;
-    width: 7px;
-    margin-top: -7px;
-    height: 7px;
-    background-color: #F69C1E;
-    top: 0px;
-    left: calc(100% - 7px);
-  }*/
-  blockquote{
-    background: #f5f5f5;
-    padding: 5px 15px;
-    border-radius: 5px;
-  }
-</style>
-
-<dom-module id="ink-article">
-  <template>
-    <style>
-      .content, ::slotted(p) {
-        display: block;
-        font-size: 17px;
-        line-height: 1.8;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        color: #4D4D4D;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 300;
-      }
-
-      ::slotted(p) {
-        text-align: justify;
-      }
-
-      ::slotted(hr) {
-        width: calc(100vw);
-        margin-top: 30px;
-        margin-bottom: 30px;
-        margin-left: calc(-50vw + 342px);
-        border-top: 1px solid #DDD;
-        border-left: transparent;
-      }
-
-      .content {
-        max-width: 700px;
-        margin-top: 90px;
-        margin-left: calc(50vw - 350px);
-      }
-
-      @media screen and (max-width: 710px) {
-        .content {
-          margin-left: 10px;
-        }
-        ::slotted(hr) {
-          width: calc(100vw);
-          margin-left: -18px;
-        }
-      }
-    </style>
-    <div class="content">
-      <slot></slot>
-    </div>
-  </template>
-
-  <script>
-    class InkArticle extends Polymer.Element {
-      static get is() { return 'ink-article'; }
-      static get properties() {
-        return {
-        };
-      }
-    }
-
-    window.customElements.define(InkArticle.is, InkArticle);
-  </script>
-</dom-module>
-<dom-module id="ink-aside">
-  <template>
-    <style>
-      :host .aside{
-        float:right;
-        position:absolute;
-        left: calc(50vw + 385px);
-        width: 230px;
-        margin-top: -30px;
-        font-size: 12px;
-        color: #aaa;
-        font-family: 'Roboto', sans-serif;
-        text-align: left;
-      }
-      @media screen and (max-width: 1200px) {
-        :host .aside{
-          position: static;
-          left: inherit;
-          width: 50%;
-          margin: 15px;
-        }
-      }
-    </style>
-    <div class="aside">
-      <slot></slot>
-    </div>
-  </template>
-
-  <script>
-    class InkAside extends Polymer.Element {
-      static get is() { return 'ink-aside'; }
-    }
-    window.customElements.define(InkAside.is, InkAside);
   </script>
 </dom-module>
 <!--
@@ -6336,6 +6198,184 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 })();
 </script>
+<style type="text/css">
+  a {
+    color: #1E88E5;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  a:hover{
+    text-decoration: underline;
+  }
+
+  h1, h2, h3, h4, h5{
+    font-family: 'Oswald', sans-serif;
+  }
+
+  code{
+    border-radius: 15px;
+    border: 1px solid #E4E4E4;
+    background-color: #FAFAFA;
+    padding: 0 5px;
+  }
+  h1:first-of-type{
+    border-bottom: 1px solid #333;
+  }
+  /*h1:first-of-type::after{
+    content: " ";
+    display: block;
+    position: relative;
+    width: 7px;
+    margin-top: -7px;
+    height: 7px;
+    background-color: #F69C1E;
+    top: 0px;
+    left: calc(100% - 7px);
+  }*/
+  blockquote{
+    padding: 10px 20px;
+    margin: 20px 0;
+    border-left: 5px solid #eee;
+    color: #31708f;
+    font-size: 17.5px;
+    font-weight: 300;
+    line-height: 1.25;
+    text-align: justify;
+  }
+  blockquote small{
+    display: block;
+    line-height: 1.428571429;
+    color: #999;
+    font-size: 75%;
+    text-align: right;
+  }
+  blockquote small:before {
+    content: '\2014 \00A0';
+  }
+
+  dl dt{
+    float: left;
+    width: 160px;
+    overflow: hidden;
+    clear: left;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  dl dd{
+    margin-left: 180px;
+  }
+  p {
+    text-align: justify;
+  }
+</style>
+
+<dom-module id="ink-article">
+  <template>
+    <style>
+      .content, ::slotted(p) {
+        display: block;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        color: #4D4D4D;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+      }
+
+      ::slotted(hr) {
+        width: calc(100vw);
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: calc(-50vw + 342px);
+        border-top: 1px solid #DDD;
+        border-left: transparent;
+      }
+
+      .content {
+        max-width: 700px;
+        margin-top: 90px;
+        margin-left: calc(50vw - 350px);
+      }
+
+      @media screen and (max-width: 710px) {
+        .content {
+          margin-left: 10px;
+        }
+        ::slotted(hr) {
+          width: calc(100vw);
+          margin-left: -18px;
+        }
+      }
+    </style>
+    <div class="content">
+      <slot></slot>
+      <ink-bibliography id="bibliography"></ink-bibliography>
+    </div>
+
+  </template>
+
+  <script>
+    class InkArticle extends Polymer.Element {
+      static get is() { return 'ink-article'; }
+      static get properties() {
+        return {
+        };
+      }
+      connectedCallback() {
+        super.connectedCallback();
+        this._observer = new Polymer.FlattenedNodesObserver(this, (info) => {
+          this.$.bibliography.parseBibtex();
+          this.renderCitations();
+        });
+      }
+      renderCitations() {
+        var citations = this.querySelectorAll('ink-cite');
+        for (var i = 0; i < citations.length; i++) {
+          this.$.bibliography.processCitation(citations[i]);
+        };
+      }
+    }
+
+    window.customElements.define(InkArticle.is, InkArticle);
+  </script>
+</dom-module>
+<dom-module id="ink-aside">
+  <template>
+    <style>
+      :host .aside{
+        float:right;
+        position:absolute;
+        left: calc(50vw + 385px);
+        width: 230px;
+        margin-top: -30px;
+        font-size: 12px;
+        color: #aaa;
+        font-family: 'Roboto', sans-serif;
+        text-align: left;
+      }
+      @media screen and (max-width: 1200px) {
+        :host .aside{
+          position: static;
+          left: inherit;
+          width: 50%;
+          margin: 15px;
+        }
+      }
+    </style>
+    <div class="aside">
+      <slot></slot>
+    </div>
+  </template>
+
+  <script>
+    class InkAside extends Polymer.Element {
+      static get is() { return 'ink-aside'; }
+    }
+    window.customElements.define(InkAside.is, InkAside);
+  </script>
+</dom-module>
 <dom-module id="ink-equation">
   <template>
     <style>
@@ -6355,6 +6395,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             type: String,
             value: '',
             observer: 'renderMath'
+          },
+          number: {
+            type: Number
+          },
+          labeled: {
+            type: Boolean,
+            value: false
           }
         };
       }
@@ -6490,6 +6537,48 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     }
     window.customElements.define(InkCode.is, InkCode);
+  </script>
+</dom-module>
+<dom-module id="ink-cite">
+  <template>
+    <style>
+    </style>
+    <span>([[ citation(key, item) ]])</span></template>
+  <script>
+    class InkCite extends Polymer.Element {
+      static get is() { return 'ink-cite'; }
+      static get properties() {
+        return {
+          key: {
+            type: String
+          },
+          item: {
+            type: Object
+          }
+        };
+      }
+      citation(key, item){
+        if(!item){return key;}
+        var names = item.entryTags.author.split(" and ");
+        var name_strings = names.map(name => {
+          name = name.trim();
+          if (name.indexOf(",") != -1){
+            var last = name.split(",")[0].trim();
+          } else {
+            var last = name.split(" ").slice(-1)[0].trim();
+          }
+          return last;
+        });
+        if (names.length > 2) {
+          return name_strings[0] + ' et al., ' + item.entryTags.year;
+        }
+        if (names.length == 2) {
+          return name_strings[0] + ' and ' + name_strings[1] + ', ' + item.entryTags.year;
+        }
+        return name_strings[0] + ', ' + item.entryTags.year;
+      }
+    }
+    window.customElements.define(InkCite.is, InkCite);
   </script>
 </dom-module>
 <!--
@@ -8026,17 +8115,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         text-decoration: underline;
       }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
-    <h2>References</h2>
+    <h3 hidden$="[[!hasReferences]]">References</h3>
     <template is="dom-repeat" items="{{ bib }}">
       <div class="citation">
         <span class="title">[[ _title(item) ]]</span>
         <a href="[[ _url(item) ]]" hidden$="[[!_hasurl(item)]]">[PDF]</a><br>
-        <span>[[ _author(item) ]],</span>
+        <span>[[ _author_full(item) ]],</span>
         <span>[[ _year(item) ]].</span>
         <span>[[ _journal(item) ]],</span>
         <span>[[ _volume(item) ]]</span>
-        <span hidden$="[[!_hasdoi(item)]]">DOI: <a href="https://doi.org/[[ _doi(item) ]]">[[ _doi(item) ]]</a>.</span>
+        <span>[[ _publisher(item) ]]</span>
+        <span hidden$="[[!_hasdoi(item)]]">DOI: <a href="https://doi.org/[[ _doi(item) ]]" target="_blank">[[ _doi(item) ]]</a></span>.
       </div>
     </template>
   </template>
@@ -8052,6 +8141,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           bib: {
             type: Object
           },
+          hasReferences: {
+            type: Boolean,
+            value: false
+          }
         };
       }
       connectedCallback() {
@@ -8079,17 +8172,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             if(val.endsWith('}')){val = val.slice(0, -1);}
             e.entryTags[k.toLowerCase()] = val;
           }
-          refs[e.citationKey] = e.entryTags;
-          refs[e.citationKey].type = e.entryType;
+          refs[e.citationKey] = e;
           bib.push(e);
         });
         this.bib = bib;
-        this.set('refs', refs);
+        this.refs = refs;
+        this.hasReferences = this.bib.length > 0;
+      }
+      processCitation(inkCite){
+        if(this.refs === undefined){return;}
+        inkCite.item = this.refs[inkCite.key];
       }
       _title(item){
         return item.entryTags.title;
       }
-      _author(item){
+      _author_full(item){
+        // With some help from:
         // https://github.com/distillpub/template/blob/master/components/citation.js
         var names = item.entryTags.author.split(" and ");
         var name_strings = names.map(name => {
@@ -8140,6 +8238,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
         return 'Vol ' + item.entryTags.volume + (item.entryTags.issue ? '(' + item.entryTags.issue +'),' : ',');
       }
+      _publisher(item){
+        if(!item.entryTags.publisher){
+          return '';
+        }
+        return item.entryTags.publisher;
+      }
     }
     window.customElements.define(InkBibliography.is, InkBibliography);
   </script>
@@ -8189,6 +8293,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin-right: -10px;
         margin-top: -20px;
         color:#9A9A9A;
+        min-height: 50px;
       }
       .date{
         text-align: left;
@@ -8215,11 +8320,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         white-space: nowrap;
         text-align: right;
       }
-      .author > .institution{
+      /*.author > .institution{
         height: 20px;
         font-size: 10px;
         margin-right:10px;
-      }
+      }*/
     </style>
     <div class="byline">
       <div class="date">[[ date ]]</div>
@@ -8229,9 +8334,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <div class="name">
               [[ author.name ]]
             </div>
-            <div class="institution">
+            <!-- <div class="institution">
               [[ author.institution ]]
-            </div>
+            </div> -->
           </div>
         </template>
       </div>
@@ -8248,15 +8353,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return {
           authors:{
             type: Object,
-            value: [
-              {name:"Rowan Cockett", institution:"Aranz Geo"},
-              {name:"Lindsey Heagy", institution:"Univ. of British Columbia"},
-              {name:"Doug Oldenburg", institution:"Univ. of British Columbia"}
-            ]
+            value: []
           },
           date:{
-            type: String,
-            value: "May 15, 2016"
+            type: String
           }
         };
       }
@@ -8284,6 +8384,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
       .image{
         background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         height: 100px;
         width: 200px;
         border: 1px solid #CCCCCC;
@@ -8421,12 +8523,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin: 0;
         text-align: justify;
       }
+      a{
+        color: #1E88E5;
+        text-decoration: none;
+      }
+      a:hover{
+        text-decoration: underline;
+      }
     </style>
     <span id="date">[[ date ]]</span>
     <h3>[[ title ]]</h3>
     <p>[[ description ]]
       <span hidden$="[[ !declined ]]">(Declined)</span>
       <span id="amount">[[ formatAmount(amount) ]]</span>
+      <a hidden$="[[ !has_url(url) ]]" href="[[ url ]]">(See More)</a>
     </p>
   </template>
 
@@ -8441,6 +8551,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           date: {type: String},
           declined: {type: Boolean, value: false},
           amount: {type: Number, value: 0},
+          url:{type: String, value: ''},
         };
       }
       formatAmount(amount){
@@ -8450,11 +8561,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           {
             style: 'currency',
             currency: 'USD',
-            maximumFractionDigits:0
+            maximumFractionDigits:0,
+            minimumFractionDigits:0,
           }
         );
         return '(' + numberFormat.format(amount) + ')';
       }
+      has_url() {return this.url.length > 0;}
     }
     window.customElements.define(InkCvAward.is, InkCvAward);
   </script>
@@ -8468,14 +8581,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       h2{
         font-family: 'Roboto', sans-serif;
         margin: 0;
-      }
-      h2 a {
         color: #333333;
-        text-decoration: none;
         font-weight: 500;
-      }
-      h2 a:hover{
-        text-decoration: underline;
       }
       a.button{
         font-family: "Roboto", sans-serif;
@@ -8484,7 +8591,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         position: absolute;
         padding: 0 8px;
         top: 11px;
-        right: 15px;
+        right: 0px;
         font-size: 13px;
         cursor: pointer;
         color: #333333;
@@ -8495,8 +8602,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
     <div>
-      <h2><a href="[[ url ]]"># <slot></slot></a></h2>
-      <a href="[[ url ]]" class="button">See More</a>
+        <h2><slot></slot></h2>
+        <a hidden$="[[ !has_url(url) ]]" href="[[ url ]]" class="button">See More</a>
     </div>
   </template>
 
@@ -8506,10 +8613,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       static get properties(){
         return {
           url:{
-            type: String
+            type: String,
+            value: ''
           },
         };
       }
+      has_url() {return this.url.length > 0;}
     }
     window.customElements.define(InkH2More.is, InkH2More);
   </script>

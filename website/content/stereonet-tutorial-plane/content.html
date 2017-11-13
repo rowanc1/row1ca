@@ -1,0 +1,165 @@
+<script type="text/javascript" src="/js/snet.js"></script>
+<link type="text/css" href="/css/stereonet/tutorial.css" rel="stylesheet">
+
+<h2>Plotting a Plane: <span class="strike">056&deg;</span>/<span class="dip">47&deg;</span></h2>
+<ink-aside>
+    <h3>How to plot a plane</h3>
+    <dl id="list">
+        <dt class="">Measure</dt><dd>To the strike: <span class="strike">056&deg;</span></dd>
+        <dt class="">Tick</dt><dd>Use a pencil!</dd>
+        <dt class="active">Rotate</dt><dd>Align N-S</dd>
+        <dt class="">Measure</dt><dd>From the right. Dip: <span class="dip">47&deg;</span></dd>
+        <dt class="">Trace</dt><dd>Draw a great circle.</dd>
+        <dt class="">Rotate</dt><dd>Back to north.</dd>
+        <dt class="">Erase</dt><dd>Did you use a pencil?</dd>
+        <dt class="">Visualize</dt><dd>Remember this is a plane?</dd>
+        <dt class="">Remember</dt><dd>It is just in 2D!</dd>
+        <dt class="">Enjoy</dt><dd>It should be fun!</dd>
+    </dl>
+    <button class="shiny-blue" id="stepButton">Step</button>
+    <button class="shiny-blue" id="playButton">Play</button>
+    <button class="shiny-blue" id="pauseButton">Pause</button>
+</ink-aside>
+<div id="snet">
+    <div id="base"></div>
+    <div id="overlay"></div>
+</div>
+<script>
+    var snet,overlay;
+    $(document).ready(function() {
+        var rad = 300;
+        var aniTime = 1500;
+
+        function setAniTime(time){
+            $("#overlay").css({"-webkit-transition": "all "+time+"ms ease-in-out",
+                "-moz-transition": "all "+time+"ms ease-in-out",
+                "-ms-transition": "all "+time+"ms ease-in-out",
+                "-o-transition": "all "+time+"ms ease-in-out",
+                "transition": "all "+time+"ms ease-in-out"});
+        }
+        setAniTime(aniTime);
+
+        function rotate(degree) {
+            $('#overlay').css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
+            $('#overlay').css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+        }
+
+        snet = new VG.SNet();
+        overlay = new VG.SNet();
+        snet.init('#base', rad);
+        snet.numbers();
+        overlay.showNet = false;
+        overlay.showFineNet = false;
+        overlay.init('#overlay',rad);
+        overlay.circle.remove();
+        overlay.lineNS.remove();
+        overlay.lineEW.remove();
+
+        var strike = 300;
+        var dip = 27;
+
+        var fmtStk = VG.NumberFormat.Strike();
+        var fmtDip = VG.NumberFormat.Dip();
+
+        var plane = new VG.SNetPlane(strike,dip);
+        plane.lineAttr['stroke-width'] = 5;
+        plane.lineAttr['stroke'] = '#00f';
+        plane.showPole = false;
+
+        var planeArc,measure,tick,line1,line2;
+        var funs = [
+        function(){
+            $('#overlay').show();
+            strike = nextInt(330)+20;
+            dip = nextInt(50)+25;
+            if(plane){plane.remove()}
+                $(".strike").html(fmtStk.format(strike));
+            $(".dip").html(fmtDip.format(dip));
+            measure = overlay.annotate('circle', [0, strike], 1, aniTime);
+            return aniTime*1.35;
+        },
+        function(){
+            tick = overlay.annotate('tick', strike, 1, aniTime);
+            return aniTime*1.5;
+        },
+        function(){
+            rotate(-strike)
+            return aniTime*1.5;
+        },
+        function(){
+            line1 = overlay.annotate('line', [strike+90,0],[strike+90,dip],aniTime);
+            return aniTime*1.5;
+        },
+        function(){
+            plane.dip = dip;
+            plane.strike = 0;
+            planeArc = plane.drawArc(snet,aniTime);
+            plane.strike = strike;
+            return aniTime*1.5;
+        },
+        function(){
+            planeArc.remove();
+            plane.draw(overlay);
+            rotate(0);
+            return aniTime*1.5;
+        },
+        function(){
+            tick.remove();
+            measure.remove();
+            line1.remove();
+            return aniTime;
+        },
+        function(){
+            $('#overlay').hide();
+            plane.lineAttr['fill-opacity'] = 1;
+            plane.lineAttr['fill'] = '#5C99E6';
+            snet.to3D();
+            plane.draw(snet);
+            return aniTime*3;
+        },
+        function(){
+            snet.to2D();
+            plane.lineAttr['fill-opacity'] = 0;
+            plane.draw(snet);
+            return aniTime*2;
+        },
+        function(){
+            return aniTime*2;
+        }
+        ];
+        var pos = 0;
+        var list = $('#list').children('dt');
+        var timer,isPlaying = true;
+        function pause(){
+            clearTimeout(timer);
+            isPlaying = false;
+        }
+        function play(){
+            if(!isPlaying){
+                isPlaying = true;
+                animate();
+            }
+        }
+        function step(){
+            if(!isPlaying){
+                animate();
+            }
+        }
+        function animate(){
+            var time = funs[pos]();
+            list.removeClass('active');
+            $(list[pos]).addClass('active');
+            pos += 1;
+            if(pos >= funs.length){
+                pos = 0;
+            }
+            if(isPlaying){
+                timer = setTimeout(animate,time);
+            }
+        }
+        animate();
+        $("#playButton").click(play);
+        $("#pauseButton").click(pause);
+        $("#stepButton").click(step);
+    });
+</script>

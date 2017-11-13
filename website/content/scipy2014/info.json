@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2014/07/12",
+    "uid": "scipy2014",
+    "title": "SimPEG at SciPy",
+    "description": "Presenting at SciPy 2014",
+    "thumbnail": "/images/presentations/scipy2014.png",
+    "license": "CC-BY-4.0",
+    "tags": ["presentations", "simpeg"]
+}

@@ -1,0 +1,281 @@
+<script type="text/javascript" src="/js/snet.js"></script>
+<link type="text/css" href="/css/stereonet/tutorial.css" rel="stylesheet">
+
+<h2>Intersection of Two Planes: <span class="plane1"><span class="strike1"></span>/<span class="dip1"></span></span> and <span class="plane2"><span class="strike2"></span>/<span class="dip2"></span></span></h2>
+<ink-aside>
+    <ul id="headerSteps">
+        <li>Plot Plane 1: <span class="strike1"></span>/<span class="dip1"></li>
+        <li>Plot Plane 2: <span class="strike2"></span>/<span class="dip2"></li>
+        <li>Measure Line: <span class="trend"></span>/<span class="plunge"></span></li>
+    </ul>
+    <br>
+    <dl id="list">
+        <dt>Measure</dt><dd>To the strike: <span class="strike"></span></dd>
+        <dt>Tick</dt><dd>Use a pencil!</dd>
+        <dt>Rotate</dt><dd>Align N-S</dd>
+        <dt>Measure</dt><dd>From the right. Dip: <span class="dip"></span></dd>
+        <dt>Trace</dt><dd>Draw a great circle.</dd>
+        <dt>Rotate</dt><dd>Back to north.</dd>
+        <dt>Erase</dt><dd>Did you use a pencil?</dd>
+        <dt>Pick</dt><dd>The line of intersection.</dd>
+        <dt>Rotate</dt><dd>Align E-W</dd>
+        <dt>Measure</dt><dd>The plunge is: <span class="plunge"></span></dd>
+        <dt>Rotate</dt><dd>Back to north.</dd>
+        <dt>Measure</dt><dd>The trend is: <span class="trend"></span></dd>
+        <dt>Visualize</dt><dd>Two planes.</dd>
+        <dt>Visualize</dt><dd>One Line:  <span class="trend"></span>/<span class="plunge"></span></dd>
+        <dt>Remember</dt><dd>It should be fun!</dd>
+    </dl>
+    <button class="shiny-blue" id="stepButton">Step</button>
+    <button class="shiny-blue" id="playButton">Play</button>
+    <button class="shiny-blue" id="pauseButton">Pause</button>
+</ink-aside>
+<div id="snet">
+    <div id="base"></div>
+    <div id="overlay"></div>
+</div>
+<script>
+    var snet,overlay;
+    $(document).ready(function() {
+        var rad = 300;
+        var aniTime = 2300;
+
+        function setAniTime(time){
+        $("#overlay").css({"-webkit-transition": "all "+time+"ms ease-in-out",
+                            "-moz-transition": "all "+time+"ms ease-in-out",
+                            "-ms-transition": "all "+time+"ms ease-in-out",
+                            "-o-transition": "all "+time+"ms ease-in-out",
+                            "transition": "all "+time+"ms ease-in-out"});
+        }
+        setAniTime(aniTime);
+
+        function rotate(degree) {
+            $('#overlay').css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
+            $('#overlay').css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+        }
+
+        snet = new VG.SNet();
+        overlay = new VG.SNet();
+        snet.init('#base',rad);
+        snet.numbers();
+        overlay.showNet = false;
+        overlay.showFineNet = false;
+        overlay.init('#overlay',rad);
+        overlay.circle.remove();
+        overlay.lineNS.remove();
+        overlay.lineEW.remove();
+
+        var strike1 = 0;
+        var dip1 = 0;
+        var strike2 = 0;
+        var dip2 = 0;
+
+        var fmtStk = VG.NumberFormat.Strike();
+        var fmtDip = VG.NumberFormat.Dip();
+
+        var plane1 = new VG.SNetPlane(strike1,dip1);
+        var plane2 = new VG.SNetPlane(strike2,dip2);
+        plane1.lineAttr['stroke-width'] = 5;
+        plane1.lineAttr['stroke'] = '#5C99E6';
+        plane1.showPole = false;
+        plane2.lineAttr['stroke-width'] = 5;
+        plane2.lineAttr['stroke'] = '#74AF16';
+        plane2.showPole = false;
+
+
+        var steps = $('#headerSteps').children('li');
+
+        var offset = 0;
+        var planeArc1,planeArc2,measure,tick,line,lineObj;
+        var funs = [
+            function(){
+                steps.css({background:"#003366"});$(steps[0]).css({background:"#74AF16"});
+                offset = 0;
+                $('#overlay').show();
+                strike1 = nextInt(330)+20;
+                dip1 = nextInt(50)+25;
+                strike2 = nextInt(330)+20;
+                dip2 = nextInt(50)+25;
+                if(lineObj){plane1.remove();plane2.remove();lineObj.remove();}
+                $(".strike1").html(fmtStk.format(strike1));
+                $(".dip1").html(fmtDip.format(dip1));
+                $(".strike2").html(fmtStk.format(strike2));
+                $(".dip2").html(fmtDip.format(dip2));
+                $(".strike").html(fmtStk.format(strike1));
+                $(".dip").html(fmtDip.format(dip1));
+                $(".trend").html('???').css({background:"none"});
+                $(".plunge").html('??').css({background:"none"});
+                $(".plane1").css({"border-bottom":"10px solid #5C99E6"});
+                measure = overlay.annotate('circle',[0,strike1],1,aniTime);
+                return aniTime*1.35;
+            },
+            function(){
+                tick = overlay.annotate('tick',strike1,1,aniTime);
+                return aniTime*1.5;
+            },
+            function(){
+                rotate(-strike1)
+                return aniTime*1.5;
+            },
+            function(){
+                line = overlay.annotate('line',[strike1+90,0],[strike1+90,dip1],aniTime);
+                return aniTime*1.5;
+            },
+            function(){
+                plane1.dip = dip1;
+                plane1.strike = 0;
+                planeArc1 = plane1.drawArc(snet,aniTime);
+                plane1.strike = strike1;
+                return aniTime*1.5;
+            },
+            function(){
+                planeArc1.remove();
+                plane1.draw(overlay);
+                rotate(0);
+                return aniTime*1.5;
+            },
+            function(){
+                tick.remove();
+                measure.remove();
+                line.remove();
+                return aniTime;
+            },
+            //PLANE 2
+            function(){
+                offset = -7;
+                steps.css({background:"#003366"});$(steps[1]).css({background:"#74AF16"});
+                $(".plane1").css({"border-bottom":"none"});
+                $(".plane2").css({"border-bottom":"10px solid #74AF16"});
+                $(".strike").html(fmtStk.format(strike2));
+                $(".dip").html(fmtDip.format(dip2));
+                measure = overlay.annotate('circle',[0,strike2],1,aniTime);
+                return aniTime*1.35;
+            },
+            function(){
+                tick = overlay.annotate('tick',strike2,1,aniTime);
+                return aniTime*1.5;
+            },
+            function(){
+                rotate(-strike2)
+                return aniTime*1.5;
+            },
+            function(){
+                line = overlay.annotate('line',[strike2+90,0],[strike2+90,dip2],aniTime);
+                return aniTime*1.5;
+            },
+            function(){
+                plane2.dip = dip2;
+                plane2.strike = 0;
+                planeArc2 = plane2.drawArc(snet,aniTime);
+                plane2.strike = strike2;
+                return aniTime*1.5;
+            },
+            function(){
+                planeArc2.remove();
+                plane2.draw(overlay);
+                rotate(0);
+                return aniTime*1.5;
+            },
+            function(){
+                $(".plane2").css({"border-bottom":"none"});
+                tick.remove();
+                measure.remove();
+                line.remove();
+                return aniTime;
+            },
+            //LINE
+            function(){
+                steps.css({background:"#003366"});$(steps[2]).css({background:"#74AF16"});
+                lineObj = plane1.intersect(plane2);
+                lineObj.pointAttr['fill'] = '#000000';
+                lineObj.draw(overlay);
+                lineObj.pulse();
+                return aniTime;
+            },
+            function(){
+                rotate(90-lineObj.trend);
+                return aniTime;
+            },
+            function(){
+                tick = overlay.annotate('tick',lineObj.trend,1,aniTime);
+                line = overlay.annotate('line',[lineObj.trend,0],[lineObj.trend,lineObj.plunge],aniTime);
+                $(".plunge").html(fmtDip.format(lineObj.plunge)).css({background:"#74AF16"});
+                return aniTime*2.5;
+            },
+            function(){
+                rotate(0);
+                return aniTime*1.5;
+            },
+            function(){
+                $(".trend").html(fmtStk.format(lineObj.trend)).css({background:"#74AF16"});
+                measure = overlay.annotate('circle',[0,lineObj.trend],1,aniTime);
+                return aniTime*1.85;
+            },
+            function(){
+                lineObj.stop();
+                tick.remove();
+                measure.remove();
+                line.remove();
+                $('#overlay').hide();
+                snet.to3D();
+                plane1.lineAttr['fill-opacity'] = plane2.lineAttr['fill-opacity'] = 1;
+                plane1.lineAttr['fill'] = '#5C99E6';
+                plane2.lineAttr['fill'] = '#74AF16';
+                plane1.draw(snet);
+                plane2.draw(snet);
+                return aniTime*2;
+            },
+            function(){
+                plane1.lineAttr['fill-opacity'] = plane2.lineAttr['fill-opacity'] = 0;
+                plane1.draw(snet);
+                plane2.draw(snet);
+                lineObj.draw(snet);
+                return aniTime*2;
+            },
+            function(){
+                snet.to2D();
+                plane1.draw(snet);
+                plane2.draw(snet);
+                lineObj.draw(snet);
+                return aniTime*2;
+            }
+        ];
+
+        var pos = 0;
+        var list = $('#list').children('dt');
+        var timer;
+        var isPlaying = true;
+        function pause(){
+            clearTimeout(timer);
+            isPlaying = false;
+        }
+        function play(){
+            if(!isPlaying){
+                isPlaying = true;
+                animate();
+            }
+        }
+        function step(){
+            if(!isPlaying){
+                animate();
+            }
+        }
+        function animate(){
+            var time = funs[pos]();
+            list.removeClass('active');
+            $(list[pos+offset]).addClass('active');
+            pos += 1;
+            if(pos >= funs.length){
+                pos = 0;
+            }
+            if(isPlaying){
+                timer = setTimeout(animate,time);
+            }
+        }
+        animate();
+
+        $("#playButton").click(play);
+        $("#pauseButton").click(pause);
+        $("#stepButton").click(step);
+    });
+</script>

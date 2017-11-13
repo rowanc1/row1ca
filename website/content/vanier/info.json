@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2015/02/17",
+    "uid": "vanier",
+    "title": "Vanier Award",
+    "description": "Meeting the Governor General",
+    "thumbnail": "/images/awards/brassard-gg.jpg",
+    "license": "CC-BY-4.0",
+    "tags": ["award", "simpeg", "visible-geology", "thoughts"]
+}

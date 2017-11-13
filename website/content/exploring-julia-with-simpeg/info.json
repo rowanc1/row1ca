@@ -9,9 +9,10 @@
     "date": "2015-01-27T00:00:00Z",
     "description": "A first attempt at translating some of the SimPEG library into Julia.",
     "license": "CC-BY-4.0",
-    "thumbnail": "https://raw.githubusercontent.com/simpeg/tle-finitevolume/master/images/DCEquations.png",
-    "tag": [
-        "julia"
+    "thumbnail": "/images/weakform-dc/dc-2d.png",
+    "tags": [
+        "julia",
+        "simpeg"
     ],
     "title": "Exploring Julia with SimPEG",
     "uid": "exploring-julia-with-simpeg"

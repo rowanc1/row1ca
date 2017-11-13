@@ -1,0 +1,30 @@
+[
+    {
+        "__class__": "Collection",
+        "uid": "stereonet",
+        "date": "2013/01/01",
+        "title": "Stereonet",
+        "description": "Stereonet tutorials and thoughts",
+        "license": "CC-BY-4.0",
+        "thumbnail": "/images/stereonet/alldata.png",
+        "tags": [
+            "projects"
+        ],
+        "query_type": "uid",
+        "query_uids": [
+            "stereonet-intro",
+            "stereonet-query"
+        ]
+    },
+    {
+        "__class__": "CollectionCards",
+        "uid": "stereonet-query",
+        "title": "Stereonet tutorials and thoughts:",
+        "description": "",
+        "license": "CC-BY-4.0",
+        "query_type": "tags",
+        "query_tags": [
+            "stereonet"
+        ]
+    }
+]

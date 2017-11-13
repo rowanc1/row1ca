@@ -9,7 +9,8 @@
     "date": "2013/04/13",
     "uid": "innovative-dissemination-award-visible-geology",
     "title": "Innovative Dissemination - Visible Geology",
-    "description": "Featured projects",
+    "description": "UBC Library Award",
+    "thumbnail": "/images/awards/idea2014-visiblegeology.jpg",
     "license": "CC-BY-4.0",
-    "tag": ["award", "visible-geology"]
+    "tags": ["award", "visible-geology", "thoughts"]
 }

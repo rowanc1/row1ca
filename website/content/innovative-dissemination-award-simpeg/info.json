@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2016/04/08",
+    "uid": "innovative-dissemination-award-simpeg",
+    "title": "Innovative Dissemination - SimPEG",
+    "description": "UBC Library Award",
+    "thumbnail": "/images/awards/idea2016-simpeg.jpg",
+    "license": "CC-BY-4.0",
+    "tags": ["award", "simpeg", "thoughts"]
+}

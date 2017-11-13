@@ -1,0 +1,19 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "user": "rowan",
+            "kind": "author"
+        }
+    ],
+    "uid": "stereonet-tutorial-line",
+    "title": "Plotting a line",
+    "description": "Interactive lesson on how to plot a line on a stereonet.",
+    "date": "2013/04/26",
+    "thumbnail": "/images/stereonet/tutorial-line.gif",
+    "license": "CC-BY-4.0",
+    "tags": [
+        "stereonet",
+        "explorable-explanations"
+    ]
+}

@@ -9,7 +9,7 @@
     "date": "2016-05-15T00:00:00Z",
     "description": "Leading Edge tutorial on finite volume techniques.",
     "license": "CC-BY-4.0",
-    "tag": [
+    "tags": [
         "profile"
     ],
     "title": "When to merge to master",

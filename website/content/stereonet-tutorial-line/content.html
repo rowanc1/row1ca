@@ -1,0 +1,156 @@
+<script type="text/javascript" src="/js/snet.js"></script>
+<link type="text/css" href="/css/stereonet/tutorial.css" rel="stylesheet">
+
+<h2>Plotting a Line: <span class="trend">056&deg;</span>/<span class="plunge">47&deg;</span></h2>
+<ink-aside>
+    <h3>How to plot a line</h3>
+    <dl id="list">
+        <dt>Measure</dt><dd>To the trend: <span class="trend"></span></dd>
+        <dt>Tick</dt><dd>Use a pencil!</dd>
+        <dt>Rotate</dt><dd>Align E-W</dd>
+        <dt>Measure</dt><dd>From the right. Plunge: <span class="plunge"></span></dd>
+        <dt>Plot</dt><dd>Draw a Point.</dd>
+        <dt>Rotate</dt><dd>Back to north.</dd>
+        <dt>Erase</dt><dd>Did you use a pencil?</dd>
+        <dt>Visualize</dt><dd>Remember this is a line?</dd>
+        <dt>Remember</dt><dd>It is just in 2D!</dd>
+        <dt>Enjoy</dt><dd>It should be fun!</dd>
+    </dl>
+    <button class="shiny-blue" id="stepButton">Step</button>
+    <button class="shiny-blue" id="playButton">Play</button>
+    <button class="shiny-blue" id="pauseButton">Pause</button>
+</ink-aside>
+<div id="snet">
+    <div id="base"></div>
+    <div id="overlay"></div>
+</div>
+<script>
+    var snet,overlay;
+    $(document).ready(function() {
+        var rad = 300;
+        var aniTime = 1500;
+
+        function setAniTime(time){
+        $("#overlay").css({"-webkit-transition": "all "+time+"ms ease-in-out",
+                            "-moz-transition": "all "+time+"ms ease-in-out",
+                            "-ms-transition": "all "+time+"ms ease-in-out",
+                            "-o-transition": "all "+time+"ms ease-in-out",
+                            "transition": "all "+time+"ms ease-in-out"});
+        }
+        setAniTime(aniTime);
+
+        function rotate(degree) {
+            $('#overlay').css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
+            $('#overlay').css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+        }
+
+        snet = new VG.SNet();
+        overlay = new VG.SNet();
+        snet.init('#base',rad);
+        snet.numbers();
+        overlay.showNet = false;
+        overlay.showFineNet = false;
+        overlay.init('#overlay',rad);
+        overlay.circle.remove();
+        overlay.lineNS.remove();
+        overlay.lineEW.remove();
+
+        var trend = 0;
+        var plunge = 0;
+
+        var fmtStk = VG.NumberFormat.Strike();
+        var fmtDip = VG.NumberFormat.Dip();
+
+        var lineObj = new VG.SNetLine(trend,plunge);
+        lineObj.lineAttr['stroke-width'] = 3;
+        var measure,tick,line1;
+        var funs = [
+            function(){
+                $('#overlay').show();
+                trend = nextInt(330)+20;
+                plunge = nextInt(50)+25;
+                if(lineObj){lineObj.remove();}
+                $(".trend").html(fmtStk.format(trend));
+                $(".plunge").html(fmtDip.format(plunge));
+                measure = overlay.annotate('circle',[0,trend],1,aniTime);
+                return aniTime*1.35;
+            },
+            function(){
+                tick = overlay.annotate('tick',trend,1,aniTime);
+                return aniTime*1.5;
+            },
+            function(){
+                rotate(-trend+90)
+                return aniTime*1.5;
+            },
+            function(){
+                line1 = overlay.annotate('line',[trend,0],[trend,plunge],aniTime);
+                return aniTime*1.5;
+            },
+            function(){
+                lineObj.trend = trend;
+                lineObj.plunge = plunge;
+                lineObj.draw(overlay);
+                return aniTime*1.5;
+            },
+            function(){
+                rotate(0);
+                return aniTime*1.5;
+            },
+            function(){
+                tick.remove();
+                measure.remove();
+                line1.remove();
+                return aniTime;
+            },
+            function(){
+                $('#overlay').hide();
+                snet.to3D();
+                lineObj.draw(snet);
+                return aniTime*3;
+            },
+            function(){
+                snet.to2D();
+                return aniTime*2;
+            },
+            function(){
+                return aniTime*2;
+            }
+        ];
+        var pos = 0;
+        var list = $('#list').children('dt');
+        var timer,isPlaying = true;
+        function pause(){
+            clearTimeout(timer);
+            isPlaying = false;
+        }
+        function play(){
+            if(!isPlaying){
+                isPlaying = true;
+                animate();
+            }
+        }
+        function step(){
+            if(!isPlaying){
+                animate();
+            }
+        }
+        function animate(){
+            var time = funs[pos]();
+            list.removeClass('active');
+            $(list[pos]).addClass('active');
+            pos += 1;
+            if(pos >= funs.length){
+                pos = 0;
+            }
+            if(isPlaying){
+                timer = setTimeout(animate,time);
+            }
+        }
+        animate();
+
+        $("#playButton").click(play);
+        $("#pauseButton").click(pause);
+        $("#stepButton").click(step);
+    });
+</script>

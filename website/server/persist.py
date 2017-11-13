@@ -17,6 +17,25 @@ BRICKS = {
     slug: get_info(slug) for slug in SLUGS
 }
 
+USERS = {
+    "rowan": {
+        "name": "Rowan Cockett",
+        "institution": "row1"
+    },
+    "lindsey": {
+        "name": "Lindsey Heagy",
+        "institution": "UBC"
+    },
+    "doug": {
+        "name": "Doug Oldenburg",
+        "institution": "UBC"
+    },
+    "seogi": {
+        "name": "Seogi Kang",
+        "institution": "UBC"
+    }
+}
+
 
 def load_json():
     global BRICKS, SLUGS
@@ -39,8 +58,22 @@ load_json()
 del get_info, load_json
 
 
+def query_user(uid):
+    if uid not in USERS:
+        return None
+    return USERS[uid]
+
+
 def query_kind(kind):
     data = [BRICKS[b] for b in BRICKS if BRICKS[b].__class__.__name__ == kind]
+    return sorted(data, key=lambda d: d.date, reverse=True)
+
+
+def query_tags(tags):
+    data = [
+        BRICKS[b] for b in BRICKS
+        if len(set(BRICKS[b].tags).intersection(tags)) > 0
+    ]
     return sorted(data, key=lambda d: d.date, reverse=True)
 
 

@@ -1,0 +1,93 @@
+<script type="text/javascript" src="/js/probability-of-a-spill/Tangle.js"></script>
+<script type="text/javascript" src="/js/faultlab.js"></script>
+<style type="text/css">
+/*
+ *  TangleKit.css
+ *  Tangle 0.1.0
+ *
+ *  Created by Bret Victor on 6/10/11.
+ *  (c) 2011 Bret Victor.  MIT open-source license.
+ *
+ */
+
+/* cursor */
+
+.TKCursorDragHorizontal {
+  cursor: pointer;
+  cursor: move;
+  cursor: col-resize;
+}
+
+
+/* TKToggle */
+
+.TKToggle {
+  color: #46f;
+  border-bottom: 1px dashed #46f;
+  cursor: pointer;
+}
+
+
+/* TKAdjustableNumber */
+
+.TKAdjustableNumber {
+  position:relative;
+  color: #46f;
+  border-bottom: 1px dashed #46f;
+}
+
+.TKAdjustableNumberHover {
+}
+
+.TKAdjustableNumberDown {
+  color: #00c;
+  border-bottom: 1px dashed #00c;
+}
+
+.TKAdjustableNumberHelp {
+  position:absolute;
+  color: #00f;
+  font: 9px "Helvetica-Neue", "Arial", sans-serif;
+}
+</style>
+<h2 id="faultName"></h2>
+<ink-aside>
+    <dl>
+        <dt>Strike</dt><dd><span data-var="strike" class="TKAdjustableNumber" data-min="0" data-max="360">&deg;</span></dd>
+        <dt>Dip</dt><dd><span data-var="dip" class="TKAdjustableNumber" data-min="0" data-max="90">&deg;</span></dd>
+        <dt>Rake</dt><dd><span data-var="rake" class="TKAdjustableNumber" data-format="%.0f" data-min="-180" data-max="180">&deg;</span></dd>
+        <dt>Slip</dt><dd><span data-var="slip" class="TKAdjustableNumber" data-format="%.0f" data-min="0" data-max="50">&deg;</span></dd>
+    </dl>
+</ink-aside>
+<div id="holder"></div>
+<script>
+    var fl, tangle;
+    $(document).ready(function() {
+        fl = new VG.FaultLab(700, 700, "holder");
+        fl.slipBound = 50;
+        fl.slipMultiplier = 1;
+        fl.init(false);
+
+        var tangle = new Tangle(document, {
+            initialize: function () {
+                this.strike = fl.fault.strike;
+                this.dip = fl.fault.dip;
+                this.rake = fl.fault.rake;
+                this.slip = fl.fault.slip;
+            },
+            update: function () {
+                fl.strikeChange(this.strike);
+                fl.dipChange(this.dip);
+                fl.rakeChange(this.rake);
+                fl.slipChange(this.slip);
+            }
+        });
+        fl.moveHandlers.push(function() {
+            tangle.setValues({
+                rake: fl.fault.rake,
+                slip: fl.fault.slip
+            });
+        })
+    });
+</script>
+

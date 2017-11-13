@@ -17,6 +17,8 @@ handlers:
   static_dir: static/css
 - url: /js
   static_dir: static/js
+- url: /pdf
+  static_dir: static/pdf
 
 - url: .*
   script: server.app

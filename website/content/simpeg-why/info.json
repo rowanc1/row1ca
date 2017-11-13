@@ -1,0 +1,27 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        },
+        {
+            "kind": "author",
+            "user": "lindsey"
+        },
+        {
+            "kind": "author",
+            "user": "seogi"
+        }
+    ],
+    "title": "Why SimPEG?",
+    "description": "Simulation and Parameter Estimation in Geophysics",
+    "license": "CC-BY-4.0",
+    "thumbnail": "/images/logo/simpeg-logo-block.png",
+    "uid": "simpeg-why",
+    "date": "2015/01/01",
+    "tags": [
+        "simpeg",
+        "thoughts"
+    ]
+}

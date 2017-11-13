@@ -1,0 +1,30 @@
+[
+    {
+        "__class__": "Collection",
+        "uid": "visible-geology",
+        "date": "2015-01-27T00:00:00Z",
+        "title": "Visible Geology",
+        "description": "Create your own geologic models online.",
+        "license": "CC-BY-4.0",
+        "thumbnail": "/images/logo/visible-geology.png",
+        "tags": [
+            "projects"
+        ],
+        "query_type": "uid",
+        "query_uids": [
+            "visible-geology-intro",
+            "visible-geology-query"
+        ]
+    },
+    {
+        "__class__": "CollectionCards",
+        "uid": "visible-geology-query",
+        "title": "More on Visible Geology",
+        "description": "",
+        "license": "CC-BY-4.0",
+        "query_type": "tags",
+        "query_tags": [
+            "visible-geology"
+        ]
+    }
+]

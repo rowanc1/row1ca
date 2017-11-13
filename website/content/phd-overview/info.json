@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2017/02/28",
+    "uid": "phd-overview",
+    "title": "PhD Overview",
+    "description": "Brief overview of my PhD",
+    "thumbnail": "/images/presentations/phd-overview.png",
+    "license": "CC-BY-4.0",
+    "tags": ["presentations", "phd", "simpeg"]
+}

@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2013/04/20",
+    "uid": "fault-lab",
+    "title": "Fault Lab",
+    "description": "Explore and name a fault.",
+    "thumbnail": "/images/fault-lab/thumbnail.gif",
+    "license": "CC-BY-4.0",
+    "tags": ["visible-geology", "explorable-explanations"]
+}

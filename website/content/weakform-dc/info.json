@@ -1,0 +1,19 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "user": "rowan",
+            "kind": "author"
+        }
+    ],
+    "uid": "weakform-dc",
+    "title": "Weakform DC Resistivity Derivation",
+    "description": "Deriving the discretized equations for the weakform direct current resistivity equations.",
+    "date": "2014/02/13",
+    "thumbnail": "/images/weakform-dc/1d-mesh.png",
+    "license": "CC-BY-4.0",
+    "tags": [
+        "thoughts",
+        "explorable-explanations"
+    ]
+}

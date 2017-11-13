@@ -1,0 +1,30 @@
+[
+    {
+        "__class__": "Collection",
+        "uid": "simpeg",
+        "date": "2017-01-27T00:00:00Z",
+        "title": "SimPEG",
+        "description": "Simulation tools for geophysics",
+        "license": "CC-BY-4.0",
+        "thumbnail": "/images/logo/simpeg-logo-block.png",
+        "tags": [
+            "projects"
+        ],
+        "query_type": "uid",
+        "query_uids": [
+            "simpeg-intro",
+            "simpeg-query"
+        ]
+    },
+    {
+        "__class__": "CollectionCards",
+        "uid": "simpeg-query",
+        "title": "More on SimPEG",
+        "description": "",
+        "license": "CC-BY-4.0",
+        "query_type": "tags",
+        "query_tags": [
+            "simpeg"
+        ]
+    }
+]

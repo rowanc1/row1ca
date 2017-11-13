@@ -1,0 +1,14 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "title": "SimPEG",
+    "description": "Simulation and Parameter Estimation in Geophysics",
+    "license": "CC-BY-4.0",
+    "thumbnail": "/images/logo/simpeg-logo-block.png",
+    "uid": "simpeg-intro"
+}

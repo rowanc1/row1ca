@@ -1,0 +1,12 @@
+{
+    "__class__": "CollectionItems",
+    "title": "Awards",
+    "description": "Collection of awards",
+    "license": "CC-BY-4.0",
+    "tags": [
+        "awards"
+    ],
+    "query_type": "kind",
+    "query_kind": "Award",
+    "uid": "collection-awards"
+}

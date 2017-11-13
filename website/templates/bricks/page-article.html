@@ -1,6 +1,9 @@
 {% extends "pages/simple.html" %}
 {% block article %}
     <h1>{{ brick.title }}</h1>
-    <ink-byline>Rowan Cockett</ink-byline>
+    <ink-byline
+        date="{{ brick.date.strftime('%B %d, %Y') }}"
+        authors='{{ brick.authors }}'
+    ></ink-byline>
     {{ brick.render_html() }}
 {% endblock %}

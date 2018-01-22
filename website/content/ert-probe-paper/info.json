@@ -1,0 +1,25 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "adam"
+        },
+        {
+            "kind": "author",
+            "user": "rowan"
+        },
+        {
+            "kind": "author",
+            "user": "knight"
+        }
+    ],
+    "date": "2013/02/04",
+    "uid": "ert-probe-paper",
+    "title": "Conductivity Probes",
+    "description": "Electrical Conductivity Probes for Studying Vadose Zone Processes: Advances in Data Acquisition and Analysis",
+    "thumbnail": "/images/papers/probe.png",
+    "license": "CC-BY-4.0",
+    "tags": ["paper"],
+    "url_more": "https://dl.sciencesocieties.org/publications/vzj/abstracts/12/1/vzj2012.0073"
+}

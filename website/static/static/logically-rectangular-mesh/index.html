@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Logically Orthogonal Mesh - Rowan Cockett</title>
+
+		<meta name="description" content="A presentations for finite volume methods on a curvy mesh!">
+		<meta name="author" content="Rowan Cockett">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="reveal.min.css">
+		<link rel="stylesheet" href="custom.css" id="theme">
+
+
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+		</script>
+		<script type="text/javascript"
+		  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG">
+		</script>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="zenburn.css">
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style type="text/css">
+		#backCover{
+			z-index: -1;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		.radGrad{
+			background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,0.76) 0%, rgba(255,255,255,0.76) 36%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+			background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(255,255,255,0.76)), color-stop(36%,rgba(255,255,255,0.76)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+			background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,0.76) 0%,rgba(255,255,255,0.76) 36%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-radial-gradient(center, ellipse cover, rgba(255,255,255,0.76) 0%,rgba(255,255,255,0.76) 36%,rgba(255,255,255,0) 100%); /* Opera 12+ */
+			background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,0.76) 0%,rgba(255,255,255,0.76) 36%,rgba(255,255,255,0) 100%); /* IE10+ */
+			background: radial-gradient(ellipse at center, rgba(255,255,255,0.76) 0%,rgba(255,255,255,0.76) 36%,rgba(255,255,255,0) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		}
+		body{
+			transition: all 1s ease-in;
+		}
+		html.introSlide body{
+			background-image:url('images/grey_wash_wall.png')
+		}
+		html.introSlide  div.radGrad{
+			display: none;
+		}
+		html.introSlide section {
+			background-color: rgba(255,255,255,0.5);
+		}
+		.lightBack{
+			background-image:url('images/light_wool.png')
+		}
+		</style>
+
+	</head>
+
+	<body class="lightBack">
+		<div class="radGrad" id="backCover"></div>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section data-state="introSlide">
+					<h2>Logically Orthogonal Meshes</h2>
+					<h4>for EM applications</h4>
+					<br>
+					<p>
+						<small>Rowan Cockett & Eldad Haber, April 2013</small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Overview</h2>
+					<br>
+					<p style="text-align:left;">Cells have the same number of neighbours as a regular mesh.</p>
+					<iframe width="500" height="500" src="Mesh2D.html#nx=4;ny=4;w=500;h=500"></iframe>
+
+				</section>
+
+				<section>
+					<h2>Tensor Mesh</h2>
+					<br>
+					<p style="text-align:left;"></p>
+					<iframe width="500" height="500" src="meshZoom.html#type=TENSOR;w=500;h=500"></iframe>
+
+				</section>
+
+				<section>
+					<h2>Logically Orthogonal Mesh</h2>
+					<br>
+					<p style="text-align:left;"></p>
+					<iframe width="500" height="500" src="meshZoom.html#type=LOM;w=500;h=500"></iframe>
+				</section>
+
+				<section>
+					<h2>Topography</h2>
+					<ul>
+						<li>Align mesh to features</li>
+						<li>Reduce number of cells</li>
+						<li>Increase modelling accuracy </li>
+					</ul>
+					<br>
+					<img src="images/peaksMesh.png" width="400px" style="border:0;">
+				</section>
+
+				<section>
+					<h2>Infinity</h2>
+					<ul>
+						<li>Maintain a better aspect ratio for padding cells</li>
+						<li>Equal radius to 'infinity'</li>
+					</ul>
+					<br>
+					<img src="images/padMesh.png" width="400px" style="border:0;">
+				</section>
+
+				<!-- <section>
+					<h2>Motivation</h2>
+					<br>
+					<p style="text-align:left;">Topography & Other Features</p>
+					<p style="text-align:left;">Dealing with infinity.</p>
+					<p style="text-align:left;">Invert for Feature Location</p>
+					<ul>
+						<li>Best <i>location</i> for conductive anomaly</li>
+						<li>Optimize mesh location</li>
+					</ul>
+					<br>
+					<img src="images/peaksMesh.png" width="400px" style="border:0;">
+				</section> -->
+				<section>
+					<h3>DC Resistivity Equations</h3>
+					<p>
+						$$
+						\begin{align}
+						\nabla \cdot \mathbf{J} &= \mathbf{q}\\
+						\sigma^{-1} \mathbf{J} &= -\nabla \mathbf{\phi}\\
+						\end{align}
+						$$
+					</p>
+					<div class="fragment">
+						<p style="text-align:left;">First equation, define geometrically:</p>
+						<p>
+							$$
+							\int_V \nabla \cdot \mathbf{J} \;dV =
+							\oint_{\partial V} (\mathbf{J},\vec{n})  \; dS
+							$$
+						</p>
+					</div>
+					<div class="fragment">
+						<p style="text-align:left;">Discretize over a single cell:</p>
+						<p>
+							$$
+							\text{DIV} \mathbf{J}_{\text{cell}} =
+							V^{-1}(J_{\text{cell}}^{\text{in}} A - J_{\text{cell}}^{\text{out}} A)
+							$$
+						</p>
+					</div>
+
+				</section>
+				<section>
+				<section>
+					<h3>Divergence Over a Cell</h3>
+					<p style="text-align:left;">For a single cell, calculate surface areas and volumes:</p>
+					<iframe width="300" height="300" src="Mesh2D.html#nx=2;ny=2;fluxLabel=J;w=300;h=300"></iframe>
+					<p style="font-size: 60%;">
+						$$
+						\text{DIV} \mathbf{J}_{\text{cell}} =
+						V^{-1}(J^{(1)} A^{(1)} - J^{(2)} A^{(2)} + J^{(3)} A^{(3)} - J^{(4)} A^{(4)} )
+						$$
+					</p>
+
+				</section>
+
+				<section>
+					<h3>getDivergence3D</h3>
+					<pre>
+<code class="matlab">function [DIV] = getDivergence3D(h, n)
+
+    ddx = @(n)(spdiags(ones(n+1,1)*[-1,1],[0,1],n,n+1));
+
+    A = cellArea(h);
+    V = cellVol(h);
+
+    Dx  = kron(speye(n(3)),kron(speye(n(2)),ddx(n(1))));
+    Dy  = kron(speye(n(3)),kron(ddx(n(2)),speye(n(1))));
+    Dz  = kron(ddx(n(3)),kron(speye(n(2)),speye(n(1))));
+
+    DIV = sdiag(1./V) * [Dx,Dy,Dz] * sdiag(A);
+
+end</code></pre>
+				</section>
+				</section>
+
+				<section>
+				<section>
+					<h3>DC Resistivity Equations</h3>
+					<p>
+						$$
+						\begin{align}
+						\nabla \cdot \mathbf{J} &= \mathbf{q}\\
+						\sigma^{-1} \mathbf{J} &= \nabla \mathbf{\phi}\\
+						\end{align}
+						$$
+					</p>
+					<p style="text-align:left;">Regular approach to second equation:</p>
+					<ul>
+						<li>Break into parts and integrate over x and y</li>
+						<li>Rectangle rule integration over the cell</li>
+					</ul>
+					<iframe width="300" height="300" src="Mesh2D.html#nx=2;ny=2;w=300;h=300;fillRx_P=true"></iframe>
+
+				</section>
+
+				<section>
+					<h3>Weak Form Definition</h3>
+					<p>
+						$$
+						\sigma^{-1} \mathbf{J} = \nabla \mathbf{\phi}
+						$$
+					</p>
+					<p style="text-align:left;">So, define in weak form by integrating with a general face function \(\mathbf{F}\)</p>
+					<p style="font-size: 70%;">
+						$$
+						\int_{\text{cell}} {\sigma^{-1} \mathbf{J} \cdot \mathbf{F} }
+						=
+						\int_{\text{cell}} {\nabla \phi \cdot \mathbf{F} }
+						$$
+					</p>
+					<p style="font-size: 70%;" class="fragment">
+						$$
+						\int_{\text{cell}} {\sigma^{-1} \mathbf{J} \cdot \mathbf{F} }
+						=
+						-\int_{\text{cell}} {(\nabla \cdot \mathbf{F})\phi } + \int_{\partial \text{cell}} {\phi \mathbf{F} \cdot \mathbf{n}}
+						$$
+					</p>
+					<p style="font-size: 70%;" class="fragment">
+						$$
+						v_{\text{cell}} \sigma^{-1} (\mathbf{J}_x \mathbf{F}_x +\mathbf{J}_y \mathbf{F}_y )
+						=
+						-\phi^{\top} v_{\text{cell}} (\text{DIV}_{\text{cell}} \mathbf{F})  + \text{BC}
+						$$
+					</p>
+					<p style="text-align:left;" class="fragment">We need \(\mathbf{J}_x\) and \(\mathbf{J}_x\)</p>
+
+				</section>
+				</section>
+
+				<section>
+				<section>
+					<h3>Face Inner Product</h3>
+
+					<div style="display:inline-block;zoom:100%;width:300px;">
+					<span style="font-size: 70%;">Calculate at each node.</span>
+					<p style="font-size: 70%;border-left: 30px solid #DA8181;width:300px;">
+						$$\left[\begin{smallmatrix}J^{(1)} \\J^{(3)} \\\end{smallmatrix}\right]=\left[\begin{smallmatrix}n^{(1)}_x & n^{(1)}_y \\n^{(3)}_x & n^{(3)}_y \\\end{smallmatrix}\right]\left[\begin{smallmatrix}J_x \\J_y \\\end{smallmatrix}\right]$$
+					</p>
+					<p style="font-size: 70%;border-left: 30px solid #91D97E;width:300px;">
+						$$\left[\begin{smallmatrix}J^{(1)} \\J^{(4)} \\\end{smallmatrix}\right]=\left[\begin{smallmatrix}n^{(1)}_x & n^{(1)}_y \\n^{(4)}_x & n^{(4)}_y \\\end{smallmatrix}\right]\left[\begin{smallmatrix}J_x \\J_y \\\end{smallmatrix}\right]$$
+					</p>
+					<p style="font-size: 70%;border-left: 30px solid #C87FDA;width:300px;">
+						$$\left[\begin{smallmatrix}J^{(2)} \\J^{(3)} \\\end{smallmatrix}\right]=\left[\begin{smallmatrix}n^{(2)}_x & n^{(2)}_y \\n^{(3)}_x & n^{(3)}_y \\\end{smallmatrix}\right]\left[\begin{smallmatrix}J_x \\J_y \\\end{smallmatrix}\right]$$
+					</p>
+					<p style="font-size: 70%;border-left: 30px solid #81A4DA;width:300px;">
+						$$\left[\begin{smallmatrix}J^{(2)} \\J^{(4)} \\\end{smallmatrix}\right]=\left[\begin{smallmatrix}n^{(2)}_x & n^{(2)}_y \\n^{(4)}_x & n^{(4)}_y \\\end{smallmatrix}\right]\left[\begin{smallmatrix}J_x \\J_y \\\end{smallmatrix}\right]$$
+					</p>
+					</div>
+					<div style="float:right;position:relative;top:150px" class="fragment" width="100px">
+						<center>
+						<span style="font-size: 55%;">Use a small projection matrix and invert for \(\mathbf{J}_c\)</span>
+						<p style="font-size: 70%;">
+							$\mathbf{J}_c = \mathbf{N}_{(i)}^{-1}\mathbf{P}_{(i)}\mathbf{J}$
+						</p>
+					</center>
+					</div>
+					<br>
+					<iframe width="200" height="200" src="Mesh2D.html#nx=2;ny=2;w=200;h=200;fillT1=true;fluxLabel=J"></iframe>
+					<iframe width="200" height="200" src="Mesh2D.html#nx=2;ny=2;w=200;h=200;fillT3=true;fluxLabel=J"></iframe>
+					<iframe width="200" height="200" src="Mesh2D.html#nx=2;ny=2;w=200;h=200;fillT2=true;fluxLabel=J"></iframe>
+					<iframe width="200" height="200" src="Mesh2D.html#nx=2;ny=2;w=200;h=200;fillT4=true;fluxLabel=J"></iframe>
+
+				</section>
+
+				<section>
+					<h3>Face Inner Product</h3>
+					<p style="text-align:left;font-size: 70%;">Sub in for the cartesian face functions, $\mathbf{J}_c = \mathbf{N}_{(i)}^{-1}\mathbf{P}_{(i)}\mathbf{J}$</p>
+					<p style="font-size: 70%;">
+						$$
+						\mathbf{F}_c^{\top} (v_{\text{cell}} \sigma^{-1})  \mathbf{J}_c
+						=
+						-\phi^{\top} v_{\text{cell}}( v_\text{cell}^{-1} \mathbf{D}_{\text{cell}} \mathbf{A} \mathbf{F})  + \text{BC}
+						$$
+						<br>
+						$$
+						\mathbf{F}^{\top}
+						{1\over 4}
+						\left(\sum_{i=1}^4
+						\mathbf{P}_{(i)}^\top \mathbf{N}_{(i)}^{-\top} v_{\text{cell}} \sigma^{-1}  \mathbf{N}_{(i)}^{-1}\mathbf{P}_{(i)}
+						\right)
+						\mathbf{J}
+						=
+						-\mathbf{F}^{\top} \mathbf{A} \mathbf{D}_{\text{cell}}^{\top} \phi   + \text{BC}
+						$$
+					</p>
+					<div class="fragment">
+					<p style="text-align:left;font-size: 70%;">So for any discretized face function:</p>
+					<center>
+						<p style="font-size: 70%;background:#91D97E;padding:10px;width:440px;">
+							$$
+							\mathbf{M}(\sigma^{-1}) \mathbf{J}
+							=
+							-\mathbf{A} \mathbf{D}_{\text{cell}}^{\top} \phi   + \text{BC}
+							$$
+						</p>
+					</center>
+					<p style="font-size: 70%;">
+						$$\mathbf{M}(\sigma^{-1}) =
+						{1\over 4}
+						\left(\sum_{i=1}^4
+						\mathbf{P}_{(i)}^\top \mathbf{N}_{(i)}^{-\top} v_{\text{cell}} \sigma^{-1}  \mathbf{N}_{(i)}^{-1}\mathbf{P}_{(i)}
+						\right)$$
+					</p>
+					<br>
+					<p class="text-align:left;">Need to create for all cells - projection matrices!</p>
+					</div>
+				</section>
+
+
+				<section>
+					<h3>ave((x)^2) vs (ave(x))^2</h3>
+					<div style="display:inline-block;zoom:80%;opacity:0.3;width:350px;">
+					<span style="font-size: 70%;">Calculate at each node.</span>
+					<p style="font-size: 70%;border-left: 30px solid #DA8181;width:0px;">
+						$$\left[\begin{smallmatrix}J^{(1)} \\J^{(3)} \\\end{smallmatrix}\right]=\left[\begin{smallmatrix}n^{(1)}_x & n^{(1)}_y \\n^{(3)}_x & n^{(3)}_y \\\end{smallmatrix}\right]\left[\begin{smallmatrix}J_x \\J_y \\\end{smallmatrix}\right]$$
+					</p>
+					<p style="font-size: 70%;border-left: 30px solid #91D97E;width:0px;">
+						$$\left[\begin{smallmatrix}J^{(1)} \\J^{(4)} \\\end{smallmatrix}\right]=\left[\begin{smallmatrix}n^{(1)}_x & n^{(1)}_y \\n^{(4)}_x & n^{(4)}_y \\\end{smallmatrix}\right]\left[\begin{smallmatrix}J_x \\J_y \\\end{smallmatrix}\right]$$
+					</p>
+					<p style="font-size: 70%;border-left: 30px solid #C87FDA;width:0px;">
+						$$\left[\begin{smallmatrix}J^{(2)} \\J^{(3)} \\\end{smallmatrix}\right]=\left[\begin{smallmatrix}n^{(2)}_x & n^{(2)}_y \\n^{(3)}_x & n^{(3)}_y \\\end{smallmatrix}\right]\left[\begin{smallmatrix}J_x \\J_y \\\end{smallmatrix}\right]$$
+					</p>
+					<p style="font-size: 70%;border-left: 30px solid #81A4DA;width:0px;">
+						$$\left[\begin{smallmatrix}J^{(2)} \\J^{(4)} \\\end{smallmatrix}\right]=\left[\begin{smallmatrix}n^{(2)}_x & n^{(2)}_y \\n^{(4)}_x & n^{(4)}_y \\\end{smallmatrix}\right]\left[\begin{smallmatrix}J_x \\J_y \\\end{smallmatrix}\right]$$
+					</p>
+					</div>
+					<div style="display:inline-block;position:relative;top:-90px;" width="300px">
+						<span style="font-size: 70%;">Why not calculate all at once?</span>
+						<p style="font-size: 70%;width:300px;">
+							$$
+							\left[\begin{smallmatrix}
+								J^{(1)} \\
+								J^{(2)} \\
+								J^{(3)} \\
+								J^{(4)} \\
+							\end{smallmatrix}\right]
+							=
+							\left[\begin{smallmatrix}
+								n^{(1)}_x & n^{(1)}_y \\
+								n^{(2)}_x & n^{(2)}_y \\
+								n^{(3)}_x & n^{(3)}_y \\
+								n^{(4)}_x & n^{(4)}_y \\
+							\end{smallmatrix}\right]
+							\left[\begin{smallmatrix}
+								J_x \\
+								J_y \\
+							\end{smallmatrix}\right]
+							$$
+						</p>
+					</div>
+					<div>
+						<p style="font-size: 50%;">
+						$$\mathbf{M}(\sigma^{-1}) =
+						{1\over 4}
+						\left(\sum_{i=1}^4
+						\mathbf{P}_{(i)}^\top \mathbf{N}_{(i)}^{-\top} v_{\text{cell}} \sigma^{-1}  \mathbf{N}_{(i)}^{-1}\mathbf{P}_{(i)}
+						\right)$$
+						</p>
+						or
+						<p style="font-size: 60%;">
+						$$\mathbf{M}(\sigma^{-1}) =
+						\mathbf{N}^{\dagger^\top} \mathbf{V}_{\text{cell}} \sigma^{-1}  \mathbf{N}^{\dagger}
+						$$
+					</div>
+
+					<p style="text-align:left;" class="fragment">
+						Need to make \(\mathbf{M}(\sigma^{-1})\) invertable!
+						<br>
+						$$(-1 + 1)^2 = 0$$
+					</p>
+
+				</section>
+				</section>
+
+
+				<section>
+					<h2>Moving to 3D</h2>
+					<ul>
+						<li>8 inner product matricies to average</li>
+						<li>Edge inner products needed as well (for \(\nabla \times\))</li>
+						<li>Volume and face areas may not be well defined</li>
+					</ul>
+					<img src="images/cube.png" width="500px" style="border:0;">
+				</section>
+
+				<section>
+					<h2>DC Resistivity System</h2>
+					<p class="text-align:left;">Combine equations into a matrix system:</p>
+					<!-- $$M(\sigma^{-1}) j = - \text{diag}(A) D^\top \phi$$ -->
+					<!-- $$\text{diag}(V^{-1}) D \text{diag}(A) j = s$$ -->
+					<br>
+					$$\left[\begin{smallmatrix}
+						\mathbf{M}(\sigma^{-1})   &  - \text{diag}(\mathbf{a}) \mathbf{D}^\top \\
+						-\mathbf{D} \text{diag}(\mathbf{a}) &             0            \\
+					\end{smallmatrix}\right]
+					\left[\begin{smallmatrix}
+						j \\
+						\phi \\
+					\end{smallmatrix}\right]
+					=
+					\left[\begin{smallmatrix}
+						0 \\
+						-\text{diag}(\mathbf{v}) s \\
+					\end{smallmatrix}\right]
+					$$
+					<br>
+					<p class="text-align:left;">Solve for \(\phi\) using (smart!) iterative methods.</p>
+
+				</section>
+
+
+				<section>
+					<h2>Example: Align mesh to layer</h2>
+					<img src="images/meshCompare.png" width="900px" style="border:0;">
+					<small>Use same number of cells and compare to finely discretized model.</small>
+				</section>
+
+				<section>
+					<h2>Results</h2>
+					<img src="images/meshResults.png" width="700px" style="border:0;">
+
+				</section>
+
+				<section>
+					<h2>Preliminary Conclusions</h2>
+					<ul>
+						<li>Handling known interfaces (e.g. topography)</li>
+						<li>Padding to infinity</li>
+					</ul>
+
+					<iframe width="500" height="500" src="meshZoom.html#type=LOM;w=500;h=500"></iframe>
+
+
+				</section>
+
+
+				<section>
+					<h2>Thank You!</h2>
+					<iframe width="500" height="500" src="Mesh2D.html#nx=4;ny=4;w=500;h=500"></iframe>
+
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="head.min.js"></script>
+		<script src="reveal.min.js"></script>
+
+		<div style="font-size:60%;position:absolute;top:5px;right:5px;color:#333;font-family: Helvetica,'News Cycle', Impact, sans-serif;line-height: 1.1em;letter-spacing: 0.02em;">
+			Logically Orthogonal Meshes - Rowan Cockett & Eldad Haber
+		</div>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: 'custom', // available themes are in /css/theme
+				transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: []
+			});
+
+		</script>
+
+	</body>
+</html>

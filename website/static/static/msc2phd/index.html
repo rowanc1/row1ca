@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>PhD Upgrade - Rowan Cockett</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Rowan Cockett">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="reveal.min.css">
+        <link rel="stylesheet" href="custom.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="zenburn.css">
+
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script type="text/javascript"
+          src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG">
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css">
+            .lightBack{
+                background-image:url('images/light_wool.png')
+            }
+        </style>
+    </head>
+
+    <body class="lightBack">
+
+
+        <div class="reveal">
+
+            <div class="slides">
+                <section>
+                    <div><h1><br></h1></div>
+                    <div><h2><br></h2></div>
+                    <h1>MSc →&nbsp;PhD?</h1>
+                    <div>Rowan Cockett</div>
+                    <div>August 2013</div>
+                </section>
+                <section>
+                    <h2>Outline</h2>
+                    <div><br></div>
+                    <div>
+                        <ol>
+                            <li>Course work</li>
+                            <li>Richards equation</li>
+                            <li>Logically orthogonal mesh</li>
+                            <li>The future</li>
+                        </ol>
+                    </div>
+                </section>
+                <section data-background-color="rgba( 12, 25, 77, 0.6)" data-transition="linear" data-background-transition="slide">
+                    <section>
+                        <h2>Course Work</h2>
+                        <div><br></div>
+                        <div>
+                            <img src="images/logoUBC.png" style="width: 212.392662320573px; height: 288.55506134033203px; max-height: none; max-width: none;">
+                            <br>
+                        </div>
+                        <div>
+                        </div>
+
+                    </section>
+                    <section>
+                        <h2>Courses</h2>
+                        <div><br></div>
+                        <div>
+                            <ol>
+                                <li style="font-size: 29.779754638671875px; font-style: normal; font-variant: normal;">Numerical Optimization (Friedlander)</li>
+                                <li style="font-size: 30.132999420166016px; font-style: normal; font-variant: normal;">Sparse Matrix Computation (Greif)</li>
+                                <li style="font-size: 30.132999420166016px; font-style: normal; font-variant: normal;">Numerical Solution of Differential Equations (Ascher)</li>
+                                <li style="font-size: 30.132999420166016px; font-style: normal; font-variant: normal;">Linear Inverse Theory (Haber)</li>
+                                <li style="font-size: 30.132999420166016px; font-style: normal; font-variant: normal;">Advanced Groundwater Hydrogeology (Beckie)</li>
+                                <li style="font-size: 30.132999420166016px; font-style: normal; font-variant: normal;">Teaching and Learning in the Geosciences (Gilley)</li>
+                                <li style="font-size: 30.132999420166016px; font-style: normal; font-variant: normal;">Computational Electromagnetics (Haber)</li>
+                            </ol>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Numerical Optimization</h2>
+                        <div><br></div>
+                        <div>
+                            <i><a href="/pdf/dc-resistivity-objective-functions.pdf" target="_blank">DC Resistivity Inversion Using Various Objective Functions</a></i>
+                        </div>
+                        <div><br></div>
+                        <div>
+                            <ul>
+                                <li>Exposed to optimization techniques</li>
+                                <li>Looked at objective functions</li>
+                                <li>Crash course in numerical operator creation</li>
+                                <li>Found my first block in a half-space</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Find the Block</h2>
+                        <div><br></div>
+                        <div>
+                            <img src="images/trueModelTemp.png" style="width: 607.2016877423249px; height: 478.7655863761902px; max-height: none; max-width: none;">
+                            <br>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Objective Functions</h2>
+                        <div><br></div>
+                        <div>
+                            <img src="images/objFncTemp.png" style="width: 813.1950282473189px; height: 449.55506134033203px; max-height: none; max-width: none;">
+                            <br>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Found it!?</h2>
+                        <div><br></div>
+                        <div>
+                            <img src="images/recoveredModels.png" style="width: 690.091411473631px; height: 481.7655863761902px; max-height: none; max-width: none;">
+                            <br>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Sparse Matrix Computation</h2>
+                        <div><br></div>
+                        <div>
+                            <i><a href="/pdf/dc-resistivity-block-cg.pdf" target="_blank">Block Conjugate Gradient for Multiple Right Hand Sides</a></i>
+                        </div>
+                        <div><br></div>
+                        <div>
+                            <ul>
+                                <li>Exposed to iterative solvers</li>
+                                <li>Looked into many different block solvers (CG, GMRES, ...)</li>
+                                <li>Crash course refresher into linear algebra</li>
+                                <li>Increased the speed of my DC inversion</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>
+                            <img src="images/chen_emotional_speech.png" style="width: 818.3570743809803px; height: 601.555061340332px; max-height: none; max-width: none;">
+                            <br>
+                        </h2>
+                    </section>
+                    <section>
+                        <h2>CG vs Steepest Descent</h2>
+                        <div><br></div>
+                        <div>
+                            <img src="images/conjugateGradient.png">
+                            <br>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Decreasing Solve Time</h2>
+                        <div><br></div>
+                        <div>
+                            <img src="images/solveTimeLog.png" style="width: 626.9246091251017px; height: 493.7655863761902px; max-height: none; max-width: none;">
+                            <br>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Numerical Differential Eqns</h2>
+                        <div><br></div>
+                        <div>
+                            <i><a href="/pdf/richards-equation-simulation.pdf" target="_blank">Simulation of Unsaturated Flow using Richards Equation</a></i>
+                        </div>
+                        <div><br></div>
+                        <div>
+                            <ul>
+                                <li>Exposed to numerically solving differential equations</li>
+                                <li>Finite volume and difference techniques</li>
+                                <li>Explored Richards equation for ground water flow</li>
+                                <li>Compared multiple ways to solve the non-linear PDE</li>
+                                <li>Exposed to how to test my code</li>
+                                <ul>
+                                    <li>Fictitious source tests</li>
+                                    <li>Gradient tests</li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Finite Volume</h2>
+                        <div><br></div>
+                        <div><br></div>
+                        <div>
+                            <img src="images/finiteVolume2D.png" style="width: 358.9621272456702px; height: 318.7655863761902px; max-height: none; max-width: none;">
+                            <br>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Simulating in 2D and 3D</h2>
+                        <div><br></div>
+                        <div>
+                            <img src="images/11000.png" style="width: 628.5530291570067px; height: 495.7655863761902px; max-height: none; max-width: none;">
+                            <br>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Inverse Theory</h2>
+                        <div><br></div>
+                        <div>
+                            <i><a href="/pdf/richards-equation-inversion.pdf" target="_blank">Hydraulic Conductivity Inverse Problem using Richards Equation</a></i>
+                        </div>
+                        <div><br></div>
+                        <div>
+                            <ol>
+                                <li>(re)Exposed to general concepts in inverse theory</li>
+                                <li>Implemented an inverse problem in time</li>
+                                <li>Improved and generalized my MATLAB code base</li>
+                                <li>Calculation of derivatives (discretize then optimize)</li>
+                                <li>Learned details of large scale inversions</li>
+                            </ol>
+                            <div style="text-align: left;">
+                                <br>
+                            </div>
+                            <pre><font style="font-size: 18px;">Cockett, R. &amp; E. Haber. 2013. A Numerical Method for the Estimation of Distributed Hydraulic Conductivity Using Richards Equation. In Prep.</font></pre>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>The setup.</h2>
+                        <div><br></div>
+                        <div>
+                            <img src="images/InfiltrationExperiment.png">
+                            <br>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Going from time-lapse data...</h2>
+                        <div><br></div>
+                        <div>
+                            <img src="images/data.png">
+                            <br>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>...to a model of the earth.</h2>
+                        <div><br></div>
+                        <div>
+                            <img src="images/true_vs_recov2D.png">
+                            <br>
+                        </div>
+                        <div>True vs. Recovered</div>
+                    </section>
+                </section>
+                <section>
+                    <h2>Groundwater Hydrogeology</h2>
+                    <div><br></div>
+                    <div>
+                        <i>Annacis Island groundwater budget analysis</i>
+                    </div>
+                    <div><br></div>
+                    <div>
+                        <ol>
+                            <li>(re)Exposed to concepts in hydrogeology</li>
+                            <li>Real-world &amp; application based</li>
+                        </ol>
+                    </div>
+                </section>
+                <section>
+                    <h2>Teaching &amp; Learning</h2>
+                    <div><br></div>
+                    <div>
+                        <ul>
+                            <li>Presentation, assignments, learning outcomes</li>
+                            <li>Opportunity to use my software: Visible Geology</li>
+                        </ul>
+                    </div>
+                    <div><br></div>
+                    <iframe width="420" height="400" src="http://app.visiblegeology.com/model.html#ahFzfnZpc2libGUtZ2VvbG9neXINCxIFTW9kZWwYoY0GDA" frameborder="1" style="width: 433.4882506527415px; height: 413px; max-height: none; max-width: none;">
+                    </iframe>
+                </section>
+                <section>
+                    <section>
+                        <h2>Computational Electromagnetics</h2>
+                        <div><br></div>
+                        <div>
+                            <i><a href="/pdf/logically-rectangular-mesh.pdf" target="_blank">Logically Rectangular Meshes for Geophysical Applications</a></i>
+                        </div>
+                        <div><br></div>
+                        <div>
+                            <ul>
+                                <li>Exposed to simulation using Maxwell's equations</li>
+                                <li>Wrote a frequency domain EM inverse code</li>
+                                <li>Further exposed to finite volume</li>
+                                <li>Wrote a finite volume package for LOM</li>
+                            </ul>
+                            <div><br></div>
+                        </div>
+                        <pre>L. Ruthotto ↔ R. Cockett ↔ E. Haber. 2013. Mimetic mesh generation and simulation for geophysical electromagnetics problems. In prep.</pre>
+                        <br>
+                    </section>
+                    <section>
+                        <h2>Differential Operators in 3D</h2>
+                        <div><br></div>
+                        <div>
+                            <img src="images/curl.png"><br>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>And then there were details...</h2>
+                        <div><br></div>
+                        <div>
+                            <img src="images/integratingCurvy.png" style="width: 488.9679211250567px; height: 276.7655863761902px; max-height: none; max-width: none;"><br>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Aligning Meshes to Layers</h2>
+                        <div><br></div>
+                        <div>
+                            <img src="images/meshCompare.png"><br>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Padding Meshes to Infinity</h2>
+                        <div><br></div>
+                        <div>
+                            <img src="images/padMesh.png" style="width: 455.6877595095746px; height: 452.7655863761902px; max-height: none; max-width: none;"><br>
+                        </div></section>
+                        <section>
+                            <h2>Simulating EM response on a LOM</h2>
+                            <div><br></div>
+                            <div>
+                                <img src="images/curvyEM.png" style="width: 568.3509070745894px; height: 463.7655863761902px; max-height: none; max-width: none;"><br>
+                            </div>
+                        </section>
+                </section>
+
+                <section data-background-color="rgba( 22, 152, 213, 0.6 )" data-transition="linear" data-background-transition="slide">
+                    <h1><font style="font-size: 72px;">Richards Equation Inversion</font></h1>
+                    <img src="images/VadoseZone.png" height="415px"></img>
+                    <br>
+                    <a href="../richards-equation/index.html#/1" target="_blank">Full Presentation</a>
+                </section>
+
+                <section data-background-color="rgba( 22, 213, 75, 0.6 )" data-transition="linear" data-background-transition="slide">
+                    <h1><font style="font-size: 72px;">Logically Rectangular Mesh</font></h1>
+                    <iframe src="Mesh2D.html#nx=8;ny=4;w=800;h=400;" width="815px" height="415px" style="border:solid 2px black;background-color:white"></iframe>
+                    <br>
+                    <a href="../logically-rectangular-mesh/index.html#/1" target="_blank">Full Presentation</a>
+                </section>
+
+                <section data-background-color="rgba( 255, 122, 0, 0.6 )" data-background-color="rgba( 12, 25, 77, 0.6)" data-transition="linear" data-background-transition="slide">
+                    <h2>The Future</h2>
+                    <div><br></div>
+                    <div style="text-align:left;">Joint Time-Lapse Inversions:</div>
+                    <div><br></div>
+                    <div>
+                        <ul>
+                            <li>Fluid flow and electromagnetics</li>
+                            <li>Empirical relations</li>
+                            <li>Correlating structures</li>
+                            <li>Simple (parameterized?) models</li>
+                            <li>Including geology</li>
+                            <li>Better predictions</li>
+                            <li>Better use of data</li>
+                        </ul>
+                    </div>
+                </section>
+            <section>
+                <h1><br></h1>
+                <h1><br></h1>
+                <h1>Thank you!</h1>
+            </section>
+        </div>
+
+        </div>
+
+        <div style="font-size:60%;position:absolute;top:5px;right:5px;color:#333;font-family: Helvetica,'News Cycle', Impact, sans-serif;line-height: 1.1em;letter-spacing: 0.02em;">
+            PhD Upgrade Committee Meeting - Rowan Cockett
+        </div>
+
+        <script src="head.min.js"></script>
+        <script src="reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: false,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: []
+            });
+
+        </script>
+
+    </body>
+</html>

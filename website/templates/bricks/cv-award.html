@@ -1,0 +1,9 @@
+<cv-award
+    title="{{ brick.title }}"
+    description="{{ brick.description }}"
+    amount={{ brick.amount }}
+    level="{{ brick.level }}"
+    date="{{ brick.date.strftime('%Y') }}"
+    url="{{ brick.url_more }}"
+    {% if brick.declined %}declined{% endif %}
+></cv-award>

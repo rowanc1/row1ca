@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2013/08/01",
+    "uid": "phd-courses",
+    "title": "Courses",
+    "description": "MSc to PhD upgrade presentation",
+    "thumbnail": "/images/phd/msc2phd.png",
+    "license": "CC-BY-4.0",
+    "tags": ["presentations", "phd"]
+}

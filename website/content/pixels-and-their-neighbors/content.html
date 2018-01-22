@@ -11,7 +11,7 @@
 <h2>DC Resistivity</h2>
 
 <ink-aside>
-  <ink-figure src="/images/finite-volume/dc-survey.png" number="1">
+  <ink-figure src="/images/finite-volume/dc-survey.png">
     Setup of a DC resistivity survey.
   </ink-figure>
 </ink-aside>
@@ -20,7 +20,7 @@
   DC resistivity surveys obtain information about subsurface electrical conductivity, $\sigma$. This physical property is often diagnostic in mineral exploration, geotechnical, environmental and hydrogeologic problems, where the target of interest has a significant electrical conductivity contrast from the background. In a DC resistivity survey, steady state currents are set up in the subsurface by injecting current through a positive electrode and completing the circuit with a return electrode (Figure 1). The equations for DC resistivity are derived in Figure 2. Conservation of charge (which can be derived by taking the divergence of Ampere's law at steady state) connects the divergence of the current density everywhere in space to the source term which consists of two point sources, one positive and one negative. The flow of current sets up electric fields according to Ohm's law, which relates current density to electric fields through the electrical conductivity. From Faraday's law for steady state fields, we can describe the electric field in terms of a scalar potential, $\phi$, which we sample at potential electrodes to obtain data in the form of potential differences.
 </p>
 
-<ink-figure src="/images/finite-volume/dc-equations.png" number="2">
+<ink-figure src="/images/finite-volume/dc-equations.png">
   Derivation of the DC resistivity equations.
 </ink-figure>
 
@@ -40,7 +40,7 @@
 </p>
 
 
-<ink-figure src="/images/finite-volume/finite-volume.png" number="2">
+<ink-figure src="/images/finite-volume/finite-volume.png">
   Anatomy of a finite volume cell.
 </ink-figure>
 
@@ -56,7 +56,7 @@
   Equation 1 relates the divergence of the current density to a source term. To discretize using finite volume, we will look at the divergence geometrically. The divergence is the integral of a flux through a closed surface as that enclosed volume shrinks to a point. Since we have discretized and no longer have continuous functions, we cannot fully take the limit to a point; instead, we approximate it around some (finite!) volume: <i>a cell</i>. The flux out of the surface ($\vec{j} \cdot \vec{n}$) is actually how we discretized $\vec{j}$ onto our mesh (i.e. $\mathbf{j}$) except that the face normal points out of the cell (rather than in the axes direction). After fixing the direction of the face normal (multiplying by $\pm 1$), we only need to calculate the face areas and cell volume to create the discrete divergence matrix.
 </p>
 
-<ink-figure src="/images/finite-volume/divergence.png" number="2">
+<ink-figure src="/images/finite-volume/divergence.png">
   Geometrical definition of the divergence and the discretization.
 </ink-figure>
 
@@ -72,7 +72,7 @@
 <h3>(2) Scalar equations only, please</h3>
 
 <p>
-  Equation (b) is a vector equation, so really it is two or three equations involving multiple components of $\vec{j}$. We want to work with a single scalar equation, allow for anisotropic physical properties, and potentially work with non-axis-aligned meshes - how do we do this?! We can use the <b>weak formulation</b> where we take the inner product ($\int \vec{a} \cdot \vec{b} dv$) of the equation with a generic face function, $\vec{f}$. This reduces requirements of differentiability on the original equation and also allows us to consider tensor anisotropy or curvilinear meshes <ink-cite key="haber2015computational"></ink-cite>.
+  Equation (b) is a vector equation, so really it is two or three equations involving multiple components of $\vec{j}$. We want to work with a single scalar equation, allow for anisotropic physical properties, and potentially work with non-axis-aligned meshes - how do we do this?! We can use the <b>weak formulation</b> where we take the inner product ($\int \vec{a} \cdot \vec{b} dv$) of the equation with a generic face function, $\vec{f}$. This reduces requirements of differentiability on the original equation and also allows us to consider tensor anisotropy or curvilinear meshes <ink-cite key="haber2014computational"></ink-cite>.
 </p>
 
 <p>
@@ -80,7 +80,7 @@
 </p>
 
 
-<ink-figure src="/images/finite-volume/weak-formulation.png" number="2">
+<ink-figure src="/images/finite-volume/weak-formulation.png">
   Discretization using the weak formulation and inner products.
 </ink-figure>
 

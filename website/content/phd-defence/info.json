@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2017/12/04",
+    "uid": "phd-defence",
+    "title": "PhD Defence",
+    "description": "My PhD Defence",
+    "thumbnail": "/images/phd/defence.png",
+    "license": "CC-BY-4.0",
+    "tags": ["presentations", "phd"]
+}

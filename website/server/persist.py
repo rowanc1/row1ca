@@ -33,6 +33,22 @@ USERS = {
     "seogi": {
         "name": "Seogi Kang",
         "institution": "UBC"
+    },
+    "adam": {
+        "name": "Adam Pidlisecky",
+        "institution": "UCalgary"
+    },
+    "tara": {
+        "name": "Tara Moran",
+        "institution": "Stanford"
+    },
+    "eldad": {
+        "name": "Eldad Haber",
+        "institution": "UBC"
+    },
+    "gudni": {
+        "name": "Gudni K.Rosenkjaer",
+        "institution": "UBC"
     }
 }
 
@@ -58,24 +74,35 @@ load_json()
 del get_info, load_json
 
 
+def _get_bricks(bricks):
+    if bricks is None:
+        return BRICKS
+    if isinstance(bricks, list):
+        return {brick.uid: brick for brick in bricks}
+    return bricks
+
+
 def query_user(uid):
     if uid not in USERS:
         return None
     return USERS[uid]
 
 
-def query_kind(kind):
-    data = [BRICKS[b] for b in BRICKS if BRICKS[b].__class__.__name__ == kind]
-    return sorted(data, key=lambda d: d.date, reverse=True)
+def query_kind(kind, bricks=None):
+    bricks = _get_bricks(bricks)
+    data = [bricks[b] for b in bricks if bricks[b].__class__.__name__ == kind]
+    return sorted(data, key=lambda d: d.date.start, reverse=True)
 
 
-def query_tags(tags):
+def query_tags(tags, bricks=None):
+    bricks = _get_bricks(bricks)
     data = [
-        BRICKS[b] for b in BRICKS
-        if len(set(BRICKS[b].tags).intersection(tags)) > 0
+        bricks[b] for b in bricks
+        if len(set(bricks[b].tags).intersection(tags)) > 0
     ]
-    return sorted(data, key=lambda d: d.date, reverse=True)
+    return sorted(data, key=lambda d: d.date.start, reverse=True)
 
 
-def query_uids(uids):
-    return [BRICKS[uid] for uid in uids if uid in SLUGS]
+def query_uids(uids, bricks=None):
+    bricks = _get_bricks(bricks)
+    return [bricks[uid] for uid in uids if uid in SLUGS]

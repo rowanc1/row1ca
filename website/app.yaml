@@ -1,5 +1,3 @@
-application: rowanc1
-version: 1
 runtime: python27
 api_version: 1
 threadsafe: yes
@@ -10,17 +8,26 @@ handlers:
   upload: favicon\.ico
 
 - url: /images
+  secure: always
   static_dir: static/images
 - url: /html
+  secure: always
   static_dir: static/html
 - url: /css
+  secure: always
   static_dir: static/css
 - url: /js
+  secure: always
   static_dir: static/js
 - url: /pdf
+  secure: always
   static_dir: static/pdf
+- url: /static
+  secure: always
+  static_dir: static/static
 
 - url: .*
+  secure: always
   script: server.app
 
 libraries:

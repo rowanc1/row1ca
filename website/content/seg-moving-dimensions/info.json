@@ -1,0 +1,29 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "seogi"
+        },
+        {
+            "kind": "author",
+            "user": "rowan"
+        },
+        {
+            "kind": "author",
+            "user": "lindsey"
+        },
+        {
+            "kind": "author",
+            "user": "doug"
+        }
+    ],
+    "date": "2015/10/26",
+    "uid": "seg-moving-dimensions",
+    "title": "Dimensions of EM",
+    "description": "Moving between dimensions in electromagnetic inversions",
+    "thumbnail": "/images/papers/seg-moving-dimensions.png",
+    "license": "CC-BY-4.0",
+    "tags": ["paper", "simpeg", "electromagnetics"],
+    "url_more": "https://doi.org/10.1190/segam2015-5930379.1"
+}

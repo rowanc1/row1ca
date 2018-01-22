@@ -10,7 +10,7 @@
         "tags": [
             "projects"
         ],
-        "query_type": "uid",
+        "query_type": ["uid"],
         "query_uids": [
             "visible-geology-intro",
             "visible-geology-query"
@@ -22,7 +22,7 @@
         "title": "More on Visible Geology",
         "description": "",
         "license": "CC-BY-4.0",
-        "query_type": "tags",
+        "query_type": ["tags"],
         "query_tags": [
             "visible-geology"
         ]

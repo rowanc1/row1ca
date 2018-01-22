@@ -10,7 +10,7 @@
         "tags": [
             "projects"
         ],
-        "query_type": "uid",
+        "query_type": ["uid"],
         "query_uids": [
             "stereonet-intro",
             "stereonet-query"
@@ -22,7 +22,7 @@
         "title": "Stereonet tutorials and thoughts:",
         "description": "",
         "license": "CC-BY-4.0",
-        "query_type": "tags",
+        "query_type": ["tags"],
         "query_tags": [
             "stereonet"
         ]

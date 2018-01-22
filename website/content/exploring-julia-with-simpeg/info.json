@@ -12,7 +12,8 @@
     "thumbnail": "/images/weakform-dc/dc-2d.png",
     "tags": [
         "julia",
-        "simpeg"
+        "simpeg",
+        "thoughts"
     ],
     "title": "Exploring Julia with SimPEG",
     "uid": "exploring-julia-with-simpeg"

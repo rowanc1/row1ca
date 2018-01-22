@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2013/06/14",
+    "uid": "on-teaching-stereonets",
+    "title": "On Teaching the Stereonet",
+    "description": "Thoughts on how to use the stereonet in education.",
+    "thumbnail": "/images/stereonet/pole.png",
+    "license": "CC-BY-4.0",
+    "tags": ["thoughts", "stereonet"]
+}

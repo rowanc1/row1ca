@@ -1,0 +1,21 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        },
+        {
+            "kind": "author",
+            "user": "adam"
+        }
+    ],
+    "date": "2014/03/01",
+    "uid": "numerical-rock-physics-paper",
+    "title": "Numerical Rock Physics",
+    "description": "Simulated electrical conductivity response of clogging mechanisms for managed aquifer recharge",
+    "thumbnail": "/images/papers/nrp.png",
+    "license": "CC-BY-4.0",
+    "tags": ["paper", "uofc"],
+    "url_more": "https://doi-org.ezproxy.library.ubc.ca/10.1190/geo2013-0054.1"
+}

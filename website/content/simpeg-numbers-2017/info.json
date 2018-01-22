@@ -1,0 +1,18 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "title": "SimPEG Numbers",
+    "description": "Some numbers for the SimPEG project",
+    "license": "CC-BY-4.0",
+    "thumbnail": "/images/on/simpeg-numbers-2017.png",
+    "uid": "simpeg-numbers-2017",
+    "date": "2017/03/20",
+    "tags": [
+        "simpeg"
+    ]
+}

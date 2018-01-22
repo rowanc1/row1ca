@@ -1,0 +1,142 @@
+[
+    {
+        "__class__": "CvItem",
+        "uid": "cv-experience-seeqent",
+        "title": "Seequent (formerly ARANZ Geo)",
+        "description": "Director of Cloud Architecture",
+        "date": ["2017/10/01"],
+        "duties": [
+            "Development and direction of Cloud offerings of Seequent",
+            "Front-end web development, database development, 3D graphics, scientific algorithm research & development."
+        ],
+        "tags": ["experience"]
+    },
+    {
+        "__class__": "CvItem",
+        "uid": "cv-experience-aranz",
+        "title": "3point Science (A member of ARANZ Geo Limited)",
+        "description": "Chief Technology Officer",
+        "date": ["2016/03/17", "2017/10/01"],
+        "duties": [
+            "Development of Steno3D, a technical communication solution for the geoscience industry",
+            "Aranz Geo rebranded and consolidated to become Seequent"
+        ],
+        "tags": ["experience"]
+    },
+    {
+        "__class__": "CvItem",
+        "uid": "cv-experience-3point",
+        "title": "3point Science Inc.",
+        "description": "Co-founder",
+        "date": ["2013/07/09", "2016/03/17"],
+        "duties": [
+            "Technical communication using large scale 3D scientific visualization and interactive media",
+            "Development of visual application framework for interactive interrogation of data and functions",
+            "Lead a 5 person software team: front-end web development, database development, 3D graphics, scientific algorithm research & development, external consultants.",
+            "Awarded development grant from Alberta Innovates Technology Futures for \"The Geo-sandbox: Accelerating training of geoscience professionals through immersive web-based exploration tools.\"",
+            "Deployment of software solutions in oil & gas training programs, university classrooms, academic research labs.",
+            "All other duties of a startup founder: visioning, pitching, inspiring, leading.",
+            "Successful exit to ARANZ Geo Limited."
+        ],
+        "tags": ["experience"]
+    },
+    {
+        "__class__": "CvItem",
+        "uid": "cv-experience-cgi",
+        "title": "Computational Geosciences Inc.",
+        "description": "Geophysics Internship & Software Consultant",
+        "date": ["2012/10/01", "2013/09/01"],
+        "url_more": "http://www.compgeoinc.com/",
+        "duties": [
+            "Designed and programmed visualization tools to aid in interpretation of geophysical data"
+        ],
+        "tags": ["experience"]
+    },
+    {
+        "__class__": "CvItem",
+        "uid": "cv-experience-visible-geology",
+        "title": "Visible Geology",
+        "description": "Lead Programmer and Designer",
+        "date": ["2010/01/01", "2013/07/01"],
+        "url_more": "/visible-geology",
+        "duties": [
+            "Development, design, and programming, of a web-based 3D visualization tool for structural geology",
+            "Used across the world in introductory and structural geology classes",
+            "Awarded \"Innovative Dissemination of Research Award\" from the UBC Library in 2013",
+            "Awarded \"Outstanding Student Paper Award\" for geoscience education at AGU 2010 Annual Meeting",
+            "More than 350 000 geoscience students and teachers have created their own geologic block models"
+        ],
+        "tags": ["experience"]
+    },
+    {
+        "__class__": "CvItem",
+        "uid": "cv-experience-ubc-ta",
+        "title": "University of British Columbia (Dr. Eldad Haber)",
+        "description": "Graduate Teaching Assistant",
+        "date": ["2012/09/01", "2012/12/01"],
+        "url_more": "https://gpg.geosci.xyz/",
+        "duties": [
+            "Taught and marked two laboratory section of 20-30 students introductory geophysics"
+        ],
+        "tags": ["experience"]
+    },
+    {
+        "__class__": "CvItem",
+        "uid": "cv-experience-uofc-ra",
+        "title": "University of Calgary (Dr. Adam Pidlisecky)",
+        "description": "Research Assistant",
+        "date": ["2008/12/01", "2011/02/15"],
+        "duties": [
+            "Geophysical research on the correlation between electrical resistivity and sediment parameters"
+        ],
+        "tags": ["experience"]
+    },
+    {
+        "__class__": "CvItem",
+        "uid": "cv-experience-uofc-software",
+        "title": "University of Calgary (Dr. Leslie Reid)",
+        "description": "Research Assistant",
+        "date": ["2010/03/01", "2010/12/01"],
+        "duties": [
+            "Concept design and creation of visualization software for teaching and learning introductory geology"
+        ],
+        "tags": ["experience"]
+    },
+    {
+        "__class__": "CvItem",
+        "uid": "cv-experience-uofc-ta",
+        "title": "University of Calgary (Dr. Edwin Cey)",
+        "description": "Undergraduate Teaching Assistant",
+        "date": ["2010/09/01", "2010/12/15"],
+        "duties": [
+            "Taught a laboratory section of 25 students introductory physical hydrogeology"
+        ],
+        "tags": ["experience"]
+    },
+    {
+        "__class__": "CvItem",
+        "uid": "cv-experience-uofc-lab",
+        "title": "University of Calgary (Dr. Adam Pidlisecky)",
+        "description": "Lab Technician",
+        "date": ["2008/09/01", "2009/01/15"],
+        "duties": [
+            "Hydrogeophysical probe construction and design to create near-surface automated probes that collect high resolution time-lapse electrical resistivity tomography data"
+        ],
+        "tags": ["experience"]
+    },
+    {
+        "__class__": "CvItem",
+        "uid": "cv-experience-climbing",
+        "title": "University of Calgary Outdoor Center",
+        "description": "Youth Climbing Instructor",
+        "date": ["2006/10/01", "2010/12/15"],
+        "tags": ["experience"]
+    },
+    {
+        "__class__": "CvItem",
+        "uid": "cv-experience-community",
+        "title": "Brentwood Community, Calgary",
+        "description": "Website design & consultant for local environmental projects (Volunteer)",
+        "date": ["2006/10/01", "2010/12/15"]
+    }
+]

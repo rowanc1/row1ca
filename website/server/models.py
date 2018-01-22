@@ -1,6 +1,7 @@
 import properties
 import datetime
 from . import template
+from six import string_types
 
 # starts with a letter, ends with a letter or number, can include hyphens
 # RE_SLUG = '[a-z]+[a-z0-9]+(?:-[a-z0-9]+)*'
@@ -20,6 +21,38 @@ class Contribution(properties.HasProperties):
         return persist.query_user(self.user)
 
 
+class DateRange(properties.HasProperties):
+    start = properties.DateTime(
+        "start of range",
+        default=datetime.datetime.now
+    )
+    end = properties.DateTime(
+        "end of range",
+        required=False
+    )
+
+    @classmethod
+    def deserialize(cls, value, trusted=False, verbose=True, **kwargs):
+        if isinstance(value, (datetime.datetime, string_types)):
+            value = dict(start=value)
+        elif isinstance(value, (list, tuple)):
+            if len(value) == 1:
+                value = dict(start=value[0])
+            elif len(value) == 2:
+                value = dict(start=value[0], end=value[1])
+        return super(DateRange, cls).deserialize(
+            value, trusted=trusted, verbose=verbose, **kwargs
+        )
+
+    def strftime(self, *args, **kwargs):
+        if self.end is None:
+            return self.start.strftime(*args, **kwargs)
+        return "{} - {}".format(
+            self.start.strftime(*args, **kwargs),
+            self.end.strftime(*args, **kwargs)
+        )
+
+
 class Brick(properties.HasProperties):
 
     style = 'content'
@@ -34,9 +67,10 @@ class Brick(properties.HasProperties):
 
     thumbnail = properties.String('description')
 
-    date = properties.DateTime(
-        'when brick was published',
-        default=lambda: datetime.datetime.now()
+    date = properties.Instance(
+        "when brick was published",
+        DateRange,
+        default=lambda: dict(start=datetime.datetime.now())
     )
 
     tags = properties.List(
@@ -118,14 +152,18 @@ class Collection(Brick):
 
     style_page = 'page-collection'
 
-    query_type = properties.StringChoice(
+    query_type = properties.List(
         'Kind of query',
-        choices={'uid', 'kind', 'tags'}
+        properties.StringChoice(
+            "",
+            choices={'uid', 'kind', 'tags'}
+        ),
+        coerce=True
     )
 
     query_kind = properties.StringChoice(
         'Kind of bricks to find',
-        choices={'Award', 'Article'},
+        choices={'Article', 'CvAward', 'CvItem'},
         required=False
     )
 
@@ -144,14 +182,23 @@ class Collection(Brick):
     @property
     def children(self):
         from . import persist
-        if self.query_type == 'uid':
-            q = persist.query_uids(self.query_uids)
-        elif self.query_type == 'kind':
-            q = persist.query_kind(self.query_kind)
-        elif self.query_type == 'tags':
-            q = persist.query_tags(self.query_tags)
-        else:
-            q = []
+
+        def query(query_type, bricks=None):
+            if query_type == 'uid':
+                q = persist.query_uids(self.query_uids, bricks=bricks)
+            elif query_type == 'kind':
+                q = persist.query_kind(self.query_kind, bricks=bricks)
+            elif query_type == 'tags':
+                q = persist.query_tags(self.query_tags, bricks=bricks)
+            else:
+                q = []
+            return q
+
+        q = None
+        for query_type in self.query_type:
+            print(query_type, q)
+            q = query(query_type, bricks=q)
+
         return q
 
     def render_html(self):
@@ -175,9 +222,24 @@ class CollectionCards(Collection):
     style_page = 'page-collection-cards'
 
 
-class Award(Brick):
+class CvItem(Brick):
+    style_item = 'cv-item'
 
-    style_item = 'award'
+    duties = properties.List("", prop=properties.String(""))
+
+    def render_html(self):
+        if len(self.duties) == 0:
+            return ''
+        return '<ul>\n{}\n</ul>'.format(
+            '\n'.join(
+                ['<li>\n{}\n</li>'.format(c) for c in self.duties]
+            )
+        )
+
+
+class CvAward(CvItem):
+
+    style_item = 'cv-award'
 
     amount = properties.Float('amount of the award')
     level = properties.StringChoice(

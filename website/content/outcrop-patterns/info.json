@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2012/10/25",
+    "uid": "outcrop-patterns",
+    "title": "Outcrop Patterns",
+    "description": "The Rule of Vs",
+    "thumbnail": "/images/presentations/outcrop-patterns-thumbnail.png",
+    "license": "CC-BY-4.0",
+    "tags": ["presentations", "visible-geology"]
+}

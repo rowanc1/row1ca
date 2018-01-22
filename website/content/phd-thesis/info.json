@@ -1,0 +1,17 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2017/12/04",
+    "uid": "phd-thesis",
+    "title": "PhD Thesis",
+    "description": "A framework for geophysical inversions with application to vadose zone parameter estimation",
+    "thumbnail": "/images/papers/phd-thesis.png",
+    "license": "CC-BY-4.0",
+    "tags": ["paper", "simpeg", "phd"],
+    "url_more": "http://hdl.handle.net/2429/64162"
+}

@@ -1,0 +1,33 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        },
+        {
+            "kind": "author",
+            "user": "seogi"
+        },
+        {
+            "kind": "author",
+            "user": "lindsey"
+        },
+        {
+            "kind": "author",
+            "user": "adam"
+        },
+        {
+            "kind": "author",
+            "user": "doug"
+        }
+    ],
+    "date": "2015/12/01",
+    "uid": "simpeg-paper",
+    "title": "SimPEG Framework",
+    "description": "An open source framework for simulation and gradient based parameter estimation in geophysical applications",
+    "thumbnail": "/images/papers/simpeg.png",
+    "license": "CC-BY-4.0",
+    "tags": ["paper", "simpeg"],
+    "url_more": "https://doi.org/10.1016/j.cageo.2015.09.015"
+}

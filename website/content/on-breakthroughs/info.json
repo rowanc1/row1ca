@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2016/02/17",
+    "uid": "on-breakthroughs",
+    "title": "On Breakthroughs",
+    "description": "Stick poking researchers",
+    "thumbnail": "/images/on/stick-poking.png",
+    "license": "CC-BY-4.0",
+    "tags": ["thoughts", "electromagnetics"]
+}

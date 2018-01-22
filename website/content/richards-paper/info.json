@@ -1,0 +1,25 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        },
+        {
+            "kind": "author",
+            "user": "lindsey"
+        },
+        {
+            "kind": "author",
+            "user": "eldad"
+        }
+    ],
+    "date": "2017/06/11",
+    "uid": "richards-paper",
+    "title": "Vadose Zone Inversion",
+    "description": "Efficient 3D Richards equation inversion.",
+    "thumbnail": "/images/papers/richards.png",
+    "license": "CC-BY-4.0",
+    "tags": ["paper", "simpeg", "richards"],
+    "url_more": "https://arxiv.org/abs/1706.03381"
+}

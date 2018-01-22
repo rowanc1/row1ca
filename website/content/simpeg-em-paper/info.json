@@ -1,0 +1,33 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "lindsey"
+        },
+        {
+            "kind": "author",
+            "user": "rowan"
+        },
+        {
+            "kind": "author",
+            "user": "seogi"
+        },
+        {
+            "kind": "author",
+            "user": "gudni"
+        },
+        {
+            "kind": "author",
+            "user": "doug"
+        }
+    ],
+    "date": "2017/10/01",
+    "uid": "simpeg-em-paper",
+    "title": "Electromagnetics Simulations and Inversions",
+    "description": "A framework for simulation and inversion in electromagnetics",
+    "thumbnail": "/images/papers/simpeg-em.png",
+    "license": "CC-BY-4.0",
+    "tags": ["paper", "simpeg", "electromagnetics"],
+    "url_more": "https://doi.org/10.1016/j.cageo.2017.06.018"
+}

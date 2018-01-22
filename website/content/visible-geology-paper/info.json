@@ -1,0 +1,25 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        },
+        {
+            "kind": "author",
+            "user": "tara"
+        },
+        {
+            "kind": "author",
+            "user": "adam"
+        }
+    ],
+    "date": "2016/09/08",
+    "uid": "visible-geology-paper",
+    "title": "Visible Geology",
+    "description": "Visible Geology: Creative online tools for teaching, learning, and communicating geologic concepts",
+    "thumbnail": "/images/papers/visible-geology.png",
+    "license": "CC-BY-4.0",
+    "tags": ["paper", "visible-geology"],
+    "url_more": "https://www.researchgate.net/profile/Rowan_Cockett/publication/299323397_Visible_Geology_Creative_online_tools_for_teaching_learning_and_communicating_geologic_concepts/links/56f0c80308ae0dcdafd6b487/Visible-Geology-Creative-online-tools-for-teaching-learning-and-communicating-geologic-concepts.pdf"
+}

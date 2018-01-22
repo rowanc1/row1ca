@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": ["2006/09/01", "2010/12/01"],
+    "uid": "uofc",
+    "title": "Univ. of Calgary",
+    "description": "My presentations and courses.",
+    "thumbnail": "/images/logo/ucalgary.png",
+    "license": "CC-BY-4.0",
+    "tags": ["projects"]
+}

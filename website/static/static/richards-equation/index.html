@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Richards Equation - Rowan Cockett</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Rowan Cockett">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="reveal.min.css">
+        <link rel="stylesheet" href="custom.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="zenburn.css">
+
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script type="text/javascript"
+          src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG">
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css">
+            .lightBack{
+                background-image:url('images/light_wool.png')
+            }
+        </style>
+    </head>
+
+    <body class="lightBack">
+
+
+        <div class="reveal">
+
+            <div class="slides">
+                <section>
+                    <div><h1><br></h1></div>
+                    <div><h2><br></h2></div>
+                    <h2>Richards Equation Inversion</h2>
+                    <div>Rowan Cockett & Eldad Haber</div>
+                    <div>2013</div>
+                </section>
+                <section>
+                    <section data-background-color="rgba( 22, 152, 213, 0.6 )">
+                        <h2>Richards Equation</h2>
+                        <div>
+                            <ul>
+                                <li>Modelling water movement from the surface to the water table</li>
+                                <li>Important for modelling contamination</li><li>Extensions to multiphase flow (e.g. oil-water)</li>
+                            </ul>
+                            <div style="text-align: left;"><br></div><div style="text-align: center;"><img src="images/VadoseZone.png"><br></div>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Motivation</h2>
+                        <div><br></div>
+                        <div><img src="images/conceptualModel.png"><br></div>
+                    </section>
+                    <section>
+                        <h2>Using Geophysics to Image Flow</h2>
+                        <div><img src="images/probeInversionSetup.png" style="width: 435.4137556074637px; height: 543.555061340332px; max-height: none; max-width: none;"><br></div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Governing Equation</h2>
+                        <div><br></div>
+                        <div>
+                            $\frac{\partial \theta(\psi)}{\partial t} -
+                            \underbrace{
+                                \nabla \cdot K(\psi) \nabla \psi
+                            }_\text{Diffusion}
+                            -
+                            \underbrace{
+                            \frac{\partial K(\psi)}{\partial z}
+                            }_\text{Advection}
+                             = 0$
+                        </div>
+                        <div style="text-align: left; ">Water Content: $\theta$</div>
+                        <div style="text-align: left; ">Pressure Head: $\psi$</div>
+                        <div style="text-align: left; ">Hydraulic Conductivity: $K$</div>
+                        <div style="text-align: left; "><br></div>
+                        <div style="text-align: left; ">Complications:</div>
+                        <div style="text-align: left; ">
+                            <ul>
+                                <li>Highly nonlinear</li>
+                                <li>Stiff problem</li>
+                                <li>Often interested in longer time periods</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Formulations</h2>
+                        <div><br></div>
+                        <div style="text-align: left;">Head based:</div>
+                        <div style="font-size:20px; padding:20px">
+                            $C(\psi)\frac{\partial \psi}{\partial t} -
+                                \nabla \cdot K(\psi) \nabla \psi
+                            -
+                            \frac{\partial K(\psi)}{\partial z}
+                             = 0$
+                        </div>
+                        <div><br></div>
+                        <div style="text-align: left;">Saturation based:</div>
+                        <div style="font-size:20px; padding:20px">
+                            $\frac{\partial \theta}{\partial t} -
+                                \nabla \cdot D(\theta) \nabla \theta
+                            -
+                            \frac{\partial K(\theta)}{\partial z}
+                             = 0$
+                        </div>
+                        <div><br></div>
+                        <div style="text-align: left;">Mixed formulation:</div>
+                        <div style="font-size:20px; padding:20px">
+                            $\frac{\partial \theta(\psi)}{\partial t} -
+                                \nabla \cdot K(\psi) \nabla \psi
+                            -
+                            \frac{\partial K(\psi)}{\partial z}
+                             = 0$
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Non-Linear Relations</h2>
+                        <div><br></div>
+                        <div>Relation between water content, hydraulic conductivity, and &nbsp;pressure head can be described by empirical models:</div>
+                        <div><br></div>
+                        <div>$\theta(\psi) = \frac{\theta_s - \theta_r}{[1+(\alpha|\psi|)^n]^m} + \theta_r,$</div>
+                        <div>$K(\psi) = \frac{K_s \left\{ 1- (\alpha|\psi|)^{n-1} [1+(\alpha|\psi|)^n]^{-m} \right\}^2}{[1+(\alpha|\psi|)^n]^{m \epsilon}}$</div>
+                        <div><br></div>
+                        <div>Fitting Parameters:</div>
+                        <div>$K_s$,$\alpha$, $n$, $m$, $\epsilon$, ...</div>
+                    </section>
+                    <section>
+                        <h2>Van Genuchten</h2>
+                        <div><br></div>
+                        <div><span style="font-size: 29.779754638671875px; font-style: normal; font-variant: normal;">Empirical model (5 fitting parameters)</span><br></div>
+                        <div><img src="images/vang.eps.png" style="width: 942.7574823632633px; height: 445.55506134033203px; max-height: none; max-width: none;"><br></div>
+                    </section>
+                </section>
+                <section>
+                    <section><h2>Spatial Discretization</h2>
+                        <div><br></div>
+                        <div><img src="images/CellCenteredMesh2.png"><br></div>
+                        <div>Standard cell-centred, staggered, tensor mesh.</div>
+                    </section>
+                    <section>
+                        <h2>2D &amp; 3D</h2>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><img src="images/finiteVolume2D.png" style="width: 332.6858300129678px; height: 293.55506134033203px; max-height: none; max-width: none;"><img src="images/cube2.png" style="width: 445.67587300950817px; height: 304.55506134033203px; max-height: none; max-width: none;"><br></div>
+                        <div><br></div>
+                        <div>Using Kronecker products!!&nbsp;</div>
+                    </section>
+                </section>
+                <section>
+                    <section><h2>Time Discretization</h2>
+                        <div><br></div>
+                        <div>Fully Implicit Backward Euler</div>
+                        <div style="font-size:25px; padding:20px">$\frac{\theta(\psi^{n+1}) - \theta(\psi^{n})}{\Delta t} = \nabla \cdot K(\psi^{\color{red}{n+1}}) \nabla \psi^{\color{red}{n+1}} + \frac{\partial K(\psi^{\color{red}{n+1}})}{\partial z}$</div>
+
+                        <div><br></div>
+                        <div><br></div>
+                        <div>Newton Root Finding (or variant)</div>
+                        <div style="font-size:25px; padding:20px">$
+                            \Phi^m =
+                            \frac{\theta(\color{green}{\psi^{n+1,m}}) - \theta(\psi^n)}{\Delta t}
+                            - \nabla \cdot K(\color{green}{\psi^{n+1,m}}) \nabla \color{green}{\psi^{n+1,m}}
+                            - \frac{\partial K(\color{green}{\psi^{n+1,m}})}{\partial z}
+                            $
+                        </div>
+                        <div style="font-size:20px;">$\partial \psi = - \mathbf{J}^{-1}_{\psi^{n+1,m}} \Phi^m(\psi^{n+1,m})$</div>
+                        <div style="font-size:20px;">$\psi^{n+1,m+1} = \psi^{n+1,m} + \alpha \partial \psi$</div>
+                    </section>
+                    <section><h2>Time Stepping Schemes</h2>
+                        <div><br></div>
+                        <div>Explicit:</div>
+                        <div style="font-size:20px; padding:20px">$C(\psi^{\color{red}{n}})\frac{\psi^{n+1} - \psi^{n}}{\Delta t} = \nabla \cdot K(\psi^{\color{red}{n}}) \nabla \psi^{\color{red}{n}} + \frac{\partial K(\psi^{\color{red}{n}})}{\partial z}$</div>
+                        <div>Semi-Implicit:</div>
+                        <div style="font-size:20px; padding:20px">$C(\psi^{\color{red}{n}})\frac{\psi^{n+1} - \psi^{n}}{\Delta t} = \nabla \cdot K(\psi^{\color{red}{n}}) \nabla \psi^{\color{red}{n+1}} + \frac{\partial K(\psi^{\color{red}{n}})}{\partial z}$</div>
+                        <div>Fully-Implicit (Chain-Rule):</div>
+                        <div style="font-size:20px; padding:20px">$C(\psi^{\color{red}{n+1}})\frac{\psi^{n+1} - \psi^{n}}{\Delta t} = \nabla \cdot K(\psi^{\color{red}{n+1}}) \nabla \psi^{\color{red}{n+1}} + \frac{\partial K(\psi^{\color{red}{n+1}})}{\partial z}$</div>
+                        <div>Fully Implicit:</div>
+                        <div style="font-size:20px; padding:20px">$\frac{\theta(\psi^{n+1}) - \theta(\psi^{n})}{\Delta t} = \nabla \cdot K(\psi^{\color{red}{n+1}}) \nabla \psi^{\color{red}{n+1}} + \frac{\partial K(\psi^{\color{red}{n+1}})}{\partial z}$</div>
+                    </section>
+                    <section>
+                        <h2>Newton Root Finding</h2>
+                        <div><br></div>
+                        <div style="font-size:20px; ">To find $\psi^{n+1}$ use an inner iteration $m=0,1,2,...$
+                            <br>
+                            Start by using: $\psi^{n+1,0} \leftarrow \psi^n$
+                        </div>
+                        <div style="font-size:30px; padding:20px">$
+                            \Phi^m =
+                            \frac{\theta(\color{green}{\psi^{n+1,m}}) - \theta(\psi^n)}{\Delta t}
+                            - \nabla \cdot K(\color{green}{\psi^{n+1,m}}) \nabla \color{green}{\psi^{n+1,m}}
+                            - \frac{\partial K(\color{green}{\psi^{n+1,m}})}{\partial z}
+                            $
+                        </div>
+                        <div style="font-size:20px;">$J = \frac{\partial \Phi^m}{\partial \color{green}{\psi^{n+1,m}}}$</div>
+                        <div style="font-size:20px;">$\Phi^m(\psi+\partial \psi) = \Phi^m(\psi) + J \partial \psi +O(h^2)$</div>
+
+                        <div style="font-size:20px; ">Linearize, set to 0, find update $\partial \psi$</div>
+
+                        <div style="font-size:20px;">$\partial \psi = - J^{-1} \Phi^m(\psi)$</div>
+                        <div style="font-size:20px;">$\psi^{n+1,m+1} = \psi^{n+1,m} + \alpha \partial \psi$</div>
+
+                        <div style="font-size:20px; ">Choose $\alpha$ to ensure sufficient decrease in $\Phi$</div>
+
+                        <div style="font-size:20px; ">Iterate until $\Phi^{m+1} \approx 0$</div>
+                    </section>
+                    <section><h2>Comparison to Literature</h2>
+                        <div><br></div>
+                        <div><img src="images/comparison2.png" style="width: 735.3241093470039px; height: 502.55506134033203px; max-height: none; max-width: none;"><br></div>
+                    </section>
+                </section>
+                <section>
+                    <h2>2D Infiltration Experiment</h2>
+                    <img src="images/2D_ExpSetup1.png" style="width:600px;max-height:600px;margin:0 -300px;position:absolute;top:100%;left:50%">
+                    <img src="images/2D_ExpSetup2.png" style="width:600px;max-height:600px;margin:0 -300px;position:absolute;top:100%;left:50%" class="fragment">
+                    <img src="images/2D_ExpSetup3.png" style="width:600px;max-height:600px;margin:0 -300px;position:absolute;top:100%;left:50%" class="fragment">
+
+                    <video controls style="width:600px;max-height:600px;margin:0 -300px;position:absolute;top:100%;left:50%" class="fragment">
+                      <source src="images/richards.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                </section>
+                <section>
+                    <section>
+                        <h3>Saturated Hydraulic Conductivity</h3>
+                        <div><br></div>
+                        <div><b>Motivation:</b></div>
+                        <div>
+                            <ul>
+                                <li>$K_s$ is a property of interest for hydrogeologists</li>
+                                <li>Standard tests only yield bulk-averages</li>
+                                <li>Want more spatial information about $K_s$!!</li>
+                            </ul>
+                            <div><br></div>
+                        </div>
+                        <div><b>Game Plan:</b></div>
+                        <div>
+                            <ul>
+                                <li>Collect saturation data over an infiltration experiment</li>
+                                <li>Time-lapse changes in saturation related to soil properties</li>
+                                <li>Perform a time-lapse inversion for $K_s$</li>
+                            </ul>
+                        </div>
+                        <div><br></div>
+                        <h2 class="fragment">Time Lapse Inversion!!</h2>
+                    </section>
+                    <section><h2>State of the Science</h2>
+                        <div><br></div>
+                        <div>Hydraulic Conductivity Inversions</div>
+                        <div><br></div>
+                        <div>
+                            <ul>
+                                <li>Common problem</li>
+                                <li>Use numerical differentiation</li>
+                                <li>Use full space searches for parameters</li>
+                                <li>Brute-force Techniques</li>
+                            </ul>
+                            <div><br></div>
+                        </div>
+                        <div><br></div>
+                        <div><b>Limits scalability!</b></div>
+                        <div><br></div>
+                        <div><b>Want something that works on large-scale problems!</b></div>
+                    </section>
+                </section>
+                <section>
+                    <section><h2>Objective Function</h2>
+                        <div><br></div>
+                        <div style="font-size:20px; ">The pressure head is calculated at all locations and times through the nonlinear function $\mathbf{A(m)}$.</div>
+                        <div style="font-size:15px; ">$\mathbf{d(m)}=\mathbf{Q} \mathbf{A(m)}$</div>
+                        <div><br></div>
+                        <div style="font-size:28px; ">$\Phi ( \mathbf{m} ) =  \frac{1}{2}\left\|\mathbf{W}(\mathbf{d(m)- d_{obs}})\right\|^2_2+ \frac { \beta  }{ 2 } { \left\| \bf G_w(\bf m-{ \bf m }_{ ref }) \right\|  }^2_2$</div>
+                        <div><br></div>
+                        <div style="font-size:15px; ">$\nabla \Phi ( \mathbf{m} ) =  \bf J^\top W^\top W(d(m) - d_{obs})+\beta G_w^\top G_w(m-m_{ref})=\bf g$</div>
+                        <div style="font-size:15px; ">$\nabla^2 \Phi ( \mathbf{m} ) \approx  \bf J^\top  W^\top W\bf J+\beta G_w^\top G_w=\bf H$</div>
+                        <div><br></div>
+                        <div>Optimize using Inexact Gauss-Newton</div>
+                        <div><br></div>
+                        <div>Requires derivatives in both space and time!</div>
+                    </section>
+                    <section>
+                        <h2>Inexact Gauss-Newton</h2>
+                        <div><br></div>
+                        <div>Approximately solve for a search direction:</div>
+                        <div><br></div>
+                        <div>$\mathbf{H}\partial \mathbf{m} = - \mathbf{g}$</div>
+                        <div><br></div>
+                        <div>Backtracking linesearch:</div>
+                        <div><br></div>
+                        <div>$\mathbf{m}_{i+1} = \mathbf{m}_i + \alpha\partial \mathbf{m}$</div>
+                        <div><span><br></span></div>
+                        <div>Continue until $\mathbf{g}$ or $\alpha\partial\mathbf{m}$ is small</span></div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Derivative</h2>
+                        <div style="font-size:20px; ">Richards equation is a function of $m$ at every time-step</div>
+                        <div style="font-size:20px; ">
+                            \(
+                               \def\n{^n}
+                               \def\nn{^{n+1}}
+                               \def\deriv#1#2{\frac{\partial #1}{\partial #2}}
+                               \def\DIV{\nabla \cdot}
+                               \def\GRAD{\nabla}
+                               \def\diag#1{\text{diag}\left(#1\right)}
+                            \)
+                            $
+                            F(\psi\n,\psi\nn,m) =
+                            \frac{\theta\nn(\psi\nn) - \theta^n(\psi\n)}{\Delta t}
+                            -
+                            \nabla \cdot K(\psi\nn,m)\nabla \psi\nn
+                            -
+                            \frac{\partial }{\partial z} K(\psi\nn,m)
+                            = 0
+                            $
+                        </div>
+                        <div><br></div>
+                        <div style="font-size:20px; ">Take the devivative, $\deriv{F(\psi\n,\psi\nn,m)}{m}$</div>
+                        <div><br></div>
+                        <div style="font-size:20px; ">$
+                            \begin{align*}
+                            \frac{1}{\Delta t}
+                            \left(
+                            \deriv{\theta\nn}{\psi\nn}\deriv{\psi\nn}{m}
+                            -
+                            \deriv{\theta\n}{\psi\n}\deriv{\psi\n}{m}
+                            \right)
+                            -
+                            \DIV \diag{\GRAD \psi\nn}
+                            \left(
+                            \deriv{K}{m} + \deriv{K}{\psi\nn}\deriv{\psi\nn}{m}
+                            \right)
+                            \nonumber\\
+                            -
+                            \DIV K(\psi\nn) \GRAD \deriv{\psi\nn}{m}
+                            -
+                            \deriv{}{z}
+                            \left(
+                            \deriv{K}{m} + \deriv{K}{\psi\nn}\deriv{\psi\nn}{m}
+                            \right)
+                            =0
+                            \end{align*}
+                            $
+                        </div>
+                        <div><br></div>
+                        <div style="font-size:25px; ">Can be written in block matrix form:</div>
+                        <div style="font-size:25px; ">
+                            $\mathbf{J}_m = \mathbf{Q} \mathbf{A}(\Psi,m)^{-1} \mathbf{B}(\Psi,m)$
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Block Matrix Form</h3>
+                        <div><br></div>
+                        <div style="font-size:18px; ">
+                            $
+                            \begin{align*}
+                            \overbrace{
+                            \left[
+                            -\frac{1}{\Delta t} \deriv{\theta\n}{\psi\n}
+                            \right]
+                            }^{\mathbf{A}_{-1}(\psi\n)}
+                            \deriv{\psi\n}{m}
+                            +
+                            &
+                            \overbrace{
+                            \left[
+                            \frac{1}{\Delta t} \deriv{\theta\n}{\psi\nn}
+                            -\DIV \diag{\GRAD \psi\nn}\deriv{K}{\psi\nn}
+                            -\DIV K(\psi\nn) \GRAD
+                            -\deriv{}{z}\deriv{K}{\psi\nn}
+                            \right]
+                            }^{\mathbf{A}_0(\psi\nn)}
+                            \deriv{\psi\nn}{m}
+                            \nonumber\\
+                            =
+                            &
+                            \underbrace{
+                            \DIV \diag{\GRAD \psi\nn}\deriv{K}{m}
+                            +\deriv{}{z}\deriv{K}{m}
+                            }_{\mathbf{b}(\psi\nn,m)}
+                            \end{align*}
+                            $
+                        </div>
+                        <div style="font-size:18px; ">
+                            $
+                            \overbrace{
+                            \left[
+                            \begin{array}{cccccc}
+                            \mathbf{A}_0(\psi_1)&&&\\
+                            \mathbf{A}_{-1}(\psi_1)&\mathbf{A}_0(\psi_2)&&\\
+                            &\mathbf{A}_{-1}(\psi_2)&\mathbf{A}_0(\psi_3)&\\
+                            &&\ddots&\ddots&&\\
+                            &&&\mathbf{A}_{-1}(\psi_{n-1})&\mathbf{A}_0(\psi_n)\\
+                            \end{array}
+                            \right]
+                            }^{\mathbf{A}(\Psi,m)}
+                            \overbrace{
+                            \left[
+                            \begin{array}{c}
+                            \deriv{\psi_1}{m}\\
+                            \deriv{\psi_2}{m}\\
+                            \vdots\\
+                            \deriv{\psi_{n-1}}{m}\\
+                            \deriv{\psi_n}{m}\\
+                            \end{array}
+                            \right]
+                            }^{\deriv{\Psi}{m}}
+                            =
+                            \overbrace{
+                            \left[
+                            \begin{array}{c}
+                            \mathbf{b}(\psi_1,m)\\
+                            \mathbf{b}(\psi_2,m)\\
+                            \vdots\\
+                            \mathbf{b}(\psi_{n-1},m)\\
+                            \mathbf{b}(\psi_n,m)\\
+                            \end{array}
+                            \right]
+                            }^{\mathbf{B}(\Psi,m)}
+                            $
+                        </div>
+                        <div><br></div>
+                        <div style="font-size:25px; ">
+                            $\mathbf{J}_m = \mathbf{Q} \mathbf{A}(\Psi,m)^{-1} \mathbf{B}(\Psi,m)$
+                        </div>
+
+                    </section>
+                </section>
+                <section>
+                    <section>
+                    <h2>Solving Efficiently</h2>
+                    <div style="font-size:30px; text-align:left;">$\mathbf{J}_m$ is big and the solve will be slow!</div>
+                    <div><br></div>
+                    <div style="font-size:25px; ">
+                        $\mathbf{J}_m = \mathbf{Q} \mathbf{A}(\Psi,m)^{-1} \mathbf{B}(\Psi,m)$
+                    </div>
+                    <div><br></div>
+                    <div style="font-size:25px; text-align:left;">Do not create $\mathbf{J}_m$, instead create and solve on the fly:</div>
+                    <div><br></div>
+                    <div style="font-size:25px; ">
+                        <ul>
+                            <li> $
+                                \mathbf{J}_m \mathbf{v} = \mathbf{Q} (\mathbf{A}(\Psi,m) \backslash (\mathbf{B}(\Psi,m) \mathbf{v}))$
+                                : Block-forward solve
+                            </li>
+
+                            <li>$
+                                \mathbf{J}_m^\top \mathbf{z} = \mathbf{B}(\Psi,m)^\top(\mathbf{A}(\Psi,m)^\top \backslash (\mathbf{Q}^\top \mathbf{z}))
+                                $: Block-backwards solve
+                            </li>
+                        </ul>
+                    </div>
+                    </section>
+                    <section>
+                    <h2>Other Details</h2>
+                    <div  style="font-size:25px; ">
+                        <ul>
+                            <li> Blocks of $\mathbf{A}$ and $\mathbf{B}$ can be formed on the fly</li>
+                            <li> Block solve can be done using iterative methods</li>
+                            <li> Minimize $log(K_s)$, because $K_s$ varies over many orders of magnitude</li>
+                            <li> Scale back the raw step size to a maximum change</li>
+                            <li> Boundary conditions, needed in derivatives!</li>
+                        </ul>
+                    </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>It Works!</h2>
+                        <div><img src="images/data.png" style="width: 801.6729827027218px; height: 254.55506134033203px; max-height: none; max-width: none;"><br></div>
+                        <div><img src="images/true_vs_recov2D.png" style="width: 944.8824603655796px; height: 245.55506134033203px; max-height: none; max-width: none;"><br></div>
+                    </section>
+                    <section>
+                        <h2>Conceptual Model</h2>
+                        <div><img src="images/InfiltrationExperiment.png" style="width: 400px; "><br></div>
+                    </section>
+                </section>
+                <section>
+                    <h2>Take Home Points</h2>
+                    <h1><br></h1>
+                    <div>
+                        <ul>
+                            <li>Method for <b>large-scale</b> estimation of $K_s$</li>
+                            <li><b>Exact</b> derivatives of discrete problem</li>
+                            <li>Do <b>not explicitly</b> form sensitivity</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <h1><br></h1>
+                    <h1><br></h1>
+                    <h1>Thank you!</h1>
+                </section>
+            </div>
+
+        </div>
+
+        <div style="font-size:60%;position:absolute;top:5px;right:5px;color:#333;font-family: Helvetica,'News Cycle', Impact, sans-serif;line-height: 1.1em;letter-spacing: 0.02em;">
+            Hydraulic Conductivity Inversion - Rowan Cockett & Eldad Haber
+        </div>
+
+        <script src="head.min.js"></script>
+        <script src="reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: false,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: []
+            });
+
+        </script>
+
+    </body>
+</html>

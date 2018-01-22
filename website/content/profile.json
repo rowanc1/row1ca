@@ -5,14 +5,14 @@
         "title": "Profile",
         "description": "Rowan Cockett's website.",
         "license": "CC-BY-4.0",
-        "query_type": "uid",
+        "query_type": ["uid"],
         "query_uids": [
             "logo",
             "featured-thoughts",
             "featured-projects",
-            "featured-about",
             "featured-presentations",
-            "featured-papers"
+            "featured-papers",
+            "featured-about"
         ]
     },
     {
@@ -22,11 +22,11 @@
         "description": "featured-thoughts",
         "url_more": "/thoughts",
         "license": "CC-BY-4.0",
-        "query_type": "uid",
+        "query_type": ["uid"],
         "query_uids": [
-            "exploring-julia-with-simpeg",
-            "pixels-and-their-neighbors",
-            "probability-of-a-spill"
+            "on-breakthroughs",
+            "probability-of-a-spill",
+            "pixels-and-their-neighbors"
         ]
     },
     {
@@ -36,15 +36,11 @@
         "description": "featured-projects",
         "url_more": "/projects",
         "license": "CC-BY-4.0",
-        "query_type": "uid",
+        "query_type": ["uid"],
         "query_uids": [
-            "visible-geology",
+            "phd",
             "simpeg",
-            "3point",
-            "stereonet",
-            "steno3d",
-            "geosci",
-            "bricks"
+            "visible-geology"
         ]
     },
     {
@@ -52,12 +48,11 @@
         "uid": "featured-about",
         "title": "about",
         "description": "featured-about",
-        "url_more": "/story",
         "license": "CC-BY-4.0",
-        "query_type": "uid",
+        "query_type": ["uid"],
         "query_uids": [
             "story",
-            "awards"
+            "curriculum-vitae"
         ]
     },
     {
@@ -67,11 +62,11 @@
         "description": "featured-presentations",
         "url_more": "/presentations",
         "license": "CC-BY-4.0",
-        "query_type": "uid",
+        "query_type": ["uid"],
         "query_uids": [
             "jupytercon2017",
             "scipy2016",
-            "phd-overview"
+            "phd-defence"
         ]
     },
     {
@@ -80,7 +75,7 @@
         "title": "presentations",
         "description": "A list of my presentations",
         "license": "CC-BY-4.0",
-        "query_type": "tags",
+        "query_type": ["tags"],
         "query_tags": ["presentations"]
     },
     {
@@ -90,23 +85,67 @@
         "description": "featured-papers",
         "url_more": "/papers",
         "license": "CC-BY-4.0",
-        "query_type": "uid",
+        "query_type": ["uid"],
         "query_uids": [
-            "simpeg-paper",
-            "simpeg-em-paper",
-            "richards-paper"
+            "richards-paper",
+            "visible-geology-paper",
+            "simpeg-paper"
         ]
     },
     {
-        "__class__": "Collection",
-        "uid": "awards",
-        "title": "Awards",
-        "description": "Rowan Cockett's website.",
+        "__class__": "CollectionCards",
+        "uid": "papers",
+        "title": "papers",
+        "description": "A list of my papers",
         "license": "CC-BY-4.0",
-        "query_type": "uid",
+        "query_type": ["tags"],
+        "query_tags": ["paper"]
+    },
+    {
+        "__class__": "Collection",
+        "uid": "curriculum-vitae",
+        "title": "Curriculum Vitae",
+        "description": "Rowan Cockett's Curriculum Vitae",
+        "license": "CC-BY-4.0",
+        "query_type": ["uid"],
+        "thumbnail": "/images/rowan/requesting-to-join.png",
         "query_uids": [
+            "cv-intro",
+            "collection-education",
+            "hr",
+            "collection-experience",
+            "hr",
             "collection-awards"
         ]
+    },
+    {
+        "__class__": "CollectionItems",
+        "title": "Awards",
+        "description": "Collection of awards",
+        "license": "CC-BY-4.0",
+        "query_type": ["kind"],
+        "query_kind": "CvAward",
+        "uid": "collection-awards"
+    },
+    {
+        "__class__": "CollectionItems",
+        "title": "Education",
+        "description": "My education",
+        "license": "CC-BY-4.0",
+        "query_type": ["kind", "tags"],
+        "query_kind": "CvItem",
+        "query_tags": ["education"],
+        "uid": "collection-education"
+    },
+    {
+        "__class__": "CollectionItems",
+        "title": "Experience",
+        "description": "Collection of experience",
+        "license": "CC-BY-4.0",
+        "query_type": ["kind", "tags"],
+        "query_kind": "CvItem",
+        "query_tags": ["experience"],
+        "uid": "collection-experience"
     },
     {
         "__class__": "CollectionCards",
@@ -114,7 +153,7 @@
         "title": "projects",
         "description": "Projects",
         "license": "CC-BY-4.0",
-        "query_type": "tags",
+        "query_type": ["tags"],
         "query_tags": ["projects"]
     },
     {
@@ -123,7 +162,7 @@
         "title": "thoughts",
         "description": "A blog of sorts",
         "license": "CC-BY-4.0",
-        "query_type": "tags",
+        "query_type": ["tags"],
         "query_tags": ["thoughts"]
     }
 ]

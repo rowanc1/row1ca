@@ -5586,7 +5586,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
       }
       :host img{
-        margin: 15px;
+        margin: 15px 15px 0px 15px;
         width: calc(100% - 30px);
         max-width: 800px;
       }
@@ -5594,7 +5594,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: #aaa;
         font-family: 'Roboto', sans-serif;
         text-align: center;
-        margin: 10px;
+        margin: 0px 10px 10px 10px;
         font-size: 0.9em;
       }
       :host .caption .label{
@@ -6268,6 +6268,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   p {
     text-align: justify;
   }
+  emph {
+    font-style: italic;
+  }
 </style>
 
 <dom-module id="ink-article">
@@ -6308,10 +6311,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           margin-left: -18px;
         }
       }
+      @media screen and (max-width: 1000px) {
+        #outline{
+          display: none;
+        }
+      }
     </style>
     <div class="content">
       <slot></slot>
       <ink-bibliography id="bibliography"></ink-bibliography>
+      <ink-outline id="outline"></ink-outline>
     </div>
 
   </template>
@@ -6328,6 +6337,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this._observer = new Polymer.FlattenedNodesObserver(this, (info) => {
           this.$.bibliography.parseBibtex();
           this.renderCitations();
+          this.renderOutline();
         });
       }
       renderCitations() {
@@ -6336,9 +6346,117 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           this.$.bibliography.processCitation(citations[i]);
         };
       }
+      renderOutline() {
+        var headers = this.querySelectorAll('H1, H2, H3, H4, H5, H6, H2-MORE');
+        if(headers.length < 3){
+          // No need for an outline!
+          this.$.outline.headers = [];
+          return;
+        }
+        var data = [];
+        for (var i = 0; i < headers.length; i++) {
+          var id = headers[i].tagName.toLowerCase() + '--' + headers[i].textContent.toLowerCase().replace(/ /g, '-').replace(/\W-/g, '');
+          headers[i].id = id;
+          data.push({
+            id: id,
+            level: parseInt(headers[i].tagName[1])-1,
+            title: headers[i].textContent,
+          });
+        };
+        this.$.outline.headers = data;
+      }
     }
 
     window.customElements.define(InkArticle.is, InkArticle);
+  </script>
+</dom-module>
+<dom-module id="ink-outline">
+  <template>
+    <style>
+      #outline{
+        position: fixed;
+        top:50vh;
+        left:0;
+        width: 30px;
+        z-index: 100;
+        transform: translateY(-50%);
+        overflow: hidden;
+        transition: all 200ms;
+      }
+      .header{
+        position: relative;
+      }
+      .text{
+        font-size: 12px;
+        line-height: 2em;
+        width: 150px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        opacity: 0;
+        transition: all 200ms;
+        transition-timing-function: cubic-bezier(0, 0.58, 0.55, 1.36);
+      }
+      .tick{
+        position: absolute;
+        left: 0px;
+        top: 9px;
+        border-bottom: 1px solid #AAA;
+        height: 1px;
+        transition: all 200ms;
+      }
+      .header:hover .tick{
+        border-bottom: 2px solid #F49B32;
+      }
+      .header:first-of-type{
+        text-decoration: underline;
+        font-size: 13px;
+      }
+      .header:hover{
+        color: #F49B32;
+        cursor: pointer;
+      }
+      #outline:hover{
+        width: 200px;
+        background: linear-gradient(to right, white, transparent);
+      }
+      #outline:hover .text{
+        opacity: 1;
+        margin-left: -23px;
+      }
+      #outline:hover .tick{
+        left: -30px;
+      }
+    </style>
+    <div id="outline">
+      <template is="dom-repeat" items="[[ headers ]]" as="header">
+          <div class="header" on-click="handleClick" style="
+                      padding-left:calc(28px + {{ header.level }}px*5);
+                      font-weight: calc(700 - {{ header.level }}*100);
+               " title="{{ header.title }}">
+            <div class="tick" style="width:calc(25px - {{ header.level }}px*5);">&nbsp;</div>
+            <div class="text">{{ header.title }}</div>
+          </div>
+        </template>
+    </div>
+  </template>
+
+  <script>
+    class InkOutline extends Polymer.Element {
+      static get is() { return 'ink-outline'; }
+      static get properties(){
+        return {
+          headers:{
+            type: Object,
+            value: []
+          }
+        };
+      }
+      handleClick(e){
+        document.getElementById(e.model.header.id).scrollIntoView({behavior:'smooth', block: "start", inline: "nearest"});
+      }
+    }
+    window.customElements.define(InkOutline.is, InkOutline);
   </script>
 </dom-module>
 <dom-module id="ink-aside">
@@ -6542,8 +6660,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="ink-cite">
   <template>
     <style>
+      .etal{
+        font-style: italic;
+      }
     </style>
-    <span>([[ citation(key, item) ]])</span></template>
+    <span>([[ people(key, item) ]]<span class="etal">[[ etal ]]</span>, [[ year ]])</span></template>
   <script>
     class InkCite extends Polymer.Element {
       static get is() { return 'ink-cite'; }
@@ -6554,10 +6675,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           },
           item: {
             type: Object
+          },
+          etal: {
+            type: String
+          },
+          year: {
+            type: Number
           }
         };
       }
-      citation(key, item){
+      people(key, item){
         if(!item){return key;}
         var names = item.entryTags.author.split(" and ");
         var name_strings = names.map(name => {
@@ -6569,13 +6696,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           }
           return last;
         });
+        this.etal = '';
         if (names.length > 2) {
-          return name_strings[0] + ' et al., ' + item.entryTags.year;
+          this.etal = ' et al.';
+          this.year = item.entryTags.year;
+          return name_strings[0];
         }
         if (names.length == 2) {
-          return name_strings[0] + ' and ' + name_strings[1] + ', ' + item.entryTags.year;
+          this.year = item.entryTags.year;
+          return name_strings[0] + ' and ' + name_strings[1];
         }
-        return name_strings[0] + ', ' + item.entryTags.year;
+        this.year = item.entryTags.year;
+        return name_strings[0];
       }
     }
     window.customElements.define(InkCite.is, InkCite);
@@ -8470,7 +8602,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
     <div id="container">
-      <ink-h2-more url="[[ url ]]">[[ header ]]</ink-h2-more>
+      <h2-more url="[[ url ]]">[[ header ]]</h2-more>
       <div id="cards">
         <template is="dom-repeat" items="[[ cards ]]" as="card">
           <ink-card title$="[[ card.title ]]" description="[[ card.description ]]" image="[[ card.image ]]" url="[[ card.url ]]" date="[[ card.date ]]"></ink-card>
@@ -8505,7 +8637,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     window.customElements.define(InkCards.is, InkCards);
   </script>
 </dom-module>
-<dom-module id="ink-cv-award">
+<dom-module id="cv-award">
   <template>
     <style>
       h3{
@@ -8541,8 +8673,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    class InkCvAward extends Polymer.Element {
-      static get is() { return 'ink-cv-award'; }
+    class CvAward extends Polymer.Element {
+      static get is() { return 'cv-award'; }
       static get properties() {
         return {
           title: {type: String},
@@ -8569,10 +8701,63 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
       has_url() {return this.url.length > 0;}
     }
-    window.customElements.define(InkCvAward.is, InkCvAward);
+    window.customElements.define(CvAward.is, CvAward);
   </script>
 </dom-module>
-<dom-module id="ink-h2-more">
+<dom-module id="cv-item">
+  <template>
+    <style>
+      h3{
+        margin: 5px 0;
+        font-size: 18px;
+      }
+      #date{
+        float: right;
+        font-size: 13px;
+        margin-top: 8px;
+      }
+      p{
+        color: #333;
+        font-size: 12px;
+        margin: 0;
+        text-align: justify;
+      }
+      a{
+        color: #1E88E5;
+        text-decoration: none;
+      }
+      a:hover{
+        text-decoration: underline;
+      }
+    </style>
+    <span id="date">[[ date ]]</span>
+    <h3>[[ title ]]</h3>
+    <p>
+      [[ description ]]
+      <a hidden$="[[ !has_url(url) ]]" href="[[ url ]]">(See More)</a>
+    </p>
+    <p>
+      <slot></slot>
+    </p>
+  </template>
+
+  <script>
+    class CvItem extends Polymer.Element {
+      static get is() { return 'cv-item'; }
+      static get properties() {
+        return {
+          title: {type: String},
+          description: {type: String},
+          date: {type: String},
+          url:{type: String, value: ''},
+        };
+      }
+      has_url() {return this.url.length > 0;}
+    }
+    window.customElements.define(CvItem.is, CvItem);
+  </script>
+</dom-module>
+<dom-module id="h2-more">
   <template>
     <style>
       div{
@@ -8608,8 +8793,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    class InkH2More extends Polymer.Element {
-      static get is() { return 'ink-h2-more'; }
+    class H2More extends Polymer.Element {
+      static get is() { return 'h2-more'; }
       static get properties(){
         return {
           url:{
@@ -8620,7 +8805,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
       has_url() {return this.url.length > 0;}
     }
-    window.customElements.define(InkH2More.is, InkH2More);
+    window.customElements.define(H2More.is, H2More);
   </script>
 </dom-module>
 </div>

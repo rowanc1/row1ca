@@ -26,7 +26,8 @@
         "paper",
         "tutorial",
         "python",
-        "simpeg"
+        "simpeg",
+        "thoughts"
     ],
     "title": "Pixels and their neighbors: Finite volume",
     "uid": "pixels-and-their-neighbors"

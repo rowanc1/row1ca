@@ -1,0 +1,33 @@
+[
+    {
+        "__class__": "CvItem",
+        "uid": "cv-education-ubc",
+        "title": "University of British Columbia",
+        "description": "PhD in Geophysics",
+        "date": ["2012/01/01", "2017/12/04"],
+        "duties": [
+            "Supervisor: Dr. Eldad Haber",
+            "Thesis: \"A framework for geophysical inversions with application to vadose zone parameter estimation\"",
+            "Awarded Gilles Brassard Doctoral Prize for Interdisciplinary Research",
+            "Vanier Scholar",
+            "Killam Laureate",
+            "Topics: Geophysical Inversion, Fluid Flow, Optimization, Multi-Physics Simulations"
+        ],
+        "url_more": "/phd",
+        "tags": ["education"]
+    },
+    {
+        "__class__": "CvItem",
+        "uid": "cv-education-uofc",
+        "title": "University of Calgary",
+        "description": "Bachelor of Science (Honours) in Applied and Environmental Geology, First Class",
+        "date": ["2006/09/01", "2010/12/15"],
+        "duties": [
+            "Supervisor: Dr. Adam Pidlisecky",
+            "Thesis: \"Two approaches to improving the utility of electrical conductivity in time varying porous media\"",
+            "Awarded \"Best Undergraduate Thesis\" in the Geoscience Department"
+        ],
+        "url_more": "/uofc",
+        "tags": ["education"]
+    }
+]

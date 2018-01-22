@@ -1,0 +1,208 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Finite Volume Cube</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!--  CSS  -->
+  <link rel="stylesheet" href="build/VG.css">
+  <style type="text/css">
+  #ijk{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+  }
+
+  #toolTip{
+    position:absolute;
+    margin: 25px;
+    border: 1px solid black;
+    font-size: 30px;
+    line-height:35px;
+    font-family: Helvetica, sans-serif;
+    background-color: rgba(255,255,255,0.8);
+    box-shadow: 5px 5px 4px rgba(100,100,100,0.3);
+    padding: 20px;
+    border-radius: 3px;
+  }
+  </style>
+  <!--end CSS-->
+
+</head>
+
+<body style="overflow:hidden">
+
+  <div id="ijk"></div>
+  <div id="container">
+    <div id="main">
+
+    </div>
+  </div>
+
+  <div id="toolTip" style="display:none;"></div>
+  <div style="position:absolute;bottom:2px;left:5px;z-index:10;"><a href="http://app.visiblegeology.com" target="_blank"><img src="http://visiblegeology.com/logo.gif" height="40px" border="0"></a></div>
+
+
+  <script src="build/VG.js"></script>
+  <script>
+  var context,contextIJK;
+
+
+  var cbSz = 15;
+  var fluxSize = cbSz/4;
+  var arrowSize = 0.5;
+  var colors = [0x000000,0xff0000,0x00ff00,0x0000ff];
+
+  function indexString(v){
+    var fmt = new VG.NumberFormat('+0.0');
+    var i = 'i' + ((v.z === 0)? '' : fmt.format( - v.z/cbSz/2));
+    var j = 'j' + ((v.x === 0)? '' : fmt.format(   v.x/cbSz/2));
+    var k = 'k' + ((v.y === 0)? '' : fmt.format(   v.y/cbSz/2));
+    return i + ', ' + j + ', ' + k;
+  };
+
+  function addFlux(v1,v2,c){
+    var geo = VG.Geometries.Arrow(v1,v2,arrowSize);
+    var mat = new THREE.MeshBasicMaterial( { color: colors[c] } );
+    var mesh = new THREE.Mesh( geo , mat );
+    mesh.name = 'Flux: ' + indexString(v1);
+    context.addObject(mesh, false);
+  };
+
+  function addLine(v1,v2){
+    var geo = VG.Geometries.Arrow(v1,v2,arrowSize/1.5);
+    var mat = new THREE.MeshBasicMaterial( { color: colors[0] } );
+    var mesh = new THREE.Mesh( geo , mat );
+    mesh.name = 'Edge: ' + indexString(v1.clone().addSelf(v2).multiplyScalar(0.5));
+    context.addObject(mesh, false);
+  };
+
+  function addNode(x,y,z){
+    var geo = new THREE.SphereGeometry(2);
+    var mat = new THREE.MeshBasicMaterial( { color: colors[0] } );
+    var mesh = new THREE.Mesh( geo , mat );
+    mesh.position.set(x,y,z);
+    mesh.name = 'Node: ' + indexString(mesh.position);
+    context.addObject(mesh, false);
+  }
+
+  $(document).ready(function() {
+    Detector.webgl = false;
+    context = new VG.ThreePanel();
+    contextIJK = new VG.ThreePanel(150,150);
+
+
+    // Nodes
+    addNode(0,0,0);
+    addNode(-cbSz,-cbSz,-cbSz);
+    addNode(+cbSz,-cbSz,-cbSz);
+    addNode(-cbSz,+cbSz,-cbSz);
+    addNode(-cbSz,-cbSz,+cbSz);
+    addNode(+cbSz,+cbSz,-cbSz);
+    addNode(+cbSz,-cbSz,+cbSz);
+    addNode(-cbSz,+cbSz,+cbSz);
+    addNode(+cbSz,+cbSz,+cbSz);
+
+    //Fluxs
+    addFlux(new VG.Vector(+cbSz,0,0),new VG.Vector(+cbSz+fluxSize,0,0), 1 );
+    addFlux(new VG.Vector(-cbSz,0,0),new VG.Vector(-cbSz+fluxSize,0,0), 1 );
+    addFlux(new VG.Vector(0,+cbSz,0),new VG.Vector(0,+cbSz+fluxSize,0), 2 );
+    addFlux(new VG.Vector(0,-cbSz,0),new VG.Vector(0,-cbSz+fluxSize,0), 2 );
+    addFlux(new VG.Vector(0,0,+cbSz),new VG.Vector(0,0,+cbSz-fluxSize), 3 );
+    addFlux(new VG.Vector(0,0,-cbSz),new VG.Vector(0,0,-cbSz-fluxSize), 3 );
+
+    //Lines
+    fct = 0.8;
+    //Top
+    addLine(new VG.Vector(-cbSz,-cbSz*fct,+cbSz),new VG.Vector(-cbSz,+cbSz*fct,+cbSz));
+    addLine(new VG.Vector(+cbSz,-cbSz*fct,+cbSz),new VG.Vector(+cbSz,+cbSz*fct,+cbSz));
+    addLine(new VG.Vector(-cbSz*fct,+cbSz,+cbSz),new VG.Vector(+cbSz*fct,+cbSz,+cbSz));
+    addLine(new VG.Vector(-cbSz*fct,-cbSz,+cbSz),new VG.Vector(+cbSz*fct,-cbSz,+cbSz));
+    //Bottom
+    addLine(new VG.Vector(-cbSz,-cbSz*fct,-cbSz),new VG.Vector(-cbSz,+cbSz*fct,-cbSz));
+    addLine(new VG.Vector(+cbSz,-cbSz*fct,-cbSz),new VG.Vector(+cbSz,+cbSz*fct,-cbSz));
+    addLine(new VG.Vector(-cbSz*fct,+cbSz,-cbSz),new VG.Vector(+cbSz*fct,+cbSz,-cbSz));
+    addLine(new VG.Vector(-cbSz*fct,-cbSz,-cbSz),new VG.Vector(+cbSz*fct,-cbSz,-cbSz));
+    //Corners
+    addLine(new VG.Vector(-cbSz,-cbSz,+cbSz*fct),new VG.Vector(-cbSz,-cbSz,-cbSz*fct));
+    addLine(new VG.Vector(+cbSz,-cbSz,+cbSz*fct),new VG.Vector(+cbSz,-cbSz,-cbSz*fct));
+    addLine(new VG.Vector(-cbSz,+cbSz,+cbSz*fct),new VG.Vector(-cbSz,+cbSz,-cbSz*fct));
+    addLine(new VG.Vector(+cbSz,+cbSz,+cbSz*fct),new VG.Vector(+cbSz,+cbSz,-cbSz*fct));
+
+
+    var axesLn = 25;
+    contextIJK.addObject(new THREE.Mesh( VG.Geometries.Arrow(new VG.Vector(2,0,0),new VG.Vector(axesLn,0,0),1), new THREE.MeshBasicMaterial( { color: 0xff0000 } ) ), false);
+    contextIJK.addObject(new THREE.Mesh( VG.Geometries.Arrow(new VG.Vector(0,2,0),new VG.Vector(0,axesLn,0),1), new THREE.MeshBasicMaterial( { color: 0x00ff00 } ) ), false);
+    contextIJK.addObject(new THREE.Mesh( VG.Geometries.Arrow(new VG.Vector(0,0,2),new VG.Vector(0,0,-axesLn),1), new THREE.MeshBasicMaterial( { color: 0x0000ff } ) ), false);
+    contextIJK.addObject(new THREE.Mesh( new THREE.SphereGeometry(2), new THREE.MeshBasicMaterial( { color: 0x000000 } ) ), false);
+
+    new VG.ThreeDiv(contextIJK,'j',new VG.Vector(axesLn*1.2,0,0));
+    new VG.ThreeDiv(contextIJK,'k',new VG.Vector(0,axesLn*1.2,0));
+    new VG.ThreeDiv(contextIJK,'i',new VG.Vector(0,0,-axesLn*1.2));
+
+    context.preRenderHandlers.push(function(cc){
+      contextIJK.cameraControler.setRotations(cc.rotationX,cc.rotationY,cc.rotationZ);
+    });
+    contextIJK.renderContinuous = true;
+
+
+    function moveHandler(vec,e){
+      var toolTip = $("#toolTip");
+      var intersects = context.getIntersects();
+      if(intersects.length > 0){
+        // console.log(intersects[0]);
+        toolTip.show();
+        toolTip.css({top:e.clientY,left:e.clientX});
+        toolTip.html(intersects[0].object.name);
+      }else{
+        toolTip.hide();
+      }
+      return true;
+    };
+
+    context.moveHandlers.push(moveHandler);
+    context.hoverHandlers.push(function(e){moveHandler(null,e);});
+
+
+
+    $('#main').append(context.panel);
+    $('#ijk').append(contextIJK.panel);
+    context.start();
+    contextIJK.start();
+    context.cameraControler.setCameraRadius(150);
+
+
+
+
+  });
+
+
+  </script>
+
+  <script>
+    window._gaq = [['_setAccount','UA-25310626-1'],['_trackPageview'],['_trackPageLoadTime']];
+    Modernizr.load({
+      load: ('https:' == location.protocol ? '//ssl' : 'http://www') + '.google-analytics.com/ga.js'
+    });
+  </script>
+
+
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+<cv-item
+    title="{{ brick.title }}"
+    description="{{ brick.description }}"
+    date="{{ brick.date.strftime('%m/%Y') }}"
+    url="{{ brick.url_more }}"
+>
+    {{ brick.render_html() }}
+</cv-item>

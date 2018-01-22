@@ -6,11 +6,11 @@
         "title": "SimPEG",
         "description": "Simulation tools for geophysics",
         "license": "CC-BY-4.0",
-        "thumbnail": "/images/logo/simpeg-logo-block.png",
+        "thumbnail": "/images/logo/simpeg-block.png",
         "tags": [
             "projects"
         ],
-        "query_type": "uid",
+        "query_type": ["uid"],
         "query_uids": [
             "simpeg-intro",
             "simpeg-query"
@@ -22,7 +22,7 @@
         "title": "More on SimPEG",
         "description": "",
         "license": "CC-BY-4.0",
-        "query_type": "tags",
+        "query_type": ["tags"],
         "query_tags": [
             "simpeg"
         ]

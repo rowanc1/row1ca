@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2016/06/23",
+    "uid": "undersampled-15",
+    "title": "Undersampled Interview",
+    "description": "Podcast with Matt Hall and Graham Ganssle",
+    "thumbnail": "/images/presentations/undersampled-15.png",
+    "license": "CC-BY-4.0",
+    "tags": ["presentations", "visible-geology", "simpeg", "3point"]
+}

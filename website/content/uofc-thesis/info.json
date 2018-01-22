@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2010/12/20",
+    "uid": "uofc-thesis",
+    "title": "Senior Thesis",
+    "description": "Two Approaches to Improving the Utility of Electrical Conductivity in Time Varying Porous Media: Numerical Modeling and Preliminary Field Inversions",
+    "thumbnail": "/images/papers/uofc-thesis.png",
+    "license": "CC-BY-4.0",
+    "tags": ["paper", "uofc"]
+}

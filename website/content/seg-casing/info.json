@@ -1,0 +1,25 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "lindsey"
+        },
+        {
+            "kind": "author",
+            "user": "rowan"
+        },
+        {
+            "kind": "author",
+            "user": "doug"
+        }
+    ],
+    "date": "2015/10/27",
+    "uid": "seg-casing",
+    "title": "Casing and EM",
+    "description": "Modelling electromagnetic problems in the presence of cased wells",
+    "thumbnail": "/images/papers/seg-casing.png",
+    "license": "CC-BY-4.0",
+    "tags": ["paper", "simpeg", "electromagnetics"],
+    "url_more": "http://dx.doi.org/10.1190/segam2014-1639.1"
+}

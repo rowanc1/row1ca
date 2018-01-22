@@ -3,3 +3,4 @@
 *.sublime-project
 *.sublime-workspace
 website/lib/*
+.ipynb_checkpoints/*

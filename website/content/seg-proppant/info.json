@@ -1,0 +1,25 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "lindsey"
+        },
+        {
+            "kind": "author",
+            "user": "rowan"
+        },
+        {
+            "kind": "author",
+            "user": "doug"
+        }
+    ],
+    "date": "2014/10/26",
+    "uid": "seg-proppant",
+    "title": "Parametrized Proppant",
+    "description": "Parametrized inversion framework for proppant volume in a hydraulically fractured reservoir",
+    "thumbnail": "/images/papers/seg-proppant.png",
+    "license": "CC-BY-4.0",
+    "tags": ["paper", "simpeg", "electromagnetics"],
+    "url_more": "http://dx.doi.org/10.1190/segam2014-1639.1"
+}

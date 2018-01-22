@@ -1,0 +1,29 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "seogi"
+        },
+        {
+            "kind": "author",
+            "user": "lindsey"
+        },
+        {
+            "kind": "author",
+            "user": "rowan"
+        },
+        {
+            "kind": "author",
+            "user": "doug"
+        }
+    ],
+    "date": "2017/08/01",
+    "uid": "mt-tutorial",
+    "title": "Magnetotellurics Inversion",
+    "description": "Exploring nonlinear inversions: A 1D magnetotelluric example",
+    "thumbnail": "/images/papers/mt-tutorial.png",
+    "license": "CC-BY-4.0",
+    "tags": ["paper", "simpeg", "electromagnetics"],
+    "url_more": "https://library.seg.org/doi/abs/10.1190/tle36080696.1"
+}

@@ -1,0 +1,30 @@
+[
+    {
+        "__class__": "Collection",
+        "uid": "phd",
+        "date": ["2012/01/01", "2017/12/04"],
+        "title": "phd",
+        "description": "A framework for geophysical inversions",
+        "license": "CC-BY-4.0",
+        "thumbnail": "/images/phd/overview.png",
+        "tags": [
+            "projects"
+        ],
+        "query_type": ["uid"],
+        "query_uids": [
+            "phd-intro",
+            "phd-query"
+        ]
+    },
+    {
+        "__class__": "CollectionCards",
+        "uid": "phd-query",
+        "title": "See more:",
+        "description": "",
+        "license": "CC-BY-4.0",
+        "query_type": ["tags"],
+        "query_tags": [
+            "phd"
+        ]
+    }
+]

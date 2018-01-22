@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2015/03/27",
+    "uid": "3point-llp",
+    "title": "3point LLP",
+    "description": "Lean Launch Pad",
+    "thumbnail": "/images/presentations/3point-llp-seis-sketch.png",
+    "license": "CC-BY-4.0",
+    "tags": ["presentations", "3point"]
+}

@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2016/03/30",
+    "uid": "on-research",
+    "title": "On Research",
+    "description": "That's not research?",
+    "thumbnail": "/images/on/research-words.png",
+    "license": "CC-BY-4.0",
+    "tags": ["thoughts", "phd"]
+}

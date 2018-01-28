@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2018/01/24",
+    "uid": "on-scholarly-commons",
+    "title": "Scholarly Commons",
+    "description": "Some ideas about my website",
+    "thumbnail": "/images/website/life.png",
+    "license": "CC-BY-4.0",
+    "tags": ["bricks"]
+}

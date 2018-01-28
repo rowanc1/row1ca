@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2014/07/13",
+    "uid": "on-ideas-and-pencils",
+    "title": "Ideas and Pencils",
+    "description": "What is an idea?",
+    "thumbnail": "/images/on/pencils.png",
+    "license": "CC-BY-4.0",
+    "tags": ["thoughts"]
+}

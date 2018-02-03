@@ -24,8 +24,11 @@
         "license": "CC-BY-4.0",
         "query_type": ["uid"],
         "query_uids": [
+            "on-my-website-2018",
             "on-breakthroughs",
             "probability-of-a-spill",
+            "on-ideas-and-pencils",
+            "innovative-dissemination-award-simpeg",
             "pixels-and-their-neighbors"
         ]
     },

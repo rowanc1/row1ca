@@ -1,4 +1,35 @@
 {% extends "pages/simple.html" %}
+{% block meta %}
+<!-- Update your html tag to include the itemscope and itemtype attributes. -->
+<html itemscope itemtype="http://schema.org/Article">
+
+<meta name="description" content="{{ brick.description }}" />
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="{{ brick.title }}">
+<meta itemprop="description" content="{{ brick.description }}">
+<meta itemprop="image" content="https://row1.ca{{ brick.thumbnail }}">
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@rowancockett">
+<meta name="twitter:title" content="{{ brick.title }}">
+<meta name="twitter:description" content="{{ brick.description }}">
+<meta name="twitter:creator" content="@rowancockett">
+<!-- Twitter summary card with large image must be at least 280x150px -->
+<meta name="twitter:image:src" content="https://row1.ca{{ brick.thumbnail }}">
+
+<!-- Open Graph data -->
+<meta property="og:title" content="{{ brick.title }}" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://row1.ca/{{ brick.uid }}" />
+<meta property="og:image" content="https://row1.ca{{ brick.thumbnail }}" />
+<meta property="og:description" content="{{ brick.description }}" />
+<meta property="og:site_name" content="Rowan Cockett" />
+
+<meta property="article:published_time" content="{{ brick.date.strftime('%Y-%m-%dT%H:%M:%SZ') }}" />
+<meta property="article:modified_time" content="{{ brick.date.strftime('%Y-%m-%dT%H:%M:%SZ') }}" />
+{% endblock %}
 {% block article %}
     <h1>{{ brick.title }}</h1>
     <ink-byline

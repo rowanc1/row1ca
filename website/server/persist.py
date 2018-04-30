@@ -13,6 +13,7 @@ def get_info(slug):
         data = json.loads(f.read())
         return models.Brick.deserialize(data, trusted=True)
 
+
 BRICKS = {
     slug: get_info(slug) for slug in SLUGS
 }
@@ -68,6 +69,7 @@ def load_json():
                 brick = models.Brick.deserialize(item, trusted=True)
                 SLUGS.add(brick.uid)
                 BRICKS[brick.uid] = brick
+
 
 load_json()
 

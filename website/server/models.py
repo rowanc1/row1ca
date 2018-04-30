@@ -75,7 +75,8 @@ class Brick(properties.HasProperties):
 
     tags = properties.List(
         'list of tags',
-        prop=properties.String('', change_case='lower')
+        prop=properties.String('', change_case='lower'),
+        default=[]
     )
 
     license = properties.StringChoice(
@@ -132,7 +133,8 @@ class Article(Brick):
     contributors = properties.List(
         'Contributors list',
         prop=properties.Instance('', instance_class=Contribution),
-        min_length=1
+        min_length=1,
+        default=[]
     )
 
     @property
@@ -158,7 +160,8 @@ class Collection(Brick):
             "",
             choices={'uid', 'kind', 'tags'}
         ),
-        coerce=True
+        coerce=True,
+        default=[]
     )
 
     query_kind = properties.StringChoice(
@@ -170,13 +173,15 @@ class Collection(Brick):
     query_uids = properties.List(
         'list of children uids',
         prop=properties.String('', regex='^' + RE_SLUG + '$'),
-        required=False
+        required=False,
+        default=[]
     )
 
     query_tags = properties.List(
         'list of children uids',
         prop=properties.String('', change_case='lower'),
-        required=False
+        required=False,
+        default=[]
     )
 
     @property
@@ -225,7 +230,7 @@ class CollectionCards(Collection):
 class CvItem(Brick):
     style_item = 'cv-item'
 
-    duties = properties.List("", prop=properties.String(""))
+    duties = properties.List("", prop=properties.String(""), default=[])
 
     def render_html(self):
         if len(self.duties) == 0:

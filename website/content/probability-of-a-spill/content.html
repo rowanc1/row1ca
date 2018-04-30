@@ -510,11 +510,6 @@ var p_fs = d3.merge([d3.range(0.001,0.002,0.0002),d3.range(0.002,0.02,0.0005),d3
 var data = d3.range(max_years);
 $("span[data-format|='p_f_pick']").attr('data-min',"0").attr('data-max',''+(p_fs.length-2));
 
-
-Tangle.formats.p_f_pick = function (value) {
-    return sprintf('%2.2f%%', p_fs[Math.round(value)]*100);
-};
-
 var figure1 = plot("#figure1",{xlim:[0,max_years],ylim:[0,1],ylabel:"Probability of No Spill",xlabel:"Years"})
 // var figure2 = plot("#figure2",{xlim:[0,max_years],ylim:[0.5, 1],xlabel:"Years",ylabel:"Probability of No Spill"})
 
@@ -600,12 +595,6 @@ var model = {
           .attr("cy",figure1.y(def(this.et2fail)))
     }
 };
-var TK = new Tangle($("ink-article")[0], model);
-
-
-$('.table [data-click]').css({'cursor':'pointer'}).click(function(c){
-  TK.setValue('p_f_pick',parseFloat($(this).attr('data-click')));
-})
 
 var myBlotch = blotch('#myBlotch');
 
@@ -617,4 +606,16 @@ var myBlotch = blotch('#myBlotch');
 
   }
 });
+
+
+
+Tangle.formats.p_f_pick = function (value) {
+    return sprintf('%2.2f%%', p_fs[Math.round(value)]*100);
+};
+var TK = new Tangle($("ink-article")[0], model);
+
+$('.table [data-click]').css({'cursor':'pointer'}).click(function(c){
+  TK.setValue('p_f_pick',parseFloat($(this).attr('data-click')));
+});
+
 </script>

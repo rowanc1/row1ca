@@ -1,0 +1,65 @@
+[
+    {
+        "__class__": "Quote",
+        "uid": "quote-collaboration",
+        "title": "On Collaboration and Tools",
+        "author": "Mike Loukides",
+        "quote": "If all important work is collaborative, the most important tools we have are tools for collaboration, tools that make working together more productive.",
+        "url_more": "https://www.oreilly.com/ideas/what-is-jupyter",
+        "date": "2017-06-20T00:00:00Z",
+        "tags": [
+            "collaboration",
+            "jupyter"
+        ]
+    },
+    {
+        "__class__": "Quote",
+        "uid": "quote-tufte-excellence",
+        "title": "On the Distribution of Excellence",
+        "author": "Edward Tufte",
+        "quote":"The distribution of excellence is fiercely log-normal, skewed and long tailed. That means there's not much of it.\n\nThis flood of publication is of no consequence (except for the dean possibly getting promoted or a raise). Acting on that knowledge is so liberating. Freeing oneself from vast piles of repetition, from what this quarters journal has published, triviality, knock-offs, petty connoisseurship, and freeing yourself from the short sighted, the trendy and the greedy.\n\nIdentify the few works among thousands that are relevant and excellent.",
+        "url_more":"https://youtu.be/mvrNemNoQ5M?t=36m44s",
+        "date":"2015-02-27T00:00:00Z",
+        "tags": [
+            "excellence"
+        ]
+    },
+    {
+        "__class__": "Quote",
+        "uid": "quote-publishers",
+        "title": "On Publishers and Science",
+        "author": "Stephen Buranyi",
+        "quote": "Publishers are now wound so tightly around the various organs of the scientific body that no single effort has been able to dislodge them.",
+        "url_more": "https://www.theguardian.com/science/2017/jun/27/profitable-business-scientific-publishing-bad-for-science",
+        "date": "2017-06-01T00:00:00Z",
+        "tags": [
+            "publishers"
+        ]
+    },
+    {
+        "__class__": "Quote",
+        "uid": "quote-hamming-important-work",
+        "title": "On Important Work",
+        "author": "Richard Hamming",
+        "publication": "You and Your Research",
+        "quote": "I was solving one problem after another after another; a fair number were successful and there were a few failures. I went home one Friday after finishing a problem, and curiously enough I wasn't happy; I was depressed. I could see life being a long sequence of one problem after another after another. After quite a while of thinking I decided, ``No, I should be in the mass production of a variable product. I should be concerned with all of next year's problems, not just the one in front of my face.'' By changing the question I still got the same kind of results or better, but I changed things and did important work. *I attacked the major problem.*",
+        "url_more": "http://www.cs.virginia.edu/~robins/YouAndYourResearch.html",
+        "date": "1986-02-07T00:00:00Z",
+        "tags": [
+            "excellence"
+        ]
+    },
+    {
+        "__class__": "Quote",
+        "uid": "quote-dawkins-perspective",
+        "title": "On Perspective",
+        "author": "Richard Dawkins",
+        "publication": "The Selfish Gene",
+        "quote": "Rather than propose a new theory or unearth a new fact, often the most important contribution a scientist can make is to discover a new way of seeing old theories or facts.",
+        "url_more": "https://www.amazon.ca/Selfish-Gene-Richard-Dawkins/dp/0192860925",
+        "date": "1989-10-01T00:00:00Z",
+        "tags": [
+            "perspective"
+        ]
+    }
+]

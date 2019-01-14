@@ -33,6 +33,7 @@ class DateRange(properties.HasProperties):
 
     @classmethod
     def deserialize(cls, value, trusted=False, verbose=True, **kwargs):
+        """Create a dict of start and end to pass onto the instance."""
         if isinstance(value, (datetime.datetime, string_types)):
             value = dict(start=value)
         elif isinstance(value, (list, tuple)):
@@ -89,6 +90,9 @@ class Brick(properties.HasProperties):
         required=False,
         default=''
     )
+
+    def render_json(self):
+        return self.serialize()
 
     def render_html(self):
         return self.render_html_item()
@@ -252,3 +256,10 @@ class CvAward(CvItem):
         choices={'institutional', 'regional', 'national', 'international'}
     )
     declined = properties.Bool('Was the award declined?', default=False)
+
+
+class Quote(Brick):
+    style_item = 'ink-quote'
+
+    quote = properties.String('quote')
+    author = properties.String('Author of the quote.')

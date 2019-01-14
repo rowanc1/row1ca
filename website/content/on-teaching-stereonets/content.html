@@ -2,43 +2,43 @@
 <p>For example, we might go out into the field, and collect many measurements of folded beds, which might have folds on the order of centimeters or kilometers. Are these folds related? What were the regional pressures that created these folds? We must find a way to synthesize the information into a few meaningful clues that tell us more than the data themselves. This is science after all.</p>
 <h2>Stereonet</h2>
 <p>In structural geology education the stereonet is our tool of choice, it allows visualization of things like bedding plane orientations among other things. So how do we use it? First write down all of the bedding plane data that you collected in the field (strikes and dips), and forget about where it came from; that is forget about the location information of the data. We are only going to care, right now, about the bedding planes orientation in space. A single bedding plane inside the bottom half of a sphere might look like this:</p>
-<ink-figure src="/images/stereonet/snet3d.png">A plane in 3D intersecting with a sphere.</ink-figure>
+<ink-figure img-src="/images/stereonet/snet3d.png">A plane in 3D intersecting with a sphere.</ink-figure>
 <h3>Stereographic Projection</h3>
 <p>The game now goes like this: that beautiful 3D diagram is hard to draw in my notebook, so let's do some crazy 'stereographic' projection to only look at the bedding plane in two dimensions.</p>
-<ink-figure src="/images/stereonet/3d_to_2d.png">Rotate the stereonet so you look at it from the top, and project it into two dimensions.</ink-figure>
+<ink-figure img-src="/images/stereonet/3d_to_2d.png">Rotate the stereonet so you look at it from the top, and project it into two dimensions.</ink-figure>
 <p>Wonderful, let's do exactly the same thing for the the rest of our data!</p>
-<ink-figure src="/images/stereonet/alldata.png">Information overload!</ink-figure>
+<ink-figure img-src="/images/stereonet/alldata.png">Information overload!</ink-figure>
 <h4>Planes</h4>
 <p>Yes, that is a lot more data, but right away you can see a pattern (ah, science): you can see the darker spot in center-right. Let us do one more thing to clean up our data: every one of our planes has a single line that uniquely defines the plane. But what does it all mean!?! Try this: raise your right hand [and repeat after me...or not], your hand is the bedding plane: stick a finger of your left hand through the gaps between the fingers of your right hand. Notice that, if you keep your finger in one place, you can 'spin' your right hand around it, but you cannot [without breaking your precious finger] change the orientation of your bedding plane, err, hand.</p>
 <h4>Lines</h4>
 <p>So with that, you may be somewhat convinced that there is only a single line (finger) that defines the orientation of a plane (hand). For lack of a picture of hands doing strange things, we shall look at this in 3D:</p>
-<ink-figure src="/images/stereonet/pole.png">What your finger and hand should have looked like.</ink-figure>
+<ink-figure img-src="/images/stereonet/pole.png">What your finger and hand should have looked like.</ink-figure>
 <p>We shall refer to this unique line as a <em>pole</em>, or <em>a normal</em> to the plane. Again, let us play the game of rotating this up into two dimensions so we can work with it in our notebooks.</p>
-<ink-figure src="/images/stereonet/pole2d.png">Rotate again into 2D, and plot the pole.</ink-figure>
+<ink-figure img-src="/images/stereonet/pole2d.png">Rotate again into 2D, and plot the pole.</ink-figure>
 <h4>What About Points?!</h4>
 <p>Some things to notice: when we went from three dimensions to two dimensions, planes become lines, and lines become points. So by that logic, what on earth happens to points? <em>Do they disappear</em>? Ah, but don't you remember we threw away that information when we got rid of location data right at the beginning, so that is OK!</p>
 <p>Let us replot all of our data, but instead of drawing both the plane and the pole let's just plot the poles:</p>
-<ink-figure src="/images/stereonet/poles.png">Poles to our bedding planes.</ink-figure>
+<ink-figure img-src="/images/stereonet/poles.png">Poles to our bedding planes.</ink-figure>
 <h3>Best Fitting Planes</h3>
 <p>Again, there is some sort of order to this clutter of points. It looks to me that we can approximate all of those data points by a single (best-fitting) plane. Nature is not exact, so we can expect some noise around our approximation.</p>
-<ink-figure src="/images/stereonet/bestfit2d.png">The best fitting plane.</ink-figure>
+<ink-figure img-src="/images/stereonet/bestfit2d.png">The best fitting plane.</ink-figure>
 <p>We have done quite a few things to get here, but it is best to remember what this all looks like in 3D:</p>
-<ink-figure src="/images/stereonet/bestfit3d.png">Remember that this is in 3D, right!</ink-figure>
+<ink-figure img-src="/images/stereonet/bestfit3d.png">Remember that this is in 3D, right!</ink-figure>
 <p>So now we have an approximation of all of our data with just two numbers (the strike and dip of this weird-orange-plane)! The cool thing about approximating things, is now we can model it! I will choose to model this fold in a wonderful little program of my own creation: Visible Geology.</p>
 <h3>Remember it is a Fold</h3>
 <p>We have to create the fold so that if we cut the weird-orange-plane through the fold, it would always look the same. So we can twiddle with the program a bit (you need to add a tilting event as well as a folding event, although they may have happened at the same time!). I have put a cross section in that has the same strike as the weird-orange-plane.</p>
-<ink-figure src="/images/stereonet/model1.png">The folding event.</ink-figure>
-<ink-figure src="/images/stereonet/model2.png">Looking down the 'hinge line': the pole of our weird-orange-plane.</ink-figure>
+<ink-figure img-src="/images/stereonet/model1.png">The folding event.</ink-figure>
+<ink-figure img-src="/images/stereonet/model2.png">Looking down the 'hinge line': the pole of our weird-orange-plane.</ink-figure>
 <p>If you are viewing this in a good browser, the following should allow you to play around a bit:</p>
 <p>Cool right?!</p>
 <h2>Simulate Data!</h2>
 <p>But, the sceptical scientist in you is screaming: "I do not believe!", how on earth did you go from a weird-orange-plane to a folding event that looked like that?!?!</p>
 <p>Quite correct, we should really test this hypothetical model. What did we do before? We went and took measurements: there's an app for that, go to the <em>explore</em> tab!</p>
-<ink-figure src="/images/stereonet/model4.png">Create some test data.</ink-figure>
+<ink-figure img-src="/images/stereonet/model4.png">Create some test data.</ink-figure>
 <p>Now that we have data, let's plot it up, and see how it compares. And when I say you should do it, really I mean click a button and discover the magic of automation:</p>
-<ink-figure src="/images/stereonet/model5.png">Plot all of the data on a stereonet (click a button!)</ink-figure>
+<ink-figure img-src="/images/stereonet/model5.png">Plot all of the data on a stereonet (click a button!)</ink-figure>
 <p>Looks pretty good, a bit too perfect in my opinion (obviously the computer is very good at using a Brunton compass). What I think is extremely useful now, is to take that 3D view, and train yourself to look at the stereonet in 3D, and then switch back to the block diagram. Back and forth, until it clicks. Then the next step, rotate the stereonet up and down 2D-3D-2D-3D until that clicks.</p>
-<ink-figure src="/images/stereonet/model6.png">Convince yourself of what you are looking at. Switch back and forth between the views of the block and the stereonet.</ink-figure>
+<ink-figure img-src="/images/stereonet/model6.png">Convince yourself of what you are looking at. Switch back and forth between the views of the block and the stereonet.</ink-figure>
 <p>Maybe you believe now that all that crazy data we had, really just represented one regional folding scheme. We took the data from our notebook, learned a new way to look at it, simplified that way of looking at it, synthesized the data into a few numbers, used those numbers to create a model, and then tested that model/hypothesis to see if we got back our data. And somehow it all worked! Now you can make important points and observations about the area, compare our area to other areas, show your friends pretty pictures in 3D and with excellent color schemes, and grab a coffee [maybe at a french cafe!].</p>
 <p>Sounds like science to me.</p>
 <h2>Thoughts on Teaching Stereonets</h2>

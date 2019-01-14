@@ -564,7 +564,7 @@ var model = {
         var p_s_years = 1-p_f_years;
         var beta = this.beta/100;
 
-        this.years2fail_p = Math.pow(p_s_years,this.years2fail)
+        this.years2fail_p = Math.pow(p_s_years, this.years2fail)
         this.years2fail_enbridge = 1/p_f
         this.diff = 1/p_f - Math.log(beta)/Math.log(p_s);
 

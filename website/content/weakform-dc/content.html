@@ -280,7 +280,7 @@ mesh = Mesh.TensorMesh([10, 10])
     <p>
       Boundary conditions are often important to consider, in a DC resistivity survey we may create a domain that is sufficiently padded to assume that at the boundaries the flux into or out of the domain is zero. If this is the case, we can reduce the number of unknowns in equation. To illustrate the separation of the fluxes on the boundary $\mathbf{j}_{bc}$ and the fluxes inside the domain $\mathbf{j}_{in}$, we will use a simple 1D example.
 
-      <ink-figure src="/images/weakform-dc/1d-mesh.png">
+      <ink-figure img-src="/images/weakform-dc/1d-mesh.png">
         Small one dimensional mesh, showing location of $\mathbf{j}$, $\sigma$, and $\phi$
       </ink-figure>
 
@@ -430,7 +430,7 @@ mesh.plotSlice(-Din.T * phi, 'F', normal='Z', view='vec')
 
 </div>
 
-<ink-figure src="/images/weakform-dc/dc.png">
+<ink-figure img-src="/images/weakform-dc/dc.png">
   Slice through a DC resistivity survey showing a dipole response.
 </ink-figure>
 

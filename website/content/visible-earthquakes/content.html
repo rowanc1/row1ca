@@ -3,7 +3,7 @@
     <p><b>Interferometric synthetic aperture radar</b>, abbreviated <b>InSAR</b> or <b>IfSAR</b>, is a <a title="Radar" href="http://en.wikipedia.org/wiki/Radar">radar</a> technique used in <a title="Geodesy" href="http://en.wikipedia.org/wiki/Geodesy">geodesy</a> and <a title="Remote sensing" href="http://en.wikipedia.org/wiki/Remote_sensing">remote sensing</a>. This geodetic method uses two or more <a title="Synthetic aperture radar" href="http://en.wikipedia.org/wiki/Synthetic_aperture_radar">synthetic aperture radar</a> (SAR) images to generate maps of surface deformation or <a title="Digital elevation map" href="http://en.wikipedia.org/wiki/Digital_elevation_map">digital elevation</a>, using differences in the phase of the waves returning to the satellite<sup id="cite_ref-1"><a href="http://en.wikipedia.org/wiki/Interferometric_synthetic_aperture_radar#cite_note-1">[1]</a></sup><sup id="cite_ref-2"><a href="http://en.wikipedia.org/wiki/Interferometric_synthetic_aperture_radar#cite_note-2">[2]</a></sup><sup id="cite_ref-3"><a href="http://en.wikipedia.org/wiki/Interferometric_synthetic_aperture_radar#cite_note-3">[3]</a></sup> or aircraft.</p>
 </blockquote>
 <p>Did you read the part about surface deformation?! If a satellite flies over a piece of land before and after an earthquake occurs you can compare how much the ground has moved down to the millimeter. The data you get out of the satellite is called an interferogram and looks something like this:</p>
-<ink-figure src="/images/earthquakes/model.png" style="width:50%;margin-left: 25%;">Interferogram of the Dinar earthquake.</ink-figure>
+<ink-figure img-src="/images/earthquakes/model.png" style="width:50%;margin-left: 25%;">Interferogram of the Dinar earthquake.</ink-figure>
 <p></p>
 <p>You can count up the rings or fringes to determine the amount of deformation in wavelengths; here each wavelength is 2.83cm.</p>
 <p>What can you do with this data? Well, being scientists and all, we like to classify things like earthquakes so that we can learn about their mechanisms, structure, and life-cycle. Was it a normal fault, a thrust fault, strike-slip ...? If we know more about an earthquake that just happened we can compare to different areas and make predictions and inferences about if an earthquake is likely to happen in a different area we care about!</p>
@@ -16,7 +16,7 @@
     <li>contemplate deeper meanings, make a better guess, and repeat until happy.</li>
 </ol>
 <p>So after talking with Gareth and exchanging some code for the simple model (step 1.) I mocked up a simple InSAR modelling package that allows you to iteratively make an informed guess about the  earthquake that produced the interferogram. Here is a screenshot of the program:</p>
-<ink-figure src="/images/earthquakes/screenshot.png"></ink-figure>
+<ink-figure img-src="/images/earthquakes/screenshot.png"></ink-figure>
 <p>On the left is the true interferogram, and on the right is the model. You can change the length, strike, dip, rake, depth, and amount of slip of the fault. Most of these you can do by graphically pulling around a few handles. You can see the model update in (near) real time and see the 3D fault block representation.</p>
 <p><strong>Why is this cool?</strong></p>
 <ul>
@@ -30,6 +30,6 @@
 <p><a href="https://earthquakes.aranzgeo.com/">https://earthquakes.aranzgeo.com/</a></p>
 <p>If you need to brush up on your fault terminology:</p>
 <p><a href="/fault-lab">Fault Lab</a></p>
-<ink-figure src="/images/visible-geology/earthquakes.png">Visible Earthquakes in use</ink-figure>
+<ink-figure img-src="/images/visible-geology/earthquakes.png">Visible Earthquakes in use</ink-figure>
 <p>A screenshot (no audio):</p>
 <p><span class='embed-youtube' style='text-align:center; display: block;'><iframe class='youtube-player' type='text/html' width='584' height='359' src='https://www.youtube.com/embed/ERycf82Yq5M?version=3&rel=1&fs=1&showsearch=0&showinfo=1&iv_load_policy=1&wmode=transparent' frameborder='0'></iframe></span></p>

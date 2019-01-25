@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2018/09/08",
+    "uid": "early-career-award-ucalgary",
+    "title": "Early Career Achievement Award - UCalgary",
+    "description": "Podcast with Matt Hall and Graham Ganssle",
+    "thumbnail": "/images/awards/arch-photo.jpg",
+    "license": "CC-BY-4.0",
+    "tags": ["visible-geology", "simpeg", "3point", "phd"]
+}

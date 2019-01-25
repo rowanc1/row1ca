@@ -1,6 +1,17 @@
 [
     {
         "__class__": "CvAward",
+        "uid": "award-arch-ucalgary",
+        "title": "Early Career Achievement Award - UCalgary",
+        "description": "Recognizes professional accomplishment or creative leadership in any field by a graduate aged 30 or younger. The award honors recent UCalgary graduates whose career success has brought distinction to themselves and credit to the university.",
+        "amount": 0,
+        "level": "institutional",
+        "date": "2018/09/08",
+        "declined": false,
+        "url_more": "/early-career-award-ucalgary"
+    },
+    {
+        "__class__": "CvAward",
         "uid": "scholarship-ubc-simpeg",
         "title": "UBC Library Innovative Dissemination of Research Award",
         "description": "Awarded for the SimPEG framework and community development",

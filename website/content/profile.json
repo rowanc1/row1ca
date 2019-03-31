@@ -67,9 +67,12 @@
         "license": "CC-BY-4.0",
         "query_type": ["uid"],
         "query_uids": [
+            "fats-2019",
             "jupytercon2017",
             "scipy2016",
-            "phd-defence"
+            "phd-defence",
+            "open-access-tools",
+            "undersampled-15"
         ]
     },
     {

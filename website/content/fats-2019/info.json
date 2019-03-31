@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2019/03/22",
+    "uid": "fats-2019",
+    "title": "Interactive geoscience and entrepreneurship",
+    "description": "UCalgary Geosicence - Friday Afternoon Talk Series",
+    "thumbnail": "/images/presentations/fats-2019.png",
+    "license": "CC-BY-4.0",
+    "tags": ["presentations", "3point", "simpeg", "visible-geology"]
+}

@@ -1,20 +1,25 @@
-PORT=8080
+PORT=8081
 ADMIN_PORT=8008
-VERSION=6
+VERSION=8
 PROJECT=rowanc1
+CLOUDSDK_PYTHON=py27
 
-.PHONY: build build-ink deploy symlinks articles
+.PHONY: clean build build-ink build-ink-dev deploy
 
-symlinks:
-	cd website/lib && python _symlinks.py
+clean:
+	rm -rf website/lib
 
-build: symlinks
+build: clean build-ink
+	pip install -t website/lib -r requirements.txt
 
 build-ink:
 	cd ../ink;npm run build;cp dist/app.bundle.js ../row1ca/website/static/js/ink.js
 
+build-ink-dev:
+	cd ../ink;npm run build-dev;cp dist/app.bundle.js ../row1ca/website/static/js/ink.js
+
 deploy:
-	gcloud app deploy --version $(VERSION) --project $(PROJECT)
+	cd website; gcloud app deploy --version $(VERSION) --project $(PROJECT)
 
 run:
-	python /usr/local/bin/dev_appserver.py --host=0.0.0.0 --port=$(PORT) --admin_port=$(ADMIN_PORT) website
+	dev_appserver.py --host=0.0.0.0 --port=$(PORT) --admin_port=$(ADMIN_PORT) website

@@ -1,0 +1,8 @@
+markdown
+pyparsing
+requests
+requests_toolbelt
+future
+jinja2_registry
+properties
+six

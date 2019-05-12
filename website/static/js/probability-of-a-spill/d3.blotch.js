@@ -3,8 +3,8 @@
 
 var blotch = function(id){
 
-  var width = $('body').width(),
-      height = $('body').height();
+  var width = document.body.clientWidth,
+      height = document.body.clientHeight;
 
   var nodes = d3.range(200).map(function() { return {radius: Math.random() * 12 + 4}; }),
       root = nodes[0],

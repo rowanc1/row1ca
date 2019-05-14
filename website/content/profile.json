@@ -157,7 +157,7 @@
         "__class__": "CollectionCards",
         "uid": "projects",
         "title": "projects",
-        "description": "Projects",
+        "description": "A list of my projects.",
         "license": "CC-BY-4.0",
         "query_type": ["tags"],
         "query_tags": ["projects"]

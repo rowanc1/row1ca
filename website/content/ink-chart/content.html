@@ -1,0 +1,306 @@
+<p>To create a chart, use the <code>&lt;ink-chart&gt;</code> component and add a few children to see the plotting of equations, lines and points.</p>
+
+<ink-demo>
+    <ink-var name="beat" value="1"></ink-var>
+    <p style="text-align:center;">
+        <ink-chart xlim="[-20, 20]" ylim=[-20,20] xlabel="x" ylabel="love(x)">
+            <ink-chart-eqn eqn="[beat * (16 * Math.pow(Math.sin(t), 3)), beat * (13* Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t))]" parameterize="t" :domain="[0, 2*Math.PI]" stroke="red" stroke-width="3"></ink-chart-eqn>
+        </ink-chart>
+        See the heart beat: <ink-range name="beat" min="0.25" max="1.75" step="0.01"></ink-range>
+    </p>
+</ink-demo>
+
+<hr>
+
+<h2>Getting Started</h2>
+
+<p>
+    Let's start with a simple sin wave, that is, we want a line defined as $f(x) = \sin(x)$. And then explore some of the dynamic properties of the chart.
+</p>
+<ink-demo>
+    <ink-chart xlabel="x" ylabel="sin(x)" xlim="[-6.28, 6.28]" ylim="[-1,1]" x-axis-location="origin" y-axis-location="origin">
+        <ink-chart-eqn eqn="Math.sin(x)"></ink-chart-eqn>
+    </ink-chart>
+</ink-demo>
+
+<h3>ink-chart properties</h3>
+
+<ink-callout class="info">
+    <strong>Ink Chart Properties:</strong>
+    <dl>
+        <dt><code>xlabel</code></dt><dd>The x-axis label.</dd>
+        <dt><code>ylabel</code></dt><dd>The y-axis label.</dd>
+        <dt><code>xlim</code></dt><dd>The x-axis limits, a list of two numbers. Can be set dynamically with <code>:xlim</code>.</dd>
+        <dt><code>ylim</code></dt><dd>The y-axis limits, a list of two numbers. Can be set dynamically with <code>:ylim</code>.</dd>
+        <dt><code>x-axis-location</code></dt><dd>Can be set to <code>origin</code>.</dd>
+        <dt><code>y-axis-location</code></dt><dd>Can be set to <code>origin</code>.</dd>
+    </dl>
+</ink-callout>
+
+
+<ink-scope>
+    <h3><code>xlim</code> and <code>:xlim</code></h3>
+    <p>First, let's manipulate and dynamically update the <code>xlim</code> of the chart. We will make it hooked up to two variables that control the domain extents. Start by creating some variables:</p>
+    <ink-demo code-only>
+        <ink-var name="domainStart" value="-5"></ink-var>
+        <ink-var name="domainEnd" value="5"></ink-var>
+    </ink-demo>
+
+    <p>
+        Next we need to go from a static declaration of the <code>xlim</code>, to it being computed every time by referencing these two variables. We can use the <code>:xlim</code> property to do this.
+        We will also put in two <code>&lt;ink-range&gt;</code> properties to control the variables declared above.
+    </p>
+
+    <ink-code compact language="html">&lt;ink-chart :xlim="[domainStart, domainEnd]"&gt;</ink-code>
+
+    <p>This is also quite handy even if you are setting to <code>2 * Math.PI</code>, this can also be dynamically evaluated. Try changing the domain of the plot below!</p>
+    <ink-demo>
+        <p style="text-align: center;">
+            <ink-chart :xlim="[domainStart, domainEnd]" ylim="[-1.2, 1.2]" width="400" height="400" x-axis-location="origin" y-axis-location="origin">
+                <ink-chart-eqn eqn="Math.sin(x)"></ink-chart-eqn>
+            </ink-chart>
+            Start: <ink-range name="domainStart" :min="-Math.PI * 4" max="0" step="0.01"></ink-range>
+            End: <ink-range name="domainEnd" :max="Math.PI * 4" min="0" step="0.01"></ink-range>
+        </p>
+    </ink-demo>
+</ink-scope>
+
+<h2>All Chart Components</h2>
+
+
+<ink-scope>
+    <ink-demo>
+        <ink-var name="a" value="3"></ink-var>
+        <ink-var name="b" value="3"></ink-var>
+        <ink-var name="r" :value="Math.sqrt(a*a + b*b)"></ink-var>
+        <ink-chart xlim="[-5, 5]" ylim="[-5, 5]" height="400" width="400" x-axis-location="origin" y-axis-location="origin" style="text-align: center;">
+            <ink-chart-node :x="a" :y="b" bind="{a: x, b: y}"></ink-chart-node>
+            <ink-chart-eqn :domain="[0, Math.atan2(b, a)]" eqn="[r * Math.cos(t), r * Math.sin(t)]" parameterize="t" stroke="#333" stroke-width="1" stroke-dasharray="3"></ink-chart-eqn>
+            <ink-chart-path :data="[[0, 0],[r * Math.cos(Math.atan2(b, a)), r * Math.sin(Math.atan2(b, a))]]" stroke="#333" stroke-width="1" stroke-dasharray="3"></ink-chart-path>
+            <ink-chart-text :x="(r/2) * Math.cos(Math.atan2(b, a) / 2)" :y="(r/2) * Math.sin(Math.atan2(b, a) / 2)" :text="Math.round(Math.atan2(b, a)*180/Math.PI) + '&deg;'"></ink-chart-text>
+        </ink-chart>
+    </ink-demo>
+</ink-scope>
+
+<ink-callout class="info">
+    <strong>Ink Chart Components:</strong>
+    <dl>
+        <dt><code>ink-chart-circle</code></dt><dd>An SVG circle that can control <code>x</code> and <code>y</code> location, color, radius and other standard svg circle properties.</code>.</dd>
+        <dt><code>ink-chart-path</code></dt><dd>An SVG path that can control <code>data</code> (an array of <code>[x, y]</code>), stroke and other standard svg path properties.</code>.</dd>
+        <dt><code>ink-chart-text</code></dt><dd>An SVG text that can control <code>x</code> and <code>y</code> location, color and other standard svg text properties.</code>.</dd>
+        <dt><code>ink-chart-eqn</code></dt><dd>An SVG path that is parameterized by a function (<code>eqn</code>) and controls stroke, color and other standard svg path properties.</code>.</dd>
+        <dt><code>ink-chart-node</code></dt><dd>An interactive node that can be dragged. Can control stroke, color and other standard svg circle properties.</code>.</dd>
+    </dl>
+</ink-callout>
+
+<p>The <code>render</code> function of the chart loops through all of the children and renders the SVG template. Each <code>ink-chart</code> child has to return an SVG namespaced string to add to the chart. In this way, they keep the same ordering as the dom</p>
+<ink-code language="js" compact>
+    render() {
+        return html`
+        &lt;svg width="$&lbrace;this.width}" height="$&lbrace;this.height}"&gt;
+            $&lbrace;this.children.map(child =&gt;{
+                return child.renderSVG(this);
+            })}
+        &lt;/svg&gt;
+        `;
+    }
+</ink-code>
+
+<p>
+    Each child component has a <code>renderSVG</code> function that returns an svg template string.
+</p>
+
+
+
+<h2><code>ink-chart-eqn</code></h2>
+<ink-scope>
+    <h3>Changing equations</h3>
+    <p>
+        The <code>ink-chart-eqn</code> component allows you to create dynamic lines or points based on an equation.
+        This allows you to create and show equations like <code>Math.sin(x)</code>.
+        The equation is computed by evaluating a string, if we want it to be dynamically set, we can use another variable (e.g. <code>func</code>) to set it.
+    </p>
+    <ink-demo code-only>
+        <ink-var name="func" value="Math.sin(x)"></ink-var>
+    </ink-demo>
+
+    <p>It is important that you update the <code>:eqn</code> function to <emph>compute</emph> the string rather than use the string <code>"func"</code> directly, which will error.</p>
+    <ink-code compact language="html">&lt;ink-chart-eqn :eqn="func"&gt;</ink-code>
+
+    <ink-demo>
+        <p style="text-align: center;">
+            <ink-chart xlim="[-5, 5]" ylim="[-1.2, 1.2]" width="750" height="400" x-axis-location="origin" y-axis-location="origin">
+                <ink-chart-eqn :eqn="func"></ink-chart-eqn>
+            </ink-chart>
+            <ink-button bind="{func: 'Math.cos(x)'}" text="Cos"></ink-button>
+            <ink-button bind="{func: 'Math.sin(x)'}" text="Sin"></ink-button>
+            <ink-button bind="{func: 'Math.tan(x)'}" text="Tan"></ink-button><br>
+            <ink-input bind="{func: value}" text="x * Math.sin(x + 1) / 10"></ink-input> (Change and Press Enter!)<br>
+        </p>
+    </ink-demo>
+
+    <p>
+        You can also <code>parameterize</code> the function over <code>x</code>, <code>y</code> or <code>t</code>.
+        When parameterizing in terms of <code>t</code> you must supply a <code>domain</code> (e.g. <code>[0, 1]</code>) and the function
+        should return a length-two list. Both <code>x</code> and <code>y</code> parameterizations provide the other coordinate
+        so the function should only return a number.
+    </p>
+
+    <ink-demo>
+        <ink-var name="amplitude" value="0.4"></ink-var>
+        <p style="text-align: center;">
+            <ink-chart :xlim="[-5, 5]" ylim="[-5, 5]" width="400" height="400" x-axis-location="origin" y-axis-location="origin">
+                <ink-chart-eqn eqn="amplitude * Math.sin(x)"></ink-chart-eqn>
+                <ink-chart-eqn eqn="amplitude * Math.sin(y)" parameterize="y"></ink-chart-eqn>
+                <ink-chart-eqn eqn="[amplitude*t * Math.cos(t), amplitude*t * Math.sin(t)]" parameterize="t" :domain="[0,Math.PI*16]"></ink-chart-eqn>
+            </ink-chart>
+            <strong>Amplitude:</strong><ink-range name="amplitude" min="-5" max="5" step="0.05"></ink-range><br>
+        </p>
+    </ink-demo>
+</ink-scope>
+
+
+<ink-scope>
+    <h2>Example Charts - Sin Wave</h2>
+
+    <ink-var name="amplitude" value="1"></ink-var>
+    <ink-var name="freq" value="1"></ink-var>
+    <ink-var name="phase" value="0"></ink-var>
+
+    <strong>Amplitude, $A$:</strong><ink-dynamic name="amplitude" min="-3" max="3" step="0.25"></ink-dynamic><br>
+    <strong>Frequency, $f$:</strong><ink-dynamic name="freq" min="0" max="6.28" step="0.2"></ink-dynamic><br>
+    <strong>Phase, $\varphi$:</strong><ink-dynamic name="phase" min="-3" max="3" step="0.25"></ink-dynamic><br>
+
+    <ink-equation>
+        y(t) = A \sin(2 \pi f t + \varphi)
+    </ink-equation>
+
+    <ink-chart :xlim="[0, 2 * Math.PI]" ylim="[-3, 3]" xlabel="t" ylabel="y(t)">
+        <ink-chart-eqn eqn="amplitude * Math.sin(2 * Math.PI * freq * x + phase)"></ink-chart-eqn>
+        <ink-chart-node x="3" :y="amplitude" bind="{amplitude: y, phase: - 2 * Math.PI * freq * x}"></ink-chart-node>
+    </ink-chart>
+</ink-scope>
+
+<ink-scope>
+    <h2>Example chart - Drag Nodes</h2>
+
+    <ink-var name="a" value="0.5"></ink-var>
+    <ink-var name="b" value="0.5"></ink-var>
+
+    <ink-var name="off_x" value="0.5"></ink-var>
+    <ink-var name="off_y" value="0.5"></ink-var>
+
+
+
+    <strong>$A$:</strong><ink-dynamic name="a" min="-3" max="3" step="0.25"></ink-dynamic><br>
+    <strong>$B$:</strong><ink-dynamic name="a" min="-3" max="3" step="0.25"></ink-dynamic><br>
+    <strong>$x$:</strong><ink-dynamic name="off_x" min="-1" max="1" step="0.1"></ink-dynamic><br>
+    <strong>$y$:</strong><ink-dynamic name="off_y" min="-1" max="1" step="0.1"></ink-dynamic><br>
+
+    <ink-chart xlim="[-3, 3]" ylim="[-3, 3]">
+        <ink-chart-node :x="a" :y="b" bind="{a: x, b: y}"></ink-chart-node>
+        <ink-chart-node :x="a + off_x" :y="b + off_y" bind="{a: x - off_x, b: y - off_y}"></ink-chart-node>
+        <ink-chart-text :x="a" :y="b" text="(a, b)"></ink-chart-text>
+        <ink-chart-text :x="a + off_x" :y="b + off_y" text="(a + x, b + y)"></ink-chart-text>
+    </ink-chart>
+
+</ink-scope>
+
+<hr>
+
+<ink-scope>
+
+    <h2>ArcTan2</h2>
+
+    <ink-var name="a" value="0.5"></ink-var>
+    <ink-var name="b" value="0.5"></ink-var>
+    <ink-var name="r" :value="Math.sqrt(a*a + b*b)"></ink-var>
+
+
+    <ink-aside><ink-chart xlim="[-5, 5]" ylim="[-5, 5]" height="300" width="300" x-axis-location="origin" y-axis-location="origin">
+        <ink-chart-node :x="a" :y="b" bind="{a: x, b: y}"></ink-chart-node>
+        <ink-chart-eqn :domain="[0, Math.atan2(b, a)]" eqn="[r * Math.cos(t), r * Math.sin(t)]" parameterize="t" stroke="#333" stroke-width="1" stroke-dasharray="3"></ink-chart-eqn>
+        <ink-chart-path :data="[[0, 0],[r * Math.cos(Math.atan2(b, a)), r * Math.sin(Math.atan2(b, a))]]" stroke="#333" stroke-width="1" stroke-dasharray="3"></ink-chart-path>
+        <ink-chart-text :x="(r/2) * Math.cos(Math.atan2(b, a) / 2)" :y="(r/2) * Math.sin(Math.atan2(b, a) / 2)" :text="Math.round(Math.atan2(b, a)*180/Math.PI) + '&deg;'"></ink-chart-text>
+    </ink-chart></ink-aside>
+
+    <p>
+        The function $\operatorname{atan2}(y,x)$ (from "2-argument arctangent") is defined as the angle in the Euclidean plane, given in radians, between the positive x-axis and the ray to the point $(x,y)$.
+
+        $\operatorname{atan2}(y,x)$ returns a single value $\theta$ such that $-\pi < \theta \le \pi$ and, for some $r > 0$,
+
+        <ink-equation aligned>
+            x&=r\cos \theta \\
+            y&=r\sin \theta
+        </ink-equation>
+    </p>
+
+    <ink-equation aligned>
+        r &= \sqrt{x^2 + y^2} = <ink-display name="r"></ink-display> \\
+        \theta &= \operatorname{atan2}(y,x) = <ink-display :value="Math.atan2(b, a) * 180 / Math.PI"></ink-display>
+    </ink-equation>
+
+
+    <strong>$\theta$:</strong><ink-dynamic :value="Math.atan2(b, a) * 180 / Math.PI" bind="{
+        a: r * Math.cos(value * Math.PI / 180),
+        b: r * Math.sin(value * Math.PI / 180)
+    }"
+    min="-180" :max="180" step="1" sensitivity="1" periodic>&deg;</ink-dynamic><br>
+    <strong>$r$:</strong><ink-dynamic :value="Math.sqrt(a*a + b*b)" bind="{
+        a: value * Math.cos(Math.atan2(b, a)),
+        b: value * Math.sin(Math.atan2(b, a))
+    }"
+    min="0.1" :max="5" step="0.05" sensitivity="5"></ink-dynamic><br>
+    <strong>$x$:</strong><ink-dynamic name="a" min="-5" :max="5" step="0.05" sensitivity="5"></ink-dynamic><br>
+    <strong>$y$:</strong><ink-dynamic name="b" min="-5" :max="5" step="0.05" sensitivity="5"></ink-dynamic><br>
+
+
+    <ink-chart xlim="[-10, 10]" ylim="[-180, 180]" xlabel="y / x" ylabel="atan2(y,x)" x-axis-location="origin" y-axis-location="origin">
+        <ink-chart-eqn eqn="Math.atan2(x, 1) * 180/Math.PI"></ink-chart-eqn>
+        <ink-chart-eqn eqn="Math.atan2(-x, -1) * 180/Math.PI" :domain="[-Infinity, -0.05]"></ink-chart-eqn>
+        <ink-chart-eqn eqn="Math.atan2(-x, -1) * 180/Math.PI" :domain="[0.05, Infinity]"></ink-chart-eqn>
+        <ink-chart-eqn eqn="90" stroke="#333" stroke-width="1" stroke-dasharray="1 5"></ink-chart-eqn>
+        <ink-chart-eqn eqn="-90" stroke="#333" stroke-width="1" stroke-dasharray="1 5"></ink-chart-eqn>
+        <ink-chart-text x="4" y="-125" text="x < 0"></ink-chart-text>
+        <ink-chart-text x="4" y="55" text="x > 0"></ink-chart-text>
+        <ink-chart-text x="-4" y="120" text="x < 0"></ink-chart-text>
+        <ink-chart-circle :x="b / a" :y="Math.atan2(b, a) * 180/Math.PI" :r="r*5"></ink-chart-circle>
+    </ink-chart>
+</ink-scope>
+
+
+<ink-scope>
+    <h2>Example Charts - Adding Sin and Cos</h2>
+
+    <ink-var name="amplitude1" value="1"></ink-var>
+    <ink-var name="freq1" value="1"></ink-var>
+    <ink-var name="phase1" value="0"></ink-var>
+
+    <ink-var name="amplitude2" value="1"></ink-var>
+    <ink-var name="freq2" value="1"></ink-var>
+    <ink-var name="phase2" value="0"></ink-var>
+
+    <h2>Sin</h2>
+    <strong>Amplitude, $A$:</strong><ink-dynamic name="amplitude1" min="-3" max="3" step="0.05"></ink-dynamic><br>
+    <strong>Frequency, $f$:</strong><ink-dynamic name="freq1" min="0" max="6.28" step="0.05"></ink-dynamic><br>
+    <strong>Phase, $\varphi$:</strong><ink-dynamic name="phase1" min="-10" max="10" step="0.05"></ink-dynamic><br>
+
+
+    <h2>Cos</h2>
+    <strong>Amplitude, $A$:</strong><ink-dynamic name="amplitude2" min="-3" max="3" step="0.05"></ink-dynamic><br>
+    <strong>Frequency, $f$:</strong><ink-dynamic name="freq2" min="0" max="6.28" step="0.05"></ink-dynamic><br>
+    <strong>Phase, $\varphi$:</strong><ink-dynamic name="phase2" min="-10" max="10" step="0.05"></ink-dynamic><br>
+
+    <ink-equation>
+        y(t) = A \sin(2 \pi f t + \varphi)
+    </ink-equation>
+
+    <ink-chart :xlim="[0, 10]" ylim="[-6, 6]" xlabel="t" ylabel="f(t)">
+        <ink-chart-eqn eqn="amplitude1 * Math.sin(2 * Math.PI * freq1 * x + phase1)"></ink-chart-eqn>
+        <ink-chart-eqn eqn="amplitude2 * Math.cos(2 * Math.PI * freq2 * x + phase2)"></ink-chart-eqn>
+        <ink-chart-eqn eqn="amplitude1 * Math.sin(2 * Math.PI * freq1 * x + phase1) + amplitude2 * Math.cos(2 * Math.PI * freq2 * x + phase2)" stroke-width="2.5"></ink-chart-eqn>
+    </ink-chart>
+</ink-scope>
+
+
+<ink-callout class="danger">Need to show scatter points for the eqn.</ink-callout>

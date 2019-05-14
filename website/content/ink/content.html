@@ -1,0 +1,57 @@
+<h1>Ink Components</h1>
+<p>
+    The goal of <code>ink.js</code> is to provide web-components for interactive scientific writing, reactive documents and <a href="https://explorabl.es/" target="_blank">explorable explanations</a>.
+    Included in <code>ink.js</code> are ways to create, update and display variables as text, equations and charts.
+</p>
+
+<h2>Tangled Cookies</h2>
+
+<ink-scope>
+    <p>
+        <code>ink.js</code> is heavily inspired by <a href="http://worrydream.com/Tangle/guide.html" target="_blank">tangle.js</a>, updated to be use web-components!
+        This means you can declaratively write your variables and how to display them in <code>html</code> markup.
+        To get an idea of what that looks like, let's take the canonical example of <emph>Tangled Cookies</emph> - a simple reactive document to encourage you to not eat more than <ink-action bind="{cookies:42, hide:false}">42 cookies</ink-action> in one day.
+    </p>
+
+    <ink-var name="hide" value="1"></ink-var>
+
+
+    <ink-button bind="{hide: !hide}" :text="(!hide ? 'Hide' : 'Show') + ' Advanced Example'" style="float: right; margin-right: 5px;"></ink-button>
+    <ink-div :visible="!!hide">
+        <ink-demo>
+            <ink-var name="cookies" value="3" format=".4"></ink-var>
+            <p>
+                When you eat <ink-dynamic name="cookies" min="2" max="100"> cookies</ink-dynamic>,
+                you consume <ink-display :value="cookies * 50" format=".0f"/></ink-display> calories.
+            </p>
+        </ink-demo>
+    </ink-div>
+
+    <ink-div :visible="!hide">
+        <ink-demo>
+            <ink-var name="cookies" value="3" format=".4"></ink-var>
+            <ink-var name="caloriesPerCookie" value="50"></ink-var>
+            <ink-var name="dailyCalories" value="2100"></ink-var>
+
+            <ink-var name="calories" :value="cookies * caloriesPerCookie" format=".0f"></ink-var>
+            <ink-var name="dailyPercent" :value="calories / dailyCalories" format=".0%"></ink-var>
+
+            <p>
+                When you eat <ink-dynamic name="cookies" min="2" max="100"> cookies</ink-dynamic>,
+                you consume <ink-display name="calories"></ink-display> calories.<br>
+                That's <ink-display name="dailyPercent"></ink-display> of your recommended daily calories.
+            </p>
+        </ink-demo>
+    </ink-div>
+</ink-scope>
+
+<hr>
+<h2-more url="/temp">Examples</h2-more>
+<div>
+    <ink-card title="Probability of an Oil Spill" description="In the Northern Gateway project Enbridge calculates the expected time till first (major) oil spill. I decided to read the documents and think about probabilities over Christmas, with a few interesting results..." img-src="/images/probability-of-a-spill/thumbnail.gif" url="/probability-of-a-spill"></ink-card>
+</div>
+
+<h2-more url="/temp">Components</h2-more>
+    <ink-card title="Ink Variables" description="Ink variables" img-src="/images/ink/ink-var.png" url="/ink-var"></ink-card>
+    <ink-card title="Ink Charts" description="Ink charts" img-src="/images/ink/ink-chart.gif" url="/ink-chart"></ink-card>
+

@@ -1,0 +1,19 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2019/05/12",
+    "description": "Scientific web components",
+    "thumbnail": "/images/ink/tangled-cookies.gif",
+    "license": "CC-BY-4.0",
+    "tags": [
+        "bricks",
+        "projects"
+    ],
+    "title": "Ink Components",
+    "uid": "ink"
+}

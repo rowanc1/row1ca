@@ -1,0 +1,18 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2019/05/12",
+    "description": "Reactive charts using d3 and Ink",
+    "thumbnail": "/images/ink/ink-chart.gif",
+    "license": "CC-BY-4.0",
+    "tags": [
+        "ink-component"
+    ],
+    "title": "Ink Charts",
+    "uid": "ink-chart"
+}

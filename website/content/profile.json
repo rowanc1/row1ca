@@ -170,5 +170,23 @@
         "license": "CC-BY-4.0",
         "query_type": ["tags"],
         "query_tags": ["thoughts"]
+    },
+    {
+        "__class__": "CollectionCards",
+        "uid": "ink-examples",
+        "title": "Ink Examples",
+        "description": "Examples of explorable explanations and interactive documents.",
+        "license": "CC-BY-4.0",
+        "query_type": ["tags"],
+        "query_tags": ["ink-example"]
+    },
+    {
+        "__class__": "CollectionCards",
+        "uid": "ink-components",
+        "title": "Ink Components",
+        "description": "All ink components",
+        "license": "CC-BY-4.0",
+        "query_type": ["tags"],
+        "query_tags": ["ink-component"]
     }
 ]

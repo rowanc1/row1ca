@@ -1,0 +1,134 @@
+<p>
+    First things first, how might you show a quadratic formula?!?
+</p>
+
+<ink-demo>
+    <ink-equation>
+        x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+    </ink-equation>
+</ink-demo>
+
+<p>
+    The <code>ink-equation</code> wraps <a href="https://khan.github.io/KaTeX/" target="_blank">Katex</a> in a web component. <ink-aside>Note MathJax is slooooow (<a href="https://www.intmath.com/cg5/katex-mathjax-comparison.php" target=_blank>63ms vs 1048ms</a>)</ink-aside>
+    You can inspect the component and try writing a new equation to the <code>math</code> property!
+</p>
+
+<ink-figure img-src="/images/website/ink-math.gif">
+    I am linking the <code>math</code> property to rendering in KaTex - which is super fast!
+</ink-figure>
+
+<h2>Updating the Math</h2>
+
+<p>
+    To dynamically update the equation there are two ways: (1) you can as usual set the <code>:math</code> property; or (2) you can use the equation in conjunction with <code>ink-display</code>.
+    In the example below we are expanding a Taylor Series which uses the <code>:math</code> property to index into an array when you drag a range.
+    <ink-aside><ink-callout class="danger">TODO: point to a Taylor Series example!!</ink-callout></ink-aside>
+</p>
+
+<ink-scope>
+    <ink-demo>
+        <ink-var name="index" value="1"></ink-var>
+        <ink-var name="MrTaylor" value='["f(x) \\approx f(a)", "\\frac {f^{\\prime}(a)}{1!} (x-a)", "\\frac{f^{\\prime\\prime}(a)}{2!} (x-a)^2", "\\frac{f^{(3)}(a)}{3!}(x-a)^"]'></ink-var>
+        Drag me to expand the Taylor Series:
+        <ink-range name="index" min="1" max="4"></ink-range>
+        <ink-equation :math="MrTaylor.slice(0, index).join(' + ') + ' + \\cdots'"></ink-equation>
+    </ink-demo>
+</ink-scope>
+
+<ink-callout class="warning"><strong>Note:</strong> You often have to <emph>double escape</emph> back-slashes for them to render properly.</ink-callout>
+
+
+
+
+<ink-scope>
+    <ink-aside>
+        <ink-chart xlim="[-10, 10]" ylim="[-10, 10]" xlabel="x" ylabel="y" width="250" height="250" x-axis-location="origin" y-axis-location="origin">
+            <ink-chart-eqn eqn="m * x + b"></ink-chart-eqn>
+        </ink-chart>
+    </ink-aside>
+    <ink-demo>
+            <ink-var name="m" value="1" format=".2f"></ink-var>
+            <ink-var name="b" value="0" format=".2f"></ink-var>
+            <ink-range name="m" step="0.1" min="-10"></ink-range>
+            <ink-range name="b" step="0.1" min="-10"></ink-range>
+            <ink-equation aligned>
+                y &= m * x + b \\
+                y &= <ink-display name="m"></ink-display> * x + <ink-display name="b"></ink-display>
+            </ink-equation>
+    </ink-demo>
+</ink-scope>
+
+<p>
+    Here we are just directly writing <code>&lt;ink-display&gt;</code> directly inside of the equation tags.
+    This works by ensuring that the formatted output of a display is included in the inner-html <emph>outside</emph> of the shadow DOM.
+    The equation looks at the <code>textContent</code> of the element for what to render to Katex.
+    You can use either approach, <code>:math</code> or inner <code>ink-display</code>'s, however, it is <emph>much</emph> easier to format text.
+</p>
+
+<ink-callout class="info">
+    Properties of <code>ink-equation</code>:
+    <dl>
+        <dt><code>math</code></dt><dd>The Katex string!</dd>
+        <dt><code>:math</code></dt><dd>Dynamically update the Katex string</dd>
+        <dt><code>inline</code></dt><dd>Inline the equation component</dd>
+        <dt><code>aligned</code></dt><dd>Wrap the equation with <code>\begin{aligned} ... \end{aligned}</code></dd>
+    </dl>
+</ink-callout>
+
+
+
+
+<h2>Dreams</h2>
+<ink-code>
+&lt;ink-equation
+    src="/api/v1/dc-resistivity-eqn"
+    substitute='{"sigma": "\frac{1}{\rho}"}'
+    isolate="phi"
+&gt;&lt;/ink-equation&gt;
+</ink-code>
+
+<p>
+    This would obviously substitute out variables and use <a href="http://www.sympy.org/" target="_blank">SymPy</a> to isolate the variable $\phi$ dynamically - and <a href="http://discretize.simpeg.xyz/en/latest/" target="_blank">solve the PDE</a> in the process. Some of this work is ... not quite done yet. Stay tuned! However, I have wrapped up <a href="https://khan.github.io/KaTeX/" target="_blank">Katex</a> in a web component, because MathJax is slooooow (<a href="https://www.intmath.com/cg5/katex-mathjax-comparison.php" target=_blank>63ms vs 1048ms</a>).
+</p>
+
+
+
+
+<ink-scope>
+    <h1>Taylor Series</h1>
+
+    <p>
+        The Taylor series of a real or complex-valued function $f(x)$ that is infinitely differentiable at a real or complex number $a$ is the power series
+        <ink-equation>
+            f(x) \approx f(a) + \frac {f'(a)}{1!} (x-a) + \frac{f''(a)}{2!} (x-a)^2 + \frac{f^{(3)}(a)}{3!}(x-a)^3 + \cdots
+        </ink-equation>
+        where $n!$ denotes the factorial of $n$ and $f^{(n)}(a)$ denotes the $n$th derivative of $f$ evaluated at the point $a$. In the more compact sigma notation, this can be written as
+        <ink-equation>
+            \sum _{n=0}^{\infty }{\frac {f^{(n)}(a)}{n!}}(x-a)^{n}.
+        </ink-equation>
+        The derivative of order zero of $f$ is defined to be $f$ itself and $(x - a)^0$ and $0!$ are both defined to be 1. When $a = 0$, the series is also called a Maclaurin series.
+    </p>
+
+    <ink-var name="ind" value="1"></ink-var>
+    <ink-var name="katex" value='["\\sin(x) \\approx x", "-{\\frac {x^{3}}{3!}}", "+{\\frac {x^{5}}{5!}}", "-{\\frac {x^{7}}{7!}}", "-{\\frac {x^{9}}{9!}}", "+{\\frac {x^{11}}{11!}}", "-{\\frac {x^{13}}{13!}}", "-{\\frac {x^{15}}{15!}}"]'></ink-var>
+    <ink-var name="eqn" value='["x", "- (Math.pow(x, 3) / 6)", "+ (Math.pow(x, 5) / 120)", "- (Math.pow(x, 7) / 5040)", "+ (Math.pow(x, 9) / 362880)", "- (Math.pow(x, 11) / 39916800)", "+ (Math.pow(x, 13) / 6227020800)", "- (Math.pow(x, 15) / 1307674368000)"]'></ink-var>
+
+    <p>
+        The sine function is closely approximated by its Taylor polynomial of <ink-action bind="{ind: 4}">degree 7</ink-action> for a full period centered at the origin.<br>
+        Try expanding the Taylor series: <ink-range name="ind" min="1" max="8"></ink-range>.
+        <ink-equation :math="katex.slice(0, ind).join(' ') + ' + \\cdots'"></ink-equation>
+    </p>
+
+    <ink-chart :xlim="[-3 * Math.PI, 3 * Math.PI]" ylim="[-3, 3]">
+        <ink-chart-eqn eqn="Math.sin(x)"></ink-chart-eqn>
+        <ink-chart-eqn :eqn="eqn.slice(0, 1).join(' ')" stroke="#333" stroke-width="1" stroke-dasharray="1 5"></ink-chart-eqn>
+        <ink-chart-eqn :eqn="eqn.slice(0, 2).join(' ')" stroke="#333" stroke-width="1" stroke-dasharray="1 5"></ink-chart-eqn>
+        <ink-chart-eqn :eqn="eqn.slice(0, 3).join(' ')" stroke="#333" stroke-width="1" stroke-dasharray="1 5"></ink-chart-eqn>
+        <ink-chart-eqn :eqn="eqn.slice(0, 4).join(' ')" stroke="#333" stroke-width="1" stroke-dasharray="1 5"></ink-chart-eqn>
+        <ink-chart-eqn :eqn="eqn.slice(0, 5).join(' ')" stroke="#333" stroke-width="1" stroke-dasharray="1 5"></ink-chart-eqn>
+        <ink-chart-eqn :eqn="eqn.slice(0, 6).join(' ')" stroke="#333" stroke-width="1" stroke-dasharray="1 5"></ink-chart-eqn>
+        <ink-chart-eqn :eqn="eqn.slice(0, 7).join(' ')" stroke="#333" stroke-width="1" stroke-dasharray="1 5"></ink-chart-eqn>
+        <ink-chart-eqn :eqn="eqn.slice(0, 8).join(' ')" stroke="#333" stroke-width="1" stroke-dasharray="1 5"></ink-chart-eqn>
+        <ink-chart-eqn :eqn="eqn.slice(0, ind).join(' ')" stroke-width="2" stroke="green"></ink-chart-eqn>
+    </ink-chart>
+</ink-scope>

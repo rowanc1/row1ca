@@ -7,12 +7,12 @@
         }
     ],
     "date": "2019/05/12",
-    "description": "Variables and Displays",
-    "thumbnail": "/images/ink/ink-var.png",
+    "description": "Katex Web Components",
+    "thumbnail": "/images/ink/ink-equation.gif",
     "license": "CC-BY-4.0",
     "tags": [
         "ink-component"
     ],
-    "title": "Ink Variables",
-    "uid": "ink-var"
+    "title": "Ink Equations",
+    "uid": "ink-equation"
 }

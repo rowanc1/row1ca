@@ -7,12 +7,12 @@
         }
     ],
     "date": "2019/05/12",
-    "description": "Variables and Displays",
-    "thumbnail": "/images/ink/ink-var.png",
+    "description": "Taylor Series",
+    "thumbnail": "/images/ink/taylor.gif",
     "license": "CC-BY-4.0",
     "tags": [
-        "ink-component"
+        "ink-example"
     ],
-    "title": "Ink Variables",
-    "uid": "ink-var"
+    "title": "Taylor Series",
+    "uid": "taylor-series"
 }

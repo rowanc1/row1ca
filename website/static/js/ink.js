@@ -961,7 +961,7 @@ const Ur=new WeakMap,Fr=(e=>(...t)=>{const n=e(...t);return r.set(n,!0),n})(e=>t
                 }
             </style>
             <slot></slot>
-        `}}customElements.define("ink-callout",$r);class Kr extends oe{static get properties(){return{url:String,author:String,date:String,src:String}}constructor(){super(),this.url="",this.author="",this.date="",this.src=""}setFromSrc(){this.src&&fetch(this.src).then(e=>{e.json().then(e=>{this.textContent=e.quote,this.url=e.url_more,this.author=e.author,this.date=e.date.start})})}updated(e){e.forEach((e,t)=>{switch(t){case"src":return this.setFromSrc();default:return}})}render(){var e="";return Vr.a.isValid(this.date,qr)&&(e=Vr.a.format(Vr.a.parse(this.date,qr),"MMMM YYYY")),k`
+        `}}customElements.define("ink-callout",$r);class Kr extends oe{static get properties(){return{url:String,author:String,date:String,src:String}}constructor(){super(),this.url="",this.author="",this.date="",this.src=""}setFromSrc(){this.src&&fetch(this.src).then(e=>{e.json().then(e=>{this.textContent=e.quote,this.url=e.url_more,this.author=e.author,this.date=e.date.start})})}updated(e){e.forEach((e,t)=>{switch(t){case"src":return this.setFromSrc();default:return}})}render(){let e="";return Vr.a.isValid(this.date,qr)&&(e=Vr.a.format(Vr.a.parse(this.date,qr),"MMMM YYYY")),k`
             <style>
                 a {
                     color: #1E88E5;
@@ -991,7 +991,7 @@ const Ur=new WeakMap,Fr=(e=>(...t)=>{const n=e(...t);return r.set(n,!0),n})(e=>t
                 <slot></slot>
                 <div>${this.url?k`<a href="${this.url}" target="_blank">${this.author}</a>`:k`${this.author}`}, ${e}</div>
             </blockquote>
-      `}}customElements.define("ink-quote",Kr);class jr extends oe{static get properties(){return{title:String,description:String,imgSrc:{type:String,attribute:"img-src"},url:String,date:String,width:String}}constructor(){super(),this.url="",this.author="",this.date="",this.src="",this.width=null}render(){return Vr.a.isValid(this.date,qr)&&Vr.a.format(Vr.a.parse(this.date,qr),"YYYY"),k`
+      `}}customElements.define("ink-quote",Kr);class jr extends oe{static get properties(){return{title:String,description:String,imgSrc:{type:String,attribute:"img-src"},url:String,date:String,width:String,src:String}}constructor(){super(),this.url="",this.author="",this.date="",this.src="",this.width=null}setFromSrc(){this.src&&fetch(this.src).then(e=>{e.json().then(e=>{this.title=e.title,this.description=e.description,this.url="/"+e.uid,this.imgSrc=e.thumbnail,this.date=e.date.start})})}updated(e){e.forEach((e,t)=>{switch(t){case"src":return this.setFromSrc();default:return}})}render(){let e=this.date;return Vr.a.isValid(this.date,qr)&&(e=Vr.a.format(Vr.a.parse(this.date,qr),"YYYY")),k`
             <style>
                 .card{
                     display: inline-block;
@@ -1046,7 +1046,7 @@ const Ur=new WeakMap,Fr=(e=>(...t)=>{const n=e(...t);return r.set(n,!0),n})(e=>t
             </style>
             <a class="card" title="${this.title}" href="${this.url}">
                 <div class="image" style="background-image: url('${this.imgSrc}')"></div>
-                <div class="date">${this.date}</div>
+                <div class="date">${e}</div>
                 <div class="title">${this.title}</div>
                 <div class="description">${this.description}</div>
             </a>
@@ -1082,7 +1082,7 @@ const Ur=new WeakMap,Fr=(e=>(...t)=>{const n=e(...t);return r.set(n,!0),n})(e=>t
                 <h2><slot></slot></h2>
                 ${this.url?k`<a href="${this.url}" class="button">See More</a>`:k``}
             </div>
-        `}}customElements.define("h2-more",Qr);class Xr extends oe{static get properties(){return{date:String,authors:Object}}constructor(){super(),this.date="",this.authors=[]}render(){var e=this.date;Vr.a.isValid(this.date,qr)&&(e=Vr.a.format(Vr.a.parse(this.date,qr),"MMMM DD, YYYY"));var t=this.authors;return"string"==typeof t&&(t=JSON.parse(t)),k`
+        `}}customElements.define("h2-more",Qr);class Xr extends oe{static get properties(){return{date:String,authors:Object}}constructor(){super(),this.date="",this.authors=[]}render(){let e=this.date;Vr.a.isValid(this.date,qr)&&(e=Vr.a.format(Vr.a.parse(this.date,qr),"MMMM DD, YYYY"));let t=this.authors;return"string"==typeof t&&(t=JSON.parse(t)),k`
             <style>
                 .byline{
                     margin-right: -10px;

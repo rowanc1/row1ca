@@ -1,0 +1,104 @@
+<ink-var name="xmax" value="100"></ink-var>
+<ink-var name="tmax" value="0.25"></ink-var>
+
+
+<ink-var name="v1" value="400" description="Velocity of layer 1"></ink-var>
+<ink-var name="v2" value="1000" description="Velocity of layer 2"></ink-var>
+<ink-var name="v3" value="1500" description="Velocity of layer 3"></ink-var>
+
+<ink-var name="z1" value="5"></ink-var>
+<ink-var name="z2" value="10"></ink-var>
+
+<ink-var name="time" value="0.1"></ink-var>
+<ink-var name="offset" value="80"></ink-var>
+
+<ink-var name="theta" :value="[Math.asin(v1 / v2), Math.asin(v1 / v3), Math.asin(v2 / v3)]"></ink-var>
+<ink-var name="d" :value="[Math.tan(theta[0]) * z1, Math.tan(theta[1]) * z1, Math.tan(theta[2]) * z2]"></ink-var>
+<ink-var name="ti" :value="[2*z1*Math.cos(theta[0])/v1, 2*z1*Math.cos(theta[1])/v1, 2*z2*Math.cos(theta[2])/v2]"></ink-var>
+
+<ink-var name="direct_path" :value="[[0, 0], [offset, 0]]"></ink-var>
+<ink-var name="direct_path_full" :value="[[0, 0], [Math.min(time * v1, offset), 0]]"></ink-var>
+
+<ink-var name="lPath" :value="[[0, 0], [offset / 2, z1], [offset, 0]]"></ink-var>
+<ink-var name="lPath_dist_v1" :value="Math.sqrt(offset * offset / 4 + z1*z1)"></ink-var>
+<ink-var name="lPath_p1" :value="Math.min(time*v1 / lPath_dist_v1, 1)"></ink-var>
+<ink-var name="lPath_p2" :value="Math.min(time*v1 / lPath_dist_v1 - 1, 1)"></ink-var>
+<ink-var name="lPath_full" :value="[
+    [0, 0],
+    [offset / 2 * lPath_p1, z1 * lPath_p1],
+    lPath_p2 < 0 ? -1 : [ offset / 2 + lPath_p2 * (offset - offset / 2), z1 - lPath_p2 * z1]
+].filter((x)=> x !== -1)"></ink-var>
+
+<ink-var name="rPath_1_visible" :value="offset - 2*d[0] > 0"></ink-var>
+<ink-var name="rPath_1" :value="[[0, 0], [d[0], z1], [d[0] + offset - 2*d[0], z1], [offset, 0]]"></ink-var>
+<ink-var name="rPath_1_dist_v1" :value="Math.sqrt(d[0] * d[0] + z1*z1)"></ink-var>
+<ink-var name="rPath_1_dist_v2" :value="offset - 2*d[0]"></ink-var>
+<ink-var name="rPath_1_p1" :value="Math.min(time*v1 / rPath_1_dist_v1, 1)"></ink-var>
+<ink-var name="rPath_1_p2" :value="Math.min((time - rPath_1_dist_v1 / v1)*v2 / rPath_1_dist_v2, 1)"></ink-var>
+<ink-var name="rPath_1_p3" :value="Math.min((time - rPath_1_dist_v1 / v1 - rPath_1_dist_v2 / v2)*v1 / rPath_1_dist_v1, 1)"></ink-var>
+<ink-var name="rPath_1_full" :value="[
+    [0, 0],
+    [d[0] * rPath_1_p1, z1 * rPath_1_p1],
+    rPath_1_p2 < 0 ? -1 : [d[0] + rPath_1_dist_v2 * rPath_1_p2, z1],
+    rPath_1_p3 < 0 ? -1 : [d[0] + rPath_1_dist_v2 + (offset - d[0] - rPath_1_dist_v2) * rPath_1_p3, z1 - z1 * rPath_1_p3]
+].filter((x)=> x !== -1)"></ink-var>
+
+<ink-var name="rPath_2_visible" :value="offset - 2*(d[1] + d[2]) > 0"></ink-var>
+<ink-var name="rPath_2" :value="[[0, 0], [d[1], z1], [d[1] + d[2], z1 + z2], [d[1] + d[2] + offset - 2*(d[1] + d[2]), z1 + z2], [d[1] + d[2] + offset - 2*(d[1] + d[2]) + d[2], z1], [offset, 0]]"></ink-var>
+<ink-var name="rPath_2_dist_v1" :value="Math.sqrt(d[1] * d[1] + z1*z1)"></ink-var>
+<ink-var name="rPath_2_dist_v2" :value="Math.sqrt(d[2] * d[2] + z2*z2)"></ink-var>
+<ink-var name="rPath_2_dist_v3" :value="offset - 2*(d[1] + d[2])"></ink-var>
+<ink-var name="rPath_2_p1" :value="Math.min(time*v1 / rPath_2_dist_v1, 1)"></ink-var>
+<ink-var name="rPath_2_p2" :value="Math.min((time - rPath_2_dist_v1 / v1)*v2 / rPath_2_dist_v2, 1)"></ink-var>
+<ink-var name="rPath_2_p3" :value="Math.min((time - rPath_2_dist_v1 / v1 - rPath_2_dist_v2 / v2)*v3 / rPath_2_dist_v3, 1)"></ink-var>
+<ink-var name="rPath_2_p4" :value="Math.min((time - rPath_2_dist_v1 / v1 - rPath_2_dist_v2 / v2 - rPath_2_dist_v3 / v3)*v2 / rPath_2_dist_v2, 1)"></ink-var>
+<ink-var name="rPath_2_p5" :value="Math.min((time - rPath_2_dist_v1 / v1 - 2 * rPath_2_dist_v2 / v2 - rPath_2_dist_v3 / v3)*v1 / rPath_2_dist_v1, 1)"></ink-var>
+<ink-var name="rPath_2_full" :value="[
+    [0, 0],
+    [d[1] * rPath_2_p1, z1 * rPath_2_p1],
+    rPath_2_p2 < 0 ? -1 : [d[1] + d[2] * rPath_2_p2, z1 + z2*rPath_2_p2],
+    rPath_2_p3 < 0 ? -1 : [d[1] + d[2] + rPath_2_dist_v3 * rPath_2_p3, z1 + z2],
+    rPath_2_p4 < 0 ? -1 : [d[1] + d[2] + rPath_2_dist_v3 + d[2]*rPath_2_p4, z1 + z2 - z2*rPath_2_p4],
+    rPath_2_p5 < 0 ? -1 : [d[1] + d[2] + rPath_2_dist_v3 + d[2] + d[1]*rPath_2_p5, z1 - z1*rPath_2_p5],
+].filter((x)=> x !== -1)"></ink-var>
+
+<ink-chart :xlim="[0, xmax]" ylim="[50, -5]" ylabel="Depth (m)" xlabel="Offset (m)">
+    <ink-chart-path :data="[[0, z1], [xmax, z1]]" stroke="#333" stroke-width="0.5"></ink-chart-path>
+    <ink-chart-text :x="xmax" :y="z1-1" :text="'Layer 1 = ' + Math.round(z1) + 'm'"></ink-chart-text>
+    <ink-chart-path :data="[[0, z1+z2], [xmax, z1+z2]]" stroke="#333" stroke-width="0.5"></ink-chart-path>
+    <ink-chart-text :x="xmax" :y="z1+z2-1" :text="'Layer 2 = ' + Math.round(z2) + 'm'"></ink-chart-text>
+    <ink-chart-path :data="[[offset, 50], [offset, -5]]" stroke="#333" stroke-width="0.5"></ink-chart-path>
+    <ink-chart-text :x="offset - 1" y="-2" :text="'Offset = ' + Math.round(offset) + 'm'"></ink-chart-text>
+    <ink-chart-path :data="direct_path" stroke="red" stroke-dasharray="10 2" stroke-width="1"></ink-chart-path>
+    <ink-chart-path :data="direct_path_full" stroke="red" stroke-width="3"></ink-chart-path>
+    <ink-chart-path :data="lPath" stroke="black" stroke-dasharray="10 2" stroke-width="1"></ink-chart-path>
+    <ink-chart-path :data="lPath_full" stroke="black" stroke-width="3"></ink-chart-path>
+    <ink-chart-path :data="rPath_1" stroke="blue" stroke-dasharray="10 2" stroke-width="1" :visible="rPath_1_visible"></ink-chart-path>
+    <ink-chart-path :data="rPath_1_full" stroke="blue" stroke-width="3" :visible="rPath_1_visible"></ink-chart-path>
+    <ink-chart-path :data="rPath_2" stroke="green" stroke-dasharray="10 2" stroke-width="1" :visible="rPath_2_visible"></ink-chart-path>
+    <ink-chart-path :data="rPath_2_full" stroke="green" stroke-width="3" :visible="rPath_2_visible"></ink-chart-path>
+    <ink-chart-node :x="offset" :y="z1" bind="{offset:x, z1:y}" constrain="[Math.min(Math.max(0, x), xmax), Math.min(Math.max(0, y), Math.min(30, 50 - z2))]"></ink-chart-node>
+    <ink-chart-node :x="offset" :y="z1 + z2" bind="{offset:x, z2:y - z1}" constrain="[Math.min(Math.max(0, x), xmax), Math.min(Math.max(z1+5, y), 50)]"></ink-chart-node>
+    <ink-chart-node :x="Math.min(time * v1, offset)" :y="0" bind="{time:x / v1}" constrain="[Math.min(Math.max(0, x), offset), 0]" r="5" fill="red"></ink-chart-node>
+</ink-chart>
+
+Velocity 1: <ink-range name="v1" min="100" max="2000" step="10"></ink-range><br>
+Velocity 2: <ink-range name="v2" min="100" max="2000" step="10"></ink-range><br>
+Velocity 3: <ink-range name="v3" min="100" max="2000" step="10"></ink-range><br>
+
+Offset: <ink-dynamic name="offset" min="0" max="100"></ink-dynamic>
+Time:<ink-dynamic name="time" min="0" :max="tmax" step="0.001" sensitivity="1000" format="0.2f"></ink-dynamic>
+
+
+<ink-chart :xlim="[0, xmax]" ylim="[0.25, 0]" ylabel="Time (s)" xlabel="Offset (m)">
+    <ink-chart-path :data="[[offset, 0], [offset, tmax]]" stroke="#333" stroke-width="0.5"></ink-chart-path>
+    <ink-chart-path :data="[[0, time], [xmax, time]]" stroke="#333" stroke-width="1"></ink-chart-path>
+    <ink-chart-eqn eqn="y * v1" parameterize="y" description="Direct" stroke="red"></ink-chart-eqn>
+    <ink-chart-eqn eqn="Math.sqrt((Math.pow(y, 2) - Math.pow(2*z1/v1, 2)) * Math.pow(v1, 2))" parameterize="y" description="Reflection 1" stroke="black"></ink-chart-eqn>
+    <ink-chart-eqn eqn="(y - ti[0]) * v2" parameterize="y" description="Refraction 1" stroke="blue"></ink-chart-eqn>
+    <ink-chart-eqn eqn="(y - ti[1] - ti[2]) * v3" parameterize="y" description="Refraction 1" stroke="green"></ink-chart-eqn>
+    <ink-chart-node :x="offset" :y="time" bind="{offset:x, time:y}" constrain="[Math.min(Math.max(0, x), xmax), Math.min(Math.max(0, y), 0.25)]"></ink-chart-node>
+</ink-chart>
+
+
+<center><iframe width="700" height="500" src="//www.youtube.com/embed/0z2WTLLKjGY?loop=1&playlist=0z2WTLLKjGY" frameborder="0" allowfullscreen></iframe></center>

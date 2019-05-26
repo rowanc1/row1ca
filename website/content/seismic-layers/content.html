@@ -1,16 +1,16 @@
 <ink-var name="xmax" value="100"></ink-var>
 <ink-var name="tmax" value="0.25"></ink-var>
 
+<ink-var name="v1" value="400" format=".0f" description="Velocity of layer 1"></ink-var>
+<ink-var name="v2" value="1000" format=".0f" description="Velocity of layer 2"></ink-var>
+<ink-var name="v3" value="1500" format=".0f" description="Velocity of layer 3"></ink-var>
 
-<ink-var name="v1" value="400" description="Velocity of layer 1"></ink-var>
-<ink-var name="v2" value="1000" description="Velocity of layer 2"></ink-var>
-<ink-var name="v3" value="1500" description="Velocity of layer 3"></ink-var>
+<ink-var name="z1" value="15"></ink-var>
+<ink-var name="z2" value="15"></ink-var>
 
-<ink-var name="z1" value="5"></ink-var>
-<ink-var name="z2" value="10"></ink-var>
-
-<ink-var name="time" value="0.1"></ink-var>
+<ink-var name="time" value="0.05"></ink-var>
 <ink-var name="offset" value="80"></ink-var>
+<ink-var name="offsets" :value="[offset, 2*d[0]+0.1, 2*(d[1] + d[2])+0.1, 10,20,30,40,50,60,70,80,90,100,120,145,170,200,300,500,1000,1e10].sort((a,b) => a-b)"></ink-var>
 
 <ink-var name="theta" :value="[Math.asin(v1 / v2), Math.asin(v1 / v3), Math.asin(v2 / v3)]"></ink-var>
 <ink-var name="d" :value="[Math.tan(theta[0]) * z1, Math.tan(theta[1]) * z1, Math.tan(theta[2]) * z2]"></ink-var>
@@ -19,56 +19,260 @@
 <ink-var name="direct_path" :value="[[0, 0], [offset, 0]]"></ink-var>
 <ink-var name="direct_path_full" :value="[[0, 0], [Math.min(time * v1, offset), 0]]"></ink-var>
 
+<!-- Reflection off of Layer 1 -->
 <ink-var name="lPath" :value="[[0, 0], [offset / 2, z1], [offset, 0]]"></ink-var>
-<ink-var name="lPath_dist_v1" :value="Math.sqrt(offset * offset / 4 + z1*z1)"></ink-var>
-<ink-var name="lPath_p1" :value="Math.min(time*v1 / lPath_dist_v1, 1)"></ink-var>
-<ink-var name="lPath_p2" :value="Math.min(time*v1 / lPath_dist_v1 - 1, 1)"></ink-var>
+<ink-var name="lPath_dist" :value="[Math.sqrt(offset * offset / 4 + z1*z1)]"></ink-var>
+<ink-var name="lPath_p" :value="[
+    Math.min(time*v1 / lPath_dist[0], 1),
+    Math.min(time*v1 / lPath_dist[0] - 1, 1)
+]"></ink-var>
 <ink-var name="lPath_full" :value="[
     [0, 0],
-    [offset / 2 * lPath_p1, z1 * lPath_p1],
-    lPath_p2 < 0 ? -1 : [ offset / 2 + lPath_p2 * (offset - offset / 2), z1 - lPath_p2 * z1]
+    [offset / 2 * lPath_p[0], z1 * lPath_p[0]],
+    lPath_p[1] < 0 ? -1 : [ offset / 2 + lPath_p[1] * (offset - offset / 2), z1 - lPath_p[1] * z1]
 ].filter((x)=> x !== -1)"></ink-var>
 
+<ink-var name="lPath_dist_o" :value="offsets.map((offset, i) => [Math.sqrt(offset * offset / 4 + z1*z1)])"></ink-var>
+<ink-var name="lPath_p_o" :value="offsets.map((offset, i) => [
+    Math.min(time*v1 / lPath_dist_o[i][0], 1),
+    Math.min(time*v1 / lPath_dist_o[i][0] - 1, 1)
+])"></ink-var>
+<ink-var name="lPath_full_o" :value="offsets.map((offset, i) => [
+    [0, 0],
+    [offset / 2 * lPath_p_o[i][0], z1 * lPath_p_o[i][0]],
+    lPath_p_o[i][1] < 0 ? -1 : [ offset / 2 + lPath_p_o[i][1] * (offset - offset / 2), z1 - lPath_p_o[i][1] * z1],
+    [null, null]
+].filter((x)=> x !== -1))"></ink-var>
+<ink-var name="dPath_full_front" :value="lPath_full_o.filter((x,i) => lPath_p_o[i][0] < 1).map(x => x[x.length-2])"></ink-var>
+<ink-var name="lPath_full_front" :value="lPath_full_o.filter((x,i) => lPath_p_o[i][0] >= 1).filter((x,i) => lPath_p_o[i][1] < 1).map(x => x[x.length-2])"></ink-var>
+
+<!-- Refraction off of Layer 1 -->
 <ink-var name="rPath_1_visible" :value="offset - 2*d[0] > 0"></ink-var>
 <ink-var name="rPath_1" :value="[[0, 0], [d[0], z1], [d[0] + offset - 2*d[0], z1], [offset, 0]]"></ink-var>
-<ink-var name="rPath_1_dist_v1" :value="Math.sqrt(d[0] * d[0] + z1*z1)"></ink-var>
-<ink-var name="rPath_1_dist_v2" :value="offset - 2*d[0]"></ink-var>
-<ink-var name="rPath_1_p1" :value="Math.min(time*v1 / rPath_1_dist_v1, 1)"></ink-var>
-<ink-var name="rPath_1_p2" :value="Math.min((time - rPath_1_dist_v1 / v1)*v2 / rPath_1_dist_v2, 1)"></ink-var>
-<ink-var name="rPath_1_p3" :value="Math.min((time - rPath_1_dist_v1 / v1 - rPath_1_dist_v2 / v2)*v1 / rPath_1_dist_v1, 1)"></ink-var>
+<ink-var name="rPath_1_dist" :value="[
+    Math.sqrt(d[0] * d[0] + z1*z1),
+    offset - 2*d[0]
+]"></ink-var>
+<ink-var name="rPath_1_p" :value="[
+    Math.min(time*v1 / rPath_1_dist[0], 1),
+    Math.min((time - rPath_1_dist[0] / v1)*v2 / rPath_1_dist[1], 1),
+    Math.min((time - rPath_1_dist[0] / v1 - rPath_1_dist[1] / v2)*v1 / rPath_1_dist[0], 1)
+]"></ink-var>
 <ink-var name="rPath_1_full" :value="[
     [0, 0],
-    [d[0] * rPath_1_p1, z1 * rPath_1_p1],
-    rPath_1_p2 < 0 ? -1 : [d[0] + rPath_1_dist_v2 * rPath_1_p2, z1],
-    rPath_1_p3 < 0 ? -1 : [d[0] + rPath_1_dist_v2 + (offset - d[0] - rPath_1_dist_v2) * rPath_1_p3, z1 - z1 * rPath_1_p3]
+    [d[0] * rPath_1_p[0], z1 * rPath_1_p[0]],
+    rPath_1_p[1] < 0 ? -1 : [d[0] + rPath_1_dist[1] * rPath_1_p[1], z1],
+    rPath_1_p[2] < 0 ? -1 : [d[0] + rPath_1_dist[1] + (offset - d[0] - rPath_1_dist[1]) * rPath_1_p[2], z1 - z1 * rPath_1_p[2]]
 ].filter((x)=> x !== -1)"></ink-var>
 
+<ink-var name="rPath_1_visible_o" :value="offsets.map((offset, i) => offset - 2*d[0] > 0)"></ink-var>
+<ink-var name="rPath_1_dist_o" :value="offsets.map((offset, i) => [
+    Math.sqrt(d[0] * d[0] + z1*z1),
+    offset - 2*d[0]
+])"></ink-var>
+<ink-var name="rPath_1_p_o" :value="offsets.map((offset, i) => [
+    Math.min(time*v1 / rPath_1_dist_o[i][0], 1),
+    Math.min((time - rPath_1_dist_o[i][0] / v1)*v2 / rPath_1_dist_o[i][1], 1),
+    Math.min((time - rPath_1_dist_o[i][0] / v1 - rPath_1_dist_o[i][1] / v2)*v1 / rPath_1_dist_o[i][0], 1)
+])"></ink-var>
+<ink-var name="rPath_1_full_o" :value="offsets.map((offset, i) => [
+    [0, 0],
+    [d[0] * rPath_1_p_o[i][0], z1 * rPath_1_p_o[i][0]],
+    rPath_1_p_o[i][1] < 0 ? -1 : [d[0] + rPath_1_dist_o[i][1] * rPath_1_p_o[i][1], z1],
+    rPath_1_p_o[i][2] < 0 ? -1 : [d[0] + rPath_1_dist_o[i][1] + (offset - d[0] - rPath_1_dist_o[i][1]) * rPath_1_p_o[i][2], z1 - z1 * rPath_1_p_o[i][2]],
+    [null, null]
+].filter((x)=> x !== -1)).filter((x,i)=>rPath_1_visible_o[i])"></ink-var>
+<ink-var name="rPath_1_full_front" :value="rPath_1_full_o.map(x => x[x.length-2])"></ink-var>
+
+<!-- Refraction off of Layer 2 -->
 <ink-var name="rPath_2_visible" :value="offset - 2*(d[1] + d[2]) > 0"></ink-var>
 <ink-var name="rPath_2" :value="[[0, 0], [d[1], z1], [d[1] + d[2], z1 + z2], [d[1] + d[2] + offset - 2*(d[1] + d[2]), z1 + z2], [d[1] + d[2] + offset - 2*(d[1] + d[2]) + d[2], z1], [offset, 0]]"></ink-var>
-<ink-var name="rPath_2_dist_v1" :value="Math.sqrt(d[1] * d[1] + z1*z1)"></ink-var>
-<ink-var name="rPath_2_dist_v2" :value="Math.sqrt(d[2] * d[2] + z2*z2)"></ink-var>
-<ink-var name="rPath_2_dist_v3" :value="offset - 2*(d[1] + d[2])"></ink-var>
-<ink-var name="rPath_2_p1" :value="Math.min(time*v1 / rPath_2_dist_v1, 1)"></ink-var>
-<ink-var name="rPath_2_p2" :value="Math.min((time - rPath_2_dist_v1 / v1)*v2 / rPath_2_dist_v2, 1)"></ink-var>
-<ink-var name="rPath_2_p3" :value="Math.min((time - rPath_2_dist_v1 / v1 - rPath_2_dist_v2 / v2)*v3 / rPath_2_dist_v3, 1)"></ink-var>
-<ink-var name="rPath_2_p4" :value="Math.min((time - rPath_2_dist_v1 / v1 - rPath_2_dist_v2 / v2 - rPath_2_dist_v3 / v3)*v2 / rPath_2_dist_v2, 1)"></ink-var>
-<ink-var name="rPath_2_p5" :value="Math.min((time - rPath_2_dist_v1 / v1 - 2 * rPath_2_dist_v2 / v2 - rPath_2_dist_v3 / v3)*v1 / rPath_2_dist_v1, 1)"></ink-var>
+<ink-var name="rPath_2_dist" :value="[
+    Math.sqrt(d[1] * d[1] + z1*z1),
+    Math.sqrt(d[2] * d[2] + z2*z2),
+    offset - 2*(d[1] + d[2])
+]"></ink-var>
+<ink-var name="rPath_2_p" :value="[
+    Math.min(time*v1 / rPath_2_dist[0], 1),
+    Math.min((time - rPath_2_dist[0] / v1)*v2 / rPath_2_dist[1], 1),
+    Math.min((time - rPath_2_dist[0] / v1 - rPath_2_dist[1] / v2)*v3 / rPath_2_dist[2], 1),
+    Math.min((time - rPath_2_dist[0] / v1 - rPath_2_dist[1] / v2 - rPath_2_dist[2] / v3)*v2 / rPath_2_dist[1], 1),
+    Math.min((time - rPath_2_dist[0] / v1 - 2 * rPath_2_dist[1] / v2 - rPath_2_dist[2] / v3)*v1 / rPath_2_dist[0], 1)
+]"></ink-var>
 <ink-var name="rPath_2_full" :value="[
     [0, 0],
-    [d[1] * rPath_2_p1, z1 * rPath_2_p1],
-    rPath_2_p2 < 0 ? -1 : [d[1] + d[2] * rPath_2_p2, z1 + z2*rPath_2_p2],
-    rPath_2_p3 < 0 ? -1 : [d[1] + d[2] + rPath_2_dist_v3 * rPath_2_p3, z1 + z2],
-    rPath_2_p4 < 0 ? -1 : [d[1] + d[2] + rPath_2_dist_v3 + d[2]*rPath_2_p4, z1 + z2 - z2*rPath_2_p4],
-    rPath_2_p5 < 0 ? -1 : [d[1] + d[2] + rPath_2_dist_v3 + d[2] + d[1]*rPath_2_p5, z1 - z1*rPath_2_p5],
+    [d[1] * rPath_2_p[0], z1 * rPath_2_p[0]],
+    rPath_2_p[1] < 0 ? -1 : [d[1] + d[2] * rPath_2_p[1], z1 + z2*rPath_2_p[1]],
+    rPath_2_p[2] < 0 ? -1 : [d[1] + d[2] + rPath_2_dist[2] * rPath_2_p[2], z1 + z2],
+    rPath_2_p[3] < 0 ? -1 : [d[1] + d[2] + rPath_2_dist[2] + d[2]*rPath_2_p[3], z1 + z2 - z2*rPath_2_p[3]],
+    rPath_2_p[4] < 0 ? -1 : [d[1] + d[2] + rPath_2_dist[2] + d[2] + d[1]*rPath_2_p[4], z1 - z1*rPath_2_p[4]],
 ].filter((x)=> x !== -1)"></ink-var>
 
-<ink-chart :xlim="[0, xmax]" ylim="[50, -5]" ylabel="Depth (m)" xlabel="Offset (m)">
+
+<p>
+    What do seismic waves look like when they propagate through multiple layers of different velocity?
+</p>
+<center><iframe width="700" height="500" src="//www.youtube.com/embed/0z2WTLLKjGY?loop=1&playlist=0z2WTLLKjGY" frameborder="0" allowfullscreen></iframe></center>
+
+<h2>Interactive Layers</h2>
+
+<p>
+    In this document we will explore the different types of seismic ray paths in a three layered earth, seeing how they depend on layer depth and velocities.
+    <br>
+    To learn more check out the online resource for <a href="https://gpg.geosci.xyz/content/seismic/waves_at_interfaces.html#angles-of-reflection-and-refraction">Geophysics for Practicing Geoscientists</a>, much of the text content here was adapted from that resource.
+</p>
+
+
+<h2>Angles Of Reflection And Refraction</h2>
+<ink-scope>
+    <p>
+        Consider a P-wave which is incident at an angle $\theta_1$ measured with respect to the normal of the interface, as seen in the figure below where the approaching wave is represented as a ray.
+        The angles of the reflected and refracted rays are as follows:
+        <ink-callout>
+            <strong>Law of Reflection:</strong> The angle of reflection equals the angle of incidence. So $\theta_r = \theta_1$.
+        </ink-callout>
+        <ink-callout>
+            <strong>Law of Refraction:</strong> The angle of refraction $\theta_2$ is determined through Snell's Law:
+            <ink-equation>
+                \frac{\sin \theta_1}{v_1} = \frac{\sin \theta_2}{v_2}
+            </ink-equation>
+        </ink-callout>
+        If the wave travels from a low velocity medium to a high velocity medium the wave gets refracted away from the normal.
+        Conversely, it gets refracted toward the normal if the wave goes from a high velocity to a low velocity medium.
+
+    </p>
+    <ink-var name="theta1" value="0.7853981633974483"></ink-var>
+    <ink-var name="v1" value="400"></ink-var>
+    <ink-var name="v2" value="500"></ink-var>
+    <ink-var name="theta2" :value="Math.asin(v2 * Math.sin(theta1) / v1 )"></ink-var>
+    <ink-var name="thetac" :value="Math.asin(v1 / v2 )"></ink-var>
+
+    <br>
+    <ink-aside>
+        $\theta_1$: <ink-dynamic :value="theta1 * 180 / Math.PI" bind="{theta1: value * Math.PI / 180}" min="0" max="90">&deg;</ink-dynamic><br>
+        $\theta_2$: <ink-span :visible="!isFinite(theta2)">No Refraction Wave</ink-span><ink-span :visible="isFinite(theta2)"><ink-display name="theta2" transform="value*180/Math.PI"></ink-display>&deg;</ink-span><br>
+        $v_1$: <ink-range name="v1" min="100" :max="v2" step="10" width="100px"></ink-range> <ink-display name="v1"></ink-display> m/s<br>
+        $v_2$: <ink-range name="v2" :min="v1" max="2000" step="10" width="100px"></ink-range> <ink-display name="v2"></ink-display> m/s<br>
+    </ink-aside>
+
+    <ink-chart xlim="[-1.1,1.1]" ylim="[-1.1,1.1]" width="400" height="400" x-axis-location="hidden" y-axis-location="hidden" style="text-align: center;">
+        <ink-chart-path data="[[-1, 0], [1, 0]]" stroke="black"></ink-chart-path>
+        <ink-chart-path data="[[0, -1], [0, 1]]" stroke="black" stroke-dasharray="3 3"></ink-chart-path>
+        <ink-chart-text x="-0.8" y="0.15" text="v1"></ink-chart-text>
+        <ink-chart-text x="-0.8" y="-0.2" text="v2 > v1"></ink-chart-text>
+        <ink-chart-text :x="0.5" :y="-0.2" text="No Refraction Wave" :visible="!isFinite(theta2)" text-anchor="middle"></ink-chart-text>
+
+        <ink-chart-text :x="-0.9*Math.sin(theta1) - 0.1" :y="0.9*Math.cos(theta1) - 0.1" :rotate="90-theta1*180/Math.PI" text="incident -->"></ink-chart-text>
+        <ink-chart-text :x="0.5*Math.sin(theta1) + 0.1" :y="0.5*Math.cos(theta1) - 0.1" :rotate="-90+theta1*180/Math.PI" text="reflected -->"></ink-chart-text>
+
+        <ink-chart-text :x="0.5*Math.sin(theta2 + 0.1)" :y="-0.5*Math.cos(theta2 + 0.1)" :rotate="90-theta2*180/Math.PI" text="refracted -->" :visible="isFinite(theta2)"></ink-chart-text>
+
+        <ink-chart-text :x="-0.35*Math.sin(theta1/2)" :y="0.35*Math.cos(theta1/2)" :text="Math.abs(theta1-thetac) * 180 / Math.PI < 0.1 ? '&theta;c' : '&theta;1'" :visible="theta1 *180 / Math.PI > 25" text-anchor="end"></ink-chart-text>
+        <ink-chart-text :x="0.35*Math.sin(theta1/2)" :y="0.35*Math.cos(theta1/2)" text="&theta;r" :visible="theta1 *180 / Math.PI > 25"></ink-chart-text>
+        <ink-chart-text :x="0.4*Math.sin(theta2/2)" :y="-0.4*Math.cos(theta2/2)" :text="theta2 * 180 / Math.PI > 89 ? '90&deg;' : '&theta;2'" :visible="isFinite(theta2) && theta2 *180 / Math.PI > 25" text-anchor="middle"></ink-chart-text>
+
+        <ink-chart-path :data="[[0,0], [-Math.sin(theta1), Math.cos(theta1)]]" stroke="red"></ink-chart-path>
+        <ink-chart-path :data="[[0,0], [Math.sin(theta1), Math.cos(theta1)]]" stroke="black"></ink-chart-path>
+        <ink-chart-path :data="[[0,0], [Math.sin(theta2), -Math.cos(theta2)]]" stroke="blue" :visible="isFinite(theta2)"></ink-chart-path>
+
+        <ink-chart-circle :x="-Math.sin(thetac)" :y="Math.cos(thetac)" fill="blue"></ink-chart-circle>
+
+        <ink-chart-eqn :domain="[-theta1, theta1]" eqn="[-0.3*Math.sin(t), 0.3*Math.cos(t)]" parameterize="t" stroke="#333" stroke-width="1" stroke-dasharray="3"></ink-chart-eqn>
+        <ink-chart-eqn :domain="[0, theta2]" eqn="[0.3*Math.sin(t), -0.3*Math.cos(t)]" parameterize="t" stroke="#333" stroke-width="1" stroke-dasharray="3" :visible="isFinite(theta2)"></ink-chart-eqn>
+
+        <ink-chart-node r="10" fill="#ccc" :x="-Math.sin(theta1)" :y="Math.cos(theta1)" bind="{theta1: Math.atan(-x/y)}" constrain="[-Math.sin(Math.atan(-Math.min(Math.max(x,-1),-1e-10)/Math.min(Math.max(y,1e-10),1))), Math.cos(Math.atan(-Math.min(Math.max(x,-1),-1e-10)/Math.min(Math.max(y,1e-10),1)))]"></ink-chart-node>
+    </ink-chart>
+    <p style="text-align:center; font-size: 0.8em;color:#aaa">
+        Snell's Law for two layers where $v_1$= <ink-display name="v1"></ink-display> m/s and $v_2$= <ink-display name="v2"></ink-display> m/s.
+        The incident angle of the incoming wave is $\theta_1$= <ink-display name="theta1" transform="value*180/Math.PI"></ink-display>&deg;.
+        <ink-span :visible="!isFinite(theta2)">When an incident wave has an angle over the critical angle, $\theta_c$, there is no refracted wave.</ink-span>
+    </p>
+
+
+    The critical refraction angle, called $\theta_c$, is a key concept in refraction seismology.
+    This is the angle of incidence for which the corresponding angle of <ink-action bind="{theta1: thetac}">refraction is 90&deg;</ink-action>.
+    In this case, the refracted ray travels horizontally along the interface.
+    A formula for the critical angle can be derived from Snell's law as follows:
+    <ink-equation>
+        \frac{\sin \theta_c}{v_1} = \frac{\sin 90^{\circ}}{v_2} = \frac{1}{v_2}
+    </ink-equation>
+</ink-scope>
+<h2>Direct Wave and Reflection off Layer 1</h2>
+<ink-aside>
+    Time: <ink-dynamic name="time" min="0" :max="tmax" step="0.001" sensitivity="1000" format="0.2f"> s</ink-dynamic>
+</ink-aside>
+
+<ink-chart :xlim="[0, xmax]" ylim="[30, -5]" ylabel="Depth (m)" xlabel="Offset (m)">
+    <ink-chart-path :data="lPath_full_o.flat()" stroke="black" stroke-width="0.5"></ink-chart-path>
+    <ink-chart-path :data="lPath_full_front" stroke="black" stroke-width="3" stroke-dasharray="3 3"></ink-chart-path>
+    <ink-chart-path :data="dPath_full_front" stroke="red" stroke-width="3" stroke-dasharray="3 3"></ink-chart-path>
+    <ink-chart-path :data="[[0, 0], [xmax, 0]]" stroke="#333" stroke-width="0.5"></ink-chart-path>
     <ink-chart-path :data="[[0, z1], [xmax, z1]]" stroke="#333" stroke-width="0.5"></ink-chart-path>
-    <ink-chart-text :x="xmax" :y="z1-1" :text="'Layer 1 = ' + Math.round(z1) + 'm'"></ink-chart-text>
+    <ink-chart-text :x="xmax" :y="z1-1" :text="'Layer 1 = ' + Math.round(z1) + 'm'" text-anchor="end"></ink-chart-text>
+    <ink-chart-path :data="[[offset, 30], [offset, -5]]" stroke="#333" stroke-width="0.5"></ink-chart-path>
+    <ink-chart-text :x="offset - 1" y="-2" :text="'Offset = ' + Math.round(offset) + 'm'" text-anchor="end"></ink-chart-text>
+    <ink-chart-node :x="offset" :y="z1" bind="{offset:x, z1:y}" constrain="[Math.min(Math.max(0, x), xmax), Math.min(Math.max(2.5, y), Math.min(30, 50 - z2))]" r="10" fill="#ccc"></ink-chart-node>
+    <ink-chart-node :x="time * v1" :y="0" bind="{time:x / v1}" constrain="[Math.max(0, x), 0]" r="5" fill="red"></ink-chart-node>
+</ink-chart>
+
+<h2>Refraction - Layer 1</h2>
+
+<p>
+    When the wave in the second medium is critically refracted, it travels parallel to the interface at a speed of $v_2$.
+    As it travels, it radiates energy into the upper medium with the associated ray path making an angle $\theta_c$ with the normal.
+    This critically refracted wave is also called a "head wave". It is somewhat analogous to the bow wave of a moving boat.
+</p>
+<ink-aside>
+    Velocity 1: <ink-range width="100px" name="v1" min="100" :max="v2" step="5"></ink-range> <ink-display name="v1"></ink-display> m/s<br>
+    Velocity 2: <ink-range width="100px" name="v2" :min="v1" :max="v3" step="5"></ink-range> <ink-display name="v2"></ink-display> m/s<br>
+    Velocity 3: <ink-range width="100px" name="v3" :min="v2" max="2000" step="5"></ink-range> <ink-display name="v3"></ink-display> m/s<br>
+    Offset: <ink-dynamic name="offset" min="0" max="100"> m</ink-dynamic><br>
+    Time: <ink-dynamic name="time" min="0" :max="tmax" step="0.001" sensitivity="1000" format="0.2f"> s</ink-dynamic>
+</ink-aside>
+
+<ink-chart :xlim="[0, xmax]" ylim="[30, -5]" ylabel="Depth (m)" xlabel="Offset (m)">
+    <ink-chart-path :data="rPath_1_full_o.flat()" stroke="blue" stroke-width="0.5"></ink-chart-path>
+    <ink-chart-path :data="rPath_1_full_front" stroke="blue" stroke-width="3" stroke-dasharray="3 3"></ink-chart-path>
+    <ink-chart-path :data="lPath_full_front" stroke="black" stroke-width="3" stroke-dasharray="3 3"></ink-chart-path>
+    <ink-chart-path :data="dPath_full_front" stroke="red" stroke-width="3" stroke-dasharray="3 3"></ink-chart-path>
+    <ink-chart-path :data="[[0, 0], [xmax, 0]]" stroke="#333" stroke-width="0.5"></ink-chart-path>
+    <ink-chart-path :data="[[0, z1], [xmax, z1]]" stroke="#333" stroke-width="0.5"></ink-chart-path>
+    <ink-chart-text :x="xmax" :y="z1-1" :text="'Layer 1 = ' + Math.round(z1) + 'm'" text-anchor="end"></ink-chart-text>
+    <ink-chart-path :data="[[offset, 30], [offset, -5]]" stroke="#333" stroke-width="0.5"></ink-chart-path>
+    <ink-chart-text :x="offset - 1" y="-2" :text="'Offset = ' + Math.round(offset) + 'm'" text-anchor="end"></ink-chart-text>
+    <ink-chart-path :data="[[0, 0], [time * v1, 0]]" stroke="red" stroke-width="3"></ink-chart-path>
+    <ink-chart-node :x="offset" :y="z1" bind="{offset:x, z1:y}" constrain="[Math.min(Math.max(0, x), xmax), Math.min(Math.max(2.5, y), Math.min(30, 50 - z2))]" r="10" fill="#ccc"></ink-chart-node>
+    <ink-chart-node :x="time * v1" :y="0" bind="{time:x / v1}" constrain="[Math.max(0, x), 0]" r="5" fill="red"></ink-chart-node>
+    <ink-chart-node :x="(time - rPath_1_dist[0]/v1) * v2 + d[0]" :y="z1" bind="{time:(x - d[0]) / v2 + rPath_1_dist[0]/v1}" :visible="time - rPath_1_dist[0]/v1 >= 0" constrain="[Math.max(d[0], x), z1]" r="5" fill="blue"></ink-chart-node>
+</ink-chart>
+
+<h2>First Arrivals</h2>
+<p>
+    Try adjusting the velocity of each layer using the controls on the right and adjust the depth of each layer by dragging the vertical sliders on the ray path plot.
+    You can adjust the receiver offset by dragging the node on either plot.
+    Finally, you can use the horizontal slider on the travel-time plot to explore how the rays progress as time advances.
+    On the top plot, the path of each ray up to the time specified by the time slider are shown as thick solid lines.
+    Thin dashed lines show how the rays will continue to propagate after the specified time.
+    The travel-time vs offset plots for the refracted rays will be dashed for offsets at which the rays will arrive after the direct wave.
+</p>
+<ink-aside>
+    Velocity 1: <ink-range width="100px" name="v1" min="100" :max="v2" step="5"></ink-range> <ink-display name="v1"></ink-display> m/s<br>
+    Velocity 2: <ink-range width="100px" name="v2" :min="v1" :max="v3" step="5"></ink-range> <ink-display name="v2"></ink-display> m/s<br>
+    Velocity 3: <ink-range width="100px" name="v3" :min="v2" max="2000" step="5"></ink-range> <ink-display name="v3"></ink-display> m/s<br>
+    Offset: <ink-dynamic name="offset" min="0" max="100"> m</ink-dynamic><br>
+    Time: <ink-dynamic name="time" min="0" :max="tmax" step="0.001" sensitivity="1000" format="0.2f"> s</ink-dynamic>
+</ink-aside>
+
+
+<ink-chart :xlim="[0, xmax]" ylim="[50, -5]" ylabel="Depth (m)" xlabel="Offset (m)">
+
+    <ink-chart-path :data="[[0, z1], [xmax, z1]]" stroke="#333" stroke-width="0.5"></ink-chart-path>
+    <ink-chart-text :x="xmax" :y="z1-1" :text="'Layer 1 = ' + Math.round(z1) + 'm'" text-anchor="end"></ink-chart-text>
     <ink-chart-path :data="[[0, z1+z2], [xmax, z1+z2]]" stroke="#333" stroke-width="0.5"></ink-chart-path>
-    <ink-chart-text :x="xmax" :y="z1+z2-1" :text="'Layer 2 = ' + Math.round(z2) + 'm'"></ink-chart-text>
+    <ink-chart-text :x="xmax" :y="z1+z2-1" :text="'Layer 2 = ' + Math.round(z2) + 'm'" text-anchor="end"></ink-chart-text>
     <ink-chart-path :data="[[offset, 50], [offset, -5]]" stroke="#333" stroke-width="0.5"></ink-chart-path>
-    <ink-chart-text :x="offset - 1" y="-2" :text="'Offset = ' + Math.round(offset) + 'm'"></ink-chart-text>
+    <ink-chart-text :x="offset - 1" y="-2" :text="'Offset = ' + Math.round(offset) + 'm'" text-anchor="end"></ink-chart-text>
+
     <ink-chart-path :data="direct_path" stroke="red" stroke-dasharray="10 2" stroke-width="1"></ink-chart-path>
     <ink-chart-path :data="direct_path_full" stroke="red" stroke-width="3"></ink-chart-path>
     <ink-chart-path :data="lPath" stroke="black" stroke-dasharray="10 2" stroke-width="1"></ink-chart-path>
@@ -77,28 +281,21 @@
     <ink-chart-path :data="rPath_1_full" stroke="blue" stroke-width="3" :visible="rPath_1_visible"></ink-chart-path>
     <ink-chart-path :data="rPath_2" stroke="green" stroke-dasharray="10 2" stroke-width="1" :visible="rPath_2_visible"></ink-chart-path>
     <ink-chart-path :data="rPath_2_full" stroke="green" stroke-width="3" :visible="rPath_2_visible"></ink-chart-path>
-    <ink-chart-node :x="offset" :y="z1" bind="{offset:x, z1:y}" constrain="[Math.min(Math.max(0, x), xmax), Math.min(Math.max(0, y), Math.min(30, 50 - z2))]"></ink-chart-node>
-    <ink-chart-node :x="offset" :y="z1 + z2" bind="{offset:x, z2:y - z1}" constrain="[Math.min(Math.max(0, x), xmax), Math.min(Math.max(z1+5, y), 50)]"></ink-chart-node>
+    <ink-chart-node :x="offset" :y="z1" bind="{offset:x, z1:y}" constrain="[Math.min(Math.max(0, x), xmax), Math.min(Math.max(2.5, y), Math.min(30, 50 - z2))]" r="10" fill="#ccc"></ink-chart-node>
+    <ink-chart-node :x="offset" :y="z1 + z2" bind="{offset:x, z2:y - z1}" constrain="[Math.min(Math.max(0, x), xmax), Math.min(Math.max(z1+5, y), 50)]" r="10" fill="#ccc"></ink-chart-node>
     <ink-chart-node :x="Math.min(time * v1, offset)" :y="0" bind="{time:x / v1}" constrain="[Math.min(Math.max(0, x), offset), 0]" r="5" fill="red"></ink-chart-node>
 </ink-chart>
 
-Velocity 1: <ink-range name="v1" min="100" max="2000" step="10"></ink-range><br>
-Velocity 2: <ink-range name="v2" min="100" max="2000" step="10"></ink-range><br>
-Velocity 3: <ink-range name="v3" min="100" max="2000" step="10"></ink-range><br>
 
-Offset: <ink-dynamic name="offset" min="0" max="100"></ink-dynamic>
-Time:<ink-dynamic name="time" min="0" :max="tmax" step="0.001" sensitivity="1000" format="0.2f"></ink-dynamic>
-
-
+<h2>Time vs Depth</h2>
 <ink-chart :xlim="[0, xmax]" ylim="[0.25, 0]" ylabel="Time (s)" xlabel="Offset (m)">
     <ink-chart-path :data="[[offset, 0], [offset, tmax]]" stroke="#333" stroke-width="0.5"></ink-chart-path>
     <ink-chart-path :data="[[0, time], [xmax, time]]" stroke="#333" stroke-width="1"></ink-chart-path>
-    <ink-chart-eqn eqn="y * v1" parameterize="y" description="Direct" stroke="red"></ink-chart-eqn>
-    <ink-chart-eqn eqn="Math.sqrt((Math.pow(y, 2) - Math.pow(2*z1/v1, 2)) * Math.pow(v1, 2))" parameterize="y" description="Reflection 1" stroke="black"></ink-chart-eqn>
-    <ink-chart-eqn eqn="(y - ti[0]) * v2" parameterize="y" description="Refraction 1" stroke="blue"></ink-chart-eqn>
-    <ink-chart-eqn eqn="(y - ti[1] - ti[2]) * v3" parameterize="y" description="Refraction 1" stroke="green"></ink-chart-eqn>
-    <ink-chart-node :x="offset" :y="time" bind="{offset:x, time:y}" constrain="[Math.min(Math.max(0, x), xmax), Math.min(Math.max(0, y), 0.25)]"></ink-chart-node>
+    <ink-chart-eqn eqn="x / v1" description="Direct" stroke="red" stroke-width="2"></ink-chart-eqn>
+    <ink-chart-eqn eqn="Math.sqrt(Math.pow(x, 2) / Math.pow(v1, 2) + Math.pow(2*z1/v1, 2))" description="Reflection 1" stroke="black" stroke-width="2"></ink-chart-eqn>
+    <ink-chart-eqn eqn="x / v2 + ti[0]" description="Refraction 1" stroke="blue" :domain="[2*d[0], xmax]" stroke-width="2"></ink-chart-eqn>
+    <ink-chart-eqn eqn="x / v2 + ti[0]" description="Refraction 1 - Pre Arrival" stroke="blue" :domain="[0, 2*d[0]]" stroke-width="0.5" stroke-dasharray="2 2"></ink-chart-eqn>
+    <ink-chart-eqn eqn="x/v3 + ti[1] + ti[2]" description="Refraction 2 - Pre Arrival" stroke="green" :domain="[0, 2*(d[1] + d[2])]" stroke-width="0.5" stroke-dasharray="2 2"></ink-chart-eqn>
+    <ink-chart-eqn eqn="x/v3 + ti[1] + ti[2]" description="Refraction 2" stroke="green" :domain="[2*(d[1] + d[2]), xmax]" stroke-width="2"></ink-chart-eqn>
+    <ink-chart-node :x="offset" :y="time" bind="{offset:x, time:y}" constrain="[Math.min(Math.max(0, x), xmax), Math.min(Math.max(0, y), 0.25)]" r="10" fill="#ccc"></ink-chart-node>
 </ink-chart>
-
-
-<center><iframe width="700" height="500" src="//www.youtube.com/embed/0z2WTLLKjGY?loop=1&playlist=0z2WTLLKjGY" frameborder="0" allowfullscreen></iframe></center>

@@ -1,6 +1,6 @@
 PORT=8081
 ADMIN_PORT=8008
-VERSION=10
+VERSION=11
 PROJECT=rowanc1
 CLOUDSDK_PYTHON=py27
 
@@ -13,10 +13,10 @@ build: clean build-ink
 	pip install -t website/lib -r requirements.txt
 
 build-ink:
-	cd ../ink;npm run build;cp dist/app.bundle.js ../row1ca/website/static/js/ink.js
+	cd ../../ink-components/ink-components;npm run build;cp dist/ink.min.js ../../rowanc1/row1ca/website/static/js/ink.js
 
 build-ink-dev:
-	cd ../ink;npm run build-dev;cp dist/app.bundle.js ../row1ca/website/static/js/ink.js
+	cd ../../ink-components/ink-components;npm run build-dev;cp dist/ink.min.js ../../rowanc1/row1ca/website/static/js/ink.js
 
 deploy:
 	cd website; gcloud app deploy --version $(VERSION) --project $(PROJECT)

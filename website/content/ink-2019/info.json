@@ -1,0 +1,19 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2019/05/12",
+    "description": "My motivations behind developing components.ink and a comparison to Tangle and Idyll Lang",
+    "thumbnail": "/images/logo/ink.png",
+    "license": "CC-BY-4.0",
+    "tags": [
+        "thoughts",
+        "ink-example"
+    ],
+    "title": "Developing Ink Components",
+    "uid": "ink-2019"
+}

@@ -1,0 +1,73 @@
+<h2>Angles Of Reflection And Refraction</h2>
+
+<p>
+    Consider a P-wave which is incident at an angle $\theta_1$ measured with respect to the normal of the interface, as seen in the figure below where the approaching wave is represented as a ray.
+    The angles of the reflected and refracted rays are as follows:
+    <ink-callout>
+        <strong>Law of Reflection:</strong> The angle of reflection equals the angle of incidence. So $\theta_r = \theta_1$.
+    </ink-callout>
+    <ink-callout>
+        <strong>Law of Refraction:</strong> The angle of refraction $\theta_2$ is determined through Snell's Law:
+        <ink-equation>
+            \frac{\sin \theta_1}{v_1} = \frac{\sin \theta_2}{v_2}
+        </ink-equation>
+    </ink-callout>
+    If the wave travels from a low velocity medium to a high velocity medium the wave gets refracted away from the normal.
+    Conversely, it gets refracted toward the normal if the wave goes from a high velocity to a low velocity medium.
+
+</p>
+<ink-var name="theta1" value="0.7853981633974483"></ink-var>
+<ink-var name="v1" value="400"></ink-var>
+<ink-var name="v2" value="500"></ink-var>
+<ink-var name="theta2" :value="Math.asin(v2 * Math.sin(theta1) / v1)"></ink-var>
+<ink-var name="thetac" :value="Math.asin(v1 / v2)"></ink-var>
+
+<br>
+<ink-aside>
+    $\theta_1$: <ink-dynamic :value="theta1 * 180 / Math.PI" bind="{theta1: value * Math.PI / 180}" min="0" max="90">&deg;</ink-dynamic><br>
+    $\theta_2$: <ink-span :visible="!isFinite(theta2)">No Refraction Wave</ink-span><ink-span :visible="isFinite(theta2)"><ink-display name="theta2" transform="value*180/Math.PI"></ink-display>&deg;</ink-span><br>
+    $v_1$: <ink-range name="v1" min="100" :max="v2" step="10" width="100px"></ink-range> <ink-display name="v1"></ink-display> m/s<br>
+    $v_2$: <ink-range name="v2" :min="v1" max="2000" step="10" width="100px"></ink-range> <ink-display name="v2"></ink-display> m/s<br>
+</ink-aside>
+
+<ink-chart xlim="[-1.1,1.1]" ylim="[-1.1,1.1]" width="400" height="400" x-axis-location="hidden" y-axis-location="hidden" style="text-align: center;">
+    <ink-chart-path data="[[-1, 0], [1, 0]]" stroke="black"></ink-chart-path>
+    <ink-chart-path data="[[0, -1], [0, 1]]" stroke="black" stroke-dasharray="3 3"></ink-chart-path>
+    <ink-chart-text x="-0.8" y="0.15" text="v1"></ink-chart-text>
+    <ink-chart-text x="-0.8" y="-0.2" text="v2 > v1"></ink-chart-text>
+    <ink-chart-text :x="0.5" :y="-0.2" text="No Refraction Wave" :visible="!isFinite(theta2)" text-anchor="middle"></ink-chart-text>
+
+    <ink-chart-text :x="-0.9*Math.sin(theta1) - 0.1" :y="0.9*Math.cos(theta1) - 0.1" :rotate="90-theta1*180/Math.PI" text="incident -->"></ink-chart-text>
+    <ink-chart-text :x="0.5*Math.sin(theta1) + 0.1" :y="0.5*Math.cos(theta1) - 0.1" :rotate="-90+theta1*180/Math.PI" text="reflected -->"></ink-chart-text>
+
+    <ink-chart-text :x="0.5*Math.sin(theta2 + 0.1)" :y="-0.5*Math.cos(theta2 + 0.1)" :rotate="90-theta2*180/Math.PI" text="refracted -->" :visible="isFinite(theta2)"></ink-chart-text>
+
+    <ink-chart-text :x="-0.35*Math.sin(theta1/2)" :y="0.35*Math.cos(theta1/2)" :text="Math.abs(theta1-thetac) * 180 / Math.PI < 0.1 ? '&theta;c' : '&theta;1'" :visible="theta1 *180 / Math.PI > 25" text-anchor="end"></ink-chart-text>
+    <ink-chart-text :x="0.35*Math.sin(theta1/2)" :y="0.35*Math.cos(theta1/2)" text="&theta;r" :visible="theta1 *180 / Math.PI > 25"></ink-chart-text>
+    <ink-chart-text :x="0.4*Math.sin(theta2/2)" :y="-0.4*Math.cos(theta2/2)" :text="theta2 * 180 / Math.PI > 89 ? '90&deg;' : '&theta;2'" :visible="isFinite(theta2) && theta2 *180 / Math.PI > 25" text-anchor="middle"></ink-chart-text>
+
+    <ink-chart-path :data="[[0,0], [-Math.sin(theta1), Math.cos(theta1)]]" stroke="red"></ink-chart-path>
+    <ink-chart-path :data="[[0,0], [Math.sin(theta1), Math.cos(theta1)]]" stroke="black"></ink-chart-path>
+    <ink-chart-path :data="[[0,0], [Math.sin(theta2), -Math.cos(theta2)]]" stroke="blue" :visible="isFinite(theta2)"></ink-chart-path>
+
+    <ink-chart-circle :x="-Math.sin(thetac)" :y="Math.cos(thetac)" fill="blue"></ink-chart-circle>
+
+    <ink-chart-eqn :domain="[-theta1, theta1]" eqn="[-0.3*Math.sin(t), 0.3*Math.cos(t)]" parameterize="t" stroke="#333" stroke-width="1" stroke-dasharray="3"></ink-chart-eqn>
+    <ink-chart-eqn :domain="[0, theta2]" eqn="[0.3*Math.sin(t), -0.3*Math.cos(t)]" parameterize="t" stroke="#333" stroke-width="1" stroke-dasharray="3" :visible="isFinite(theta2)"></ink-chart-eqn>
+
+    <ink-chart-node r="10" fill="#ccc" :x="-Math.sin(theta1)" :y="Math.cos(theta1)" bind="{theta1: Math.atan(-x/y)}" constrain="[-Math.sin(Math.atan(-Math.min(Math.max(x,-1),-1e-10)/Math.min(Math.max(y,1e-10),1))), Math.cos(Math.atan(-Math.min(Math.max(x,-1),-1e-10)/Math.min(Math.max(y,1e-10),1)))]"></ink-chart-node>
+</ink-chart>
+<p style="text-align:center; font-size: 0.8em;color:#aaa">
+    Snell's Law for two layers where $v_1$= <ink-display name="v1"></ink-display> m/s and $v_2$= <ink-display name="v2"></ink-display> m/s.
+    The incident angle of the incoming wave is $\theta_1$= <ink-display name="theta1" transform="value*180/Math.PI"></ink-display>&deg;.
+    <ink-span :visible="!isFinite(theta2)">When an incident wave has an angle over the critical angle, $\theta_c$, there is no refracted wave.</ink-span>
+</p>
+
+
+The critical refraction angle, called $\theta_c$, is a key concept in refraction seismology.
+This is the angle of incidence for which the corresponding angle of <ink-action bind="{theta1: thetac}">refraction is 90&deg;</ink-action>.
+In this case, the refracted ray travels horizontally along the interface.
+A formula for the critical angle can be derived from Snell's law as follows:
+<ink-equation>
+    \frac{\sin \theta_c}{v_1} = \frac{\sin 90^{\circ}}{v_2} = \frac{1}{v_2}
+</ink-equation>

@@ -5,7 +5,7 @@ from . import template
 
 
 DEBUG = os.environ.get('SERVER_SOFTWARE', '').startswith('Dev')
-BASE_URL = "http://localhost:8080" if DEBUG else "https://row1.ca"
+BASE_URL = "http://localhost:8081" if DEBUG else "https://row1.ca"
 KINDS = ["Article", "CvItem", "CvAward", "Quote"]
 QUERY_TYPES = ["kind", "tag"]
 REDIRECTS = [

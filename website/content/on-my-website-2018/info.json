@@ -12,5 +12,9 @@
     "description": "Some ideas about the scholarly commons.",
     "thumbnail": "/images/website/life.png",
     "license": "CC-BY-4.0",
-    "tags": ["bricks", "thoughts"]
+    "tags": [
+        "bricks",
+        "thoughts",
+        "ink-example"
+    ]
 }

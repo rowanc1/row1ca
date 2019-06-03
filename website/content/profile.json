@@ -41,9 +41,9 @@
         "license": "CC-BY-4.0",
         "query_type": ["uid"],
         "query_uids": [
-            "phd",
             "simpeg",
-            "visible-geology"
+            "visible-geology",
+            "ink"
         ]
     },
     {

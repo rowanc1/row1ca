@@ -1,0 +1,18 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2019/06/01",
+    "description": "Interactive Snell's Law",
+    "thumbnail": "/images/ink/snellslaw.gif",
+    "license": "CC-BY-4.0",
+    "tags": [
+        "ink-example"
+    ],
+    "title": "Snell's Law",
+    "uid": "snells-law"
+}

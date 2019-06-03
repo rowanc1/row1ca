@@ -80,5 +80,16 @@
         "quote": "Most people, if you describe a train of events to them will tell you what the result will be. There are few people, however that if you told them a result, would be able to evolve from their own inner consciousness what the steps were that led to that results. This power is what I mean when I talk of reasoning backward.",
         "date": "1900-01-01T00:00:00Z",
         "tags": []
+    },
+    {
+        "__class__": "Quote",
+        "uid": "quote-namespaces",
+        "title": "Namespaces in Python",
+        "author": "Tim Peters",
+        "publication": "PEP-0020",
+        "quote": "Namespaces are one honking great idea -- let's do more of those!",
+        "date": "2004-08-19T00:00:00Z",
+        "url_more": "https://www.python.org/dev/peps/pep-0020/",
+        "tags": []
     }
 ]

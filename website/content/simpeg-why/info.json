@@ -18,6 +18,7 @@
     "description": "Simulation and Parameter Estimation in Geophysics",
     "license": "CC-BY-4.0",
     "thumbnail": "/images/logo/simpeg-block.png",
+    "thumbnail_contain": true,
     "uid": "simpeg-why",
     "date": "2015/01/01",
     "tags": [

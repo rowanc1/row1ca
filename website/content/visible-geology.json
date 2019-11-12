@@ -7,6 +7,7 @@
         "description": "Create your own geologic models online.",
         "license": "CC-BY-4.0",
         "thumbnail": "/images/logo/visible-geology.png",
+        "thumbnail_contain": true,
         "tags": [
             "projects"
         ],

@@ -9,6 +9,7 @@
     "date": "2019/05/12",
     "description": "My motivations behind developing components.ink and a comparison to Tangle and Idyll Lang",
     "thumbnail": "/images/logo/ink.png",
+    "thumbnail_contain": true,
     "license": "CC-BY-4.0",
     "tags": [
         "thoughts",

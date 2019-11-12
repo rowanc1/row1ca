@@ -7,6 +7,7 @@
         "description": "Simulation tools for geophysics",
         "license": "CC-BY-4.0",
         "thumbnail": "/images/logo/simpeg-block.png",
+        "thumbnail_contain": true,
         "tags": [
             "projects"
         ],

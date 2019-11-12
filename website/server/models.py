@@ -67,6 +67,11 @@ class Brick(properties.HasProperties):
     description = properties.String('description')
 
     thumbnail = properties.String('description')
+    thumbnail_contain = properties.Boolean(
+        'Contain thumbnail in cards.',
+        default=False,
+        required=False
+    )
 
     date = properties.Instance(
         "when brick was published",

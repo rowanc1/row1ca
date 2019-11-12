@@ -4,4 +4,5 @@
     img-src="{{ brick.thumbnail }}"
     url="/{{ brick.uid }}"
     date="{{ brick.date.strftime('%Y') }}"
+    {{ "contain" if brick.thumbnail_contain else "" }}
 ></ink-card>

@@ -32,6 +32,7 @@ REDIRECTS = [
     ('/thoughts/visible-earthquakes', '/visible-earthquakes'),
     ('/s/pdfs/AGU2010_Monitoring.pdf', '/pdf/agu-2010-monitoring-infiltration.pdf'),
     ('/about', '/story'),
+    ('/ink-examples', '/explorables'),
     ('/geosci', 'http://geosci.xyz'),
 ]
 

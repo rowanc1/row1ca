@@ -1,0 +1,31 @@
+[
+    {
+        "__class__": "Collection",
+        "uid": "3point",
+        "date": "2013-06-13T00:00:00Z",
+        "title": "3point Science",
+        "description": "Communication tools for the geoscience industry.",
+        "license": "CC-BY-4.0",
+        "thumbnail": "/images/logo/3point-block.png",
+        "thumbnail_contain": true,
+        "tags": [
+            "projects"
+        ],
+        "query_type": ["uid"],
+        "query_uids": [
+            "3point-intro",
+            "3point-query"
+        ]
+    },
+    {
+        "__class__": "CollectionCards",
+        "uid": "3point-query",
+        "title": "More on 3point Science",
+        "description": "",
+        "license": "CC-BY-4.0",
+        "query_type": ["tags"],
+        "query_tags": [
+            "3point"
+        ]
+    }
+]

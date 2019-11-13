@@ -1,0 +1,16 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2019/01/01",
+    "uid": "vp-cloud-architecture",
+    "title": "VP Cloud Architecture",
+    "description": "Job description for my role.",
+    "thumbnail": "/images/visible-geology/static-creative-thumbnail.png",
+    "license": "CC-BY-4.0",
+    "tags": ["seequent"]
+}

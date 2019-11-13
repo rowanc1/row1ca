@@ -1,0 +1,19 @@
+{
+    "__class__": "Article",
+    "contributors": [
+        {
+            "kind": "author",
+            "user": "rowan"
+        }
+    ],
+    "date": "2019/10/11",
+    "description": "",
+    "thumbnail": "/images/logo/seequent-block.png",
+    "thumbnail_contain": true,
+    "license": "CC-BY-4.0",
+    "tags": [
+        "seequent", "3point", "thoughts"
+    ],
+    "title": "3point &#10141; Seequent &#10141; ??",
+    "uid": "seequent-learnings"
+}

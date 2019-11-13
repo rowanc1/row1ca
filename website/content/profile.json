@@ -8,7 +8,9 @@
         "query_type": ["uid"],
         "query_uids": [
             "logo",
+            "recent-thoughts",
             "featured-thoughts",
+            "featured-explorables",
             "featured-projects",
             "featured-presentations",
             "featured-papers",
@@ -17,9 +19,22 @@
     },
     {
         "__class__": "CollectionCards",
+        "uid": "recent-thoughts",
+        "title": "recent thoughts",
+        "description": "Recent thoughts",
+        "url_more": "/thoughts",
+        "license": "CC-BY-4.0",
+        "query_type": ["tags"],
+        "query_tags": [
+            "thoughts"
+        ],
+        "query_limit": 3
+    },
+    {
+        "__class__": "CollectionCards",
         "uid": "featured-thoughts",
-        "title": "thoughts",
-        "description": "featured-thoughts",
+        "title": "featured thoughts",
+        "description": "Featured thoughts",
         "url_more": "/thoughts",
         "license": "CC-BY-4.0",
         "query_type": ["uid"],
@@ -41,9 +56,9 @@
         "license": "CC-BY-4.0",
         "query_type": ["uid"],
         "query_uids": [
+            "ink",
             "simpeg",
-            "visible-geology",
-            "ink"
+            "visible-geology"
         ]
     },
     {
@@ -55,8 +70,22 @@
         "query_type": ["uid"],
         "query_uids": [
             "story",
-            "curriculum-vitae"
+            "curriculum-vitae",
+            "contact"
         ]
+    },
+    {
+        "__class__": "CollectionCards",
+        "uid": "featured-explorables",
+        "title": "explorables",
+        "description": "featured explorable explanations",
+        "url_more": "/ink",
+        "license": "CC-BY-4.0",
+        "query_type": ["tags"],
+        "query_tags": [
+            "explorables"
+        ],
+        "query_limit": 3
     },
     {
         "__class__": "CollectionCards",
@@ -173,12 +202,12 @@
     },
     {
         "__class__": "CollectionCards",
-        "uid": "ink-examples",
-        "title": "Ink Examples",
+        "uid": "explorables",
+        "title": "Explorable Explanations and Thoughts",
         "description": "Examples of explorable explanations and interactive documents.",
         "license": "CC-BY-4.0",
         "query_type": ["tags"],
-        "query_tags": ["ink-example"]
+        "query_tags": ["explorables", "explorables-meta"]
     },
     {
         "__class__": "CollectionCards",

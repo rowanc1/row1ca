@@ -187,10 +187,15 @@ class Collection(Brick):
     )
 
     query_tags = properties.List(
-        'list of children uids',
+        'list of children tags',
         prop=properties.String('', change_case='lower'),
         required=False,
         default=[]
+    )
+
+    query_limit = properties.Integer(
+        "limit the number of query results returned",
+        default=-1
     )
 
     @property
@@ -212,6 +217,10 @@ class Collection(Brick):
         for query_type in self.query_type:
             print(query_type, q)
             q = query(query_type, bricks=q)
+
+        # this is silly should happen first
+        if q and self.query_limit >= 0:
+            return q[:self.query_limit]
 
         return q
 

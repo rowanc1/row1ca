@@ -259,72 +259,22 @@
     },
     {
         "__class__": "CvAward",
-        "uid": "award-uofc-deans-list-2010",
+        "uid": "award-uofc-deans-list",
         "title": "Dean's List - Department of Science",
         "amount": 0,
         "description": "Awarded for outstanding academic achievement",
         "level": "institutional",
-        "date": "2010/01/01",
+        "date": ["2007/01/01", "2010/01/01"],
         "declined": false
     },
     {
         "__class__": "CvAward",
-        "uid": "award-uofc-deans-list-2009",
-        "title": "Dean's List - Department of Science",
-        "amount": 0,
-        "description": "Awarded for outstanding academic achievement",
-        "level": "institutional",
-        "date": "2009/01/01",
-        "declined": false
-    },
-    {
-        "__class__": "CvAward",
-        "uid": "award-uofc-deans-list-2008",
-        "title": "Dean's List - Department of Science",
-        "amount": 0,
-        "description": "Awarded for outstanding academic achievement",
-        "level": "institutional",
-        "date": "2008/01/01",
-        "declined": false
-    },
-    {
-        "__class__": "CvAward",
-        "uid": "award-uofc-deans-list-2007",
-        "title": "Dean's List - Department of Science",
-        "amount": 0,
-        "description": "Awarded for outstanding academic achievement",
-        "level": "institutional",
-        "date": "2007/01/01",
-        "declined": false
-    },
-    {
-        "__class__": "CvAward",
-        "uid": "award-jason-lang-2009",
+        "uid": "award-jason-lang",
         "title": "Jason Lang Scholarship",
-        "amount": 1000,
+        "amount": 3000,
         "description": "Awarded for outstanding academic achievement",
         "level": "institutional",
-        "date": "2009/01/01",
-        "declined": false
-    },
-    {
-        "__class__": "CvAward",
-        "uid": "award-jason-lang-2008",
-        "title": "Jason Lang Scholarship",
-        "amount": 1000,
-        "description": "Awarded for outstanding academic achievement",
-        "level": "institutional",
-        "date": "2008/01/01",
-        "declined": false
-    },
-    {
-        "__class__": "CvAward",
-        "uid": "award-jason-lang-2010",
-        "title": "Jason Lang Scholarship",
-        "amount": 1000,
-        "description": "Awarded for outstanding academic achievement",
-        "level": "institutional",
-        "date": "2010/01/01",
+        "date": ["2008/01/01", "2010/01/01"],
         "declined": false
     },
     {

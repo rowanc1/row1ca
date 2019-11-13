@@ -1,13 +1,38 @@
 [
     {
         "__class__": "CvItem",
+        "uid": "cv-experience-simpeg",
+        "title": "SimPEG",
+        "description": "Co-founder",
+        "date": "2013/06/01",
+        "duties": [
+            "An open source Python package for simulation and gradient based parameter estimation in geophysical applications. SimPEG is a growing community of geoscientists building an open foundation for geophysics. The framework provides a collection of geophysical simulation and inversion tools that are built in a consistent framework and finite volume tools that work across many different discretizations and dimensions."
+        ],
+        "url_more": "/simpeg",
+        "tags": ["experience"]
+    },
+    {
+        "__class__": "CvItem",
+        "uid": "cv-experience-geosci",
+        "title": "GeoSci.xyz",
+        "description": "Co-founder",
+        "date": "2014/09/01",
+        "duties": [
+            "Co-founded and developed a computational environment for collaborative scientific writing that hosts multiple scientific resources for geophysics."
+        ],
+        "url_more": "/geosci",
+        "tags": ["experience"]
+    },
+    {
+        "__class__": "CvItem",
         "uid": "cv-experience-seeqent-vp",
         "title": "Seequent",
         "description": "VP of Cloud Architecture",
         "date": ["2019/01/01", "2019/10/11"],
         "duties": [
-            "Oversaw development initiatives on Seequent's cloud and enterprise products for collaboration, visualization and version control in geoscience."
+            "Oversaw development initiatives and strategy for Seequent's cloud and enterprise products for collaboration, visualization and version control in geoscience."
         ],
+        "url_more": "/seequent-learnings",
         "tags": ["experience"]
     },
     {
@@ -49,6 +74,7 @@
             "All other duties of a startup founder: visioning, pitching, inspiring, leading.",
             "Successful exit to ARANZ Geo Limited."
         ],
+        "url_more": "/3point",
         "tags": ["experience"]
     },
     {

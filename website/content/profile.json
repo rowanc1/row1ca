@@ -166,7 +166,7 @@
         "__class__": "CollectionCards",
         "uid": "thoughts",
         "title": "thoughts",
-        "description": "A blog of sorts",
+        "description": "A collection of articles that amounts to a blog.",
         "license": "CC-BY-4.0",
         "query_type": ["tags"],
         "query_tags": ["thoughts"]

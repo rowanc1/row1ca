@@ -1,13 +1,24 @@
 [
     {
         "__class__": "CvItem",
+        "uid": "cv-experience-seeqent-vp",
+        "title": "Seequent",
+        "description": "VP of Cloud Architecture",
+        "date": ["2019/01/01", "2019/10/11"],
+        "duties": [
+            "Oversaw development initiatives on Seequent's cloud and enterprise products for collaboration, visualization and version control in geoscience."
+        ],
+        "tags": ["experience"]
+    },
+    {
+        "__class__": "CvItem",
         "uid": "cv-experience-seeqent",
         "title": "Seequent (formerly ARANZ Geo)",
         "description": "Director of Cloud Architecture",
-        "date": ["2017/10/01"],
+        "date": ["2017/10/01", "2019/01/01"],
         "duties": [
-            "Development and direction of Cloud offerings of Seequent",
-            "Front-end web development, database development, 3D graphics, scientific algorithm research & development."
+            "Led the cloud team at Seequent, directly hiring and managing a team of twelve with a remote team of five people. Worked on lfview.com, a 3D visualization and communication tool for geoscience data that seamlessly hooks up to Seequent's desktop products and enables partnerships through open APIs and client libraries. Curated and developed Seequent's platform, cloud and visualization strategies. Worked with standards bodies to introduce and develop the Open Mining Format (omf). Developed, pitched and won accelerated development contracts.",
+            "The cloud team at Seequent championed agile philosophy and methodologies, test driven development, blameless dev-ops culture, inner-sourcing culture, and continuous delivery of software. We deployed software to production on-demand multiple times a week without down-time and oversaw significant shifts/migrations in our architecture as we grew, improved and incorporated leading practices and technology."
         ],
         "tags": ["experience"]
     },

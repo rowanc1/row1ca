@@ -673,5 +673,122 @@
         "title": "Tangle: a JavaScript library for reactive documents",
         "uid": "tanglejs",
         "url_more": "http://worrydream.com/Tangle/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:12:04Z",
+        "description": "",
+        "thumbnail": "/thumbnail/jupyterhub.png",
+        "title": "JupyterHub \u2014 JupyterHub 1.0.1dev documentation",
+        "uid": "jupyterhub",
+        "url_more": "http://jupyterhub.readthedocs.io/en/latest/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:12:11Z",
+        "description": "",
+        "thumbnail": "/thumbnail/colaboratory.png",
+        "title": "",
+        "uid": "colaboratory",
+        "url_more": "https://research.google.com/colaboratory"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:12:28Z",
+        "description": "An open source textbook on applied electromagnetic geophysics. Aimed at providing background and physical understanding for steady state Maxwell equations as they apply to geoscience problems.",
+        "thumbnail": "/thumbnail/geosci-electrostatic-sphere.png",
+        "title": "Conducting sphere in a uniform electric field \u2014 Electromagnetic Geophysics",
+        "uid": "geosci-electrostatic-sphere",
+        "url_more": "https://em.geosci.xyz/content/maxwell2_static/fields_from_grounded_sources_dcr/electrostatic_sphere.html"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:12:45Z",
+        "description": "",
+        "thumbnail": "/thumbnail/python-pelican.png",
+        "title": "Pelican Static Site Generator, Powered by Python",
+        "uid": "python-pelican",
+        "url_more": "https://blog.getpelican.com/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:12:57Z",
+        "description": "Websites for you and your projects, hosted directly from your GitHub repository. Just edit, push, and your changes are live.",
+        "thumbnail": "/thumbnail/github-pages.png",
+        "title": "GitHub Pages | Websites for you and your projects, hosted directly from your GitHub repository. Just edit, push, and your changes are live.",
+        "uid": "github-pages",
+        "url_more": "https://pages.github.com/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:13:09Z",
+        "description": "Chalktalk is now open source - http://frl.nyu.edu/chalktalk-is-now-open-source/",
+        "thumbnail": "/thumbnail/chalk-talk.png",
+        "title": "Ken Perlin:\u200b Chalktalk in Augmented Reality\u200b on Vimeo",
+        "uid": "chalk-talk",
+        "url_more": "https://vimeo.com/232230096"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:13:20Z",
+        "description": "",
+        "thumbnail": "/thumbnail/ken-perlin.png",
+        "title": "Ken Perlin's homepage",
+        "uid": "ken-perlin",
+        "url_more": "http://mrl.nyu.edu/~perlin/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:13:35Z",
+        "description": "Schema.org Type: CreativeWork - The most generic kind of creative work, including books, movies, photographs, software programs, etc.",
+        "thumbnail": "/thumbnail/schema-creative-work.png",
+        "title": "CreativeWork - schema.org Type",
+        "uid": "schema-creative-work",
+        "url_more": "http://schema.org/CreativeWork"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:13:54Z",
+        "description": "FORCE11 is a community of scholars, librarians, archivists, publishers and research funders that has arisen organically to help facilitate the change toward improved knowledge creation and sharing. Individually and collectively, we aim to bring about a change in modern scholarly communications through the effective use of information technology.",
+        "thumbnail": "/thumbnail/force11-members.png",
+        "title": "Community Members | FORCE11",
+        "uid": "force11-members",
+        "url_more": "https://www.force11.org/community/members-directory"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:14:06Z",
+        "description": "incubating a humane dynamic medium",
+        "thumbnail": "/thumbnail/dynamicland.png",
+        "title": "Dynamicland",
+        "uid": "dynamicland",
+        "url_more": "https://dynamicland.org/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:14:19Z",
+        "description": "",
+        "thumbnail": "/thumbnail/mendeley-profile.png",
+        "title": "03. Complete your profile | Mendeley",
+        "uid": "mendeley-profile",
+        "url_more": "https://www.mendeley.com/guides/web/04-complete-profile"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:14:34Z",
+        "description": "Lindsey Heagy's personal website.",
+        "thumbnail": "/thumbnail/lindsey-heagy.png",
+        "title": "Lindsey J Heagy",
+        "uid": "lindsey-heagy",
+        "url_more": "https://lindseyjh.ca/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:14:51Z",
+        "description": "The latest Tweets from Evan Bianco (@EvanBianco). Agile* | Earth | Subsurface | Geoscience | Machine Learning |. Nova Scotia, Canada",
+        "thumbnail": "/thumbnail/evan-bianco.png",
+        "title": "Evan Bianco (@EvanBianco) | Twitter",
+        "uid": "evan-bianco",
+        "url_more": "https://twitter.com/EvanBianco"
     }
 ]

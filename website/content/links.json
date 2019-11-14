@@ -421,5 +421,59 @@
         "title": "Dir command",
         "uid": "linux-dir",
         "url_more": "https://www.windows-commandline.com/dir-command-line-options/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:29:14Z",
+        "description": "I checked the difference between anywhere and everywhere in the Longman dictionary. I have understood that when the place is not important we have to use anywhere for example: \r\n  You can find a man ",
+        "thumbnail": "/thumbnail/everywhere-and-anywhere.png",
+        "title": "meaning - what is the difference between everywhere and anywhere - English Language & Usage Stack Exchange",
+        "uid": "everywhere-and-anywhere",
+        "url_more": "https://english.stackexchange.com/questions/121775/what-is-the-difference-between-everywhere-and-anywhere"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:29:39Z",
+        "description": "\u201cAfter all these years, I'm still thrilled when somebody links into an individual paragraph in Magic Ink.\u201d",
+        "thumbnail": "/thumbnail/twitter-worrydream-paragraph.png",
+        "title": "Bret Victor on Twitter: \"After all these years, I'm still thrilled when somebody links into an individual paragraph in Magic Ink. http://t.co/VQJinkQHC4\"",
+        "uid": "twitter-worrydream-paragraph",
+        "url_more": "https://twitter.com/worrydream/status/534807749029142529"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:29:54Z",
+        "description": "Annotate the web, with anyone, anywhere. \r\nWe\u2019re a nonprofit on a mission to bring an open conversation over the whole web. Use Hypothesis right now to hold discussions, read socially, organize your research, and take personal notes. Get Started \r\nor see how it works.  Install the\u00a0Hypothesis LMS",
+        "thumbnail": "/thumbnail/hypothesis.png",
+        "title": "Hypothesis \u2013 The Internet, peer reviewed.",
+        "uid": "hypothesis",
+        "url_more": "https://web.hypothes.is/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:30:31Z",
+        "description": "Scholarly Communication: Deconstruct and Decentralize? Closing Plenary Paul Evan Peters Award & Lecture Herbert Van de Sompel Research Scientist Los Alamos N...",
+        "thumbnail": "/thumbnail/herbert-scholarly-decentralization.png",
+        "title": "Scholarly Communication: Deconstruct & Decentralize? - YouTube",
+        "uid": "herbert-scholarly-decentralization",
+        "url_more": "https://www.youtube.com/watch?v=o4nUe-6Ln-8&feature=youtu.be&t=8m19s"
+    },
+    {
+        "__class__": "Link",
+        "date": "2013-10-30T11:20:51Z",
+        "description": "When citing please use: \u00a0 Data Citation Synthesis Group: Joint Declaration of Data Citation Principles. Martone M. (ed.) San Diego CA: FORCE11; 2014 https://doi.org/10.25490/a97f-egyk Endorsement List",
+        "thumbnail": "/thumbnail/force11-data-citation-principles.png",
+        "title": "Joint Declaration of Data Citation Principles - FINAL | FORCE11",
+        "uid": "force11-data-citation-principles",
+        "url_more": "https://www.force11.org/datacitationprinciples"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:31:23Z",
+        "description": "",
+        "thumbnail": "/thumbnail/wiki-first-journal.png",
+        "title": "Philosophical Transactions of the Royal Society - Wikipedia",
+        "uid": "wiki-first-journal",
+        "url_more": "https://en.wikipedia.org/wiki/Philosophical_Transactions_of_the_Royal_Society"
     }
 ]

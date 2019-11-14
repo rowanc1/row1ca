@@ -280,15 +280,6 @@
     },
     {
         "__class__": "Link",
-        "date": "2019-11-14T14:15:27Z",
-        "description": "",
-        "thumbnail": "/thumbnail/geosci-equation-bank.png",
-        "title": "404 Not Found",
-        "uid": "geosci-equation-bank",
-        "url_more": "https://em.geosci.xyz/content/equation_bank.html"
-    },
-    {
-        "__class__": "Link",
         "date": "2019-11-14T14:15:47Z",
         "description": "An open source textbook on applied electromagnetic geophysics. Aimed at providing background and physical understanding for steady state Maxwell equations as they apply to geoscience problems.",
         "thumbnail": "/thumbnail/geosci-lenzs-law.png",
@@ -808,5 +799,14 @@
         "title": "Oliver Heaviside - Wikipedia",
         "uid": "wiki-heaviside",
         "url_more": "https://en.wikipedia.org/wiki/Oliver_Heaviside#Innovations_and_discoveries"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:35:52Z",
+        "description": "Electromagnetic methods in geophysics - open educational resources. - geoscixyz/em",
+        "thumbnail": "/thumbnail/geosci-equation-bank.png",
+        "title": "em/content/equation_bank at master \u00b7 geoscixyz/em \u00b7 GitHub",
+        "uid": "geosci-equation-bank",
+        "url_more": "https://github.com/geoscixyz/em/tree/master/content/equation_bank"
     }
 ]

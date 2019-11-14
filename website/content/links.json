@@ -790,5 +790,23 @@
         "title": "Evan Bianco (@EvanBianco) | Twitter",
         "uid": "evan-bianco",
         "url_more": "https://twitter.com/EvanBianco"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:22:54Z",
+        "description": "",
+        "thumbnail": "/thumbnail/poke-it-with-a-stick.png",
+        "title": "Poke It with a Stick by gckatz on DeviantArt",
+        "uid": "poke-it-with-a-stick",
+        "url_more": "http://fav.me/d4u1n62"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:23:15Z",
+        "description": "",
+        "thumbnail": "/thumbnail/wiki-heaviside.png",
+        "title": "Oliver Heaviside - Wikipedia",
+        "uid": "wiki-heaviside",
+        "url_more": "https://en.wikipedia.org/wiki/Oliver_Heaviside#Innovations_and_discoveries"
     }
 ]

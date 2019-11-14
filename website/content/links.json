@@ -106,5 +106,149 @@
         "title": "My Google Scholar Citations",
         "uid": "google-scholar-rowan",
         "url_more": "https://scholar.google.ca/citations?user=k8DpDMMAAAAJ&hl=en"
+    },
+    {
+        "__class__": "Link",
+        "date": "2018-09-05T13:06:15Z",
+        "description": "The Need for Eloquence - The Book of Life is the 'brain' of The School of Life, a gathering of the best ideas around wisdom and emotional intelligence.\n",
+        "thumbnail": "/thumbnail/book-of-life-eloquence.png",
+        "title": "\n        The Need for Eloquence -The Book of Life    ",
+        "uid": "book-of-life-eloquence",
+        "url_more": "http://www.thebookoflife.org/the-need-for-eloquence/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T13:57:38Z",
+        "description": "Distilling the world's data, information & knowledge into beautiful infographics & visualizations",
+        "thumbnail": "/thumbnail/information-is-beautiful.png",
+        "title": "Information is Beautiful",
+        "uid": "information-is-beautiful",
+        "url_more": "https://informationisbeautiful.net/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T13:58:01Z",
+        "description": "",
+        "thumbnail": "/thumbnail/wiki-pdf.png",
+        "title": "History of the Portable Document Format (PDF) - Wikipedia",
+        "uid": "wiki-pdf",
+        "url_more": "https://en.wikipedia.org/wiki/History_of_the_Portable_Document_Format_(PDF)"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T13:58:13Z",
+        "description": "",
+        "thumbnail": "/thumbnail/wiki-linked-data.png",
+        "title": "Linked data - Wikipedia",
+        "uid": "wiki-linked-data",
+        "url_more": "https://en.wikipedia.org/wiki/Linked_data"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T13:58:23Z",
+        "description": "",
+        "thumbnail": "/thumbnail/properties.png",
+        "title": "properties \u2014 properties 0.5.4 documentation",
+        "uid": "properties",
+        "url_more": "http://propertiespy.readthedocs.io/en/latest/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T13:58:43Z",
+        "description": "A convenience library for managing multiple template namespaces with Jinja2 - seequent/jinja2-registry",
+        "thumbnail": "/thumbnail/jinja2-registry.png",
+        "title": "GitHub - seequent/jinja2-registry: A convenience library for managing multiple template namespaces with Jinja2",
+        "uid": "jinja2-registry",
+        "url_more": "https://github.com/3ptscience/jinja2-registry"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:08:21Z",
+        "description": "",
+        "thumbnail": "/thumbnail/polymer.png",
+        "title": "Polymer Project",
+        "uid": "polymer",
+        "url_more": "https://www.polymer-project.org/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:08:46Z",
+        "description": "Scientific web components using Web Components. Contribute to ink-components/ink-components development by creating an account on GitHub.",
+        "thumbnail": "/thumbnail/github-ink-components-cv-award.png",
+        "title": "ink-components/cv-award.html at 4fd19fcaabd86d9254482913c5709db2ba957669 \u00b7 ink-components/ink-components \u00b7 GitHub",
+        "uid": "github-ink-components-cv-award",
+        "url_more": "https://github.com/rowanc1/ink/blob/4fd19fcaabd86d9254482913c5709db2ba957669/cv-award.html"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:08:56Z",
+        "description": "Scientific web components using Web Components. Contribute to ink-components/ink-components development by creating an account on GitHub.",
+        "thumbnail": "/thumbnail/github-ink-components.png",
+        "title": "GitHub - ink-components/ink-components: Scientific web components using Web Components",
+        "uid": "github-ink-components",
+        "url_more": "https://github.com/ink-components/ink-components"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:09:27Z",
+        "description": "",
+        "thumbnail": "/thumbnail/chaos-in-the-brickyard.png",
+        "title": "Chaos in the Brickyard | Science",
+        "uid": "chaos-in-the-brickyard",
+        "url_more": "http://science.sciencemag.org/content/142/3590/339.1.long"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:09:42Z",
+        "description": "GraphQL provides a complete description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.",
+        "thumbnail": "/thumbnail/graphql.png",
+        "title": "Introduction to GraphQL | GraphQL",
+        "uid": "graphql",
+        "url_more": "http://graphql.org/learn/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:10:09Z",
+        "description": "I know GraphQL theoretically has no problem fetching data in JSON-LD format, but I'm wondering if there could be more 1st-class support for: Schema validation expansion/contraction @embed, @link etc.",
+        "thumbnail": "/thumbnail/graphql-vs-jsonld.png",
+        "title": "JSON-LD support? \u00b7 Issue #271 \u00b7 graphql/graphql-js \u00b7 GitHub",
+        "uid": "graphql-vs-jsonld",
+        "url_more": "https://github.com/graphql/graphql-js/issues/271"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:10:23Z",
+        "description": "",
+        "thumbnail": "/thumbnail/rdf-schema.png",
+        "title": "RDF Schema 1.1",
+        "uid": "rdf-schema",
+        "url_more": "https://www.w3.org/TR/2014/REC-rdf-schema-20140225/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:10:38Z",
+        "description": "Graphene framework for Python",
+        "thumbnail": "/thumbnail/graphene-python.png",
+        "title": "Graphene-Python",
+        "uid": "graphene-python",
+        "url_more": "http://graphene-python.org/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:11:02Z",
+        "description": "Editor's note:\u00a0Today, we hear from Aleem Mawani, co-founder of Streak.com, a Google Cloud Platform\u00a0customer whose customer relationship management (CRM) fo",
+        "thumbnail": "/thumbnail/immutable-versioning.png",
+        "title": "Building immutable entities into Google Cloud Datastore | Google Cloud Blog",
+        "uid": "immutable-versioning",
+        "url_more": "https://cloudplatform.googleblog.com/2016/08/building-immutable-entities-into-Google-Cloud-Datastore.html"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:11:19Z",
+        "description": "A collection of modular equations that are used throughout the SimPEG ecosystem. - simpeg/equations",
+        "thumbnail": "/thumbnail/github-simpeg-equations.png",
+        "title": "GitHub - simpeg/equations: A collection of modular equations that are used throughout the SimPEG ecosystem.",
+        "uid": "github-simpeg-equations",
+        "url_more": "https://github.com/simpeg/equations"
     }
 ]

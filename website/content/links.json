@@ -250,5 +250,95 @@
         "title": "GitHub - simpeg/equations: A collection of modular equations that are used throughout the SimPEG ecosystem.",
         "uid": "github-simpeg-equations",
         "url_more": "https://github.com/simpeg/equations"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:14:34Z",
+        "description": "Reusable figures for the SimPEG ecosystem. Contribute to simpeg/figures development by creating an account on GitHub.",
+        "thumbnail": "/thumbnail/github-simpeg-figures.png",
+        "title": "GitHub - simpeg/figures: Reusable figures for the SimPEG ecosystem",
+        "uid": "github-simpeg-figures",
+        "url_more": "https://github.com/simpeg/figures"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:14:46Z",
+        "description": "Manage git projects with multiple sub-repositories using simple commands - seequent/git-project",
+        "thumbnail": "/thumbnail/github-git-project.png",
+        "title": "GitHub - seequent/git-project: Manage git projects with multiple sub-repositories using simple commands",
+        "uid": "github-git-project",
+        "url_more": "https://github.com/aranzgeo/git-project"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:15:13Z",
+        "description": "\u201cReuse code/data, why not equations (in LaTeX)? No typos = reproducibility win! Awesome project by the @simpegpy team https://t.co/c1EqhZlosY\u201d",
+        "thumbnail": "/thumbnail/twitter-reuse-equations.png",
+        "title": "Leonardo Uieda on Twitter: \"Reuse code/data, why not equations (in LaTeX)? No typos = reproducibility win! Awesome project by the @simpegpy team https://t.co/c1EqhZlosY\"",
+        "uid": "twitter-reuse-equations",
+        "url_more": "https://twitter.com/leouieda/status/824316659779469312"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:15:27Z",
+        "description": "",
+        "thumbnail": "/thumbnail/geosci-equation-bank.png",
+        "title": "404 Not Found",
+        "uid": "geosci-equation-bank",
+        "url_more": "https://em.geosci.xyz/content/equation_bank.html"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:15:47Z",
+        "description": "An open source textbook on applied electromagnetic geophysics. Aimed at providing background and physical understanding for steady state Maxwell equations as they apply to geoscience problems.",
+        "thumbnail": "/thumbnail/geosci-lenzs-law.png",
+        "title": "Lenz\u2019s Law \u2014 Electromagnetic Geophysics",
+        "uid": "geosci-lenzs-law",
+        "url_more": "https://em.geosci.xyz/content/maxwell1_fundamentals/formative_laws/lenz.html"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:15:55Z",
+        "description": "",
+        "thumbnail": "/thumbnail/rst.png",
+        "title": "reStructuredText",
+        "uid": "rst",
+        "url_more": "http://docutils.sourceforge.net/rst.html"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:16:22Z",
+        "description": "A collection of modular equations that are used throughout the SimPEG ecosystem. - simpeg/equations",
+        "thumbnail": "/thumbnail/github-simpeg-equations-richards.png",
+        "title": "equations/richards-timestep-deriv-blocks.tex at f0b65615b64a06df8093a0893f01424b489fb249 \u00b7 simpeg/equations \u00b7 GitHub",
+        "uid": "github-simpeg-equations-richards",
+        "url_more": "https://github.com/simpeg/equations/blob/f0b65615b64a06df8093a0893f01424b489fb249/richards/richards-timestep-deriv-blocks.tex"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:17:01Z",
+        "description": "A collection of modular equations that are used throughout the SimPEG ecosystem. - simpeg/equations",
+        "thumbnail": "/thumbnail/github-simpeg-equations-bump.png",
+        "title": "Change -\\mathbf{D}^{\\top} to \\mathbf{G} \u00b7 simpeg/equations@f0b6561 \u00b7 GitHub",
+        "uid": "github-simpeg-equations-bump",
+        "url_more": "https://github.com/simpeg/equations/commit/f0b65615b64a06df8093a0893f01424b489fb249#diff-ae1889936116cd0a2e12974f31ba3665"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:17:25Z",
+        "description": "An open source textbook on applied electromagnetic geophysics. Aimed at providing background and physical understanding for steady state Maxwell equations as they apply to geoscience problems.",
+        "thumbnail": "/thumbnail/geosci-variables.png",
+        "title": "Overview of Maxwell\u2019s Equations \u2014 Electromagnetic Geophysics",
+        "uid": "geosci-variables",
+        "url_more": "https://em.geosci.xyz/content/maxwell1_fundamentals/quick_guide_maxwell.html#variables-and-units"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:17:41Z",
+        "description": "Python package for working with CSDMS Standard Names - csdms/standard_names",
+        "thumbnail": "/thumbnail/github-standard-names.png",
+        "title": "standard_names/names-0.8.5.txt at master \u00b7 csdms/standard_names \u00b7 GitHub",
+        "uid": "github-standard-names",
+        "url_more": "https://github.com/csdms/standard_names/blob/master/standard_names/data/names-0.8.5.txt"
     }
 ]

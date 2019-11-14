@@ -184,10 +184,10 @@ class CvAward(CvItem):
 <h3>Equation bank</h3>
 
 <p>
-    I have experimented with <ink-a src="/github-simpeg-equations">reusable equations</ink-a> and the same idea for <a href="https://github.com/simpeg/figures">figures</a> in my thesis. This is difficult to actually do in practice, and my thesis git repository had to have complex pointers to all of the dependencies. A paper I wrote that referenced these equations inevitably ends up on a different version of the equation, it is a bit intricate to stay organized - very possible - but easier to copy and paste.
-    <ink-aside>I used <a href="https://github.com/aranzgeo/git-project">Git Project</a> to keep track of specific links to commit hashes and repositories.</ink-aside>
-    I intended to have these equations used by the <ink-a src="/simpeg">SimPEG community</ink-a>, but the uptake was ~0, although  enthusiasm was notoriously high (<a href="https://twitter.com/leouieda/status/824316659779469312">7 likes, wooo!</a> ha). In the <ink-a src="/geosci">GeoSci community</ink-a>, however, the development of ideas is necessarily more collaborative and for consistency of equations across the entire resource of interconnected pages, it was worth the time to invest in an <a href="https://em.geosci.xyz/content/equation_bank.html">equation bank</a>. This allows us to debate and invest time in notation, which <ink-a src="/on-breakthroughs">is important</ink-a>. The equation bank is a list of equations with correct notation, and expose these to the entire GeoSci not-a-textbook textbook.
-    For example, pulling from the article on <a href="https://em.geosci.xyz/content/maxwell1_fundamentals/formative_laws/lenz.html" target="_blank">Lenz's Law</a> we can see that the equations are dynamically <code>.. include::</code>-ed - the <a href="http://docutils.sourceforge.net/rst.html" target="_blank">restructured text</a> equivalent of an import statement.
+    I have experimented with <ink-a src="/github-simpeg-equations">reusable equations</ink-a> and the same idea for <ink-a src="/github-simpeg-figures">figures</ink-a> in my thesis. This is difficult to actually do in practice, and my thesis git repository had to have complex pointers to all of the dependencies. A paper I wrote that referenced these equations inevitably ends up on a different version of the equation, it is a bit intricate to stay organized - very possible - but easier to copy and paste.
+    <ink-aside>I used <ink-a src="/github-git-project">Git Project</ink-a> to keep track of specific links to commit hashes and repositories.</ink-aside>
+    I intended to have these equations used by the <ink-a src="/simpeg">SimPEG community</ink-a>, but the uptake was ~0, although  enthusiasm was notoriously high (<ink-a src="/twitter-reuse-equations">7 likes, wooo!</ink-a> ha). In the <ink-a src="/geosci">GeoSci community</ink-a>, however, the development of ideas is necessarily more collaborative and for consistency of equations across the entire resource of interconnected pages, it was worth the time to invest in an <ink-a src="/geosci-equation-bank">equation bank</ink-a>. This allows us to debate and invest time in notation, which <ink-a src="/on-breakthroughs">is important</ink-a>. The equation bank is a list of equations with correct notation, and expose these to the entire GeoSci not-a-textbook textbook.
+    For example, pulling from the article on <ink-a src="/geosci-lenzs-law">Lenz's Law</ink-a> we can see that the equations are dynamically <code>.. include::</code>-ed - the <ink-a src="/rst">restructured text</ink-a> equivalent of an import statement.
 </p>
 
 <ink-code language="text">
@@ -208,7 +208,7 @@ Faraday's Law of induction,
     I also used the idea of an equation bank in <ink-a src="/phd-thesis">my thesis</ink-a> written in <code>latex</code>, this allowed me to import equations:
     <br><code>\input{equations/something-horrendous}</code><br>
     which magically creates a
-    <a href="https://github.com/simpeg/equations/blob/f0b65615b64a06df8093a0893f01424b489fb249/richards/richards-timestep-deriv-blocks.tex" target="_blank">block matrix equation</a> for the <ink-a src="/richards-paper">Richards equation derivative</ink-a>.
+    <ink-a src="/github-simpeg-equations-version">block matrix equation</ink-a> for the <ink-a src="/richards-paper">Richards equation derivative</ink-a>.
 </p>
 <ink-equation style="zoom:0.7">
 \begin{aligned}
@@ -250,7 +250,7 @@ Faraday's Law of induction,
 </ink-equation>
 
 <p>
-    I can use this equation in <ink-a src="/phd-thesis">my thesis</ink-a>, <ink-a src="/richards-paper">my paper</ink-a>, and <ink-a src="/static/richards-equation/index.html#/9">presentations</ink-a> - and know that it is correct! Which it never is, so you can just <a href="https://github.com/simpeg/equations/commit/f0b65615b64a06df8093a0893f01424b489fb249#diff-ae1889936116cd0a2e12974f31ba3665" target="_blank">release a new version</a> - and update things, because you didn't copy and paste. By using an equation bank, we can discuss syntax and <a href="https://em.geosci.xyz/content/maxwell1_fundamentals/quick_guide_maxwell.html#variables-and-units" target="_blank">define the meaning of the variables</a> and <a href="https://github.com/csdms/standard_names/blob/master/standard_names/data/names-0.8.5.txt" target="_blank">standardize our naming</a> of variables.
+    I can use this equation in <ink-a src="/phd-thesis">my thesis</ink-a>, <ink-a src="/richards-paper">my paper</ink-a>, and <ink-a src="/static/richards-equation/index.html#/9">presentations</ink-a> - and know that it is correct! Which it never is, so you can just <ink-a src="/github-simpeg-equations-bump">release a new version</ink-a> - and update things, because you didn't copy and paste. By using an equation bank, we can discuss syntax and <ink-a src="/geosci-variables">define the meaning of the variables</ink-a> and <ink-a src="/github-standard-names">standardize our naming</ink-a> of variables.
     <ink-aside>
         These common resources are referred to as the <a href="https://www.force11.org/group/scholarly-commons-working-group" target="_blank">Scholarly Commons</a>, which has <a href="https://www.force11.org/group/scholarly-commons-working-group-wp2principles/principles-scholarly-commons-open-comments" target="_blank">principles</a> and sketches at <a href="https://youtu.be/o4nUe-6Ln-8?t=8m19s" target="_blank">infrastructure</a>.
     </ink-aside>
@@ -259,7 +259,7 @@ Faraday's Law of induction,
 
 <h3>It's all just math...</h3>
 <p>
-    For example, if we had a true equation bank - maybe we could invest more in showing our readers the derivation of an equation. We could have a <a href="https://em.geosci.xyz/content/maxwell1_fundamentals/quick_guide_maxwell.html#variables-and-units" target="_blank">look up table</a> for our variables with links to more work. Or see where this equation is used throughout our work.
+    For example, if we had a true equation bank - maybe we could invest more in showing our readers the derivation of an equation. We could have a <ink-a src="/geosci-variables">look up table</ink-a> for our variables with links to more work. Or see where this equation is used throughout our work.
 </p>
 
 <ink-callout>

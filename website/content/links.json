@@ -340,5 +340,86 @@
         "title": "standard_names/names-0.8.5.txt at master \u00b7 csdms/standard_names \u00b7 GitHub",
         "uid": "github-standard-names",
         "url_more": "https://github.com/csdms/standard_names/blob/master/standard_names/data/names-0.8.5.txt"
+    },
+    {
+        "__class__": "Link",
+        "date": "2015-10-08T13:03:27Z",
+        "description": "The Scholarly Commons group is collating and synthesizing the best thinking around the world about what is required for a scholarly communications ecosystem, called the Scholarly Commons, designed for 21st century scholarship. The goal is to articulate and operationalize a set of high level principles to govern the production and dissemination of scholarly works across",
+        "thumbnail": "/thumbnail/force11-scholarly-commons-working-group.png",
+        "title": "Scholarly Commons Working Group | FORCE11",
+        "uid": "force11-scholarly-commons-working-group",
+        "url_more": "https://www.force11.org/group/scholarly-commons-working-group"
+    },
+    {
+        "__class__": "Link",
+        "date": "2016-05-13T18:58:36Z",
+        "description": "",
+        "thumbnail": "/thumbnail/force11-principles-scholarly-commons.png",
+        "title": "Principles of the Scholarly Commons - Open for Comments | FORCE11",
+        "uid": "force11-principles-scholarly-commons",
+        "url_more": "https://www.force11.org/group/scholarly-commons-working-group-wp2principles/principles-scholarly-commons-open-comments"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:22:32Z",
+        "description": "Scholarly Communication: Deconstruct and Decentralize? Closing Plenary Paul Evan Peters Award & Lecture Herbert Van de Sompel Research Scientist Los Alamos N...",
+        "thumbnail": "/thumbnail/herbert-scholarly-infrastructure.png",
+        "title": "Scholarly Communication: Deconstruct & Decentralize? - YouTube",
+        "uid": "herbert-scholarly-infrastructure",
+        "url_more": "https://youtu.be/o4nUe-6Ln-8?t=8m19s"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:24:57Z",
+        "description": "",
+        "thumbnail": "/thumbnail/sympy.png",
+        "title": "",
+        "uid": "sympy",
+        "url_more": "http://www.sympy.org/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:25:15Z",
+        "description": "",
+        "thumbnail": "/thumbnail/discretize.png",
+        "title": "Redirecting to http://discretize.simpeg.xyz/en/master/",
+        "uid": "discretize",
+        "url_more": "http://discretize.simpeg.xyz/en/latest/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:25:22Z",
+        "description": "",
+        "thumbnail": "/thumbnail/katex.png",
+        "title": "Redirecting\u2026",
+        "uid": "katex",
+        "url_more": "https://khan.github.io/KaTeX/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:25:41Z",
+        "description": "This page is a comparison of rendering performance of KaTex and MathJax math publishing solutions. Currently: KaTex",
+        "thumbnail": "/thumbnail/katex-vs-mathjax.png",
+        "title": "KaTeX and MathJax Comparison Demo, currently processed as KaTex",
+        "uid": "katex-vs-mathjax",
+        "url_more": "https://www.intmath.com/cg5/katex-mathjax-comparison.php"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:26:04Z",
+        "description": "How do we communicate fundamental concepts in a reproducible, actionable form? How do we put numerical simulation tools in the hands of undergraduate student...",
+        "thumbnail": "/thumbnail/refactoring-geoscience-education.png",
+        "title": "Using Open Source Tools to Refactor Geoscience Education | SciPy 2016 | Lindsey Heagy - YouTube",
+        "uid": "refactoring-geoscience-education",
+        "url_more": "https://www.youtube.com/watch?v=IW2LDsevvDk"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:26:24Z",
+        "description": "dir command can be used to list the files from command prompt. This article explains the syntax for different usecases. A simple dir command without any other arguments lists all the files/subfolders that exist in the current folder. dir Lists the subfolders/files names in bare format. dir /b This command prints the fi",
+        "thumbnail": "/thumbnail/linux-dir.png",
+        "title": "Dir command",
+        "uid": "linux-dir",
+        "url_more": "https://www.windows-commandline.com/dir-command-line-options/"
     }
 ]

@@ -645,7 +645,7 @@
         "thumbnail": "/thumbnail/jupyter.png",
         "title": "Project Jupyter | Home",
         "uid": "jupyter",
-        "url_more": "http://jupyter.org/"
+        "url_more": "https://jupyter.org/"
     },
     {
         "__class__": "Link",
@@ -654,7 +654,7 @@
         "thumbnail": "/thumbnail/explorabl-es.png",
         "title": "Explorable Explanations",
         "uid": "explorabl-es",
-        "url_more": "http://explorabl.es/"
+        "url_more": "https://explorabl.es/"
     },
     {
         "__class__": "Link",
@@ -862,5 +862,320 @@
         "title": "Steno3D",
         "uid": "steno3d",
         "url_more": "https://steno3d.com"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:50:22Z",
+        "description": "Scientific web components",
+        "thumbnail": "/thumbnail/components-ink.png",
+        "title": "Ink Components",
+        "uid": "components-ink",
+        "url_more": "https://components.ink"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:50:32Z",
+        "description": "open source educational resources for the geosciences.",
+        "thumbnail": "/thumbnail/geosci-why.png",
+        "title": "GeoSci.xyz",
+        "uid": "geosci-why",
+        "url_more": "https://geosci.xyz/why"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:50:43Z",
+        "description": "Articles about Machine Learning",
+        "thumbnail": "/thumbnail/distillpub.png",
+        "title": "Distill \u2014 Latest articles about machine learning",
+        "uid": "distillpub",
+        "url_more": "https://distill.pub/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:50:50Z",
+        "description": "eLife works to improve research communication through open science and open technology innovation",
+        "thumbnail": "/thumbnail/elife.png",
+        "title": "Latest research | eLife",
+        "uid": "elife",
+        "url_more": "https://elifesciences.org/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:51:07Z",
+        "description": "",
+        "thumbnail": "/thumbnail/dokieli.png",
+        "title": "dokieli: decentralised authoring, annotations and social notifications",
+        "uid": "dokieli",
+        "url_more": "http://csarven.ca/dokieli"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:51:17Z",
+        "description": "Create data-driven stories, explorable explanations, and interactive blog posts.",
+        "thumbnail": "/thumbnail/idyll.png",
+        "title": "Idyll | A markup language for interactive and data-driven blogging.",
+        "uid": "idyll",
+        "url_more": "https://idyll-lang.org/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:52:26Z",
+        "description": "Rowan's Website! Contribute to rowanc1/row1ca development by creating an account on GitHub.",
+        "thumbnail": "/thumbnail/github-row1ca-refactor.png",
+        "title": "Change from custom to ink.js for probability of a spill. \u00b7 rowanc1/row1ca@12a9946 \u00b7 GitHub",
+        "uid": "github-row1ca-refactor",
+        "url_more": "https://github.com/rowanc1/row1ca/commit/12a9946a7eb0f839278144eb36db45586d010397#diff-53520c0f3eb292d24ceedb966d8b8a96L612"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:52:48Z",
+        "description": "Rowan's Website! Contribute to rowanc1/row1ca development by creating an account on GitHub.",
+        "thumbnail": "/thumbnail/github-row1ca-refactor-42.png",
+        "title": "Change from custom to ink.js for probability of a spill. \u00b7 rowanc1/row1ca@12a9946 \u00b7 GitHub",
+        "uid": "github-row1ca-refactor-42",
+        "url_more": "https://github.com/rowanc1/row1ca/commit/12a9946a7eb0f839278144eb36db45586d010397"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:53:01Z",
+        "description": "",
+        "thumbnail": "/thumbnail/github-xmd-spec.png",
+        "title": "",
+        "uid": "github-xmd-spec",
+        "url_more": "https://raw.githubusercontent.com/geoscixyz/xmd/master/spec.md"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:53:30Z",
+        "description": "Extensible markdown. Contribute to geoscixyz/xmd development by creating an account on GitHub.",
+        "thumbnail": "/thumbnail/github-xmd-nodes.png",
+        "title": "xmd/nodes.py at master \u00b7 geoscixyz/xmd \u00b7 GitHub",
+        "uid": "github-xmd-nodes",
+        "url_more": "https://github.com/geoscixyz/xmd/blob/master/xmd/nodes.py#L84"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:53:43Z",
+        "description": "Extensible markdown. Contribute to geoscixyz/xmd development by creating an account on GitHub.",
+        "thumbnail": "/thumbnail/github-xmd-google.png",
+        "title": "xmd/google.py at master \u00b7 geoscixyz/xmd \u00b7 GitHub",
+        "uid": "github-xmd-google",
+        "url_more": "https://github.com/geoscixyz/xmd/blob/master/xmd/google.py"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:53:58Z",
+        "description": "Extensible markdown. Contribute to geoscixyz/xmd development by creating an account on GitHub.",
+        "thumbnail": "/thumbnail/github-xmd-parsing.png",
+        "title": "Updates to try to get arround brackets problems. Not yet. \u00b7 geoscixyz/xmd@2316e18 \u00b7 GitHub",
+        "uid": "github-xmd-parsing",
+        "url_more": "https://github.com/geoscixyz/xmd/commit/2316e185bd1326d8228c55f66fca6230cda843f7"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:54:15Z",
+        "description": "Extensible markdown. Contribute to geoscixyz/xmd development by creating an account on GitHub.",
+        "thumbnail": "/thumbnail/github-xmd-parser.png",
+        "title": "xmd/parser.py at master \u00b7 geoscixyz/xmd \u00b7 GitHub",
+        "uid": "github-xmd-parser",
+        "url_more": "https://github.com/geoscixyz/xmd/blob/master/xmd/parser.py"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:54:24Z",
+        "description": "",
+        "thumbnail": "/thumbnail/parsing-is-hard.png",
+        "title": "Parsing is hard",
+        "uid": "parsing-is-hard",
+        "url_more": "https://blob.codes/parsing-is-hard/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:54:35Z",
+        "description": "",
+        "thumbnail": "/thumbnail/idyll-paper.png",
+        "title": "UW Interactive Data Lab | Papers",
+        "uid": "idyll-paper",
+        "url_more": "https://idl.cs.washington.edu/papers/idyll/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:54:54Z",
+        "description": "",
+        "thumbnail": "/thumbnail/wiki-intermediate-representation.png",
+        "title": "Intermediate representation - Wikipedia",
+        "uid": "wiki-intermediate-representation",
+        "url_more": "https://en.wikipedia.org/wiki/Intermediate_representation"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:55:21Z",
+        "description": "Turn your analyses into high quality documents, reports, presentations and dashboards with R Markdown. Use a productive notebook interface to weave together narrative text and code to produce elegantly formatted output. Use multiple languages including R, Python, and SQL. R Markdown supports a reproducible workflow for dozens of static and dynamic output formats including HTML, PDF, MS Word, Beamer, HTML5 slides, Tufte-style handouts, books, dashboards, shiny applications, scientific articles, websites, and more.",
+        "thumbnail": "/thumbnail/rmarkdown.png",
+        "title": "R Markdown",
+        "uid": "rmarkdown",
+        "url_more": "https://rmarkdown.rstudio.com/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:55:31Z",
+        "description": "",
+        "thumbnail": "/thumbnail/svelte.png",
+        "title": "Svelte \u2022 Cybernetically enhanced web apps",
+        "uid": "svelte",
+        "url_more": "https://svelte.dev/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:55:53Z",
+        "description": "http://www.ted.com With help from some surprising footage, Derek Sivers explains how movements really get started. (Hint: it takes two.) TEDTalks is a daily ...",
+        "thumbnail": "/thumbnail/how-to-start-a-movement.png",
+        "title": "How to start a movement | Derek Sivers - YouTube",
+        "uid": "how-to-start-a-movement",
+        "url_more": "https://www.youtube.com/watch?v=V74AxCqOTvg"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:56:13Z",
+        "description": "For example, I want to display note names instead of numbers.",
+        "thumbnail": "/thumbnail/github-idyll-formatting.png",
+        "title": "Custom formatting for `Dynamic` \u00b7 Issue #490 \u00b7 idyll-lang/idyll \u00b7 GitHub",
+        "uid": "github-idyll-formatting",
+        "url_more": "https://github.com/idyll-lang/idyll/issues/490#issuecomment-492515708"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:56:34Z",
+        "description": "It looks like there might be a bug with the bold/paragraph interaction in the markdown implementation. Given: This is **bold text.** Not a new paragraph. There is no new paragraph after the bold text. However, not ending the paragraph wi...",
+        "thumbnail": "/thumbnail/github-idyll-parsing.png",
+        "title": "Markdown parser: Bold and paragraph markdown interaction. \u00b7 Issue #449 \u00b7 idyll-lang/idyll \u00b7 GitHub",
+        "uid": "github-idyll-parsing",
+        "url_more": "https://github.com/idyll-lang/idyll/issues/449"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:56:48Z",
+        "description": "A markup language for interactive documents.",
+        "thumbnail": "/thumbnail/idyll-syntax.png",
+        "title": "Idyll Documentation | Markup Syntax",
+        "uid": "idyll-syntax",
+        "url_more": "https://idyll-lang.org/docs/syntax#expressions"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:57:19Z",
+        "description": "Variables and Displays",
+        "thumbnail": "/thumbnail/components-ink-var.png",
+        "title": "Ink Variables",
+        "uid": "components-ink-var",
+        "url_more": "https://components.ink/var#reactive-variables"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:57:37Z",
+        "description": "A markup language for interactive documents.",
+        "thumbnail": "/thumbnail/idyll-syntax-var.png",
+        "title": "Idyll Documentation | Markup Syntax",
+        "uid": "idyll-syntax-var",
+        "url_more": "https://idyll-lang.org/docs/syntax#variables"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:57:56Z",
+        "description": "Variables and Displays",
+        "thumbnail": "/thumbnail/components-ink-docs-var.png",
+        "title": "Ink Variables",
+        "uid": "components-ink-docs-var",
+        "url_more": "https://components.ink/var"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:59:37Z",
+        "description": "A markup language for interactive documents.",
+        "thumbnail": "/thumbnail/idyll-docs-equation.png",
+        "title": "Idyll Documentation | Component - Equation",
+        "uid": "idyll-docs-equation",
+        "url_more": "https://idyll-lang.org/docs/components/default/equation"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:59:56Z",
+        "description": "Katex Web Components",
+        "thumbnail": "/thumbnail/components-ink-equation-update.png",
+        "title": "Ink Components",
+        "uid": "components-ink-equation-update",
+        "url_more": "https://components.ink/equation#updating-the-math"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T16:00:09Z",
+        "description": "Reactive charts using d3",
+        "thumbnail": "/thumbnail/components-ink-chart.png",
+        "title": "Ink Components",
+        "uid": "components-ink-chart",
+        "url_more": "https://components.ink/chart"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T16:00:23Z",
+        "description": "A markup language for interactive documents.",
+        "thumbnail": "/thumbnail/idyll-doc-conditional.png",
+        "title": "Idyll Documentation | Component - Conditional",
+        "uid": "idyll-doc-conditional",
+        "url_more": "https://idyll-lang.org/docs/components/default/conditional"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T16:00:44Z",
+        "description": "Idyll Dynamic format array. GitHub Gist: instantly share code, notes, and snippets.",
+        "thumbnail": "/thumbnail/gist-idyll-component.png",
+        "title": "Idyll Dynamic format array \u00b7 GitHub",
+        "uid": "gist-idyll-component",
+        "url_more": "https://gist.github.com/rowanc1/6f086d430a5c594e4bb9a4179f9afec0"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T16:01:05Z",
+        "description": "",
+        "thumbnail": "/thumbnail/idyll-nonlinear-range-sliders.png",
+        "title": "",
+        "uid": "idyll-nonlinear-range-sliders",
+        "url_more": "https://mathisonian.com/writing/nonlinear-range-sliders"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T16:01:50Z",
+        "description": "Please check if the PR fulfills these requirements\n\n\n The commit message follows our guidelines\n Tests for the changes have been added (for bug fixes / features)\n Docs have been added / updated (for bug fixes / features)\n\n\n\nWhat kind of change does this PR introduce? (Bug fix, feature, docs update, ...)\nFeature Update.\n\n\nWhat is the current behavior? (You can also link to an open issue here)\nAddresses #490\n\n\nWhat is the new behavior (if this is a feature change)?\nDynamic Component will accept a prop map that will map a give value to the value prop of the component. e.g.\n\n\n[Dynamic value:Var1 min:50 max:100 step:10 map:`['Red', 'Red', 'Blue', 'Green']`/]\n[Dynamic value:Var2 min:0 max:4 step:1 map:`(Var2 % 2 === 0) ? 'even' : 'odd' ` /]\nThis will be the output of above\n\n\n\nDoes this PR introduce a breaking change? (What changes might users need to make in their application due to this PR?)\nNo.\n\n\nOther information:",
+        "thumbnail": "/thumbnail/github-idyll-pr519.png",
+        "title": "Add custom formatting for Dynamic Component by codemayank \u00b7 Pull Request #519 \u00b7 idyll-lang/idyll \u00b7 GitHub",
+        "uid": "github-idyll-pr519",
+        "url_more": "https://github.com/idyll-lang/idyll/pull/519"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T16:02:10Z",
+        "description": "Scientific web components using Web Components. Contribute to ink-components/ink-components development by creating an account on GitHub.",
+        "thumbnail": "/thumbnail/github-components-ink-demo.png",
+        "title": "ink-components/InkCode.js at master \u00b7 ink-components/ink-components \u00b7 GitHub",
+        "uid": "github-components-ink-demo",
+        "url_more": "https://github.com/ink-components/ink-components/blob/master/src/InkCode.js#L166"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T16:02:25Z",
+        "description": "Variables and Displays",
+        "thumbnail": "/thumbnail/components-ink-var-bind.png",
+        "title": "Ink Variables",
+        "uid": "components-ink-var-bind",
+        "url_more": "https://components.ink/var#name:value-bind"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T16:02:40Z",
+        "description": "",
+        "thumbnail": "/thumbnail/svelte-rethinking-reactivity.png",
+        "title": "Svelte 3: Rethinking reactivity",
+        "uid": "svelte-rethinking-reactivity",
+        "url_more": "https://svelte.dev/blog/svelte-3-rethinking-reactivity"
     }
 ]

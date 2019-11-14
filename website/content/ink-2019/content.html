@@ -1,23 +1,23 @@
 <p>
     <ink-aside>
-        <a href="https://components.ink">components.ink</a> is trying to expand on and explore some of the ideas written in:<br>
+        <ink-a src="/components-ink">components.ink</ink-a> is trying to expand on and explore some of the ideas written in:<br/>
         <ink-card src="/api/bricks/rowan/on-my-website-2018"></ink-card>
     </ink-aside>
-    <a href="https://components.ink">components.ink</a> is my experiment in creating tools for interactive scientific writing, and developing web-components that improve that experience so that you, as a scientist and communicator, can inject interactivity into your writing. My goal is primarily to support scientific writing. I have been experimenting on my own website, and taking some of <a href="/pixels-and-their-neighbors">my scientific articles</a>, my experience in <a href="https://geosci.xyz/why">collaborative scientific textbooks</a> and rethinking them for the interactive web. There are, of course, many existing tools out there that are also are trying to do similar things.
+    <ink-a src="/components-ink">components.ink</ink-a> is my experiment in creating tools for interactive scientific writing, and developing web-components that improve that experience so that you, as a scientist and communicator, can inject interactivity into your writing. My goal is primarily to support scientific writing. I have been experimenting on my own website, and taking some of <ink-a src="/pixels-and-their-neighbors">my scientific articles</ink-a>, my experience in <ink-a src="/geosci-why">collaborative scientific textbooks</ink-a> and rethinking them for the interactive web. There are, of course, many existing tools out there that are also are trying to do similar things.
 </p>
 <p>
     <strong>A smattering of notable examples:</strong>
     <ul>
-        <li><a href="http://worrydream.com/Tangle/" target="_blank">Tangle</a>: explorable explanations made easy</li>
-        <li><a href="https://distill.pub/" target="_blank">Distill</a>: a modern medium for presenting research</li>
-        <li><a href="https://elifesciences.org/" target="_blank">eLIFE</a>: improve research communication through open science and technology innovation</li>
-        <li><a href="http://csarven.ca/dokieli" target="_blank">dokieli</a>: decentralised authoring, annotations and social notifications</li>
-        <li><a href="https://idyll-lang.org/" target="_blank">Idyll Lang</a>: a toolkit for creating data-driven stories and explorable explanations</li>
+        <li><ink-a src="/tanglejs">Tangle</ink-a>: explorable explanations made easy</li>
+        <li><ink-a src="/distillpub">Distill</ink-a>: a modern medium for presenting research</li>
+        <li><ink-a src="/elife">eLIFE</ink-a>: improve research communication through open science and technology innovation</li>
+        <li><ink-a src="/dokieli">dokieli</ink-a>: decentralised authoring, annotations and social notifications</li>
+        <li><ink-a src="/idyll">Idyll Lang</ink-a>: a toolkit for creating data-driven stories and explorable explanations</li>
     </ul>
 </p>
 
 <p>
-    These are some projects shaping my thinking behind <a href="https://components.ink">components.ink</a>. In this document, I want to run through some of my motivations, experiments and comparisons to a few other tools.
+    These are some projects shaping my thinking behind <ink-a src="/components-ink">components.ink</ink-a>. In this document, I want to run through some of my motivations, experiments and comparisons to a few other tools.
 </p>
 
 <h2>A scalable, interactive document</h2>
@@ -25,7 +25,7 @@
 <p>
     <ink-card style="float:right;margin:10px 30px;" src="/api/bricks/rowan/probability-of-a-spill"></ink-card>
 
-    My first interactive document that I wrote was in December 2013 with my sister and my dad! We interpreted and dissected a government report on the probability of an oil spill. Beyond the content of <a href="/probability-of-a-spill">the article</a>, I think there were a few things that were interesting about presenting this work: (1) an <strong>interactive figure</strong> linked to text, equations and tables; and (2) it is a <strong>scalable document</strong> - going from a picture to a mathematical proof with infinite sums in one document. Interactive figures have been explored numerous times; <a href="https://explorabl.es/" target="_blank">explorabl.es</a> shows a number of these sorts of documents.
+    My first interactive document that I wrote was in December 2013 with my sister and my dad! We interpreted and dissected a government report on the probability of an oil spill. Beyond the content of <ink-a src="/probability-of-a-spill">the article</ink-a>, I think there were a few things that were interesting about presenting this work: (1) an <strong>interactive figure</strong> linked to text, equations and tables; and (2) it is a <strong>scalable document</strong> - going from a picture to a mathematical proof with infinite sums in one document. Interactive figures have been explored numerous times; <ink-a src="/explorabl-es">explorabl.es</ink-a> shows a number of these sorts of documents.
 </p>
 
 <ink-aside>The user interface I chose for this scalable document (a single slider to choose your length/detail of content) could be dramatically improved. However, the idea that you can scale from an abstract to a paper dynamically and on demand is something that still intrigues me.</ink-aside>
@@ -44,25 +44,25 @@
 
 <h2>Moving on from Tangle</h2>
 <p>
-    I developed my early interactive documents using <a href="http://worrydream.com/Tangle/" target="_blank">tangle.js</a>, it was easy to integrate, however, slightly harder to keep up to date as I continued to iterate on the writing. The separation of the logic of the interactivity (in Javascript) and the prose (in html markup) meant I was jumping around and getting lost all the time. I think this is especially true when I wanted to introduce three new ways of looking at the same model. The model and logic was the same, <ink-aside>I wanted a new instance of the model in its own scope, so I could show how it works with different inputs or fixing a single variable - independent of the main document!</ink-aside> but the easiest way to add this was by adding <code>_example3</code> to my variable names in Tangle. There was not the idea of scopes or namespaces in my writing, something that is taken for granted in every modern programming language.
+    I developed my early interactive documents using <ink-a src="/tanglejs">tangle.js</ink-a>, it was easy to integrate, however, slightly harder to keep up to date as I continued to iterate on the writing. The separation of the logic of the interactivity (in Javascript) and the prose (in html markup) meant I was jumping around and getting lost all the time. I think this is especially true when I wanted to introduce three new ways of looking at the same model. The model and logic was the same, <ink-aside>I wanted a new instance of the model in its own scope, so I could show how it works with different inputs or fixing a single variable - independent of the main document!</ink-aside> but the easiest way to add this was by adding <code>_example3</code> to my variable names in Tangle. There was not the idea of scopes or namespaces in my writing, something that is taken for granted in every modern programming language.
 
     <ink-quote src="/api/bricks/rowan/quote-namespaces"></ink-quote>
 
-    This <a href="/probability-of-a-spill">document</a> has become one of my main test-cases for developing <a href="https://components.ink">components.ink</a>. Some of the interactivity that I required were:
+    This <ink-a src="/probability-of-a-spill">document</ink-a> has become one of my main test-cases for developing <ink-a src="/components-ink">components.ink</ink-a>. Some of the interactivity that I required were:
 </p>
 <ul>
-    <li>Non-linear sliders, with <a href="https://github.com/rowanc1/row1ca/commit/12a9946a7eb0f839278144eb36db45586d010397#diff-53520c0f3eb292d24ceedb966d8b8a96L612" target="_blank">custom formatting</a></li>
+    <li>Non-linear sliders, with <ink-a src="/github-row1ca-refactor">custom formatting</ink-a></li>
     <li>Scopes to present multiple ideas as instances of the same model</li>
     <li>Logic and variables declared "simply" and "close" to where they are used in the text</li>
     <li>Easily include equations, figures, and charts that can interact with the variables driving the document</li>
 </ul>
 <p>
-    After a few iterations, refactoring the article using <code>ink components</code> has reduced the complexity to <a href="https://github.com/rowanc1/row1ca/commit/12a9946a7eb0f839278144eb36db45586d010397">42% of the size</a>, in terms of lines-of-code written. There are still a number of outstanding issues though!
+    After a few iterations, refactoring the article using <code>ink components</code> has reduced the complexity to <ink-a src="/github-row1ca-refactor-42">42% of the size</ink-a>, in terms of lines-of-code written. There are still a number of outstanding issues though!
 </p>
 
 <h2>Extensible Markdown, <code>xmd</code></h2>
 <p>
-    My first approach was to boldly state I would invent a "new language" that would extend markdown to include some of these ideas. I started by writing a "spec" for the <code>.xmd</code> language, which is <a href="https://raw.githubusercontent.com/geoscixyz/xmd/master/spec.md">on GitHub</a>, in collaboration with <a href="https://lindseyjh.ca/" target="_blank">Lindsey</a> under the <a href="/geosci">GeoSci project</a>.
+    My first approach was to boldly state I would invent a "new language" that would extend markdown to include some of these ideas. I started by writing a "spec" for the <code>.xmd</code> language, which is <ink-a src="/github-xmd-spec">on GitHub</ink-a>, in collaboration with <ink-a src="/lindsey-heagy">Lindsey</ink-a> under the <ink-a src="/geosci">GeoSci project</ink-a>.
     I spent a few months figuring out how to write parsers in Python and the pros and cons of extending a markdown parser or writing one from scratch. An excerpt of the specification is below, I wanted it to be trivial to insert, Jinja/Handlebars style, all sorts of variables as well as extend the markdown to use new commands.
 </p>
 
@@ -84,40 +84,40 @@
 </ink-code>
 
 <p>
-    After getting some proof of concepts, integrating Python extensions as <a href="https://github.com/geoscixyz/xmd/blob/master/xmd/nodes.py#L84" target="_blank">simple classes</a> and having an editor experience in <a href="https://github.com/geoscixyz/xmd/blob/master/xmd/google.py" target="_blank">Google Docs</a>, I gave up when I hit my head against <a href="https://github.com/geoscixyz/xmd/commit/2316e185bd1326d8228c55f66fca6230cda843f7" target="_blank">bracket-parsing</a> and debugging my article.
+    After getting some proof of concepts, integrating Python extensions as <ink-a src="/github-xmd-nodes">simple classes</ink-a> and having an editor experience in <ink-a src="/github-xmd-google">Google Docs</ink-a>, I gave up when I hit my head against <ink-a src="/github-xmd-parsing">bracket-parsing</ink-a> and debugging my article.
 </p>
 <p>
-    The silly thing was that I was in a weird place between extending markdown and writing my own parser. Neither of those things were actually getting closer to my objectives for interactive documents, and frankly, I am not very good at writing parsers. I spent <a href="https://github.com/geoscixyz/xmd/blob/master/xmd/parser.py" target="_blank">my time</a> doing things I really didn't want to do.
+    The silly thing was that I was in a weird place between extending markdown and writing my own parser. Neither of those things were actually getting closer to my objectives for interactive documents, and frankly, I am not very good at writing parsers. I spent <ink-a src="/github-xmd-parser">my time</ink-a> doing things I really didn't want to do.
 
 </p>
 <p>
     I decided to move on from creating a domain specific language for the following reasons:
 </p>
 <ul>
-    <li><a href="https://blob.codes/parsing-is-hard/" target="_blank">Parsers are hard</a>, and I kept on screwing it up</li>
+    <li><ink-a src="/parsing-is-hard">Parsers are hard</ink-a>, and I kept on screwing it up</li>
     <li>I would have to implement syntax highlighters and helpers in everyones favorite code editors</li>
     <li>There is the burden of good documentation and debugging experiences for users of the new language</li>
 </ul>
 <p>
     Building out the infrastructure for a new language is a lot of work, and much of that work is only tangentially related to making really good interactive documents.
-    I gave up after trying for about a month or so. However, there are other projects such as <a href="https://idyll-lang.org/" target="_blank">Idyll Lang</a> that are successfully committing to extending markdown. They note in <a href="https://idl.cs.washington.edu/papers/idyll/" target="_blank">their paper</a> there are a lot of advantages after you get over some of the hurdles of parsing, language nuances, and compiler bugs. Including:
+    I gave up after trying for about a month or so. However, there are other projects such as <ink-a src="/idyll">Idyll Lang</ink-a> that are successfully committing to extending markdown. They note in <ink-a src="/idyll-paper">their paper</ink-a> there are a lot of advantages after you get over some of the hurdles of parsing, language nuances, and compiler bugs. Including:
 </p>
-<ink-aside><ink-figure img-src="/images/logo/idyll.png"><a href="https://idyll-lang.org/" target="_blank">Idyll Lang</a> is very similar in the outcome and syntax to ink-components.</ink-figure></ink-aside>
+<ink-aside><ink-figure img-src="/images/logo/idyll.png"><ink-a src="/idyll">Idyll Lang</ink-a> is very similar in the outcome and syntax to ink-components.</ink-figure></ink-aside>
 <ul>
     <li>Limited verbosity, as the language is domain specific!</li>
     <li>Multiple compile targets (e.g. <code>html</code>, $\LaTeX$)</li>
-    <li>Access to the <a href="https://en.wikipedia.org/wiki/Intermediate_representation" target="_blank">intermediate representation</a> and state can lead to really interesting analysis of the documents, as well as potential for WYSIWYG editors.</li>
-    <li>Easier integrations into upstream providers (e.g. <a href="https://jupyter.org/" target="_blank">Jupyter</a>, <a href="https://rmarkdown.rstudio.com/" target="_blank">R Markdown</a>, <a href="https://svelte.dev/" target="_blank">Svelte</a> etc.)</li>
+    <li>Access to the <ink-a src="/wiki-intermediate-representation">intermediate representation</ink-a> and state can lead to really interesting analysis of the documents, as well as potential for WYSIWYG editors.</li>
+    <li>Easier integrations into upstream providers (e.g. <ink-a src="/jupyter">Jupyter</ink-a>, <ink-a src="/rmarkdown">R Markdown</ink-a>, <ink-a src="/svelte">Svelte</ink-a> etc.)</li>
 </ul>
 <p>
     There is a lot of development that has gone into Idyll and the pieces around it (editors, components, publishing, etc.), which make it a really awesome tool and community.
-    To be honest, I feel there is a lot of duplication in the work I have done with <a href="https://components.ink">components.ink</a> and Idyll. If we look at
-    <a href="https://www.youtube.com/watch?v=V74AxCqOTvg" target="_blank">how to start a movement</a>
+    To be honest, I feel there is a lot of duplication in the work I have done with <ink-a src="/components-ink">components.ink</ink-a> and Idyll. If we look at
+    <ink-a src="/how-to-start-a-movement">how to start a movement</ink-a>
     it is probably better for <emph>interactive writing</emph> generally for me to help join on with the Idyll work now that I have discovered it.
-    However, I still have some experimenting to do and I think a few unique ideas. Some of which I am contributing back (e.g. <a href="https://github.com/idyll-lang/idyll/issues/490#issuecomment-492515708" target="_blank">display transforms</a> and <a href="https://github.com/idyll-lang/idyll/issues/449" target="_blank">compiler bugs</a>)!!
+    However, I still have some experimenting to do and I think a few unique ideas. Some of which I am contributing back (e.g. <ink-a src="/github-idyll-formatting">display transforms</ink-a> and <ink-a src="/github-idyll-parsing">compiler bugs</ink-a>)!!
 </p>
 <p>
-    I have decided to push on with my own project and see what happens. Next up I will do a bit of comparison to Idyll. I have decided to use web-components over React. To get started with the library you can go to <a href="https://components.ink">components.ink</a>!
+    I have decided to push on with my own project and see what happens. Next up I will do a bit of comparison to Idyll. I have decided to use web-components over React. To get started with the library you can go to <ink-a src="/components-ink">components.ink</ink-a>!
 </p>
 
 
@@ -152,11 +152,11 @@
 </p>
 <h3>Comparison of <emph>Some</emph> Features</h3>
 <dl>
-    <dt>Expressions</dt><dd>Expressions that can be <a href="https://idyll-lang.org/docs/syntax#expressions" target="_blank">executed in Idyll</a> uses <code>value=`backticks`</code>, Ink prepends a <a href="https://components.ink/var#reactive-variables">semicolon</a> to the attribute <code>:value="semicolon"</code>.</dd>
-    <dt>Variables</dt><dd><code>Derived</code> and <code>Data</code> in Idyll are <a href="https://idyll-lang.org/docs/syntax#variables" target="_blank">new components</a>, in Ink they are just <a href="https://components.ink/var">variables</a>.<br>I was thinking about this for a while, and I think the variable should really just be set dynamically based on a function, I am not sure why we need another type (Derived) to do this?</dd>
-    <dt>Equations</dt><dd>Idyll has <a href="https://idyll-lang.org/docs/components/default/equation" target="_blank">equations</a> in their Presentation section with no reactivity, Ink <a href="https://components.ink/equation#updating-the-math">allows you to nest</a> a <code>display</code> inside an <code>equation</code>. <ink-aside>I kept wanting to update equations by setting the <code>:math="'x = ' + Math.round(x*10)/10"</code> property, however, this kept dropping decimal places when it was an integer. Agh. Because of how the shadow-dom works, I could just copy the <code>textContent</code>, and then use <code>ink-displays</code> instead, directly in the XML.</ink-aside></dd>
-    <dt>Charts</dt><dd>Idyll has simple charts out of the box but no two-way binding of elements, Ink allows you to have <a href="https://components.ink/chart">drag-nodes</a>.</dd>
-    <dt>Conditional Visibility</dt><dd>Ink takes a slightly different approach to conditionals, and I opted to go for reactive visibility through <code>:visible</code>, rather than <a href="https://idyll-lang.org/docs/components/default/conditional" target="_blank">if/else statements</a> in Idyll.</dd>
+    <dt>Expressions</dt><dd>Expressions that can be <ink-a src="/idyll-syntax">executed in Idyll</ink-a> uses <code>value=`backticks`</code>, Ink prepends a <ink-a src="/components-ink-var">semicolon</ink-a> to the attribute <code>:value="semicolon"</code>.</dd>
+    <dt>Variables</dt><dd><code>Derived</code> and <code>Data</code> in Idyll are <ink-a src="/idyll-syntax-var">new components</ink-a>, in Ink they are just <ink-a src="/components-ink-docs-var">variables</ink-a>.<br/>I was thinking about this for a while, and I think the variable should really just be set dynamically based on a function, I am not sure why we need another type (Derived) to do this?</dd>
+    <dt>Equations</dt><dd>Idyll has <ink-a src="/idyll-docs-equation">equations</ink-a> in their Presentation section with no reactivity, Ink <ink-a src="/components-ink-equation-update">allows you to nest</ink-a> a <code>display</code> inside an <code>equation</code>. <ink-aside>I kept wanting to update equations by setting the <code>:math="'x = ' + Math.round(x*10)/10"</code> property, however, this kept dropping decimal places when it was an integer. Agh. Because of how the shadow-dom works, I could just copy the <code>textContent</code>, and then use <code>ink-displays</code> instead, directly in the XML.</ink-aside></dd>
+    <dt>Charts</dt><dd>Idyll has simple charts out of the box but no two-way binding of elements, Ink allows you to have <ink-a src="/components-ink-chart">drag-nodes</ink-a>.</dd>
+    <dt>Conditional Visibility</dt><dd>Ink takes a slightly different approach to conditionals, and I opted to go for reactive visibility through <code>:visible</code>, rather than <ink-a src="/idyll-doc-conditional">if/else statements</ink-a> in Idyll.</dd>
 </dl>
 
 
@@ -164,11 +164,11 @@
 
 
 <dl>
-    <dt>Transforms</dt><dd>One of the things that I couldn't do was transformed displays without creating a <a href="https://gist.github.com/rowanc1/6f086d430a5c594e4bb9a4179f9afec0">Idyll component</a>. Adding a <code>transform</code> without replacing the format string allowed things like display "free" when value is 0, or do an <a href="https://components.ink/var">emoji-sliding-scale&trade;</a>. I am curious how this changes the approach in <a href="https://mathisonian.com/writing/nonlinear-range-sliders" target="_blank">nonlinear range sliders</a>.
-        <ink-callout class="success">June 2019: This has <a href="https://github.com/idyll-lang/idyll/pull/519" target="_blank">now been added</a> to Idyll!</ink-callout>
+    <dt>Transforms</dt><dd>One of the things that I couldn't do was transformed displays without creating a <ink-a src="/gist-idyll-component">Idyll component</ink-a>. Adding a <code>transform</code> without replacing the format string allowed things like display "free" when value is 0, or do an <ink-a src="/components-ink-docs-var">emoji-sliding-scale&trade;</ink-a>. I am curious how this changes the approach in <ink-a src="/idyll-nonlinear-range-sliders">nonlinear range sliders</ink-a>.
+</dd>        <ink-callout class="success">June 2019: This has <ink-a src="/github-idyll-pr519">now been added</ink-a> to Idyll!</ink-callout>
     </dd>
-    <dt>Demos & Code</dt><dd>For a lot of the examples I have created a <a href="https://github.com/ink-components/ink-components/blob/master/src/InkCode.js#L166" target="_blank">demo component</a> that allows execution of the internals as well as the ability to copy the source code directly. Allowing the executed code to be identical to that which is being displayed cuts down on the verbosity.</dd>
-    <dt>Bind</dt><dd>The ability to update multiple variables in a single action, hover, click, drag, etc. This is possible, I am sure, by creating your own component in Idyll. The <a href="https://components.ink/var#name:value-bind">name, value, and bind</a> syntax I think is a pretty elegant advanced feature that allows some interesting things especially in the interactions with charts or not updating variables directly (e.g. multiple coordinate systems).</dd>
+    <dt>Demos &amp; Code</dt><dd>For a lot of the examples I have created a <ink-a src="/github-components-ink-demo">demo component</ink-a> that allows execution of the internals as well as the ability to copy the source code directly. Allowing the executed code to be identical to that which is being displayed cuts down on the verbosity.</dd>
+    <dt>Bind</dt><dd>The ability to update multiple variables in a single action, hover, click, drag, etc. This is possible, I am sure, by creating your own component in Idyll. The <ink-a src="/components-ink-var-bind">name, value, and bind</ink-a> syntax I think is a pretty elegant advanced feature that allows some interesting things especially in the interactions with charts or not updating variables directly (e.g. multiple coordinate systems).</dd>
     <dt>Scopes</dt><dd>Mixing multiple scopes of variables is a wicked cool idea. I have introduced the <code>ink-scope</code> component that keeps variable and dynamic execution in different IFrames on the page. There is a lot to improve with being able to reference from other scopes, but I think it is the start of a cool idea.</dd>
     <dt>Periodic</dt><dd>Having a <code>periodic</code> boolean flag on dynamic text input
         (e.g. <ink-scope>
@@ -183,7 +183,7 @@
             <ink-card src="/api/bricks/rowan/ink" width="90%"></ink-card>
         </ink-demo>
     </ink-aside>
-    <dt>Source</dt><dd>This is a whole can of worms. I want the ability to "import ideas" in the same way that you would import an image. This means adding a <code>src</code> attribute to the component so that they can be dynamically imported at run-time (or server-side rendering). At the moment, I think this exploration is the reason I am curious on forging ahead with my own implementation. There is dependency on the <a href="/api/bricks/rowan/ink" target="_blank">API format</a>, which I am still thinking about.<br>Eventually this idea leads to equation and figure banks, that can be improved independently. <a href="/on-my-website-2018#importing-ideas">More on importing ideas is here</a>.</dd>
+    <dt>Source</dt><dd>This is a whole can of worms. I want the ability to "import ideas" in the same way that you would import an image. This means adding a <code>src</code> attribute to the component so that they can be dynamically imported at run-time (or server-side rendering). At the moment, I think this exploration is the reason I am curious on forging ahead with my own implementation. There is dependency on the <a href="/api/bricks/rowan/ink">API format</a>, which I am still thinking about.<br/>Eventually this idea leads to equation and figure banks, that can be improved independently. <ink-a src="/on-my-website-2018#importing-ideas">More on importing ideas is here</ink-a>.</dd>
 </dl>
 
 <p>I think some of these ideas could be used to improve Idyll, and am hoping I can contribute ideas to that project if not code directly.</p>
@@ -192,6 +192,6 @@
 <h2>Summary</h2>
 
 <p>
-    I have started contributing <a href="https://components.ink">components.ink</a>, which is aimed at interactive scientific writing and reactive documents. It is a very similar approach to Idyll Lang, however, it implements everything using web-components rather than introducing a new domain specific language. There are potentially a few advantages, however, if you are in charge of the compiler and therefore the language - <a href="https://svelte.dev/blog/svelte-3-rethinking-reactivity" target="_blank">really you can add whatever magic you want</a>! At the very least, these ideas can be used to expand and improve Idyll, however, I will probably continue to iterate on <a href="https://components.ink">components.ink</a> as it's own project. &#x1F680;
+    I have started contributing <ink-a src="/components-ink">components.ink</ink-a>, which is aimed at interactive scientific writing and reactive documents. It is a very similar approach to Idyll Lang, however, it implements everything using web-components rather than introducing a new domain specific language. There are potentially a few advantages, however, if you are in charge of the compiler and therefore the language - <ink-a src="/svelte-rethinking-reactivity">really you can add whatever magic you want</ink-a>! At the very least, these ideas can be used to expand and improve Idyll, however, I will probably continue to iterate on <ink-a src="/components-ink">components.ink</ink-a> as it's own project. &#x1F680;
 </p>
 

@@ -277,3 +277,7 @@ class Quote(Brick):
 
     quote = properties.String('quote')
     author = properties.String('Author of the quote.')
+
+
+class Link(Brick):
+    style_item = 'ink-a'

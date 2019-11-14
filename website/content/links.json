@@ -1,0 +1,110 @@
+[
+    {
+        "__class__": "Link",
+        "date": "2018/01/01",
+        "description": "An industry effort to standardize the data outputs in mining.",
+        "thumbnail": "/thumbnail/omf.png",
+        "title": "Open Mining Format",
+        "uid": "omf",
+        "url_more": "https://omf.readthedocs.io/en/latest/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2014/09/01",
+        "description": "A computational environment for collaborative scientific writing.",
+        "thumbnail": "/thumbnail/geosci.png",
+        "title": "GeoSci.xyz",
+        "uid": "geosci",
+        "url_more": "http://geosci.xyz/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2017/09/01",
+        "description": "Short course on electromagnetics. Delivered to 26 countries in 2017.",
+        "thumbnail": "/thumbnail/disc2017.png",
+        "title": "DISC 2017",
+        "uid": "disc2017",
+        "url_more": "https://disc2017.geosci.xyz/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2017-06-27T05:00:21Z",
+        "description": "The long read: It is an industry like no other, with profit margins to rival Google \u2013 and it was created by one of Britain\u2019s most notorious tycoons: Robert Maxwell",
+        "thumbnail": "/thumbnail/guardian-publishing.png",
+        "title": "Is the staggeringly profitable business of scientific publishing bad for science? | Science | The Guardian",
+        "uid": "guardian-publishing",
+        "url_more": "https://www.theguardian.com/science/2017/jun/27/profitable-business-scientific-publishing-bad-for-science"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T12:45:38Z",
+        "description": "Scientists in Germany can still read journals even though institutions there have not renewed their subscriptions.",
+        "thumbnail": "/thumbnail/germany-elsevier.png",
+        "title": "Germany vs Elsevier: universities win temporary journal access after refusing to pay fees",
+        "uid": "germany-elsevier",
+        "url_more": "https://www.nature.com/articles/d41586-018-00093-7"
+    },
+    {
+        "__class__": "Link",
+        "date": "2014-09-03T11:37:19Z",
+        "description": "Join in the discussion - leave your comments below FAIR Data Principles",
+        "thumbnail": "/thumbnail/fair-principles.png",
+        "title": "The FAIR Data Principles | FORCE11",
+        "uid": "fair-principles",
+        "url_more": "https://www.force11.org/group/fairgroup/fairprinciples"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T12:51:18Z",
+        "description": "FORCE11 is a community of scholars, librarians, archivists, publishers and research funders that has arisen organically to help facilitate the change toward improved knowledge creation and sharing. Individually and collectively, we aim to bring about a change in modern scholarly communications through the effective use of information technology.",
+        "thumbnail": "/thumbnail/force11.png",
+        "title": "FORCE11 | The future of research communications and e-scholarship",
+        "uid": "force11",
+        "url_more": "https://www.force11.org/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T12:52:30Z",
+        "description": "",
+        "thumbnail": "/thumbnail/impact-story-rowan.png",
+        "title": "Impactstory: Discover the online impact of your research",
+        "uid": "impact-story-rowan",
+        "url_more": "https://profiles.impactstory.org/u/0000-0002-7859-8394"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T12:52:45Z",
+        "description": "A free platform for explaining your research in plain language, and managing how you communicate around it \u2013 so you can understand how best to increase its impact.",
+        "thumbnail": "/thumbnail/growkudos.png",
+        "title": "Kudos \u2013 helping increase the reach and impact of research",
+        "uid": "growkudos",
+        "url_more": "https://www.growkudos.com/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T12:53:03Z",
+        "description": "Your profile contributions graph is a record of contributions you've made to GitHub repositories. Contributions are timestamped according to Coordinated Universal Time (UTC) rather than your local time zone. Contributions are only counted if they meet certain criteria. In some cases, we may need to rebuild your graph in order for contributions to appear.",
+        "thumbnail": "/thumbnail/github-counting-contributions.png",
+        "title": "Why are my contributions not showing up on my profile? - GitHub Help",
+        "uid": "github-counting-contributions",
+        "url_more": "https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2018-09-06T23:14:55Z",
+        "description": "Streamgraph Transitions See also a more practical static streamgraph.",
+        "thumbnail": "/thumbnail/blocks-streamgraph.png",
+        "title": "Streamgraph Transitions / Mike Bostock / Observable",
+        "uid": "blocks-streamgraph",
+        "url_more": "https://bl.ocks.org/mbostock/4060954"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T13:02:21Z",
+        "description": "Only the \"worthy\" contributions.",
+        "thumbnail": "/thumbnail/google-scholar-rowan.png",
+        "title": "My Google Scholar Citations",
+        "uid": "google-scholar-rowan",
+        "url_more": "https://scholar.google.ca/citations?user=k8DpDMMAAAAJ&hl=en"
+    }
+]

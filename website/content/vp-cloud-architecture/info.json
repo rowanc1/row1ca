@@ -10,7 +10,8 @@
     "uid": "vp-cloud-architecture",
     "title": "VP Cloud Architecture",
     "description": "Job description for my role.",
-    "thumbnail": "/images/visible-geology/static-creative-thumbnail.png",
+    "thumbnail": "/images/logo/seequent-block.png",
+    "thumbnail_contain": true,
     "license": "CC-BY-4.0",
     "tags": ["seequent"]
 }

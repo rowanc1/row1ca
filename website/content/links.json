@@ -808,5 +808,59 @@
         "title": "em/content/equation_bank at master \u00b7 geoscixyz/em \u00b7 GitHub",
         "uid": "geosci-equation-bank",
         "url_more": "https://github.com/geoscixyz/em/tree/master/content/equation_bank"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:42:01Z",
+        "description": "",
+        "thumbnail": "/thumbnail/seequent.png",
+        "title": "403 Forbidden",
+        "uid": "seequent",
+        "url_more": "https://www.seequent.com"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:42:26Z",
+        "description": "",
+        "thumbnail": "/thumbnail/seequent-rebrand.png",
+        "title": "403 Forbidden",
+        "uid": "seequent-rebrand",
+        "url_more": "https://www.seequent.com/blog/2018/1/30/why-we-changed"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:43:15Z",
+        "description": "",
+        "thumbnail": "/thumbnail/seequent-water.png",
+        "title": "403 Forbidden",
+        "uid": "seequent-water",
+        "url_more": "https://www.seequent.com/using-3d-technology-to-find-water-for-refugees/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:43:36Z",
+        "description": "At ground zero for the final solution, scientists uncover a story of hope and bravery.",
+        "thumbnail": "/thumbnail/nova-holocaust-tunnel.png",
+        "title": "Holocaust Escape Tunnel | NOVA | PBS",
+        "uid": "nova-holocaust-tunnel",
+        "url_more": "https://www.pbs.org/wgbh/nova/video/holocaust-escape-tunnel"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:43:45Z",
+        "description": "Unlock your ideas through the power of collaboration.",
+        "thumbnail": "/thumbnail/lfview.png",
+        "title": "View",
+        "uid": "lfview",
+        "url_more": "https://lfview.com"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:47:23Z",
+        "description": "Turn your 3D data into a story.",
+        "thumbnail": "/thumbnail/steno3d.png",
+        "title": "Steno3D",
+        "uid": "steno3d",
+        "url_more": "https://steno3d.com"
     }
 ]

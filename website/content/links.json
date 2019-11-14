@@ -415,6 +415,15 @@
     },
     {
         "__class__": "Link",
+        "date": "2019-11-14T15:08:36Z",
+        "description": "How do we communicate fundamental concepts in a reproducible, actionable form? How do we put numerical simulation tools in the hands of undergraduate student...",
+        "thumbnail": "/thumbnail/refactoring-geoscience-education-3m7s.png",
+        "title": "Using Open Source Tools to Refactor Geoscience Education | SciPy 2016 | Lindsey Heagy - YouTube",
+        "uid": "refactoring-geoscience-education-3m7s",
+        "url_more": "https://www.youtube.com/watch?v=IW2LDsevvDk&feature=youtu.be&t=3m7s"
+    },
+    {
+        "__class__": "Link",
         "date": "2019-11-14T14:26:24Z",
         "description": "dir command can be used to list the files from command prompt. This article explains the syntax for different usecases. A simple dir command without any other arguments lists all the files/subfolders that exist in the current folder. dir Lists the subfolders/files names in bare format. dir /b This command prints the fi",
         "thumbnail": "/thumbnail/linux-dir.png",
@@ -610,5 +619,59 @@
         "title": "Observable",
         "uid": "observable",
         "url_more": "http://observablehq.com"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:06:11Z",
+        "description": "",
+        "thumbnail": "/thumbnail/engelbart-augmenting-human-intellect.png",
+        "title": "Augmenting Human Intellect: A Conceptual Framework - 1962 (AUGMENT,3906,)\u00a0-\u00a0Doug Engelbart Institute",
+        "uid": "engelbart-augmenting-human-intellect",
+        "url_more": "http://www.dougengelbart.org/pubs/augment-3906.html"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:06:28Z",
+        "description": "Edward Tufte home page for books, posters, sculpture, fine art and one-day course: Presenting Data and Information",
+        "thumbnail": "/thumbnail/edward-tufte.png",
+        "title": "The Work of Edward Tufte and Graphics Press",
+        "uid": "edward-tufte",
+        "url_more": "https://www.edwardtufte.com/tufte/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:06:50Z",
+        "description": "A blog about random hacks, graphics and design, math and other ephemera.",
+        "thumbnail": "/thumbnail/acko.png",
+        "title": "Hackery, Math & Design \u2014 Acko.net",
+        "uid": "acko",
+        "url_more": "https://acko.net/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:06:58Z",
+        "description": "",
+        "thumbnail": "/thumbnail/jupyter.png",
+        "title": "Project Jupyter | Home",
+        "uid": "jupyter",
+        "url_more": "http://jupyter.org/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:07:17Z",
+        "description": "a hub for learning through play",
+        "thumbnail": "/thumbnail/explorabl-es.png",
+        "title": "Explorable Explanations",
+        "uid": "explorabl-es",
+        "url_more": "http://explorabl.es/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:07:47Z",
+        "description": "",
+        "thumbnail": "/thumbnail/tanglejs.png",
+        "title": "Tangle: a JavaScript library for reactive documents",
+        "uid": "tanglejs",
+        "url_more": "http://worrydream.com/Tangle/"
     }
 ]

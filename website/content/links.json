@@ -475,5 +475,77 @@
         "title": "Philosophical Transactions of the Royal Society - Wikipedia",
         "uid": "wiki-first-journal",
         "url_more": "https://en.wikipedia.org/wiki/Philosophical_Transactions_of_the_Royal_Society"
+    },
+    {
+        "__class__": "Link",
+        "date": "2017-06-06T20:00:39Z",
+        "description": "The main task of this group is to create practical, working alternatives to the current system. The focus of this working group is on finding or creating working technical implementations based specifically around the culture of the Scholarly Commons. This working group is being created explicitly to outlast the Helmsley grant, and will continue as long as the Scholarly",
+        "thumbnail": "/thumbnail/force11-enabling-technologies-and-infrastructures.png",
+        "title": "WG4:Enabling technologies and infrastructures | FORCE11",
+        "uid": "force11-enabling-technologies-and-infrastructures",
+        "url_more": "https://www.force11.org/group/scholarly-commons-working-group/wg4enabling-technologies-and-infrastructures"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:51:54Z",
+        "description": "Detecting mentions of bio-entities of relevance for curation, e.g. genes, proteins or small molecules, linked to unique database identifiers, such as those in UniProt, EntrezGene or ChEBI.",
+        "thumbnail": "/thumbnail/bio-entity.png",
+        "title": "Bio-entity identification bioinformatics tools | Text mining - omicX",
+        "uid": "bio-entity",
+        "url_more": "https://omictools.com/bio-entity-identification-category"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:52:14Z",
+        "description": "",
+        "thumbnail": "/thumbnail/jsonld-standard.png",
+        "title": "JSON-LD - JSON for Linking Data",
+        "uid": "jsonld-standard",
+        "url_more": "https://json-ld.org/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:52:31Z",
+        "description": "",
+        "thumbnail": "/thumbnail/wiki-least-publishable-unit.png",
+        "title": "Least publishable unit - Wikipedia",
+        "uid": "wiki-least-publishable-unit",
+        "url_more": "https://en.wikipedia.org/wiki/Least_publishable_unit"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:52:51Z",
+        "description": "",
+        "thumbnail": "/thumbnail/wiki-self-plagiarism.png",
+        "title": "Plagiarism - Wikipedia",
+        "uid": "wiki-self-plagiarism",
+        "url_more": "https://en.wikipedia.org/wiki/Plagiarism#Self-plagiarism"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:53:06Z",
+        "description": "Discover the new CC Search Try the new CC image search with over 300 million images from 19 collections and easier attribution. Start searching",
+        "thumbnail": "/thumbnail/creative-commons.png",
+        "title": "When we share, everyone wins - Creative Commons",
+        "uid": "creative-commons",
+        "url_more": "https://creativecommons.org/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:53:19Z",
+        "description": "Science is a human activity. When we fail to distill and explain research, we accumulate a kind of debt...",
+        "thumbnail": "/thumbnail/distill-research-debt.png",
+        "title": "Research Debt",
+        "uid": "distill-research-debt",
+        "url_more": "https://distill.pub/2017/research-debt/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T14:54:21Z",
+        "description": "Google Trend",
+        "thumbnail": "/thumbnail/climate-change-vs-star-wars.png",
+        "title": "Climate Change vs Star Wars",
+        "uid": "climate-change-vs-star-wars",
+        "url_more": "https://trends.google.com/trends/explore?date=all&q=%2Fm%2F0cs9q,%2Fm%2F0d063v,%2Fm%2F0990h,%2Fm%2F06mmr"
     }
 ]

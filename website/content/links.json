@@ -547,5 +547,68 @@
         "title": "Climate Change vs Star Wars",
         "uid": "climate-change-vs-star-wars",
         "url_more": "https://trends.google.com/trends/explore?date=all&q=%2Fm%2F0cs9q,%2Fm%2F0d063v,%2Fm%2F0990h,%2Fm%2F06mmr"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:00:55Z",
+        "description": "Closing keynote at the UIST and SPLASH conferences, October 2014. Preface: http://worrydream.com/TheHumaneRepresentationOfThought/note.html   References to baby-steps\u2026",
+        "thumbnail": "/thumbnail/humane-representation-of-thought.png",
+        "title": "The Humane Representation of Thought on Vimeo",
+        "uid": "humane-representation-of-thought",
+        "url_more": "https://vimeo.com/115154289"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:01:17Z",
+        "description": "",
+        "thumbnail": "/thumbnail/tufte-sidenotes.png",
+        "title": "Tufte CSS",
+        "uid": "tufte-sidenotes",
+        "url_more": "https://edwardtufte.github.io/tufte-css/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:01:47Z",
+        "description": "Bret Victor has been provided by the management for your protection.",
+        "thumbnail": "/thumbnail/bretvictor.png",
+        "title": "Bret Victor, beast of burden",
+        "uid": "bretvictor",
+        "url_more": "http://worrydream.com/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:02:16Z",
+        "description": "Consultant to the Internet",
+        "thumbnail": "/thumbnail/vimeo-worrydream.png",
+        "title": "Bret Victor on Vimeo",
+        "uid": "vimeo-worrydream",
+        "url_more": "https://vimeo.com/worrydream"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:02:38Z",
+        "description": "Bret Victor has been provided by the management for your protection.",
+        "thumbnail": "/thumbnail/worrydream-ladder-of-abstraction.png",
+        "title": "Bret Victor, beast of burden",
+        "uid": "worrydream-ladder-of-abstraction",
+        "url_more": "http://worrydream.com/#!2/LadderOfAbstraction"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:03:12Z",
+        "description": "",
+        "thumbnail": "/thumbnail/bostock-algorithms.png",
+        "title": "Visualizing Algorithms",
+        "uid": "bostock-algorithms",
+        "url_more": "https://bost.ocks.org/mike/algorithms/"
+    },
+    {
+        "__class__": "Link",
+        "date": "2019-11-14T15:03:25Z",
+        "description": "Discover insights faster and communicate more effectively with interactive notebooks for data analysis, visualization, and exploration.",
+        "thumbnail": "/thumbnail/observable.png",
+        "title": "Observable",
+        "uid": "observable",
+        "url_more": "http://observablehq.com"
     }
 ]
